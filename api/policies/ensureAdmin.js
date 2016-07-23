@@ -14,12 +14,17 @@ module.exports = function(req, res, next) {
     return res.status(401).send({ message: 'Token has expired' });
   }
   console.log(payload.data);
+  if(typeof(payload.data) !='undefined'){
+    
   if(payload.data.role ==='admin' || payload.data.role ==='superadmin' )
   {
       req.user = payload.sub;
       next();
   }
   else{
+    res.status(403).send('Vous n\'avez pas les droits')
+  }
+  }else{
     res.status(403).send('Vous n\'avez pas les droits')
   }
 };

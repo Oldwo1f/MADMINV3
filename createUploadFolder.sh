@@ -1,6 +1,5 @@
 mkdir uploads
 cd uploads
-mkdir documents
 mkdir files
 mkdir images
 cd images
