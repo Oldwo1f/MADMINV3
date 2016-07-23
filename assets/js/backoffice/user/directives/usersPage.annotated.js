@@ -482,7 +482,7 @@ angular.module('momi-user')
 
 			      		$scope.tinymceOption ={
 			      			// skin: 'myStyle',
-			      			content_css : '/styles/tinymce.css' ,
+			      			content_css : '/styles/backoffice/tinymce.css' ,
 			      			setup: function(editor) {
 
 			  					var placeholder = $('#' + editor.id).attr('placeholder');
