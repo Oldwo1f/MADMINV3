@@ -69,8 +69,6 @@ moment.locale('fr', {
 module.exports={
 	backupDb:function(req,res) {
 
-		console.log('backupDB');
-		// console.log( moment().format('dd/mm/yyy') );
 		var out = fs.createWriteStream('.tmp/tmp.db');
 			out.on('finish', function() {
 			  	var rs = fs.createReadStream('.tmp/tmp.db')
@@ -92,7 +90,6 @@ module.exports={
 	},
 	restoreDb:function(req,res) {
 
-		console.log('restoreDB'); 
 		var backup = fs.createReadStream('test/bdd-ARBATOU-4 mai 2015.db');
 		// var fs = require('fs');
 		// var out = fs.createReadWriteStream('test/mydb.db');
@@ -107,8 +104,6 @@ module.exports={
 	},
 	restartSite:function(req,res) {
 
-		console.log('restartSite');
-		// console.log(sails.config.PATH_TO_WEBSITE);
 		var deploySh = spawn('sh', [ 'deploy.sh' ], {
 		  cwd:'',
 		}); 
@@ -119,47 +114,26 @@ module.exports={
 	    
 	},
 	getTraductions:function(req,res) {
-
-
-		// console.log(sails.config.i18n.locales);
-		// console.log(req.params.lang);
-		console.log('config/locales/'+req.params.lang+'.json');
-		// console.log(sails.config.i18n);
-
-		// var file = fs.readFileSync('config/locales/'+req.params.lang+'.json')
 		var obj = JSON.parse(fs.readFileSync('config/locales/'+req.params.lang+'.json', 'utf8'));
-		// console.log(obj);
-		// console.log('---');
 
 		res.send(obj)
 	},
 	saveTraduction:function(req,res) {
 
 
-		// console.log(sails.config.i18n.locales);
-		console.log('save');
-		console.log(req.params.lang);
-		// console.log(req.body);
 		var json = JSON.stringify(req.body,null, 2)
-		console.log(json);
-		// console.log('/config/locales/'+req.params.lang+'.json');
-		// // console.log(sails.config.i18n);
-
-		// var file = fs.writeFileSync('config/locales/'+req.params.lang+'.json',json)
 		fs.writeFile('config/locales/'+req.params.lang+'.json', json, function (err) {
 		  if (err){
 			res.status(400).send('error')
 
 		  	throw err
 		  }
-		  console.log('It\'s saved!');
 		  res.status(200).send('saved')
 		});
 		
 	},
 	getUploadsSize:function(req,res) {
 
-		console.log('hehhehehe');
 		var totalFile=0;
 		var totalImage=0;
 		var totalOriginal=0;
@@ -167,8 +141,6 @@ module.exports={
 		return Promise.bind({})
 			.then(function() { 
 				return fs.readdirAsync('uploads/files').map(function(filename) {
-					// console.log('hehhehehe:',filename);
-
 						return fs.statAsync('uploads/files/'+filename).then(function(stats) {
 							if (stats.isFile()) { totalFile += stats.size; }
 						})
@@ -176,8 +148,6 @@ module.exports={
 			}).then(function() {
 
 				return fs.readdirAsync('uploads/images/originalSize').map(function(filename) {
-					// console.log('hehhehehe:',filename);
-
 						return fs.statAsync('uploads/images/originalSize/'+filename).then(function(stats) {
 							if (stats.isFile()) { totalImage += stats.size; }
 						})
@@ -185,8 +155,6 @@ module.exports={
 			}).then(function() {
 
 				return fs.readdirAsync('uploads/images/adminThumbs').map(function(filename) {
-					// console.log('hehhehehe:',filename);
-
 						return fs.statAsync('uploads/images/adminThumbs/'+filename).then(function(stats) {
 							if (stats.isFile()) { totalImage += stats.size; }
 						})
@@ -194,8 +162,6 @@ module.exports={
 			}).then(function() {
 
 				return fs.readdirAsync('uploads/images/profile').map(function(filename) {
-					// console.log('hehhehehe:',filename);
-
 						return fs.statAsync('uploads/images/profile/'+filename).then(function(stats) {
 							if (stats.isFile()) { totalImage += stats.size; }
 						})
@@ -203,8 +169,6 @@ module.exports={
 			}).then(function() {
 
 				return fs.readdirAsync('uploads/images/resized2').map(function(filename) {
-					// console.log('hehhehehe:',filename);
-
 						return fs.statAsync('uploads/images/resized2/'+filename).then(function(stats) {
 							if (stats.isFile()) { totalImage += stats.size; }
 						})
@@ -212,14 +176,11 @@ module.exports={
 			}).then(function() {
 
 				return fs.readdirAsync('uploads/images/resized').map(function(filename) {
-					// console.log('hehhehehe:',filename);
-
 						return fs.statAsync('uploads/images/resized/'+filename).then(function(stats) {
 							if (stats.isFile()) { totalImage += stats.size; }
 						})
 				})
 			}).then(function() {
-				// totalImage = totalOriginal
 				totalFile = totalFile 
 				res.send({'totalImage':totalImage,'totalFile':totalFile})
 			})
@@ -227,7 +188,6 @@ module.exports={
 		
 	},
 	backupFiles:function(req,res) {
-		console.log('BACKUP');
 		var archive = archiver('zip');
 
 		// var output = fs.createWriteStream('target.zip');
@@ -256,50 +216,31 @@ module.exports={
 
 	},
 	gitCheckout:function(req,res) {
-		console.log('git');
-		console.log( 'ffffffff');
 
 		var repo = git("")
-		console.log(repo);
 		repo.checkout(function (err,argument) {
-			console.log('err',err);
-			console.log(argument);
-			console.log('-----------------');
 		})
 	},
 	getVersion:function(req,res) {
-		console.log('version ');
-		// console.log(sails.config.PATH_TO_WEBSITE);
 		json = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 		version = json.version
-		// sitejson = JSON.parse(fs.readFileSync(sails.config.PATH_TO_WEBSITE+'package.json', 'utf8'))
-		// siteversion = sitejson.version
 		res.send({version:version})
 	},
 	getDbStats:function(req,res) {
-		console.log('here');
 		var url = 'mongodb://localhost:27017/'+sails.config.dbname;
-		// Use connect method to connect to the Server
 		MongoClient.connect(url, function(err, db) {
-		  console.log("Connected correctly to server");
 		  db.stats(function(err, stats) {
-
-		  	console.log('err stats',err);
 			res.send(stats)		
 		    db.close();
 		  })
 		});
 	},	
 	getLangs:function(req,res) {
-		console.log('getLangs');
-		console.log(sails.config.localesfull);
-		console.log(sails.config.defaultLocale);
 			res.send({defaults: sails.config.defaultLocale,locales:sails.config.localesfull})		
 		 
 	},		
 	getConfig:function(req,res) {
 		
-		console.log(sails.config.sizequota);
 			res.send({quota: sails.config.sizequota,url:sails.config.URL_HOME,name:sails.config.COMPANY_NAME})		
 		 
 	},

@@ -27,12 +27,8 @@ module.exports = {
 	    
 	},	
 	resizeImage:function  (req,res,next) {
-		console.log('resizeImage resizeImage resizeImage resizeImage resizeImage resizeImage resizeImage');
-		// var info;
-		console.log(req.body);
 		easyimg.info('uploads/images/originalSize/'+req.body.filename).then(function(file) {
 				info = file;
-				console.log(info);
 				var quality = 100;
 
 				if(info.size > 300000){ quality = 90;}
@@ -42,7 +38,6 @@ module.exports = {
 				if(info.size > 2000000){ quality = 30;}
 
 
-console.log('quality =' +quality);
 		    	easyimg.rescrop({
 		    		 gravity:'NorthWest',
 				     src:'uploads/images/originalSize/'+req.body.filename, dst:'uploads/images/resized/'+req.body.filename,
@@ -51,7 +46,6 @@ console.log('quality =' +quality);
 				     x:req.body.scaledLeft, y:req.body.scaledTop, quality:quality
 				}).then(function(image) {
 
-					console.log(req.body.normalWidth + '---' + req.body.normalHeight);
 					easyimg.rescrop({
 			    		 gravity:'NorthWest',
 					     src:'uploads/images/resized/'+req.body.filename, dst:'uploads/images/resized2/'+req.body.filename,
@@ -64,8 +58,6 @@ console.log('quality =' +quality);
 
 						if(req.body.imgid)
 						{
-							console.log('ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt ');
-							console.log(image);
 							var paysage = true;
 							if(image.width < image.height)
 								paysage = false;
@@ -105,7 +97,6 @@ console.log('quality =' +quality);
 	},	
 	resizeImageProfile:function  (req,res,next) {
 
-		console.log('resize image profile');
 
 		easyimg.info('uploads/images/originalSize/'+req.body.filename).then(function(file) {
 
@@ -117,8 +108,6 @@ console.log('quality =' +quality);
 				     x:req.body.scaledLeft, y:req.body.scaledTop
 				}).then(function(image) {
 					
-						console.log('ttttttttteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeetttttttttttttttttttttttttttttttttttttttttttttttttt');
-						console.log(req.body.imageId);
 						easyimg.resize({
 				    		 gravity:'NorthWest',
 						     src:'uploads/images/resized/'+req.body.filename, dst:'uploads/images/profile/'+req.body.filename,

@@ -12,9 +12,6 @@ var IsThere = require("is-there");
 
 module.exports = {
 		uploadDocument:function(req,res,next) {
-			console.log(req.file);
-			console.log('-------------');
-			console.log(req.file('files'));
 		res.setTimeout(0);
 		sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 		sid.seed(10);
@@ -35,7 +32,6 @@ module.exports = {
 		req.file('files').upload(reciever,function (err, files) {
 	      if (err) return res.serverError(err);
 
-	      console.log(files);
 
 
 	      if(pat.test(files[0].type))
@@ -79,11 +75,8 @@ module.exports = {
 
 
 
-				    		// console.log(results[0]);
 			    		Document.create(file).exec(function(err,doc) {
 					   					
-					   		console.log('FILE CREATED');
-					   		console.log(doc.id);
 					   		req.secondid = doc.id		
 					   		req.params.toto = doc.id		
 					   		req.params.tata = 'doc.id'		
@@ -123,7 +116,6 @@ module.exports = {
 	},
 	uploadImage:function(req,res,next) {
 
-		console.log(req.body);
 var cropOptions = req.body
 		res.setTimeout(0);
 		sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
@@ -182,8 +174,6 @@ var cropOptions = req.body
 			    		file.nbDowload = Math.round(Math.random()*100)
 			    		file.date = new Date();
 
-			    		console.log('----------------------------------------------------------------------------------------------------------------------');
-			    		console.log(cropOptions);
 			    		easyimg.thumbnail({
 						     src:'.tmp/uploads/'+tmpname, dst:'uploads/images/adminThumbs/'+goodname,
 						     width:400, height:400,
@@ -191,23 +181,17 @@ var cropOptions = req.body
 						     // x:0, y:0
 						  }).then(function(image){
 						  	
-						  	console.log('image ReSIZED');
-						  		console.log(image);
 
 						  		Image.create(file).exec(function(err,img) {
 							   					
-							   		console.log('FILE CREATED');
-							   		console.log(img.id);
 							   		req.secondid = img.id		
 						    		fs.unlinkSync('.tmp/uploads/'+tmpname)
 					    			next();
 					    		});
 						  },function(err){
-						  		console.log(err);
 						  })
 
 
-				    		// console.log(results[0]);
 			    		
 
 

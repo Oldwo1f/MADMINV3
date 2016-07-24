@@ -31,7 +31,6 @@ module.exports = {
 	},
 	uploadImage:function(req,res,next) {
 
-		console.log(req.body);
 		var cropOptions = req.body
 		res.setTimeout(0);
 		sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
@@ -88,8 +87,6 @@ module.exports = {
 			    		file.filename = goodname;
 			    		file.date = new Date();
 
-			    		console.log('----------------------------------------------------------------------------------------------------------------------');
-			    		console.log(cropOptions);
 			    		easyimg.thumbnail({
 						     src:'.tmp/uploads/'+tmpname, dst:'uploads/images/adminThumbs/'+goodname,
 						     width:400, height:400,
@@ -97,25 +94,14 @@ module.exports = {
 						     // x:0, y:0
 						  }).then(function(image){
 						  	
-						  	console.log('image RISIZED');
-						  		console.log(image);
-
 						  		Image.create(file).exec(function(err,img) {
 							   					
-							   		console.log('FILE CREATED');
-							   		console.log(img.id);
 							   		req.secondid = img.id		
 						    		fs.unlinkSync('.tmp/uploads/'+tmpname)
 					    			next();
 					    		});
 						  },function(err){
-						  		console.log(err);
 						  })
-
-
-				    		// console.log(results[0]);
-			    		
-
 
 	      }else
 	      {

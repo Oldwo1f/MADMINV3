@@ -11,7 +11,6 @@ module.exports = {
 		fetch:function(req,res,next){
 			
 
-			console.log('SLIDESHOWFETCH');
 
 
 			var slideshowsPromise = Slideshow.find().limit(100).populateAll();
@@ -40,7 +39,6 @@ module.exports = {
 		        res.send(fullData)
 		    })
 		    .catch(function(e){
-		    	console.log('ERRRRRRRRRRRRRRRRRRRRRRRRRROR');
 		    	console.log(e);
 		    })
 
@@ -50,7 +48,6 @@ module.exports = {
 		fetchHome:function(req,res,next){
 			
 
-			console.log('SLIDESHOWFETCH');
 
 
 			var slideshowsPromise = Slideshow.find().where({title:'home'}).populateAll();
@@ -79,7 +76,6 @@ module.exports = {
 		        res.send(fullData[0])
 		    })
 		    .catch(function(e){
-		    	console.log('ERRRRRRRRRRRRRRRRRRRRRRRRRROR');
 		    	console.log(e);
 		    })
 

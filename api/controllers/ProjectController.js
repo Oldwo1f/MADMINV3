@@ -40,7 +40,6 @@ module.exports = {
 		        res.send(fullData)
 		    })
 		    .catch(function(e){
-		    	console.log('ERRRRRRRRRRRRRRRRRRRRRRRRRROR');
 		    	console.log(e);
 		    })
 
@@ -75,7 +74,6 @@ module.exports = {
 		   		Project.subscribe(req,ids)
 		    })
 		    .catch(function(e){
-		    	console.log('ERRRRRRRRRRRRRRRRRRRRRRRRRROR');
 		    	console.log(e);
 		    })
 
@@ -84,37 +82,25 @@ module.exports = {
 		},
 		fetchOne:function(req,res,next){
 			
-			console.log('FETCH');
-			console.log(req.params);
 			var result ;
 			var idsCom ;
 			Project.findOne(req.params.id).populateAll().then(function(project){
-				console.log('HERE');
-				// console.log(project);
-				// console.log(typeof(project.authors));
 				var art=_.cloneDeep(project);
 				return new Promise(function(resolve,reject){
 					
 						if(typeof(project.authors) != 'undefined'){
-
-							console.log('HERE2');
-							console.log('AUTHOR');
 
 							return Promise.map(project.authors,function(author){
 
 								return User.findOne(author.id).populateAll()
 								
 							}).then(function(t){
-								console.log('AFTERMAP');
-								// console.log(t);
 								art.authors = t;
-								// console.log(art);
 								resolve(art)
 							})
 							// 
 						}else
 						{
-							console.log('HERE3');
 							resolve(project)
 						}
 				}).then(function(){
@@ -127,14 +113,12 @@ module.exports = {
 				.then(function(CommentsFullFilled){
 					
 					art.comments = CommentsFullFilled;
-					console.log(idsCom);
 					var idsToAdd = _.map(CommentsFullFilled,function(com){
 						return _.map(com.responses,function(o){
 							idsCom.push(o.id)
 						return o.id
 						})
 					})
-					console.log(idsCom);
 					// var idsCom = _.map(art.comments,function(o){return o.id})
 					Comment.subscribe(req,idsCom);
 				 	Project.subscribe(req, art.id);
@@ -143,9 +127,6 @@ module.exports = {
 			})
 		},
 		uploadDocument:function(req,res,next) {
-			console.log(req.file);
-			console.log('-------------');
-			console.log(req.file('files'));
 		res.setTimeout(0);
 		sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 		sid.seed(10);
@@ -166,7 +147,6 @@ module.exports = {
 		req.file('files').upload(reciever,function (err, files) {
 	      if (err) return res.serverError(err);
 
-	      console.log(files);
 
 
 	      if(pat.test(files[0].type))
@@ -210,11 +190,8 @@ module.exports = {
 
 
 
-				    		// console.log(results[0]);
 			    		Document.create(file).exec(function(err,doc) {
 					   					
-					   		console.log('FILE CREATED');
-					   		console.log(doc.id);
 					   		req.secondid = doc.id		
 					   		req.params.toto = doc.id		
 					   		req.params.tata = 'doc.id'		
@@ -254,7 +231,6 @@ module.exports = {
 	},
 	uploadImage:function(req,res,next) {
 
-		console.log(req.body);
 var cropOptions = req.body
 		res.setTimeout(0);
 		sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
@@ -313,8 +289,6 @@ var cropOptions = req.body
 			    		file.nbDowload = Math.round(Math.random()*100)
 			    		file.date = new Date();
 
-			    		console.log('----------------------------------------------------------------------------------------------------------------------');
-			    		console.log(cropOptions);
 			    		easyimg.thumbnail({
 						     src:'.tmp/uploads/'+tmpname, dst:'uploads/images/adminThumbs/'+goodname,
 						     width:400, height:400,
@@ -322,13 +296,9 @@ var cropOptions = req.body
 						     // x:0, y:0
 						  }).then(function(image){
 						  	
-						  	console.log('image RISIZED');
-						  		console.log(image);
 
 						  		Image.create(file).exec(function(err,img) {
 							   					
-							   		console.log('FILE CREATED');
-							   		console.log(img.id);
 							   		req.secondid = img.id		
 						    		fs.unlinkSync('.tmp/uploads/'+tmpname)
 					    			next();
@@ -372,22 +342,15 @@ var cropOptions = req.body
 
 	},
 	search:function(req,res,next){
-		console.log('SEARCHff');
 
-		console.log(req.params);
 
 
 		es.search(req.params.slug,'project').then(function(data){
-			console.log('FIN');
-			console.log(data.hits);
 			var datas = _.map(data.hits.hits, '_source');
 			var datasIds = _.map(datas, 'id');
-			console.log(datasIds);
 			new Promise.map(datasIds, function(id){
-				console.log('-------'+id);
 				// return id
 				return Project.findOne(id).populateAll().then(function(project){
-					console.log(project);
 					Project.subscribe(req,id)
 					var authorsPromises = project.authors.map(function(author) {
 		                return User.findOne(author.id).populateAll();
@@ -401,7 +364,6 @@ var cropOptions = req.body
                    	})
 				})
 			}).then(function(finaldata){
-				console.log(finaldata);
 				res.send(finaldata)
 				
 			
