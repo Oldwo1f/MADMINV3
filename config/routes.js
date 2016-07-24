@@ -116,7 +116,41 @@ module.exports.routes = {
   ***************************************************************************/
 
 
+ 
   //FRONT
+
+  'GET /': 'FrontController.home',
+  // 'GET /grimpes': 'frontController.portfolio',
+  // 'GET /projet/:id/*':'frontController.projet',
+  'GET /testnotif': 'frontController.testnotif',
+  'GET /blog': 'frontController.blog',
+  'GET /blog/category/:thiscat': 'frontController.categoryArticle',
+  'GET /blog/tags/:thiscat/:tagname': 'frontController.tagArticle',
+  'GET /blog/article/:id':'frontController.article',
+  'GET /blog/article/:id/*':'frontController.article',
+  'POST /article/:itemid/addComment':'frontController.addCommentArticle',
+  // 'POST /article/addReponse/:itemid/:projid':'frontController.addReponseArticle',
+  'GET /grimpes': 'frontController.portfolio',
+  'GET /grimpes/category/:thiscat': 'frontController.categoryProject',
+  'GET /grimpes/tags/:thiscat/:tagname': 'frontController.tagProject',
+  'GET /grimpes/project/:id':'frontController.project',
+  'GET /grimpes/project/:id/*':'frontController.project',
+  'POST /project/:itemid/addComment':'frontController.addCommentProject',
+  // 'POST /project/addReponse/:itemid/:projid':'frontController.addReponseProject',
+  'GET /contact':'frontController.contact',
+  'GET /presta':'frontController.presta',
+  
+  'POST /contactEmail':'frontController.contactEmail',
+
+  
+  // 'POST /project/:itemid/addComment':'frontController.addCommentProj',
+  // 'POST /project/addReponse/:itemid/:projid':'frontController.addReponseProj',  
+  // 'get /createNotif':'NotificationController.createNotif',
+  // 'get /createComment':'NotificationController.createComment',
+  // 'GET /file/image/:size/:name':'ImageController.serveImage',
+  // 'GET /file/document/:name':'DocumentController.serveDocument',
+  // 'GET /test':'FrontController.test',
+
 
 
 };
