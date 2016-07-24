@@ -15,19 +15,13 @@ module.exports = {
         articles:{collection:'article', via: 'tags'},
         projects:{collection:'project', via: 'tags'},
         selfUpdate:function(options,cb){
-        console.log('SELF UPDATE TAG');
-        console.log(options);
-
         if(options.parentType == 'article')
         {
             if(options.verb == 'add'){
 
                 Tag.findOne(this.id).then(function(data){
-                console.log(data);
-                console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<);");
                     data.nbArticles= Number(data.nbArticles)+1;
                     data.total= Number(data.total)+1;
-                    console.log(data);
                     return Tag.update(data.id ,
                     {
                         nbArticles : data.nbArticles,
@@ -38,8 +32,6 @@ module.exports = {
                                 nbArticles : data.nbArticles,
                                 total : data.total
                         } )
-                        console.log('--------------');
-                        console.log(result[0]);
                         cb(null,result[0]);
                         
                     })
@@ -55,7 +47,6 @@ module.exports = {
                     data.nbArticles= Number(data.nbArticles) -1;
                     data.total= Number(data.total) -1;
                     if(data.total<=0){
-                     //&& data.nbArticles<=0 && data.nbArticles<=0 &&
                         return Tag.destroy(data.id).then(function(result){
                             cb(null,result[0]);
                             Tag.publishDestroy( data.id )
@@ -85,11 +76,8 @@ module.exports = {
             if(options.verb == 'add'){
 
                 Tag.findOne(this.id).then(function(data){
-                console.log(data);
-                console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<);");
                     data.nbProjects= Number(data.nbProjects)+1;
                     data.total= Number(data.total)+1;
-                    console.log(data);
                     return Tag.update(data.id ,
                     {
                         nbProjects : data.nbProjects,
@@ -100,8 +88,6 @@ module.exports = {
                                 nbProjects : data.nbProjects,
                                 total : data.total
                         } )
-                        console.log('--------------');
-                        console.log(result[0]);
                         cb(null,result[0]);
                         
                     })
@@ -117,7 +103,6 @@ module.exports = {
                     data.nbProjects= Number(data.nbProjects) -1;
                     data.total= Number(data.total) -1;
                     if(data.total<=0){
-                     //&& data.nbProjects<=0 && data.nbProjects<=0 &&
                         return Tag.destroy(data.id).then(function(result){
                             cb(null,result[0]);
                             Tag.publishDestroy( data.id )
@@ -150,8 +135,6 @@ module.exports = {
       }
 	},
     afterCreate: function (value, callback){
-      console.log('afterCreate TAG');
-
         es.create('tag',value).then(function(){
             return callback()
         }).catch(function(err){
@@ -160,8 +143,6 @@ module.exports = {
  
     },
     afterUpdate: function (value, callback){
-        console.log('after UPDATE TAG');
-
         es.update('tag',value).then(function(){
             return callback()
         }).catch(function(err){
@@ -169,8 +150,6 @@ module.exports = {
         })
     },
     afterDestroy: function (value, callback){
-        console.log('after destroy TAG');
-        console.log(value);
         es.delete('tag',value[0]).then(function(){
             return callback()
         }).catch(function(err){

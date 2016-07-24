@@ -21,7 +21,6 @@ var actionUtil = require('../blueprints/actionUtil');
 module.exports = function destroyOneRecord (req, res) {
 
 
-  console.log('DESTROY BLUEPRINT');
 
   var Model = actionUtil.parseModel(req);
   var pk = actionUtil.requirePk(req);

@@ -20,11 +20,8 @@ module.exports = {
         },
   	},
   	beforeDestroy: function (value, callback){
-        console.log('BEFORE SLIDESHOW DESTROY');
-        console.log(value.where.id);
         var id = value.where.id
         Slideshow.findOne(id).populateAll().then(function(data){
-        	console.log(data);
         	var slidesToDestroy = data.slides.map(function(slide) {
                 return Slide.destroy(slide.id);
             });
@@ -32,14 +29,11 @@ module.exports = {
             return Promise.all(slidesToDestroy)
 	          .then(function() {
 	          		callback()
-	              // return article;
 	        })
         	
         })
     },
   	afterDestroy: function (value, callback){
-        console.log('AFTER SLIDESHOW DESTROY');
-        console.log(value);
         es.delete('slideshow',value[0]).then(function(){
             return callback()
         }).catch(function(err){

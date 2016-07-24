@@ -96,13 +96,7 @@ module.exports = function updateOneRecord (req, res) {
         if (err) return res.serverError(err);
         if (!populatedRecord) return res.serverError('Could not find record after updating!');
 
-        console.log('CUSTOM UPDATE');
-        console.log(req.options.model);
-        console.log(populatedRecord);
         es.update(req.options.model,populatedRecord).then(function(){
-          console.log('updated ES');
-                // return callback()
-          // res.created(newInstance);
           res.ok(populatedRecord);
         }).catch(function(err){
                console.log(err);

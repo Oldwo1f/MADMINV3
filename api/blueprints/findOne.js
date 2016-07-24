@@ -19,7 +19,6 @@ var actionUtil = require('../blueprints/actionUtil');
  */
 
 module.exports = function findOneRecord (req, res) {
-  console.log('findONE');
   var Model = actionUtil.parseModel(req);
   var pk = actionUtil.requirePk(req);
 

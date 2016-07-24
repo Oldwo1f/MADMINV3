@@ -37,8 +37,6 @@ module.exports = {
     },
     
     afterDestroy: function (value, callback){
-        console.log('AFTER ARTICLE DESTROY');
-        console.log(value);
         es.delete('project',value[0]).then(function(){
             return callback()
         }).catch(function(err){
@@ -46,11 +44,8 @@ module.exports = {
         })
     },
     beforeDestroy: function (value, callback){
-        console.log('BEFORE PROJECT DESTROY');
-        console.log(value.where.id);
         var id = value.where.id
         Project.findOne(id).populateAll().then(function(data){
-            console.log(data);
             var imgsToDestroy = data.images.map(function(img) {
                 return Image.destroy(img.id);
             });
@@ -60,8 +55,6 @@ module.exports = {
             var TagsUpdate = data.tags.map(function(tag) {
                 if(tag.total-1 <=0){
                     return Tag.destroy(tag.id).then(function(data){
-                        console.log('TAGDESROY -- ARTICLE destroy');
-                        console.log(data);
                     });
                 }else{
                     return Tag.update(tag.id,{nbProjects:tag.nbProjects-1,total:tag.total-1});
@@ -70,8 +63,6 @@ module.exports = {
             var CategoriesUpdate = data.categories.map(function(cat) {
                if(cat.total-1 <=0){
                     return Category.destroy(cat.id).then(function(data){
-                        console.log('Category destroy -- ARTICLE destroy');
-                        console.log(data);
                     });
                 }else{
                     return Category.update(cat.id,{nbProjects:cat.nbProjects-1,total:cat.total-1});

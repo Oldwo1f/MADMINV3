@@ -19,25 +19,19 @@ module.exports = {
         articles:{collection:'article', via: 'categories'},
         projects:{collection:'project', via: 'categories'},
   		selfUpdate:function(options,cb){
-        console.log('SELF UPDATE');
-        console.log(options);
 
         if(options.parentType == 'article')
         {
             if(options.verb == 'add'){
 
                 Category.findOne(this.id).then(function(data){
-                console.log(data);
-                console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<);");
                     data.nbArticles= Number(data.nbArticles)+1;
                     data.total= Number(data.total)+1;
-                    console.log(data);
                     return Category.update(data.id ,
                     {
                         nbArticles : data.nbArticles,
                         total : data.total
                     }).then(function(result){
-                        console.log(result[0]);
                         cb(null,result[0]);
                         Category.publishUpdate( data.id , {
                                 nbArticles : data.nbArticles,
@@ -86,17 +80,13 @@ module.exports = {
             if(options.verb == 'add'){
 
                 Category.findOne(this.id).then(function(data){
-                console.log(data);
-                console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<);");
                     data.nbProjects= Number(data.nbProjects)+1;
                     data.total= Number(data.total)+1;
-                    console.log(data);
                     return Category.update(data.id ,
                     {
                         nbProjects : data.nbProjects,
                         total : data.total
                     }).then(function(result){
-                        console.log(result[0]);
                         cb(null,result[0]);
                         Category.publishUpdate( data.id , {
                                 nbProjects : data.nbProjects,
@@ -143,7 +133,6 @@ module.exports = {
       }
 	},
 	afterCreate: function (value, callback){
-      console.log('afterCreate category');
 
         es.create('category',value).then(function(){
             return callback()
@@ -162,7 +151,6 @@ module.exports = {
         })
     },
     afterDestroy: function (value, callback){
-        console.log('after destroy category');
         es.delete('category',value[0]).then(function(){
             return callback()
         }).catch(function(err){
@@ -170,11 +158,8 @@ module.exports = {
         })
     },
     beforeDestroy: function (value, callback){
-        console.log('BEFORE SLIDE DESTROY');
-        console.log(value.where.id);
         var id = value.where.id
         Category.findOne(id).populateAll().then(function(data){
-            console.log(data);
             var imgsToDestroy = data.images.map(function(img) {
                 return Image.destroy(img.id);
             });

@@ -14,7 +14,6 @@ module.exports ={
             if(template!= null)
             {
                 that.fetchTemplate(template,data).then(function (templateHTML){
-                console.log('THEN');
                 options.html = templateHTML;
 
                     return that.send(options).then(function(result) {
@@ -32,20 +31,6 @@ module.exports ={
 
 
         })
-        // if(template!= null)
-        // {
-        //     this.fetchTemplate(template,data).then(function (templateHTML){
-        //         console.log('THEN');
-        //         options.html = templateHTML;
-        //     });
-
-        // }else{
-
-        //     return this.send(options).then(function(result) {
-        //          return result;
-        //     });
-        // }
-      
    },
    send:function(options){
       var transporter = nodemailer.createTransport({
@@ -66,11 +51,9 @@ module.exports ={
       }) 
    },
    fetchTemplate:function(template,data){
-    console.log('FETCH');
       return new Promise(function(resolve,reject){
          sails.renderView('email/'+template, {data:data,layout:'emailLayout'}, function(error, html) {
 
-          console.log(html);
             if(error){
                reject(error);
             }else{

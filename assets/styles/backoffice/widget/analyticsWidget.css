@@ -35,7 +35,7 @@
 .allBtnAnalytics {z-index:20;display:flex;flex-wrap:wrap;justify-content:center;flex: 0 1 auto; height: 15%;}
 .allBtnAnalytics .panel{margin: 2px 2px; background:none;cursor:pointer;outline:none;}
 .allBtnAnalytics .panel label{cursor:pointer;}
-.allBtnAnalytics .panel .panel-heading{border-bottom:none;color:white;}
+.allBtnAnalytics .panel .panel-heading{border-bottom:none;color:white;padding: 10px 7px;}
 .allBtnAnalytics .panel .panel-body{padding: 3px; border-top: none;}
 
 .allBtnAnalytics .panel.gasessions{ border-color:#568203;}

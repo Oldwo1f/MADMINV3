@@ -26,8 +26,6 @@ module.exports = {
 			collection: 'comment',
 		},
 		selfUpdate:function(options,cb){
-	        console.log('SELF UPDATE COMMENT');
-	        console.log(options);
 	        cb(null, this)
 	        if(options.parentType == 'article')
 	        {
@@ -91,15 +89,11 @@ module.exports = {
       	}
 	},
 	afterUpdate:function(value, callback){
-		console.log('AFTER UPDATE COMMENT');
-		console.log(value);
 
 		Notification.find({itemid:value.id}).then(function(data){
-			console.log(data);
 			if(data[0]){
 				data = data[0]
 				Notification.update(data.id,{status:'actif'}).then(function(da){
-					console.log(da);
 					
 				})
 				Notification.publishUpdate(data.id,{status:'actif'})
@@ -120,9 +114,6 @@ module.exports = {
 
 	},
 	afterCreate:function(value, callback){
-		console.log('AFTER CREATE COMMENT');
-		console.log(value);
-
 		var notif={};
 			notif.status = 'new';
 		if(value.project){
@@ -139,7 +130,6 @@ module.exports = {
 		
 		Notification.create(notif)
 		.then(function(data){
-			console.log(data);
 			Notification.publishCreate(data)
 			es.create('comment',value).then(function(){
 					
@@ -153,23 +143,17 @@ module.exports = {
 
 	},
     afterDestroy: function (value, callback){
-    	console.log(value);
     	value = value[0];
     	Notification.find({itemid:value.id}).then(function(data){
-    		console.log('AFTERDESTROY COMMENT');
-			console.log(data);
 			if(data[0]){
 				data = data[0]
 				Notification.update(data.id,{status:'actif'}).then(function(da){
-					console.log('ddddddddddddddddddddddddddddddddddddddddddddd');
-					console.log(da);
 					
 				})
 				Notification.publishUpdate(data.id,{status:'actif'})
 				 es.delete('comment',value).then(function(){
 		            return callback()
 		        }).catch(function(err){
-		               console.log(err);
 		        })
 				
 			}else
@@ -179,8 +163,6 @@ module.exports = {
 
 			
 		})
-        // console.log('after destroy category');
-       
     },
 };
 

@@ -18,11 +18,6 @@ analytics = google.analytics({ version: 'v3'})
 module.exports={
 
 	analytics:function(req,res) { 
-		console.log('ANALITYCS'); 
-		console.log(req.params.metrics);
-		console.log(req.params.period);
-		console.log('--------------------------'); 
-		console.log(sails.config.GOOGLE_ANALYTICS_ID);
 		if(!req.params.metrics || !sails.config.GOOGLE_ANALYTICS_ID)
 		{
 			return res.status(400).send('error')
@@ -35,7 +30,6 @@ module.exports={
 					dateEnd= moment().format('YYYY-MM-DD')
 				break;
 				case 'lastmonth':
-				console.log('HEHEHEHEHEHEHEHEHEhe');
 					dateStart= moment().subtract(1,'M').startOf('month').format('YYYY-MM-DD')
 					dateEnd= moment().subtract(1,'month').endOf('month').format('YYYY-MM-DD')
 
@@ -55,8 +49,6 @@ module.exports={
 				break;
 			}
 
-			console.log(dateStart);
-			console.log(dateEnd);
 			var jwtClient = new google.auth.JWT(
 		    sails.config.key.client_email,
 		    null,
@@ -76,9 +68,6 @@ module.exports={
 						  auth: jwtClient
 						}, function (err, resp) {
 
-						  	console.log('FINAL')
-						  	console.log(err)
-						    console.log(resp.rows)
 						    cb(null,resp.totalsForAllResults)
 					    })
 					
@@ -97,9 +86,6 @@ module.exports={
 						  auth: jwtClient
 						}, function (err, resp) {
 
-						  	console.log('FINAL2')
-						  	console.log(err)
-						    console.log(resp)
 						    cb(null,resp.rows)
 					    })
 					}
@@ -164,13 +150,7 @@ module.exports={
 			        function(err,results) {
 			        	async.map(results,function (item,cb) {
 			        	
-			        	console.log(item);
 			        		User.findOne(String(item._id)).exec(function (err,data) {
-
-
-			        			console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-			        			console.log(err);
-			        			console.log(data);
 			        			if(err || typeof(data)==="undefined"){
 
 			        				cb(err)
@@ -199,35 +179,24 @@ module.exports={
 
 	},
 	getNewComments:function(req,res) {
-		console.log('getNewComments');
-
-			
 			            
 			async.parallel({
 				count:function (cb) {
 				   	Comment.count({status:'new'},function(err,results) {
 			        	
 					   	Reponse.count({status:'new'},function(err,results2) {
-				        	console.log(err);
-				        	console.log(results);
 				            cb(null,results+results2)
 						})
 					})
 				},
 				lastitem:function (cb) {
 					Comment.find({status:'new'}).sort('createdAt ASC').limit(1).populateAll().exec(function(err,results) {
-			        	console.log(err);
-			        	console.log(results);
 			            Reponse.find({status:'new'}).sort('createdAt ASC').limit(1).populateAll().exec(function(err,results2) {
-				        	console.log(err);
-				        	console.log(results);
 				        	if(results.length && results2.length)
 				        	{
 				        		if(results[0].createdAt < results2[0].createdAt){
-				        			console.log('inferior');
 				            		cb(null,results[0])
 				        		}else {
-				        			console.log('inferior');
 				            		cb(null,results2[0])
 				        		}
 				        	}
@@ -253,10 +222,6 @@ module.exports={
 
 	},
 	getSocials:function(req,res) {
-		console.log('getSocials');
-
-			
-			            
 			async.parallel({
 				tw:function (cb) {
 				   	
@@ -280,7 +245,6 @@ module.exports={
 					
 				    http.get('http://graph.facebook.com/?id='+sails.config.URL_HOME, function(resp) {
 
-				    	// console.log(resp.statusCode);
 					   var str='';
 						resp.on('data', function (chunk) {
 				              str += chunk;
@@ -296,8 +260,6 @@ module.exports={
 				   
 				},
 				gplus:function (cb) {
-					console.log('here');
-				    	console.log('https://plusone.google.com/_/+1/fastbutton?url='+sails.config.URL_HOME);
 				   
 					var rem = request('https://plusone.google.com/_/+1/fastbutton?url='+sails.config.URL_HOME);
 					var str='';
@@ -310,15 +272,10 @@ module.exports={
 					  		
 					  		var cutstring = str.substr(str.indexOf('window\.__SSR')+19,100)
 					  		cutstring = cutstring.substring(0,cutstring.indexOf(',')-1)
-					  		console.log(cutstring);
 					  		if(new RegExp('[\d.]+').test(cutstring)){
-					  			console.log('testOK');
-					  			console.log('cutstring');	
-					  			console.log(cutstring);
 					  			cb(null,Number(cutstring))
 					  		}
 					  		else{
-					  		console.log('not testOK');
 					  			cb(null,0)
 					  		}
 					  	}else{
@@ -330,7 +287,6 @@ module.exports={
 				
 			},function  (err, results) {
 
-				// console.log(results);
 				res.send(results)
 			})            
 

@@ -20,7 +20,6 @@ var _ = require('lodash');
 module.exports = function createRecord (req, res) {
 
 
-console.log('CREATE RECORD');
 	var Model = actionUtil.parseModel(req);
 
 	// Create data object (monolithic combination of all parameters)
@@ -32,7 +31,6 @@ console.log('CREATE RECORD');
 	Model.create(data).exec(function created (err, newInstance) {
 
 
-		console.log('CREATEd');
 		// Differentiate between waterline-originated validation errors
 		// and serious underlying issues. Respond with badRequest if a
 		// validation error is encountered, w/ validation info.
@@ -51,15 +49,9 @@ console.log('CREATE RECORD');
 								newInstance.toJSON();
 			Model.publishCreate(publishData, !req.options.mirror && req);
 		}
-		console.log('CUSTOM AADDDDD');
-		console.log(data);
-		console.log(req.options.model);
 		es.create(req.options.model,newInstance).then(function(){
-			console.log('created ES');
-            // return callback()
 			res.created(newInstance);
         }).catch(function(err){
-               console.log(err);
         })
 
 		// Send JSONP-friendly response if it's supported

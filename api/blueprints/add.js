@@ -30,8 +30,6 @@ var async = require('async');
 
 module.exports = function addToCollection (req, res) {
 
-  console.log('GO THROUGH CUSTOM ADD FUNCTION');
-  // console.log(req.options);
   // Ensure a model and alias can be deduced from the request.
   var Model = actionUtil.parseModel(req);
   var relation = req.options.alias;
@@ -51,20 +49,15 @@ module.exports = function addToCollection (req, res) {
   var ChildModel = req._sails.models[associationAttr.collection];
   var childPkAttr = ChildModel.primaryKey;
 
-  // console.log(ChildModel);
-  // console.log(childPkAttr);
   // The child record to associate is defined by either...
   var child;
 
   // ...a primary key:
   var supposedChildPk = actionUtil.parsePk(req);
   if (supposedChildPk) {
-    // console.log(supposedChildPk);
     child = {};
     child[childPkAttr] = supposedChildPk;
   }else if(req.secondid){
-    console.log('REQ SECOND ID');
-    console.log(req.secondid);
     child = {};
     child[childPkAttr] = req.secondid;
   }
@@ -100,7 +93,6 @@ module.exports = function addToCollection (req, res) {
     actualChildPkValue: ['parent', function(cb) {
 
 
-        console.log('here');
 
       // Below, we use the primary key attribute to pull out the primary key value
       // (which might not have existed until now, if the .add() resulted in a `create()`)
@@ -108,12 +100,9 @@ module.exports = function addToCollection (req, res) {
       // If the primary key was specified for the child record, we should try to find
       // it before we create it.
       if (child[childPkAttr]) {
-        console.log(child[childPkAttr]);
         ChildModel.findOne(child[childPkAttr]).exec(function foundChild(err, childRecord) {
 
           childRecord.selfUpdate({parentType: req.options.model,parentId:parentPk , verb:'add'},function(e,data){
-            console.log('after cb self FIND');
-            // console.log(data);
             childRecord = data
             if (err) return cb(err);
             // Didn't find it?  Then try creating it.
@@ -132,17 +121,12 @@ module.exports = function addToCollection (req, res) {
 
       // Create a new instance and send out any required pubsub messages.
       function createChild() {
-        console.log('CREATE CHILD');
-        console.log(child);
         ChildModel.create(child).exec(function createdNewChild (err, newChildRecord){
 
-          console.log(newChildRecord);
 
 
           newChildRecord.selfUpdate({parentType: req.options.model,parentId:parentPk,childId:newChildRecord.id, verb:'add'},function(e,data){
-            console.log('after cb self');
             child.id = data.id
-            // console.log(data);
             newChildRecord = data;
             if (err) return cb(err);
             if (req._sails.hooks.pubsub) {
@@ -166,7 +150,6 @@ module.exports = function addToCollection (req, res) {
     // Add the child record to the parent's collection
     add: ['parent', 'actualChildPkValue', function(cb, async_data) {
 
-      console.log('TRy add');
       try {
         // `collection` is the parent record's collection we
         // want to add the child to.
@@ -194,7 +177,6 @@ module.exports = function addToCollection (req, res) {
 
   // Save the parent record
   function readyToSave (err, async_data) {
-    console.log('readyToSave');
     if (err) return res.negotiate(err);
     async_data.parent.save(function saved(err) {
 
@@ -221,11 +203,8 @@ module.exports = function addToCollection (req, res) {
         if (!matchingRecord[relation]) return res.serverError();
 
 
-        console.log('MATCHING RECCORD');
-        console.log(matchingRecord);
 
         es.update(req.options.model,matchingRecord).then(function(){
-          console.log('UPDATE ES in then end of add fn');
             // return callback()
           // res.created(matchingRecord);
           ChildModel.findOne(child.id).then(function(childd){
@@ -235,7 +214,6 @@ module.exports = function addToCollection (req, res) {
         }).catch(function(err){
                console.log(err);
         })
-        // console.log(matchingRecord[relation]);
         // matchingRecord[relation].selfUpdate()
 
       });

@@ -23,7 +23,7 @@
 			</div>
 			<md-card class="RESIZEHEIGHT" >
 
-		       	<ul ng-if="slideshow.slides.length" class="sliderWidgetSlider" rn-carousel rn-carousel-index="carouselIndex" rn-carousel-transition="fadeAndSlide" rn-carousel-auto-slide="4">
+		       	<ul ng-if="slideshow.slides.length" class="sliderWidgetSlider" rn-carousel rn-carousel-index="carouselIndex" rn-carousel-transition="fadeAndSlide" rn-carousel-auto-slide="5">
 				  <li ng-repeat="slide in slideshow.slides">
 				  	<!-- <p>tototo {{slide.link}}</p> -->
 				  	<img ng-src="image/resized2/{{slide.images[0].filename}}" alt="">
@@ -31,7 +31,7 @@
 				  </li>
 				  
 				</ul>
-				<div class="carouselIndicContainer" rn-carousel-indicators ng-if="slideshow.slides.length > 1" slides="slideshow.slides" rn-carousel-index="carouselIndex"></div>
+				<!-- <div class="carouselIndicContainer" rn-carousel-indicators ng-if="slideshow.slides.length > 1" slides="slideshow.slides" rn-carousel-index="carouselIndex"></div> -->
 		    </md-card>
 			<!-- <div>
 				<h4>{{lastArticle.title}}</h4>

@@ -95,7 +95,6 @@ module.exports ={
 		  id: body.id,
 		  body: body
 		}).then(function (response) {
-            console.log('created ES');
 			return response;
 		}).catch(function(error){
 		    	console.trace(error);
@@ -103,14 +102,11 @@ module.exports ={
 		});
 	},
 	delete:function(type, body){
-   		console.log('DELETE ES');
-   		console.log(body);
    		return client.delete({
 		  index: sails.config.esName,
 		  type: type,
 		  id: body.id
 		}).then(function (response) {
-            console.log('deleted ES');
             return response
 		}).catch(function(error){
 		    	console.trace(error);
@@ -118,8 +114,6 @@ module.exports ={
 		});
 	},
 	update:function(type, body, parent){
-   		console.log(type);
-   		console.log(body);
    		return client.update({
 		  index: sails.config.esName,
 		  type: type,
@@ -127,7 +121,6 @@ module.exports ={
 		  id: body.id,
 		  body: {doc:body}
 		}).then(function (response) {
-            console.log('update ES');
             return response
 		}).catch(function(error){
 		   console.trace(error);

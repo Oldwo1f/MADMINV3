@@ -60,8 +60,6 @@ module.exports = function expand(req, res) {
     .populate(relation, populate)
     .exec(function found(err, matchingRecord) {
 
-      console.log('POPULATE');
-      console.log(matchingRecord);
 
       if (err) return res.serverError(err);
       if (!matchingRecord) return res.notFound('No record found with the specified id.');

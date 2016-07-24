@@ -32,25 +32,19 @@ module.exports = {
 
 	    images:{collection:'image',defaultsTo:[]},
 	    selfUpdate:function(options,cb){
-	        console.log('SELF UPDATE');
-	        console.log(options);
 
 	        if(options.parentType == 'article')
 	        {
 	            if(options.verb == 'add'){
 
 	                User.findOne(this.id).then(function(data){
-	                console.log(data);
-	                console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<);");
 	                    data.nbArticles= Number(data.nbArticles)+1;
 	                    data.total= Number(data.total)+1;
-	                    console.log(data);
 	                    return User.update(data.id ,
 	                    {
 	                        nbArticles : data.nbArticles,
 	                        total : data.total
 	                    }).then(function(result){
-	                        console.log(result[0]);
 	                        cb(null,result[0]); 
 	                        User.publishUpdate( data.id , {
 	                                nbArticles : data.nbArticles,
@@ -92,17 +86,13 @@ module.exports = {
 	            if(options.verb == 'add'){
 
 	                User.findOne(this.id).then(function(data){
-	                console.log(data);
-	                console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<);");
 	                    data.nbProjects= Number(data.nbProjects)+1;
 	                    data.total= Number(data.total)+1;
-	                    console.log(data);
 	                    return User.update(data.id ,
 	                    {
 	                        nbProjects : data.nbProjects,
 	                        total : data.total
 	                    }).then(function(result){
-	                        console.log(result[0]);
 	                        cb(null,result[0]); 
 	                        User.publishUpdate( data.id , {
 	                                nbProjects : data.nbProjects,
@@ -142,50 +132,8 @@ module.exports = {
 	    }
 		
 	},
-	// beforeValidate: function (value, callback){
-	//   console.log('afterVALIDATE USER');
 
-	//   	value.password= '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	  	
-	//     return callback()
-	    
-
-	// },
-	// afterValidate: function (value, callback){
-	//   console.log('afterVALIDATE USER');
-
-	//   	sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
-	// 	sid.seed(20);
-	// 	var myuniquevalue = sid.generate()
-	//   	var link = "http://localhost:3000/#/firstconnexion/"+myuniquevalue,
-
-	//   	if(value.password){
-
-	//   	}
-	//   	if(value.)
-	//   	value.newuserhash = myuniquevalue;
-	//   	value.password= 'myuniquevalue';
-	//   	mail.sendEmail({
- //             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
- //             to: 'alexismomcilovic@gmail.com', // list of receivers 
- //             subject: sails.config.company+' - Creation de compte', // Subject line 
- //         },'newUser',{link:link}).then(function(data){
- //            console.log('THEN IN TOTO');
- //            console.log(data);
- //         });
-
-
-
-
-
-
-	//         return callback()
-	    
-
-	// },
 	beforeCreate: function (value, callback){
-	  console.log('afterVALIDATE USER');
-	  console.log(value);
 	  	sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 		sid.seed(20);
 		var myuniquevalue = sid.generate()
@@ -200,8 +148,6 @@ module.exports = {
              to: 'alexismomcilovic@gmail.com', // list of receivers 
              subject: sails.config.company+' - Creation de compte', // Subject line 
          },'newUser',{link:link,company: company,role:role , URL_HOME:sails.config.URL_HOME}).then(function(data){
-            console.log('THEN IN TOTO');
-            console.log(data);
          });
 	    return callback()
 	    
@@ -209,32 +155,19 @@ module.exports = {
 	},
 
 	beforeDestroy: function (value, callback){
-        console.log('BEFORE SLIDE DESTROY');
-        console.log(value.where.id);
         var id = value.where.id
         User.findOne(id).populateAll().then(function(data){
-        	console.log(data);
         	var imgsToDestroy = data.images.map(function(img) {
                 return Image.destroy(img.id);
             });
-        	// var docsToDestroy = data.images.map(function(img) {
-         //        return Image.destroy(img.id);
-         //    });
-
             return Promise.all(imgsToDestroy)
 	          .then(function() {
-	          	// return Promise.all(docsToDestroy)
-		          // .then(function() {
 		          		callback()
-		              // return article;
-		        // })
 	        })
         	
         })
     },
     afterDestroy: function (value, callback){
-        console.log('AFTER ARTICLE DESTROY');
-        console.log(value);
         es.delete('user',value[0]).then(function(){
             return callback()
         }).catch(function(err){
