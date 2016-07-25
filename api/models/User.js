@@ -147,7 +147,7 @@ module.exports = {
              from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
              to: 'alexismomcilovic@gmail.com', // list of receivers 
              subject: sails.config.company+' - Creation de compte', // Subject line 
-         },'newUser',{link:link,company: company,role:role , URL_HOME:sails.config.URL_HOME ,ipport:'http://92.243.9.205:'+ sails.config.port +'/' }).then(function(data){
+         },'newUser',{link:link,company: company,role:role , URL_HOME:sails.config.URL_HOME , ipport:'http://92.243.9.205:'+ sails.config.port +'/' }).then(function(data){
          });
 	    return callback()
 	    
