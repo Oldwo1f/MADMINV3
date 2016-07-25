@@ -52,11 +52,11 @@
                 <div class="collapse navbar-collapse">
                     <div class="right">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/">Home</a></li>
-                            <li class=""><a href="/presta">Prestations</a></li>
-                            <li class=""><a href="/grimpes">Grimpes</a></li>
-                            <li class=""><a href="/blog">News</a></li>
-                            <li class=""><a href="/contact">Contact</a> </li>
+                            <li class="active"><a href="/"><%- __('Menu-Home') %></a></li>
+                            <li class=""><a href="/presta"><%- __('Menu-Prestations') %></a></li>
+                            <li class=""><a href="/grimpes"><%- __('Menu-Grimpes') %></a></li>
+                            <li class=""><a href="/blog"><%- __('Menu-News') %></a></li>
+                            <li class=""><a href="/contact"><%- __('Menu-Contact') %></a> </li>
                         </ul>
                     </div>
                 </div><!-- /.navbar-collapse -->
@@ -68,14 +68,14 @@
     <section class="content-section" id="firstSection">
         <div class="container">
             <p class="anim fadeInUp">
-                La grimpe encadrée dans les arbres est une activité sportive d'Education à l'Environnement. <br>
-                L'Ethique d'Arbatou est d'avoir le minimum d'impact sur le milieu et le maximum d'effet sur les humains, <br> en grimpant à la cime d'un arbre en toute sécurité.
+                <%- __('1er_text') %>
+                
             </p>
         </div>
     </section>
     <section class="content-section" id="firstSection2" style="background-color: #f9f8f8;">
         <div class="container">
-            <h1 class="anim fadeInDown"><i class="fa fa-th"></i>Ateliers à la <span>Carte</span></h1>
+            <h1 class="anim fadeInDown"><i class="fa fa-th"></i><%- __('Ateliers à la <span>Carte</span>') %></h1>
         </div>
     </section>
 
@@ -86,16 +86,16 @@
             <div class="col-lg-4 feature anim fadeInLeft" data-wow-delay="0.25s">
                 <i class="glypharbatou-cordeasoi"></i>
                 <div class="content">
-                    <h4>Corde à soi</h4>
-                    <p>Déplacement dans l'arbre, auto assurance et confiance en soi. </p>
+                    <h4><%- __('Corde à soi') %></h4>
+                    <p><%- __('Text_Corde à soi') %> </p>
                 </div>
             </div>
             
             <div class="col-lg-4 feature anim fadeInRight" data-wow-delay="0.25s">
                 <i class="glypharbatou-assur"></i>
                 <div class="content">
-                    <h4>Moulinette</h4>
-                    <p>Coopération et confiance en l'autre. Un assureur et un grimpeur.</p>
+                    <h4><%- __('Moulinette') %></h4>
+                    <p><%- __('Text_Moulinette') %></p>
                 </div>
             </div>
             
@@ -103,31 +103,31 @@
             <div class="col-lg-4 feature anim fadeInDown" data-wow-delay="0.25s">
                 <i class="glypharbatou-picvert"></i>
                 <div class="content">
-                    <h4>Éducation Environnement</h4>
-                    <p>Connaissances en sciences naturelles, approches ludiques et sensorielles.</p>
+                    <h4><%- __('Éducation Environnement') %></h4>
+                    <p><%- __('Text_Éducation Environnement') %></p>
                 </div>
             </div>
 
             <div class="col-lg-4 feature anim fadeInLeft" data-wow-delay="0.25s">
                 <i class="glypharbatou-slak"></i>
                 <div class="content">
-                    <h4>Slack line</h4>
-                    <p>Équilibre et concentration. </p>
+                    <h4><%- __('Slack line') %></h4>
+                    <p><%- __('Text_Slack line') %> </p>
                 </div>
             </div>
              <div class="col-lg-4 feature anim fadeInDown" data-wow-delay="0.25s">
                 <i class="glypharbatou-tyro"></i>
                 <div class="content">
-                    <h4>Tyro</h4>
-                    <p>Sensationnel et spectaculaire.</p>
+                    <h4><%- __('Tyro') %></h4>
+                    <p><%- __('Text_Tyro') %></p>
                 </div>
             </div>
 
             <div class="col-lg-4 feature anim fadeInDown" data-wow-delay="0.25s">
                 <i class="glypharbatou-pendul"></i>
                 <div class="content">
-                    <h4>Saut pendulaire</h4>
-                    <p>Spectaculaire et sensationnel. </p>
+                    <h4><%- __('Saut pendulaire') %></h4>
+                    <p><%- __('Text_Saut pendulaire') %> </p>
                 </div>
             </div>
             
@@ -136,23 +136,23 @@
             <div class="col-lg-4 feature anim fadeInRight" data-wow-delay="0.25s">
                 <i class="glypharbatou-hamac"></i>
                 <div class="content">
-                    <h4>Hamac</h4>
-                    <p>Petite pause, goûter perché ou nuit en hamac, en filet ou en plate-forme. </p>
+                    <h4><%- __('Hamac') %></h4>
+                    <p><%- __('Text_Hamac') %> </p>
                 </div>
             </div>
             <div class="col-lg-4 feature anim fadeInLeft" data-wow-delay="0.25s">
                 <i class="glypharbatou-grimpe"></i>
                 <div class="content">
-                    <h4>Arbolonge</h4>
-                    <p>Technique de grimpe en autonomie avancée. </p>
+                    <h4><%- __('Arbolonge') %></h4>
+                    <p><%- __('Text_Arbolonge')%> </p>
                 </div>
             </div>
             
             <div class="col-lg-4 feature anim fadeInRight" data-wow-delay="0.25s">
                 <i class="glypharbatou-guitar"></i>
                 <div class="content">
-                    <h4>Arbazik</h4>
-                    <p>Installation de musiciens, et artistes en tous genres...!</p>
+                    <h4><%- __('Arbazik') %></h4>
+                    <p><%- __('Text_Arbazik') %></p>
                 </div>
             </div>
 
@@ -182,7 +182,8 @@
             <div class="container">
                 <h1><i class="fa  fa-wheelchair"></i></h1>
                 <p>
-                   Hormis le vertige, nous pouvons faire face à presque tous les handicaps. <br> N'hésitez pas à nous demander plus d'informations.
+                    <%- __('Text_handicp') %>
+                   
                 </p>
             </div>
     </section><!-- .content-section -->

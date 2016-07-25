@@ -18,11 +18,11 @@
                 <div class="collapse navbar-collapse">
                     <div class="right">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="/">Home</a></li>
-                            <li class=""><a href="/presta">Prestations</a></li>
-                            <li class=""><a href="/grimpes">Grimpes</a></li>
-                            <li class=""><a href="/blog">News</a></li>
-                            <li class="active"><a href="/contact">Contact</a> </li>
+                            <li class=""><a href="/"><%- __('Menu-Home') %></a></a></li>
+                            <li class=""><a href="/presta"><%- __('Menu-Prestations') %></a></li>
+                            <li class=""><a href="/grimpes"><%- __('Menu-Grimpes') %></a></li>
+                            <li class=""><a href="/blog"><%- __('Menu-News') %></a></li>
+                            <li class="active"><a href="/contact"><%- __('Menu-Contact') %></a> </li>
                         </ul>
                     </div>
                 </div><!-- /.navbar-collapse -->
@@ -39,7 +39,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="anim fadeInDown">Contactez nous</h1>
+                        <h1 class="anim fadeInDown"><%- __('Contactez nous') %></h1>
                     </div><!-- .col-lg-12 -->
                 </div><!-- .row -->
             </div>
@@ -52,8 +52,7 @@
             <div class="row">
                 <div class="col-lg-12 anim fadeInDown" data-wow-delay="0.25s">
                     <p>
-                        Tout est possible, à nous de co-créer! <br>
-                        Toutes vos questions sont les bonnes, vos suggestions et vos commentaires également!
+                        <%- __('contact_text') %>
                     </p>
                 </div><!-- .col-lg-12 -->
             </div><!-- .row -->
@@ -75,27 +74,27 @@
                     
                         <span class="input-group tight">
                             <i class="fa fa-user"></i>
-                            <input type="text" name="contactName" id="contactName" class="lg" placeholder="Nom" />
+                            <input type="text" name="contactName" id="contactName" class="lg" placeholder="<%- __('Nom') %>" />
                         </span><!-- .input-group -->
                         
                         <span class="input-group tight second">
                             <i class="fa fa-envelope"></i>
-                            <input type="text" name="contactEmail" id="contactAddress" class="lg" placeholder="Email" />
+                            <input type="text" name="contactEmail" id="contactAddress" class="lg" placeholder="<%- __('Email') %>" />
                         </span><!-- .input-group -->
                         
                         <span class="input-group">
                             <i class="fa fa-book"></i>
-                            <input type="text" name="contactSubject" id="contactSubject" class="lg" placeholder="Objet" />
+                            <input type="text" name="contactSubject" id="contactSubject" class="lg" placeholder="<%- __('Objet') %>" />
                         </span><!-- .input-group -->
                         
                         <span class="input-group">
-                            <textarea name="contactMessage" id="contactMessage" class="lg" placeholder="Exprimez-vous"></textarea>
+                            <textarea name="contactMessage" id="contactMessage" class="lg" placeholder="<%- __('Exprimez-vous!') %>"></textarea>
                         </span><!-- .input-group -->
                         
                         <span id="message"></span>
                         
                         <span class="input-group">
-                            <a href="#" type="button" class="btn btn-primary" id="submit_contact" data-loading-text="ENVOI...">ENVOYER</a>
+                            <a href="#" type="button" class="btn btn-primary" id="submit_contact" data-loading-text="<%- __('ENVOI...') %>"><%- __('ENVOYER') %></a>
                         </span><!-- .input-group -->
                         
                     </div><!-- .col-lg-8 -->
@@ -109,7 +108,7 @@
                                 <span>
                                     <p>
                                     Guilhem PIVANT
-                                    </br> Educateur Grimpe d'Arbres
+                                    </br> <%- __('Educateur Grimpe d\'Arbres') %>
                                     </p>
                                 </span>
                             </li>

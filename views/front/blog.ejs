@@ -16,11 +16,11 @@
                 <div class="collapse navbar-collapse">
                     <div class="right">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="/">Home</a></li>
-                            <li class=""><a href="/presta">Prestations</a></li>
-                            <li class=""><a href="/grimpes">Grimpes</a></li>
-                            <li class="active"><a href="/blog">News</a></li>
-                            <li class=""><a href="/contact">Contact</a> </li>
+                            <li class=""><a href="/"><%- __('Menu-Home') %></a></a></li>
+                            <li class=""><a href="/presta"><%- __('Menu-Prestations') %></a></li>
+                            <li class=""><a href="/grimpes"><%- __('Menu-Grimpes') %></a></li>
+                            <li class="active"><a href="/blog"><%- __('Menu-News') %></a></li>
+                            <li class=""><a href="/contact"><%- __('Menu-Contact') %></a> </li>
                         </ul>
                     </div>
                 </div><!-- /.navbar-collapse -->
@@ -36,7 +36,7 @@
                         <div class="bgCat">
                             <img src="" alt="">
                         </div>
-                        <h1 class="anim fadeInDown">News</h1>
+                        <h1 class="anim fadeInDown"><%- __('Nos News') %></h1>
                         <p class="anim fadeInDown" data-wow-delay=".32s"><% if(thiscategory){%>
                         
                         <%= thiscategory.name %>
@@ -186,7 +186,7 @@
                                 <%- articles[i].content %>
                             </div>
                             
-                            <a class="btn btn-sm btn-primary icon" data-wow-delay=".45s" role="button" href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-long-arrow-right"></i>Lire la suite</a>
+                            <a class="btn btn-sm btn-primary icon" data-wow-delay=".45s" role="button" href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-long-arrow-right"></i><%- __('Lire la suite') %></a>
                             
                             <div class="clearfix"></div>
                             
@@ -199,7 +199,7 @@
                 <div class="col-lg-3 sidebar">
                     
                         <% if(categories.length > 0){ %>
-                        <h4 class="anim fadeInRight">Catégories<i class="fa fa-th-list"></i></h4>
+                        <h4 class="anim fadeInRight"><%- __('Catégories') %><i class="fa fa-th-list"></i></h4>
                      
                         <div class="anim fadeInRight">
                             <ul class="posts" >
@@ -209,8 +209,7 @@
                             </ul>
                         </div><!-- .text -->
                         
-                        <h4 class="anim fadeInRight">
-                            Les plus vues<i class="fa fa-eye"></i>
+                        <h4 class="anim fadeInRight"><%- __('Les plus vues') %><i class="fa fa-eye"></i>
                         </h4>
                         <%}%>
                         <% if(mostseen.length > 0){ %>
@@ -250,7 +249,7 @@
                         <%}%>
                         <% if(tags.length > 0){ %>
                         
-                        <h4 class="anim fadeInRight">Tags<i class="fa fa-tags"></i></h4>
+                        <h4 class="anim fadeInRight"><%- __('Tags') %><i class="fa fa-tags"></i></h4>
                         <div class="anim fadeInRight" >
                             
                             <div id="keywords"></div>
