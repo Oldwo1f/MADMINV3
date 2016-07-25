@@ -76,7 +76,7 @@ module.exports.policies = {
       'login':true,
     },
     FrontController:{
-      '*':true,
+      '*':'footerLoad',
     },
 
 

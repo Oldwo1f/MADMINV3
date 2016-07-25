@@ -99,13 +99,21 @@
                     </ul><!-- .social-media -->
                     <p class="liner anim fadeInUp"><%- __('Nos partenaires') %></p>
                     <ul class="footerpartenaire anim fadeInUp" data-wow-delay="0.25s">
+                         <% if(clientSlideshow && clientSlideshow.slides.length > 0){%>
+                                 <% for(var i=0; i< clientSlideshow.slides.length ; i++){%>
+                                    <li><a href="<%- clientSlideshow.slides[i].link1 %>"><%- clientSlideshow.slides[i].title %></a></li>
+                                     
+                                 <%}%>
+                         <%}%>
+                    </ul>
+                    <!-- <ul class="footerpartenaire anim fadeInUp" data-wow-delay="0.25s">
                         <li><a href="http://www.voyageursdescimes.com/">Les voyageurs des cimes</a></li>
                         <li><a href="http://www.sam-branche.fr/">Sam'Branche</a></li>
                         <li><a href="http://www.arboreale.com/">Arboréale</a></li>
                         <li><a href="http://www.les-ega.fr/">SNGEA</a></li>
                         <li><a href="http://www.savoie-sport-nature.com/">savoie-sport-nature</a></li>
                         <li><a href="http://www.duodesbranches.com">Cie Duo des Branches</a></li>
-                    </ul>
+                    </ul> -->
                     <p class="copyright anim fadeIn" data-wow-delay="0.35s">
                          <%- __('Copyright 2014 - Tout droit réservés') %>
                     </p><!-- .copyright -->

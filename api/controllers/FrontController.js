@@ -9,10 +9,14 @@ var truncate = require('html-truncate');
 
 module.exports = {
 	home:function(req,res,next){
+
+		console.log(req.clientSlideshow);
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale);
+		var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}
+		console.log(clientSlideshow);
 		res.status(200).view('front/index',{
-						// articles:articles,
+						clientSlideshow: clientSlideshow,
 						title: req.__('SEO_HOME_title'),
 						keyword: req.__('SEO_HOME_keyword'),
 						description:req.__('SEO_HOME_description'),
@@ -108,7 +112,9 @@ module.exports = {
 
 			result.tags = tags	    	
 
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}
 	    	res.status(200).view('front/article',{
+	    		clientSlideshow: clientSlideshow,
 				article:result.article,
 				title: result.article.title,
 				keyword: result.article.keyword,
@@ -192,9 +198,11 @@ module.exports = {
 
 	    }).then(function(tags){
 
-			result.tags = tags	    	
+			result.tags = tags
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}	    	
 
 	    	res.status(200).view('front/blog',{
+	    		clientSlideshow: clientSlideshow,
 				articles:result.articles,
 				title: req.__('SEO_BLOG_title'),
 				keyword: req.__('SEO_BLOG_keyword'),
@@ -298,10 +306,12 @@ module.exports = {
 
 	    }).then(function(tags){
 
-			result.tags = tags	    	
+			result.tags = tags	
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}    	
 
 			console.log('HEHEHEHEHEHEHEHEHHEE');
 	    	res.status(200).view('front/blog',{
+	    		clientSlideshow: clientSlideshow,
 				articles:result.articles,
 				title: req.__('SEO_BLOG_title'),
 				keyword: req.__('SEO_BLOG_keyword'),
@@ -397,12 +407,14 @@ module.exports = {
 
 	    }).then(function(tags){
 
-			result.tags = tags	    	
+			result.tags = tags	
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}    	
 
 			console.log('TAGSARTICLE  END');
 
 
 	    	res.status(200).view('front/blog',{
+	    		clientSlideshow: clientSlideshow,
 				articles:result.articles,
 				title: req.__('SEO_BLOG_title'),
 				keyword: req.__('SEO_BLOG_keyword'),
@@ -530,9 +542,11 @@ module.exports = {
 
 	    }).then(function(tags){
 
-			result.tags = tags	    	
+			result.tags = tags
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}	    	
 
 	    	res.status(200).view('front/project',{
+	    		clientSlideshow: clientSlideshow,
 				project:result.project,
 				title: result.project.title,
 				keyword: result.project.keyword,
@@ -617,9 +631,11 @@ module.exports = {
 
 	    }).then(function(tags){
 
-			result.tags = tags	    	
+			result.tags = tags	
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}    	
 
 	    	res.status(200).view('front/portfolio',{
+	    		clientSlideshow: clientSlideshow,
 				projects:result.projects,
 				title: req.__('SEO_PROJECTS_title'),
 				keyword: req.__('SEO_PROJECTS_keyword'),
@@ -723,10 +739,12 @@ module.exports = {
 
 	    }).then(function(tags){
 
-			result.tags = tags	    	
+			result.tags = tags	
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}    	
 
 			console.log('HEHEHEHEHEHEHEHEHHEE');
 	    	res.status(200).view('front/portfolio',{
+	    		clientSlideshow: clientSlideshow,
 				projects:result.projects,
 				title: req.__('SEO_PROJECTS_title'),
 				keyword: req.__('SEO_PROJECTS_keyword'),
@@ -822,12 +840,14 @@ module.exports = {
 
 	    }).then(function(tags){
 
-			result.tags = tags	    	
+			result.tags = tags	  
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}  	
 
 			console.log('TAGSARTICLE  END');
 
 
 	    	res.status(200).view('front/portfolio',{
+	    		clientSlideshow: clientSlideshow,
 				projects:result.projects,
 				title: req.__('SEO_PROJECTS_title'),
 				keyword: req.__('SEO_PROJECTS_keyword'),
@@ -878,8 +898,10 @@ module.exports = {
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale);
 		console.log(res.i18n());
+		var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}
 
 		res.status(200).view('front/contact',{
+			clientSlideshow: clientSlideshow,
 						title: req.__('SEO_CONTACT_title'),
 						keyword: req.__('SEO_CONTACT_keyword'),
 						description:req.__('SEO_CONTACT_description'),
@@ -892,7 +914,9 @@ module.exports = {
 	presta:function(req,res) {
 			req.locale = req.locale || 'en'
 			moment.locale(req.locale);
+			var clientSlideshow = req.clientSlideshow ? req.clientSlideshow[0] :{}
 			return res.view('front/presta',{
+				clientSlideshow: clientSlideshow,
 				menu:'presta',
 				scripturl:'portfo.js',
 				baseurl:'',
