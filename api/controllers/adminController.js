@@ -61,7 +61,7 @@ module.exports={
 				async.parallel({
 					count:function (cb) {
 						analytics.data.ga.get({
-						  'ids': 'ga:92199924',
+						  'ids': 'ga:'+sails.config.GOOGLE_ANALYTICS_ID,
 						  'start-date': dateStart,
 						  'end-date': dateEnd,
 						  'metrics': 'ga:sessions,ga:pageviews,ga:users,ga:percentNewSessions,ga:avgSessionDuration,ga:bounceRate,ga:pageviewsPerSession',
@@ -78,7 +78,7 @@ module.exports={
 							dimention = 'ga:month';
 						   
 						analytics.data.ga.get({
-						  'ids': 'ga:92199924',
+						  'ids': 'ga:'+sails.config.GOOGLE_ANALYTICS_ID,
 						  'start-date': dateStart,
 						  'end-date': dateEnd,
 						  'dimensions': dimention,
