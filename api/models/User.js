@@ -137,7 +137,7 @@ module.exports = {
 	  	sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 		sid.seed(20);
 		var myuniquevalue = sid.generate()
-	  	var link = sails.config.URL_HOME+"admin#/firstconnexion/"+myuniquevalue+"/"+value.email;
+	  	var link = sails.config.URL_HOME+"/admin#/firstconnexion/"+myuniquevalue+"/"+value.email;
 	  	value.newuserhash = myuniquevalue;
 	  	var encrypted = crypto.encrypt(myuniquevalue);
 	  	value.password= encrypted;
