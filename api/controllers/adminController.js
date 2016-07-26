@@ -85,6 +85,9 @@ module.exports={
 						  'metrics': req.params.metrics,
 						  auth: jwtClient
 						}, function (err, resp) {
+							if(err){
+								cb(err)
+							}
 
 						    cb(null,resp.rows)
 					    })
