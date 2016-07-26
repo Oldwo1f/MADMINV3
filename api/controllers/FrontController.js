@@ -11,7 +11,7 @@ module.exports = {
 	home:function(req,res,next){
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale);
-
+		var result = {};
 		var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
 	    .limit(4).populateAll();
 
@@ -35,12 +35,41 @@ module.exports = {
 	    })
 	   .then(function(articles) {
 	   		
-	   		// result.articles = articles
+	   		result.articles = articles
+   			var slideshowsPromise = Slideshow.find().where({title:'Home'}).populateAll();
+
+			slideshowsPromise.then(function(slideshows) {   
+				var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+			        var slidePromises = slideshow.slides.map(function(slide) {
+			            return Slide.findOne(slide.id).populateAll();
+			        });
+
+		        	return Promise.all(slidePromises).then(function(fullfilledSlides) {
+		          	  	slideshow = slideshow.toObject()
+		              	slideshow.slides = fullfilledSlides;
+		              	return slideshow;
+		           })
+				})
+
+				return Promise.all(slideshowsWithSlidesPromises)
+			})
+			.then(function(fullData) {
+		        result.homeSlideshow = fullData
+		       	
+		    })
+		    .catch(function(e){
+		    	result.homeSlideshow = {}
+		    })
 	   		
 	   		
-	   		res.status(200).view('front/index',{
+
+
+	    }).then(function(){
+	    	console.log(result);
+	    	res.status(200).view('front/index',{
 				// articles:articles,
-				articles: articles,
+				articles: result.articles,
+				homeSlideshow: result.homeSlideshow,
 				title: req.__('SEO_HOME_title'),
 				keyword: req.__('SEO_HOME_keyword'),
 				description:req.__('SEO_HOME_description'),
@@ -49,8 +78,6 @@ module.exports = {
 				baseurl:'',
 
 			})
-
-
 	    })
 
 		
