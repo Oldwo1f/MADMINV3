@@ -26,6 +26,7 @@ module.exports = {
 			collection: 'comment',
 		},
 		selfUpdate:function(options,cb){
+			console.log('SELFUPDATE');
 	        cb(null, this)
 	        if(options.parentType == 'article')
 	        {
@@ -113,32 +114,50 @@ module.exports = {
 
 
 	},
+	beforeCreate:function(value, callback){
+		console.log('BEFORECREATE');
+		console.log(value);
+	            return callback(null,value)
+	     
+	},
+
 	afterCreate:function(value, callback){
-		var notif={};
-			notif.status = 'new';
-		if(value.project){
-			notif.itemid2=value.project;
-			notif.type='commentProject'
-		}
-		if(value.article){
-			notif.type='commentArticle'
-			notif.itemid2=value.article;
-		}
-			notif.itemid=value.id;
-			notif.info1='<small>par</small> '+ value.authorName;
-			notif.info2='<small>sur</small> <i>'+ value.articleName +'</i>';
-		
-		Notification.create(notif)
-		.then(function(data){
-			Notification.publishCreate(data)
+
+		console.log('aftercreate');
+		console.log(value);
+		if(value.admin){
 			es.create('comment',value).then(function(){
-					
-	            return callback(null,data)
+	            return callback(null,value)
 	        }).catch(function(err){
 	               console.log(err);
 	        })
-			
-		})
+		}else{
+			var notif={};
+				notif.status = 'new';
+			if(value.project){
+				notif.itemid2=value.project;
+				notif.type='commentProject'
+			}
+			if(value.article){
+				notif.type='commentArticle'
+				notif.itemid2=value.article;
+			}
+				notif.itemid=value.id;
+				notif.info1='<small>par</small> '+ value.authorName;
+				notif.info2='<small>sur</small> <i>'+ value.articleName +'</i>';
+			console.log(notif);
+			Notification.create(notif)
+			.then(function(data){
+				Notification.publishCreate(data)
+				es.create('comment',value).then(function(){
+						
+		            return callback(null,data)
+		        }).catch(function(err){
+		               console.log(err);
+		        })
+				
+			})
+		}
 
 
 	},

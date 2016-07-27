@@ -378,6 +378,7 @@ angular.module('momi-blog')
 				attrToUpdate.admin = true;
 				attrToUpdate.status = 'actif';
 				// console.log(userService.me.images[0].filename);
+				console.log(attrToUpdate);
 				if(userService.me.images.length){
 					attrToUpdate.imgpath = userService.me.images[0].filename;
 				}
