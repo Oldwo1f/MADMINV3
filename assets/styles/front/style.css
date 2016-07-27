@@ -12975,6 +12975,8 @@ h2 span.bigNumber:not(.nocolor) {
 .formError {border-color: red;}
 .finished{border-color:green;background-color: rgba(0,255,0,0.10)}
 
+#repas .col_one_fourth{margin-right: 1%;width: 24.2%;;}
+#repas .col_one_fourth.col_last{margin-right: 0px}
 #repas .colBizar .label{display: inline-block;color:grey;padding-left: 0px;}
 #repas .colBizar input{display: inline-block;width:55px;}
 .inscription label{display:block;}
