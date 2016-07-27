@@ -141,6 +141,7 @@ module.exports.routes = {
   // 'POST /project/addReponse/:itemid/:projid':'frontController.addReponseProject',
   'GET /contact':'frontController.contact',
   'GET /presta':'frontController.presta',
+  'GET /inscription':'frontController.inscriptionPilote',
   
   'POST /contactEmail':'frontController.contactEmail',
 

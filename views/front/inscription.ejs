@@ -1,0 +1,518 @@
+<body class="stretched inscription"  ng-controller="appController">
+	
+	<!-- <link rel="stylesheet" href="demos/travel/css/datepicker.css" type="text/css" /> -->
+	<link rel="stylesheet" href="styles/front/components/timepicker.css" type="text/css" />
+	<link rel="stylesheet" href="styles/front/components/bs-select.css" type="text/css" />
+	<link rel="stylesheet" href="styles/front/components/bs-switches.css" type="text/css" />
+	<link rel="stylesheet" href="styles/front/components/radio-checkbox.css" type="text/css" />
+    <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+        <%- include menu.ejs %>
+
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
+
+            <div class="container clearfix">
+                <h1>Inscription pour l'édition 2017</h1>
+                <!-- <span>Tous les informations dont vous pourriez avoir besoins au même endroit.</span> -->
+                <!-- <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li class="active">FAQs</li>
+                </ol> -->
+            </div>
+
+        </section><!-- #page-title end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content" app-controller="appController">
+
+            <div class="content-wrap">
+            	<div class="container clearfix">
+
+					<div class="col_one_third nobottommargin" ng-if="!formData">
+
+						<div class="well well-lg nobottommargin">
+							<form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+
+								<h3>Modifier votre inscription</h3>
+
+								<div class="col_full">
+									<label for="login-form-username">Email:</label>
+									<input type="text" id="login-form-username" name="login-form-username" value="" class="form-control">
+								</div>
+
+								<div class="col_full">
+									<label for="login-form-password">Mot de passe:</label>
+									<input type="password" id="login-form-password" name="login-form-password" value="" class="form-control">
+								</div>
+
+								<div class="col_full nobottommargin">
+									<button class="button button-3d nomargin" id="login-form-submit" name="login-form-submit" value="login">Modifier</button>
+									<a href="#" class="fright">Forgot Password?</a>
+								</div>
+
+							</form>
+						</div>
+
+					</div>
+
+					<div class="col_two_third col_last nobottommargin" ng-if="!formData">
+
+						<div class="well well-lg nobottommargin">
+						<h3>Vous n'êtes pas encore inscrit?</h3>
+
+						<p>Renseignez une adresse email ainsi qu'un mot de passe pour démmarer votre inscription. Retenez bien votre mot de passe, il vous permetra de modifiez votre inscription si besoin.</p>
+
+						<form id="register-form" name="register-form" class="nobottommargin" method="post">
+
+							<div class="col_half">
+								<label for="register-form-email">Email Address:</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+
+							<div class="col_half col_last">
+
+								<label for="register-form-name">Mot de passe:</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+
+							<div class="clear"></div>
+							
+
+
+							<div class="col_full nobottommargin">
+								<button class="button button-3d button-black nomargin" id="register-form-submit" name="register-form-submit" value="register" ng-click="addNew()">Inscrire mon avion</button>
+							</div>
+
+						</form>
+
+						</div>
+					</div>
+					<div class=" col_full" ng-if="formData">
+
+						<div class="well well-lg ">
+
+							<h3>Infos Pilote</h3>
+							
+							<div class="col_one_fourth">
+								<label for="register-form-email">Nom</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+
+							<div class="col_one_fourth col_last">
+
+								<label for="register-form-name">Prénom</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+
+							<div class="clear"></div>
+
+							<div class="col_half">
+								<label for="register-form-email">Email</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-email">Téléphone portable</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="col_half">
+
+								<label for="register-form-name">Adresse</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+
+							<div class="col_one_fourth">
+
+								<label for="register-form-name">Ville</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+							<div class="col_one_fourth  col_last">
+
+								<label for="register-form-name">Pays</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+
+							</div>
+
+							<div class="clear"></div>
+							
+							<div class="col_half">
+
+								<label for="register-form-name">Confidentialité</label>
+									<div>
+										<input id="radio-1" class="radio-style" name="radio-group" type="radio" checked="">
+										<label for="radio-1" class="radio-style-1-label radio-small">Apparaitre dans le carnet d'adresse pilote</label>
+									</div>
+							</div>
+							<div class="col_half col_last">
+
+								<label for="register-form-name"> &nbsp;</label>
+									
+									<div>
+										<input id="radio-2" class="radio-style" name="radio-group" type="radio">
+										<label for="radio-2" class="radio-style-2-label radio-small">Rester anonyme</label>
+									</div>
+							</div>
+							
+							<div class="clear"></div>
+
+						</div>
+						<div class="well well-lg" ng-class="{'finished':finishedAreronef}">
+
+							<h3>Infos Aéronef</h3>
+							
+							<div class="col_one_fourth">
+								<label for="register-form-email">Model de l'avion</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-email">Nom de l'avion</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+
+							<div class="col_one_fourth">
+
+								<label for="register-form-name">Age de l'avion</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+
+							<div class="clear"></div>
+
+							<div class="col_half">
+								<label for="register-form-email">Immatriculation</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+
+							<div class="col_one_fourth  col_last">
+
+								<label for="register-form-name">Nb de personne a bord</label>
+								<input type="number" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+							
+							<div class="clear"></div>
+							
+
+
+
+						</div>
+						<div class="well well-lg" ng-class="{'finished':finishedNavigation}">
+
+							<h3>Navigation</h3>
+							
+							<div class="col_half">
+								<label for="register-form-email">Aerodrome de départ</label>
+								<input type="text" id="register-form-email" ng-model="NewEmail" name="email" value="" class="form-control">
+							</div>
+
+
+							<div class="col_one_fourth">
+
+								<label for="register-form-name">Temps de parcours prévu</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+
+							<div class="col_one_fourth">
+
+								<label for="register-form-name">Distance</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+
+							<div class="clear"></div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-email">Jour d'arrivé</label>
+								<select class="selectpicker">
+								  <option>Vendredi</option>
+								  <option>Samedi</option>
+								  <option>Dimanche</option>
+								</select>
+							</div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-name">Heure d'arrivé</label>
+								<div class="input-group date">
+									<input type="text" class="tleft form-control datetimepicker1" placeholder="00:00 AM/PM">
+									<span class="input-group-addon">
+										<span class="icon-clock"></span>
+									</span>
+								</div>
+							</div>
+							<div class="col_one_fourth">
+								<label for="register-form-email">Jour de départ</label>
+								<select class="selectpicker">
+								  <option>Samedi</option>
+								  <option>Dimanche</option>
+								</select>
+							</div>
+
+							<div class="col_one_fourth col_last">
+								<label for="register-form-name">Heure de départ</label>
+								<div class="input-group date">
+									<input type="text" class="tleft form-control datetimepicker2" placeholder="00:00 AM/PM">
+									<span class="input-group-addon">
+										<span class="icon-clock"></span>
+									</span>
+								</div>
+							</div>
+							
+							<div class="clear"></div>
+							
+						</div>
+
+						<div class="well well-lg" ng-class="{'finished':finishedLogistic}">
+
+							<h3>Logistique aéronef</h3>
+							
+							
+							<div class="col_one_fourth">
+								<label for="register-form-email">Ravitaillement souhaité</label>
+								<select class="selectpicker">
+								  <option>0 Litre</option>
+								  <option>50 Litres</option>
+								  <option>100 Litres</option>
+								  <option>150 Litres</option>
+								  <option>200 Litres</option>
+								  <option>250 Litres</option>
+								  <option>300 Litres</option>
+								  <option>400 Litres</option>
+								  <option>500 Litres</option>
+								  <option>+ de 500 Litres</option>
+								</select>
+							</div>
+							<div class="col_one_fourth">
+								<label for="register-form-name">Carburant </label>
+								<select class="selectpicker">
+								  <option>100LL</option>
+								  <option>JETA1</option>
+								</select>
+							</div>
+
+							<div class="clear"></div>
+
+
+							<div class="col_one_fourth">
+								<label for="register-form-name" style="display:block;">Groupe de démmarage</label>
+								<input type="text" id="register-form-name" ng-model="NewPassword"   value="" class="form-control" placeHolder="type v28">
+							</div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-email" style="display:block;">Cales</label>
+								<input type="checkbox" class="bt-switch" data-on-text="Oui" data-off-text="Non" data-on-color="info" data-off-color="danger" checked>
+								
+							</div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-email" style="display:block;">Escabeau ou échelle</label>
+								<input type="checkbox" class="bt-switch" data-on-text="Oui" data-off-text="Non" data-on-color="info" data-off-color="danger" checked>
+							</div>
+
+							<div class="col_one_fourth col_last" style="display:block;">
+								<label for="register-form-email">Gueuse d'amarage</label>
+								<input type="checkbox" class="bt-switch" data-on-text="Oui" data-off-text="Non" data-on-color="info" data-off-color="danger" checked>
+							</div>
+							
+							<div class="clear"></div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-email" style="display:block;">Extincteur spécifique</label>
+								<input type="checkbox" class="bt-switch" data-on-text="Oui" data-off-text="Non" data-on-color="info" data-off-color="danger" checked>
+							</div>
+
+							<div class="col_one_fourth">
+								<label for="register-form-email" style="display:block;">Hangarage</label>
+								<input type="checkbox" class="bt-switch" data-on-text="Oui" data-off-text="Non" data-on-color="info" data-off-color="danger" checked>
+							</div>
+
+							<div class="col_one_fourth ">
+								<label for="register-form-email" style="display:block;">Manutention/tractage</label>
+								<input type="checkbox" class="bt-switch" data-on-text="Par engin" data-off-text="Manuel" data-on-color="info" data-off-color="danger" checked>
+							</div>
+							
+							<div class="clear"></div>
+							
+						</div>
+						<div id='repas' class="well well-lg" ng-class="{'finished':finishedLogistic}">
+
+							<h3>Repas, transport et hébergement</h3>
+
+							<div class="col_one_fourth colBizar">
+								<label for="register-form-email">Vendredi Midi</label>
+								<span class="label">Nombre de pique nique (8€)</span>
+								<input type="number" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+							<div class="col_one_fourth colBizar">
+								<label for="register-form-email">Vendredi Soir</label>
+								<span class="label">Nombre de Repas spéciaux* (20€)</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+							</div>
+							<div class="col_one_fourth colBizar">
+								<label for="register-form-email">BUS vers Hotel + Retour</label>
+								<span class="label">Nombre de personne*** (20€)</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+							</div>
+							<div class="col_one_fourth colBizar col_last">
+								<label for="register-form-email">Vendredi nuit</label>
+								<span class="label">Nombre de chambre double</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+								<span class="label">Nombre de chambre simple</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+								<span class="label">Nombre de personne au campeur</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+							</div>
+							
+
+							<div class="clear"></div>
+
+							<div class="col_one_fourth colBizar">
+								<label for="register-form-email">Samedi Midi</label>
+								<span class="label">Nombre de pique nique (8€)</span>
+								<input type="number" ng-model="NewPassword"   value="" class="form-control">
+							</div>
+							<div class="col_one_fourth colBizar">
+								<label for="register-form-email">Samedi Soir</label>
+								<span class="label">Nombre de Repas spéciaux** (40€)</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+							</div>
+							<div class="col_one_fourth colBizar">
+								<label for="register-form-email">BUS vers Hotel + Retour</label>
+								<span class="label">Nombre de personne*** (20€)</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+							</div>
+							<div class="col_one_fourth colBizar col_last">
+								<label for="register-form-email">Samedi nuit</label>
+								<span class="label">Nombre de chambre double</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+								<span class="label">Nombre de chambre simple</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+								<span class="label">Nombre de campeur</span>
+								<input type="number"  ng-model="NewPassword" value="" class="form-control">
+							</div>
+							
+							<small>* Repas de vendredi soir: Entrer,plats,fromage,dessert,vins</small>
+							<br>
+							<small>** Repas de samedi soir: Entrer,plats,fromage,dessert,vins + soirée disco</small>
+							<br>
+							<small>*** Possibilité de ne pas prendre le bus et de louer un voiture</small>
+							<div class="clear"></div>
+							
+						</div>
+						<div id='' class="well well-lg" ng-class="">
+
+							<h3>Un petit mot aux organisateur</h3>
+							
+							<p>Si vous avez la possibilité de donner un coup de main sur place, merci de préciser la taille pour bleu de travail / tablier ou gants de vaisselle.</p>
+							<div class="col_full">
+								<label for="register-form-email">Exprimez vous</label>
+								<textarea class="form-control" rows="10"></textarea>
+							</div>
+
+							<div class="clear"></div>
+							
+						</div>
+						<div id='' class="well well-lg" ng-class="">
+
+							<h3>Paiement</h3>
+							<div class="col_two_third">
+							<p>Une fois que vous aurez cliquer sur valider mon inscription, vous receverez la l'addition par email</p>
+							
+							<p><strong>Imprimez le PDF et renvoyé le à l'adresse ci contre joint d'un chèque du montant dû à l'ordre de flyinlfbk</strong></p>
+							</div>
+							<div class="col_one_third col_last">
+								<label for="">Adresse</label>
+								12 bis rue du paradis
+								<br>
+								02400 Chateau Thierry
+								<br>
+								France
+							</div>
+							<div class="clear"></div>
+							
+							<div class="col_two_third">
+							<p>Pour plus d’informations, contactez Béatrice 06 80 38 74 07 ou Thierry 06 11 73 33 29.</p>
+							</div>
+							<div class="col_one_third col_last">
+								<button class="btn btn-primary">Valider mon inscription</button>
+							</div>
+
+							<div class="clear"></div>
+							
+						</div>
+					</div>
+
+				</div>
+            </div>
+
+        </section>
+        <!-- #content end -->
+		
+        <%- include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    	<!-- Date & Time Picker JS -->
+		<script type="text/javascript" src="js/front/components/moment.js"></script>
+		<!-- // <script type="text/javascript" src="demos/travel/js/datepicker.js"></script> -->
+		<script type="text/javascript" src="js/front/components/timepicker.js"></script>
+		<script type="text/javascript" src="js/front/components/bs-select.js"></script>
+		<script type="text/javascript" src="js/front/components/bs-switches.js"></script>
+
+	
+    	<script src="/bower_components/angular/angular.min.js"></script>
+    	<script src="/js/dependencies/lodash.js"></script>
+    	<script src="/bower_components/angularSails/dist/ngsails.io.js"></script>
+    	<script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+    	<script src="/js/backoffice/inscriptions/index.js"></script>
+    	<script src="/js/backoffice/inscriptions/inscriptionService.js"></script>
+    	<script src="/js/front/app.js"></script>
+
+    
+	 <script>
+
+	 console.log($('.datetimepicker1'));
+
+
+	 console.log('totototototo');
+      window._rAF = (function() {
+        return window.requestAnimationFrame ||
+               window.webkitRequestAnimationFrame ||
+               window.mozRequestAnimationFrame ||
+               function(callback) {
+                 window.setTimeout(callback, 16);
+               };
+      })();
+      window.reqFrame = function reqFrame(cb) {
+        return function() {
+          cb.apply(this, arguments);
+        };
+      };
+      _rAF(function() {
+      angular.bootstrap(document, ['lfbk']);
+    });
+
+
+	$(function() {
+       $('.datetimepicker1').datetimepicker({
+			format: 'LT',
+			showClose: true,
+		});$('.datetimepicker2').datetimepicker({
+			format: 'LT',
+			showClose: true,
+		});
+
+		$(".bt-switch").bootstrapSwitch();
+	 })
+     </script>
+</body>

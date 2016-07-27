@@ -78,6 +78,9 @@ module.exports.policies = {
     FrontController:{
       '*':true,
     },
+    InscriptionController:{
+      '*':true,
+    },
 
 
 

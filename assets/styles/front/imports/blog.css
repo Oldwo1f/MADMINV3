@@ -6,6 +6,11 @@
 -----------------------------------------------------------------*/
 
 
+/* ----------------------------------------------------------------
+	Blog
+-----------------------------------------------------------------*/
+
+
 #posts { position: relative; }
 
 .entry {
@@ -98,6 +103,7 @@
 
 .entry-link {
 	display: block;
+	width: 100%;
 	background-color: #F5F5F5;
 	padding: 30px 0;
 	text-align: center;
@@ -216,9 +222,6 @@ body:not(.device-touch) .entry-link {
 	margin-right: 28px;
 }
 
-.post-grid .entry-image,
-.post-grid .entry-image img { height: 148px; }
-
 .post-grid .entry-image img { border-radius: 0; }
 
 .post-grid .entry-title h2 {
@@ -241,9 +244,6 @@ body:not(.device-touch) .entry-link {
 	margin-right: 30px;
 }
 
-.post-grid.grid-3 .entry-image,
-.post-grid.grid-3 .entry-image img { height: 202px; }
-
 .post-grid.grid-3 .entry-title h2 { font-size: 18px; }
 
 
@@ -256,9 +256,6 @@ body:not(.device-touch) .entry-link {
 	width: 270px;
 	margin-right: 25px;
 }
-
-.postcontent .post-grid.grid-3 .entry-image,
-.postcontent .post-grid.grid-3 .entry-image img { height: 152px; }
 
 .postcontent .post-grid.grid-3 .entry-title h2 { font-size: 16px; }
 
@@ -273,9 +270,6 @@ body:not(.device-touch) .entry-link {
 	margin-right: 40px;
 }
 
-.post-grid.grid-2 .entry-image,
-.post-grid.grid-2 .entry-image img { height: 309px; }
-
 .post-grid.grid-2 .entry-title h2 { font-size: 20px; }
 
 
@@ -284,9 +278,6 @@ body:not(.device-touch) .entry-link {
 
 .postcontent .post-grid.grid-2 .entry { width: 410px; }
 
-.postcontent .post-grid.grid-2 .entry-image,
-.postcontent .post-grid.grid-2 .entry-image img { height: 230px; }
-
 .postcontent .post-grid.grid-2 .entry-title h2 { font-size: 18px; }
 
 
@@ -294,9 +285,6 @@ body:not(.device-touch) .entry-link {
 -----------------------------------------------------------------*/
 
 .bothsidebar .post-grid.grid-2 .entry { width: 270px; }
-
-.bothsidebar .post-grid.grid-2 .entry-image,
-.bothsidebar .post-grid.grid-2 .entry-image img { height: 152px; }
 
 .bothsidebar .post-grid.grid-2 .entry-title h2 { font-size: 16px; }
 

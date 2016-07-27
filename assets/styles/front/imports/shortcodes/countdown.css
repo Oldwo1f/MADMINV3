@@ -85,7 +85,7 @@
 	border: none;
 	color: inherit;
 	margin-left: 7px;
-	text-transform: lowercase;
+	text-transform: inherit;
 }
 
 .countdown.countdown-inline .countdown-section:first-child { margin-left: 0; }

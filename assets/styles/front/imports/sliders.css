@@ -7,8 +7,9 @@
 
 
 /* ----------------------------------------------------------------
-	Flex Slider
+	7. Flex Slider
 -----------------------------------------------------------------*/
+
 
 .fslider,
 .fslider .flexslider,
@@ -88,61 +89,6 @@ html[xmlns] .slider-wrap {display: block;}
 .flex-control-nav li a.flex-active { background-color: #FFF; }
 
 
-/* ----------------------------------------------------------------
-	Swiper Slider
------------------------------------------------------------------*/
-
-
-.swiper-container {
-	margin:0 auto;
-	position:relative;
-	overflow:hidden;
-	-webkit-backface-visibility:hidden;
-	-moz-backface-visibility:hidden;
-	-ms-backface-visibility:hidden;
-	-o-backface-visibility:hidden;
-	backface-visibility:hidden;
-	/* Fix of Webkit flickering */
-	z-index:1;
-}
-
-.swiper-wrapper {
-	position:relative;
-	width:100%;
-	-webkit-transition-property:-webkit-transform, left, top;
-	-webkit-transition-duration:0s;
-	-webkit-transform:translate3d(0px,0,0);
-	-webkit-transition-timing-function:ease;
-
-	-o-transition-property:-o-transform, left, top;
-	-o-transition-duration:0s;
-	-o-transform:translate3d(0px,0,0);
-	-o-transition-timing-function:ease;
-	-o-transform:translate(0px,0px);
-
-	transition-property:transform, left, top;
-	transition-duration:0s;
-	transform:translate3d(0px,0,0);
-	transition-timing-function:ease;
-
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-}
-
-.swiper-free-mode > .swiper-wrapper {
-	-webkit-transition-timing-function: ease-out;
-	-o-transition-timing-function: ease-out;
-	transition-timing-function: ease-out;
-	margin: 0 auto;
-}
-
-.swiper-slide { float: left; }
-
-/* IE10 Windows Phone 8 Fixes */
-.swiper-wp8-horizontal { -ms-touch-action: pan-y; }
-.swiper-wp8-vertical { -ms-touch-action: pan-x; }
-
 
 /* ----------------------------------------------------------------
 	Slider
@@ -155,13 +101,34 @@ html[xmlns] .slider-wrap {display: block;}
 	overflow: hidden;
 }
 
+.slider-parallax { position: relative; }
+
 .slider-parallax,
 .slider-parallax .swiper-container {
 	visibility: visible;
-	-webkit-transform: translate(0,0);
-	-ms-transform: translate(0,0);
-	-o-transform: translate(0,0);
-	transform: translate(0,0);
+	-webkit-backface-visibility: hidden;
+}
+
+.slider-parallax .slider-parallax-inner {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.device-touch .slider-parallax .slider-parallax-inner { position: relative; }
+
+body:not(.side-header) .slider-parallax .slider-parallax-inner { left: 0; }
+
+body:not(.stretched) .slider-parallax .slider-parallax-inner { left: auto; }
+
+#header.transparent-header + .slider-parallax .slider-parallax-inner { top: 0; }
+
+.slider-parallax .slider-parallax-inner,
+.slider-parallax .slider-caption,
+.slider-parallax .ei-title {
+	will-change: transform;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-transition: transform 0s linear;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -175,7 +142,8 @@ html[xmlns] .slider-wrap {display: block;}
 /* Flex Slider - Thumbs
 -----------------------------------------------------------------*/
 
-.fslider[data-animation="fade"] .flexslider { height: auto !important; }
+.fslider[data-animation="fade"][data-thumbs="true"] .flexslider,
+.fslider.testimonial[data-animation="fade"] .flexslider { height: auto !important; }
 
 .flex-control-nav.flex-control-thumbs {
 	position: relative;
@@ -204,7 +172,7 @@ html[xmlns] .slider-wrap {display: block;}
 .flex-control-nav.flex-control-thumbs li img {
 	display: block;
 	width: 100px !important;
-	height: 75px !important;
+	height: auto !important;
 }
 
 .flex-control-nav.flex-control-thumbs li:hover img,
@@ -258,7 +226,7 @@ html[xmlns] .slider-wrap {display: block;}
 	width:100%;
 	height:100%;
 	margin: 0;
-	background: url('images/pattern2.png') repeat;
+	background: url('../../images/pattern2.png') repeat;
 }
 
 .swiper_wrapper .swiper-slide {
@@ -297,34 +265,40 @@ html[xmlns] .slider-wrap {display: block;}
 }
 
 
+.swiper-pagination {
+	position: absolute;
+	width: 100%;
+	z-index: 20;
+	margin: 0;
+	top: auto;
+	bottom: 20px !important;
+	text-align: center;
+	line-height: 1;
+}
+
+.swiper-pagination span {
+	display: inline-block;
+	cursor: pointer;
+	width: 10px;
+	height: 10px;
+	margin: 0 4px;
+	opacity: 1;
+	background-color: transparent;
+	border: 1px solid #FFF;
+	border-radius: 50%;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.swiper-pagination span:hover,
+.swiper-pagination span.swiper-pagination-bullet-active { background-color: #FFF !important; }
+
+
 /* Revolution Slider
 -----------------------------------------------------------------*/
 
-.boxedcontainer {
-	max-width: 1140px;
-	margin:auto;
-}
-
-.tp-banner-container{
-	width:100%;
-	position:relative;
-	padding:0;
-}
-
-.tp-banner{
-	width:100%;
-	position:relative;
-}
-
-.tp-banner-fullscreen-container {
-	width:100%;
-	position:relative;
-	padding:0;
-}
-
 .tp-banner .button { height: auto !important; }
-
-.tparrows.preview2:after { line-height: 1 !important; }
 
 
 /* Video Overlay
@@ -350,7 +324,7 @@ html[xmlns] .slider-wrap {display: block;}
 	top: 0;
 	left: 0;
 	z-index: 5;
-	background: transparent url('images/grid.png') repeat;
+	background: transparent url('../../images/grid.png') repeat;
 	-webkit-backface-visibility: hidden;
 }
 
@@ -451,7 +425,7 @@ html[xmlns] .slider-wrap {display: block;}
 /* Slider Arrows
 -----------------------------------------------------------------*/
 
-#slider .owl-theme .owl-controls { margin: 0; }
+#slider .owl-carousel { margin: 0; }
 
 #slider-arrow-left,
 #slider-arrow-right,
@@ -565,15 +539,15 @@ html[xmlns] .slider-wrap {display: block;}
 
 #slider .owl-next i { margin-right: 4px; }
 
-#slider .owl-controls .owl-nav {
+#slider .owl-nav {
 	opacity: 0;
 	-webkit-transition: opacity 0.3s ease-in-out;
 	-o-transition: opacity 0.3s ease-in-out;
 	transition: opacity 0.3s ease-in-out;
 }
 
-#slider .owl-controls .owl-nav div,
-#slider:hover .owl-controls .owl-nav { opacity: 1; }
+#slider .owl-nav div,
+#slider:hover .owl-nav { opacity: 1; }
 
 #slider-arrow-left:hover,
 #slider-arrow-right:hover,
@@ -647,7 +621,7 @@ html[xmlns] .slider-wrap {display: block;}
 	bottom: 15px;
 }
 
-#slider .owl-controls .owl-dots span {
+#slider .owl-dots span {
 	width: 10px;
 	height: 10px;
 	margin: 0 3px;
@@ -658,5 +632,4 @@ html[xmlns] .slider-wrap {display: block;}
 
 #slider .owl-dots .owl-dot.active span,
 #slider .owl-dots .owl-dot:hover span { background-color: #FFF !important; }
-
 

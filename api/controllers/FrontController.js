@@ -8,6 +8,121 @@ var truncate = require('html-truncate');
  */
 
 module.exports = { 
+	inscriptionPilote:function(req,res,next){
+		req.locale = req.locale || 'en'
+		// moment.locale(req.locale);
+		// var result = {};
+		// var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
+	 //    .limit(4).populateAll();
+
+		// articlesPromise
+	 //    .then(function(articles) {   
+	 //        var articlesWithAuthorsPromises = articles.map(function(article) {
+	 //            var authorsPromises = article.authors.map(function(author) {
+	 //                return User.findOne(author.id).populateAll();
+	 //            });
+
+	 //            return Promise.all(authorsPromises)
+	 //                  .then(function(fullfilledAuthors) {
+	 //                  	  article = article.toObject()
+	 //                      article.authors = fullfilledAuthors;
+	 //                      article.content = truncate(article.content, 250)
+	 //                      return article;
+	 //                   })
+	 //        })
+
+	 //        return Promise.all(articlesWithAuthorsPromises)
+	 //    })
+	 //   .then(function(articles) {
+	   		
+	 //   		result.articles = articles
+  //  			var slideshowsPromise = Slideshow.find().where({title:'Home'}).populateAll();
+
+		// 	return slideshowsPromise.then(function(slideshows) {   
+		// 		var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+		// 	        var slidePromises = slideshow.slides.map(function(slide) {
+		// 	            return Slide.findOne(slide.id).populateAll();
+		// 	        });
+
+		//         	return Promise.all(slidePromises).then(function(fullfilledSlides) {
+		//           	  	slideshow = slideshow.toObject()
+		//               	slideshow.slides = _.sortBy(fullfilledSlides,'rank');
+		//               	return slideshow;
+		//            })
+		// 		})
+
+		// 		return Promise.all(slideshowsWithSlidesPromises)
+		// 	})
+		// 	.then(function(fullData) {
+		// 		console.log('FULLDATA');
+		// 		console.log(fullData);
+		//         result.homeSlideshow = fullData[0]
+		       	
+		//     })
+		//     .catch(function(e){
+		//     	console.log('ERR');
+		//     	result.homeSlideshow = {}
+		//     })
+	   		
+	   		
+
+
+	 //    })
+	 //   .then(function() {
+	   		
+	   		
+  //  			var slideshowsPromise = Slideshow.find().where({title:'Sponsors'}).populateAll();
+
+		// 	return slideshowsPromise.then(function(slideshows) {   
+		// 		var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+		// 	        var slidePromises = slideshow.slides.map(function(slide) {
+		// 	            return Slide.findOne(slide.id).populateAll();
+		// 	        });
+
+		//         	return Promise.all(slidePromises).then(function(fullfilledSlides) {
+		//           	  	slideshow = slideshow.toObject()
+		//               	slideshow.slides = _.sortBy(fullfilledSlides,'rank');
+		//               	return slideshow;
+		//            })
+		// 		})
+
+		// 		return Promise.all(slideshowsWithSlidesPromises)
+		// 	})
+		// 	.then(function(fullData) {
+		// 		console.log('FULLDATA');
+		// 		console.log(fullData);
+		//         result.sponsorsSlideshow = fullData[0]
+		       	
+		//     })
+		//     .catch(function(e){
+		//     	console.log('ERR');
+		//     	result.sponsorsSlideshow = {}
+		//     })
+	   		
+	   		
+
+
+	 //    }).then(function(){
+	    	console.log('---------------------------------------------------------');
+	    	// console.log(result);
+
+	    	res.status(200).view('front/inscription',{
+				// articles:articles,
+				// articles: result.articles,
+				// homeSlideshow: result.homeSlideshow,
+				// sponsorsSlideshow: result.sponsorsSlideshow,
+				title: req.__('SEO_INSCRIPTION_title'),
+				keyword: req.__('SEO_INSCRIPTION_keyword'),
+				description:req.__('SEO_INSCRIPTION_description'),
+				scripturl:'home.js',
+				menu:'inscription',
+				baseurl:'',
+
+			})
+	    // })
+
+		
+	}, 
 	home:function(req,res,next){
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale);
@@ -38,7 +153,7 @@ module.exports = {
 	   		result.articles = articles
    			var slideshowsPromise = Slideshow.find().where({title:'Home'}).populateAll();
 
-			slideshowsPromise.then(function(slideshows) {   
+			return slideshowsPromise.then(function(slideshows) {   
 				var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
 			        var slidePromises = slideshow.slides.map(function(slide) {
 			            return Slide.findOne(slide.id).populateAll();
@@ -46,7 +161,7 @@ module.exports = {
 
 		        	return Promise.all(slidePromises).then(function(fullfilledSlides) {
 		          	  	slideshow = slideshow.toObject()
-		              	slideshow.slides = fullfilledSlides;
+		              	slideshow.slides = _.sortBy(fullfilledSlides,'rank');
 		              	return slideshow;
 		           })
 				})
@@ -54,22 +169,63 @@ module.exports = {
 				return Promise.all(slideshowsWithSlidesPromises)
 			})
 			.then(function(fullData) {
-		        result.homeSlideshow = fullData
+				console.log('FULLDATA');
+				console.log(fullData);
+		        result.homeSlideshow = fullData[0]
 		       	
 		    })
 		    .catch(function(e){
+		    	console.log('ERR');
 		    	result.homeSlideshow = {}
 		    })
 	   		
 	   		
 
 
+	    })
+	   .then(function() {
+	   		
+	   		
+   			var slideshowsPromise = Slideshow.find().where({title:'Sponsors'}).populateAll();
+
+			return slideshowsPromise.then(function(slideshows) {   
+				var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+			        var slidePromises = slideshow.slides.map(function(slide) {
+			            return Slide.findOne(slide.id).populateAll();
+			        });
+
+		        	return Promise.all(slidePromises).then(function(fullfilledSlides) {
+		          	  	slideshow = slideshow.toObject()
+		              	slideshow.slides = _.sortBy(fullfilledSlides,'rank');
+		              	return slideshow;
+		           })
+				})
+
+				return Promise.all(slideshowsWithSlidesPromises)
+			})
+			.then(function(fullData) {
+				console.log('FULLDATA');
+				console.log(fullData);
+		        result.sponsorsSlideshow = fullData[0]
+		       	
+		    })
+		    .catch(function(e){
+		    	console.log('ERR');
+		    	result.sponsorsSlideshow = {}
+		    })
+	   		
+	   		
+
+
 	    }).then(function(){
+	    	console.log('---------------------------------------------------------');
 	    	console.log(result);
+
 	    	res.status(200).view('front/index',{
 				// articles:articles,
 				articles: result.articles,
 				homeSlideshow: result.homeSlideshow,
+				sponsorsSlideshow: result.sponsorsSlideshow,
 				title: req.__('SEO_HOME_title'),
 				keyword: req.__('SEO_HOME_keyword'),
 				description:req.__('SEO_HOME_description'),

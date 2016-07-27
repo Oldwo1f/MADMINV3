@@ -12972,3 +12972,9 @@ h2 span.bigNumber:not(.nocolor) {
     padding: 4px;
 }
 #page-title .h1absolute{position:absolute; bottom:50px; left:50px; background:#23527c;padding: 20px;}
+.formError {border-color: red;}
+.finished{border-color:green;background-color: rgba(0,255,0,0.10)}
+
+#repas .colBizar .label{display: inline-block;color:grey;padding-left: 0px;}
+#repas .colBizar input{display: inline-block;width:55px;}
+.inscription label{display:block;}
