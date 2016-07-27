@@ -12980,3 +12980,7 @@ h2 span.bigNumber:not(.nocolor) {
 #repas .colBizar .label{display: inline-block;color:grey;padding-left: 0px;}
 #repas .colBizar input{display: inline-block;width:55px;}
 .inscription label{display:block;}
+.form-process{width:70px;height: 70px;position:relative;margin-left: 10px;    display: none;}
+/*.form-process{opacity:0;}*/
+.form-process img{width:100%}
+/*loading_spinner.gif*/
