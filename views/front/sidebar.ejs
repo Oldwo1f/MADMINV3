@@ -14,13 +14,12 @@
                                                  <% if(mostseen.length){%>
                                                      <% for(var i=0; i< mostseen.length ; i++){%>
                                                          <div class="spost clearfix">
-                                                            <div class="entry-image">
                                                                  <% if(mostseen[i].images.length){%>
+                                                            <div class="entry-image">
                                                                     <a href="article/<%- mostseen[i].id %>/<%- mostseen[i].rewriteurl %>" class="nobg"><img class="img-square" src="image/resized2/<%- mostseen[i].images[0].filename %>" alt=""></a>
-                                                                 <%}else{%>
-                                                                    <a href="article/<%- mostseen[i].id %>/<%- mostseen[i].rewriteurl %>" class="nobg"><img class="img-square" src="images/magazine/small/2.jpg" alt=""></a>
-                                                                 <%}%>
+                                                                    
                                                             </div>
+                                                                 <%}%>
                                                             <div class="entry-c">
                                                                 <div class="entry-title">
                                                                     <h4><a href="article/<%- mostseen[i].id %>/<%- mostseen[i].rewriteurl %>"><%- mostseen[i].title %></a></h4>

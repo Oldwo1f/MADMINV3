@@ -13,13 +13,14 @@
                                 <h4>Liens</h4>
 
                                 <ul class="list-unstyled footer-site-links nobottommargin colorwhite">
-                                    <li><a href="/"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Home</a></li>
-                                    <li><a href="/inscription"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Inscription</a></li>
-                                    <li><a href="/infos"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Infos pratique</a></li>
-                                    <li><a href="/blog"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Blog</a></li>
-                                    <li><a href="/contact"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Contact</a></li>
+                                    <li><a href="/"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70"><%- __('menu-Home') %></a></li>
+                                    <li><a href="/inscription"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70"><%- __('menu-Inscriptions') %></a></li>
+                                    <li><a href="/infos"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70"><%- __('menu-Infos') %></a></li>
+                                    <li><a href="/blog"  data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70"><%- __('menu-News') %></a></li>
                                 </ul>
                             </div>
+
+
 
                         </div>
 
@@ -45,14 +46,12 @@
                         <div class="col-md-6">
 
                             <div class="widget clearfix">
-                                <h4>Contact</h4>
+                                <h4><%- __('Contact') %></h4>
 
-                                <p class="lead colorwhite">Aérodrome St Yan,</strong><br>
-                                            71600 Saint-Yan,<br>
-                                              France</p>
+                                <p class="lead colorwhite"><%- __('Footer-adresse') %></p>
                                 <p class="lead colorwhite">
-                                     <abbr title="Béatrice"><strong>Béatrice:</strong></abbr> 06 80 38 74 07<br>
-                                     <strong>Email:</strong>beatrice.nutrimarketing@wanadoo.fr<br>
+                                    <%- __('Footer-contact') %>
+                                     
                                 </p>
 
                                 <div class="center topmargin-sm">
@@ -64,14 +63,14 @@
                                         <i class="icon-twitter"></i>
                                         <i class="icon-twitter"></i>
                                     </a>
-                                    <a href="#" class="social-icon inline-block noborder si-small si-github colorwhite" title="Github">
+                                    <!-- <a href="#" class="social-icon inline-block noborder si-small si-github colorwhite" title="Github">
                                         <i class="icon-github"></i>
                                         <i class="icon-github"></i>
                                     </a>
                                     <a href="#" class="social-icon inline-block noborder si-small si-pinterest colorwhite" title="Pinterest">
                                         <i class="icon-pinterest"></i>
                                         <i class="icon-pinterest"></i>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
 
@@ -84,7 +83,7 @@
 
             <div id="copyrights">
                 <div class="container center clearfix colorwhite">
-                    Copyright FlyIn LFBK 2016 | Tous droits réservés
+                    <%- __('Footer-Copyright') %> | <%- __('Footer-all right reserved') %> | Site web :  <a href="http://momcreation.fr">MOMCREATION</a>
                 </div>
             </div>
 

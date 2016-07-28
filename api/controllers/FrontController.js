@@ -185,6 +185,40 @@ module.exports = {
 	    })
 	   .then(function() {
 	   		
+   			var slideshowsPromise = Slideshow.find().where({title:'Avions'}).populateAll();
+
+			return slideshowsPromise.then(function(slideshows) {   
+				var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+			        var slidePromises = slideshow.slides.map(function(slide) {
+			            return Slide.findOne(slide.id).populateAll();
+			        });
+
+		        	return Promise.all(slidePromises).then(function(fullfilledSlides) {
+		          	  	slideshow = slideshow.toObject()
+		              	slideshow.slides = _.sortBy(fullfilledSlides,'rank');
+		              	return slideshow;
+		           })
+				})
+
+				return Promise.all(slideshowsWithSlidesPromises)
+			})
+			.then(function(fullData) {
+				console.log('FULLDATA');
+				console.log(fullData);
+		        result.avionSlideShow = fullData[0]
+		       	
+		    })
+		    .catch(function(e){
+		    	console.log('ERR');
+		    	result.avionSlideShow = {}
+		    })
+	   		
+	   		
+
+
+	    })
+	   .then(function() {
+	   		
 	   		
    			var slideshowsPromise = Slideshow.find().where({title:'Sponsors'}).populateAll();
 
@@ -226,6 +260,7 @@ module.exports = {
 				articles: result.articles,
 				homeSlideshow: result.homeSlideshow,
 				sponsorsSlideshow: result.sponsorsSlideshow,
+				avionSlideshow: result.avionSlideShow,
 				title: req.__('SEO_HOME_title'),
 				keyword: req.__('SEO_HOME_keyword'),
 				description:req.__('SEO_HOME_description'),
@@ -240,7 +275,9 @@ module.exports = {
 	},
 	article:function(req,res,next){
 		console.log(req.params.id);
+		console.log(req.locale);
 		moment.locale(req.locale);
+		req.locale = req.locale || 'en'
 		// baseurl='/'
 		// if(req.params.page){
 			baseurl='/../'
@@ -1116,18 +1153,65 @@ module.exports = {
 				keyword:req.__('SEO_PRESTA_KEYWORD'),
 				description:req.__('SEO_PRESTA_DESCRIPTION')
 			});
-	},	
+	},
 	infos:function(req,res) {
 			req.locale = req.locale || 'en'
 			moment.locale(req.locale);
-			return res.view('front/infos',{
-				menu:'presta',
-				scripturl:'portfo.js',
-				baseurl:'',
-				title:req.__('SEO_INFOS_title'),
-				keyword:req.__('SEO_INFOS_KEYWORD'),
-				description:req.__('SEO_INFOS_DESCRIPTION')
-			});
+			var slideshowsPromise = Slideshow.find().where({title:'Liens'}).populateAll();
+			var result={};
+			return slideshowsPromise.then(function(slideshows) {   
+				var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+			        var slidePromises = slideshow.slides.map(function(slide) {
+			            return Slide.findOne(slide.id).populateAll();
+			        });
+
+		        	return Promise.all(slidePromises).then(function(fullfilledSlides) {
+		          	  	slideshow = slideshow.toObject()
+		              	slideshow.slides = _.sortBy(fullfilledSlides,'rank');
+		              	return slideshow;
+		           })
+				})
+
+				return Promise.all(slideshowsWithSlidesPromises)
+			}).then(function(fullData){
+
+				result.linkSlideshow = fullData[0];
+
+				return Slideshow.find().where({title:'Bénévoles'}).populateAll()
+				.then(function(slideshows) {   
+					var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+			        var slidePromises = slideshow.slides.map(function(slide) {
+			            return Slide.findOne(slide.id).populateAll();
+			        });
+
+		        	return Promise.all(slidePromises).then(function(fullfilledSlides) {
+		          	  	slideshow = slideshow.toObject()
+		              	slideshow.slides = _.sortBy(fullfilledSlides,'rank');
+		              	return slideshow;
+		           })
+				})
+
+				return Promise.all(slideshowsWithSlidesPromises)
+			})
+			})
+			.then(function(fullData) {
+				result.BeneSlideshow = fullData[0];
+
+		        return res.view('front/infos',{
+					menu:'presta',
+					linkSlideshow:result.linkSlideshow,
+					beneSlideshow:result.BeneSlideshow,
+					scripturl:'portfo.js',
+					baseurl:'',
+					title:req.__('SEO_INFOS_title'),
+					keyword:req.__('SEO_INFOS_KEYWORD'),
+					description:req.__('SEO_INFOS_DESCRIPTION')
+				});
+		       	
+		    })
+
+
+			
 	},
 	contactEmail:function(req,res,next) {
 

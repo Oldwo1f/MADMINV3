@@ -33,48 +33,7 @@
                         </div>
                     <%}%>
                 <%}%>
-               <!--  <div class="col-xs-6 nopadding half-screen dark videoplay-on-hover">
-                    <div class="vertical-middle ignore-header center">
-                    </div>
-                    <div class="video-wrap">
-                   <img src="images/02.jpg" alt="" class="hidden-lg">
-                   <img src="images/02-.jpg" alt="" class="visible-lg">
-                    </div>
-                </div>
-                <div class="col-xs-6 nopadding half-screen dark videoplay-on-hover">
-                    <div class="vertical-middle ignore-header center">
-                    </div>
-                    <div class="video-wrap">
-                    <img src="images/03.jpg" alt="" class="hidden-lg">
-                    <img src="images/03-.jpg" alt="" class="visible-lg">
-                    </div>
-                </div>
-                <div class="col-xs-6 nopadding half-screen dark videoplay-on-hover">
-                    <div class="vertical-middle ignore-header center">
-                    </div>
-                    <div class="video-wrap">
-                    <img src="images/04.jpg" alt="" class="hidden-lg">
-                    <img src="images/04-.jpg" alt="" class="visible-lg">
-                        
-                    </div>
-                </div> -->
-
             </div>
-
-            <script>
-                jQuery(document).ready(function($){
-                    $('.videoplay-on-hover').hover( function(){
-                        if( $(this).find('video').length > 0 ) {
-                            $(this).find('video').get(0).play();
-                        }
-                    }, function(){
-                        if( $(this).find('video').length > 0 ) {
-                            $(this).find('video').get(0).pause();
-                        }
-                    });
-                });
-            </script>
-
         </section><!-- #slider end -->
 
         <!-- Content
@@ -88,9 +47,9 @@
 
                     <div class="container clearfix">
 
-                        <h2 class="divcenter bottommargin font-body" style="max-width: 700px; font-size: 40px;">Le FlyIn LFBK à Saint Yan</h2>
+                        <h2 class="divcenter bottommargin font-body" style="max-width: 700px; font-size: 40px;"><%- __('Home-title') %></h2>
 
-                        <p class="lead divcenter " style="max-width: 800px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima sit labore, non, excepturi praesentium quos, eveniet tempora accusamus hic amet a nostrum ipsum fugiat quibusdam tenetur, asperiores molestias sed. Omnis.</p>
+                        <p class="lead divcenter " style="max-width: 800px;"><%- __('Home-firstText') %></p>
 
                         <!-- <p class="bottommargin" style="font-size: 16px;"><a href="/about" class="more-link">En savoir plus <i class="icon-angle-right"></i></a></p> -->
 
@@ -192,7 +151,7 @@
                 </div>
                 <div class="section dark nomargin">
                         <div class="divcenter center" style="max-width: 900px;">
-                            <h2 class="nobottommargin t300 ls1"><span class="bigNumber">24</span> <span class="bigNumber">25</span> et <span class="bigNumber">26</span> Juin 2017 <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;">Pilote ? Inscrivez votre avion</a></h2>
+                            <h2 class="nobottommargin t300 ls1"><%- __('Home-date') %> <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;"><%- __('Pilote ? Inscrivez votre avion') %></a></h2>
                         </div>
                     </div>
                      <!--    <div class="promo promo-dark promo-flat promo-full ">
@@ -213,7 +172,7 @@
         // console.log(articles);
                             </script>
                             <div class="row  clearfix">
-                                <h2 class="center uppercase t300 ls3 font-body colorwhite">À la Une</h2>
+                                <h2 class="center uppercase t300 ls3 font-body colorwhite"><%- __('À la Une') %></h2>
                                 
                                  <% for(var i=0; i< articles.length ; i++){%>
                                 <div class="ipost col-sm-6 bottommargin clearfix">
@@ -257,275 +216,51 @@
                     <div class="section nomargin">
                         <div class="container clearfix">
                             <div class="divcenter center" style="max-width: 900px;">
-                                <h2 class="nobottommargin t300 ls1 colorwhite">Voici les différents Avions inscrits pour l'éditions 2017.</h2>
-                                <p class="colorwhite2">Avec déjà 8 avions inscrits dont certains incontournable. Le spéctacle 2017 va être à la hauteur.</p>
+                                <h2 class="nobottommargin t300 ls1 colorwhite"><%- __('Home-inscrit-title') %></h2>
+                                <p class="colorwhite2"><%- __('Home-inscrit-text') %></p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Portfolio Items
                     ============================================= -->
-                    <div id="portfolio" class="portfolio grid-container portfolio-nomargin portfolio-notitle portfolio-full clearfix" style="position: relative; height: 1037.75px;">
+                    <!-- <div id="portfolio" class="portfolio grid-container portfolio-nomargin portfolio-notitle portfolio-full clearfix" > -->
+                    <div id="portfolio" class="portfolio grid-container portfolio-nomargin portfolio-full clearfix" >
+                        <% if(avionSlideshow && avionSlideshow.slides.length > 0){%>
+                        <% for(var i=0; (i< avionSlideshow.slides.length && i< 4) ; i++){%>
+                        <% if(avionSlideshow.slides[i].images && avionSlideshow.slides[i].images.length > 0){%>
+                        <article class="portfolio-item">
+                            <div class="portfolio-image">
+                                <div class="fslider" data-arrows="false" data-speed="700" data-pause="7000">
+                                    <div class="flexslider">
+                                        <div class="slider-wrap">
+                                            <% for(var j=0; j< avionSlideshow.slides[i].images.length ; j++){%>
+                                            <div class="slide"><img src="image/resized/<%- avionSlideshow.slides[i].images[j].filename %>" alt=""></div>
+                                            <%}%>
 
-                    <article class="col-md-3 portfolio-item pf-media pf-icons" style="width: 461px; position: absolute; left: 0px; top: 0px;">
-                        <div class="portfolio-image">
-                            <a href="portfolio-single.php">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/1.jpg" alt="Open Imagination" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                <a href="portfolio-single.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single.php">Open Imagination</a></h3>
-                            <span><a href="#">Media</a>, <a href="#">Icons</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-illustrations" style="width: 461px; position: absolute; left: 461px; top: 0px;">
-                        <div class="portfolio-image">
-                            <a href="portfolio-single.php">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/2.jpg" alt="Locked Steel Gate" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/2.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                <a href="portfolio-single.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single.php">Locked Steel Gate</a></h3>
-                            <span><a href="#">Illustrations</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-graphics pf-uielements" style="width: 461px; position: absolute; left: 922px; top: 0px;">
-                        <div class="portfolio-image">
-                            <a href="#">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/3.jpg" alt="Mac Sunglasses" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://vimeo.com/89396394" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-                                <a href="portfolio-single-video.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single-video.php">Mac Sunglasses</a></h3>
-                            <span><a href="#">Graphics</a>, <a href="#">UI Elements</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-icons pf-illustrations" style="width: 461px; position: absolute; left: 1383px; top: 0px;">
-                        <div class="portfolio-image">
-                            <div class="fslider" data-arrows="false" data-speed="400" data-pause="4000">
-                                <div class="flexslider">
-                                    
-                                <div class="flex-viewport" style="overflow: hidden; position: relative; height: 346px;"><div class="slider-wrap" style="width: 800%; transition-duration: 0s; transform: translate3d(-922px, 0px, 0px);"><div class="slide clone" aria-hidden="true" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/4-1.jpg" alt="Morning Dew" draggable="false"></a></div>
-                                        <div class="slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/4.jpg" alt="Morning Dew" draggable="false"></a></div>
-                                        <div class="slide flex-active-slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/4-1.jpg" alt="Morning Dew" draggable="false"></a></div>
-                                    <div class="slide clone" aria-hidden="true" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/4.jpg" alt="Morning Dew" draggable="false"></a></div></div></div><ol class="flex-control-nav flex-control-paging"><li data-animate="zoomIn" data-delay="0" class="zoomIn animated"><a href="#" class="">1</a></li><li data-animate="zoomIn" data-delay="200" class="zoomIn animated"><a href="#" class="flex-active">2</a></li></ol></div>
-                            </div>
-                            <div class="portfolio-overlay" data-lightbox="gallery">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/4.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/4-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                <a href="portfolio-single-gallery.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single-gallery.php">Morning Dew</a></h3>
-                            <span><a href="#"></a><a href="#">Icons</a>, <a href="#">Illustrations</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-uielements pf-media" style="width: 461px; position: absolute; left: 0px; top: 345px;">
-                        <div class="portfolio-image">
-                            <a href="portfolio-single.php">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/5.jpg" alt="Console Activity" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/5.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                <a href="portfolio-single.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single.php">Console Activity</a></h3>
-                            <span><a href="#">UI Elements</a>, <a href="#">Media</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-graphics pf-illustrations" style="width: 461px; position: absolute; left: 461px; top: 345px;">
-                        <div class="portfolio-image">
-                            <div class="fslider" data-arrows="false">
-                                <div class="flexslider">
-                                    
-                                <div class="flex-viewport" style="overflow: hidden; position: relative; height: 346px;"><div class="slider-wrap" style="width: 1200%; transition-duration: 0s; transform: translate3d(-922px, 0px, 0px);"><div class="slide clone" aria-hidden="true" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/6-3.jpg" alt="Shake It" draggable="false"></a></div>
-                                        <div class="slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/6.jpg" alt="Shake It" draggable="false"></a></div>
-                                        <div class="slide flex-active-slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/6-1.jpg" alt="Shake It" draggable="false"></a></div>
-                                        <div class="slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/6-2.jpg" alt="Shake It" draggable="false"></a></div>
-                                        <div class="slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/6-3.jpg" alt="Shake It" draggable="false"></a></div>
-                                    <div class="slide clone" aria-hidden="true" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/6.jpg" alt="Shake It" draggable="false"></a></div></div></div><ol class="flex-control-nav flex-control-paging"><li data-animate="zoomIn" data-delay="0" class="zoomIn animated"><a href="#" class="">1</a></li><li data-animate="zoomIn" data-delay="200" class="zoomIn animated"><a href="#" class="flex-active">2</a></li><li data-animate="zoomIn" data-delay="400" class="zoomIn animated"><a href="#" class="">3</a></li><li data-animate="zoomIn" data-delay="600" class="zoomIn animated"><a href="#" class="">4</a></li></ol></div>
-                            </div>
-                            <div class="portfolio-overlay" data-lightbox="gallery">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/6.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/6-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/6-2.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/6-3.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                <a href="portfolio-single-gallery.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single-gallery.php">Shake It!</a></h3>
-                            <span><a href="#">Illustrations</a>, <a href="#">Graphics</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-uielements pf-icons" style="width: 461px; position: absolute; left: 922px; top: 345px;">
-                        <div class="portfolio-image">
-                            <a href="portfolio-single-video.php">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/7.jpg" alt="Backpack Contents" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://www.youtube.com/watch?v=kuceVNBTJio" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-                                <a href="portfolio-single-video.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single-video.php">Backpack Contents</a></h3>
-                            <span><a href="#">UI Elements</a>, <a href="#">Icons</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-graphics" style="width: 461px; position: absolute; left: 1383px; top: 346px;">
-                        <div class="portfolio-image">
-                            <a href="portfolio-single.php">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/8.jpg" alt="Sunset Bulb Glow" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/8.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                <a href="portfolio-single.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single.php">Sunset Bulb Glow</a></h3>
-                            <span><a href="#">Graphics</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-illustrations pf-icons" style="width: 461px; position: absolute; left: 0px; top: 691px;">
-                        <div class="portfolio-image">
-                            <div class="fslider" data-arrows="false" data-speed="650" data-pause="3500" data-animation="fade">
-                                <div class="flexslider" style="height: 346px;">
-                                    <div class="slider-wrap">
-                                        <div class="slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" data-thumb-alt=""><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/9.jpg" alt="Bridge Side" draggable="false"></a></div>
-                                        <div class="slide flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" data-thumb-alt=""><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/9-1.jpg" alt="Bridge Side" draggable="false"></a></div>
-                                        <div class="slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" data-thumb-alt=""><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/9-2.jpg" alt="Bridge Side" draggable="false"></a></div>
+                                        </div>
                                     </div>
-                                <ol class="flex-control-nav flex-control-paging"><li data-animate="zoomIn" data-delay="0" class="zoomIn animated"><a href="#" class="">1</a></li><li data-animate="zoomIn" data-delay="200" class="zoomIn animated"><a href="#" class="flex-active">2</a></li><li data-animate="zoomIn" data-delay="400" class="zoomIn animated"><a href="#" class="">3</a></li></ol></div>
+                                </div>
+                                <div class="portfolio-overlay" data-lightbox="gallery">
+                                    <div class="portfolio-desc">
+                                        <h3><%- avionSlideshow.slides[i].title %></h3>
+                                        <span><%- avionSlideshow.slides[i].btn %></span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="portfolio-overlay" data-lightbox="gallery">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/9.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/9-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/9-2.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                <a href="portfolio-single-gallery.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single.php">Bridge Side</a></h3>
-                            <span><a href="#">Illustrations</a>, <a href="#">Icons</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-graphics pf-media pf-uielements" style="width: 461px; position: absolute; left: 922px; top: 691px;">
-                        <div class="portfolio-image">
-                            <a href="portfolio-single-video.php">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/10.jpg" alt="Study Table" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://vimeo.com/91973305" class="left-icon" data-lightbox="iframe"><i class="icon-line-play"></i></a>
-                                <a href="portfolio-single-video.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single-video.php">Study Table</a></h3>
-                            <span><a href="#">Graphics</a>, <a href="#">Media</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-media pf-icons" style="width: 461px; position: absolute; left: 461px; top: 691px;">
-                        <div class="portfolio-image">
-                            <a href="portfolio-single.php">
-                                <img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/11.jpg" alt="Workspace Stuff" style="visibility: visible; opacity: 1; display: block;">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/11.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                <a href="portfolio-single.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single.php">Workspace Stuff</a></h3>
-                            <span><a href="#">Media</a>, <a href="#">Icons</a></span>
-                        </div>
-                    </article>
-
-                    <article class="col-md-3 portfolio-item pf-illustrations pf-graphics" style="width: 461px; position: absolute; left: 1383px; top: 691px;">
-                        <div class="portfolio-image">
-                            <div class="fslider" data-arrows="false" data-speed="700" data-pause="7000">
-                                <div class="flexslider">
-                                    
-                                <div class="flex-viewport" style="overflow: hidden; position: relative; height: 346px;"><div class="slider-wrap" style="width: 800%; transition-duration: 0s; transform: translate3d(-461px, 0px, 0px);"><div class="slide clone" aria-hidden="true" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/12-1.jpg" alt="Fixed Aperture" draggable="false"></a></div>
-                                        <div class="slide flex-active-slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/12.jpg" alt="Fixed Aperture" draggable="false"></a></div>
-                                        <div class="slide" data-thumb-alt="" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/12-1.jpg" alt="Fixed Aperture" draggable="false"></a></div>
-                                    <div class="slide clone" aria-hidden="true" style="width: 461px; margin-right: 0px; float: left; display: block;"><a href="portfolio-single-gallery.php"><img src="http://canvashtml-cdn.semicolonweb.com/images/portfolio/4/12.jpg" alt="Fixed Aperture" draggable="false"></a></div></div></div><ol class="flex-control-nav flex-control-paging"><li data-animate="zoomIn" data-delay="0" class="zoomIn animated"><a href="#" class="flex-active">1</a></li><li data-animate="zoomIn" data-delay="200" class="zoomIn animated"><a href="#" class="">2</a></li></ol></div>
-                            </div>
-                            <div class="portfolio-overlay" data-lightbox="gallery">
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/12.jpg" class="left-icon" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                <a href="http://canvashtml-cdn.semicolonweb.com/images/portfolio/full/12-1.jpg" class="hidden" data-lightbox="gallery-item"></a>
-                                <a href="portfolio-single-gallery.php" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-                            </div>
-                        </div>
-                        <div class="portfolio-desc">
-                            <h3><a href="portfolio-single-gallery.php">Fixed Aperture</a></h3>
-                            <span><a href="#">Illustrations</a>, <a href="#">Graphics</a></span>
-                        </div>
-                    </article>
-
-                </div>
-
-                    <!-- Portfolio Script
-                    ============================================= -->
-                    <script type="text/javascript">
-
-                        jQuery(window).load(function(){
-
-                            var jQuerycontainer = jQuery('#portfolio');
-
-                            jQuerycontainer.isotope({
-                                transitionDuration: '0.65s',
-                                masonry: {
-                                    columnWidth: jQuerycontainer.find('.portfolio-item:not(.wide)')[0]
-                                }
-                            });
-
-                            jQuery(window).resize(function() {
-                                jQuerycontainer.isotope('layout');
-                                SEMICOLON.portfolio.portfolioDescMargin();
-                            });
-
-                            var t = setTimeout(function(){ SEMICOLON.portfolio.portfolioDescMargin(); }, 200);
-
-                        });
-
-                    </script><!-- Portfolio Script End -->
-
-
-                </div>
-
-
-                    <div class="section dark nomargin">
-                        <div class="divcenter center" style="max-width: 900px;">
-                            <h2 class="nobottommargin t300 ls1">Pilote ? <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;">Inscrivez votre avion</a></h2>
-                        </div>
+                        </article>
+                        <%}%>
+                        <%}%>
+                        <%}%>
                     </div>
+                </div>
+
+
+                <div class="section dark nomargin">
+                    <div class="divcenter center" style="max-width: 900px;">
+                        <h2 class="nobottommargin t300 ls1"><%- __('Pilote ?') %> <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;"><%- __('Inscrivez votre avion') %></a></h2>
+                    </div>
+                </div>
 
                  <!--    <div class="promo promo-dark promo-flat promo-full ">
                         <div class="container clearfix">
@@ -537,7 +272,7 @@
                    
                     <% if(sponsorsSlideshow && sponsorsSlideshow.slides.length > 0){%>
                     <div class="container topmargin-lg clearfix">
-                        <h2 class="center uppercase t300 ls3 font-body">Un très très grand merci à nos sponsores</h2>
+                        <h2 class="center uppercase t300 ls3 font-body"><%- __('home-sponsor-title') %></h2>
                         <div id="oc-clients" class="owl-carousel topmargin image-carousel">
                                 <% for(var i=0; (i< sponsorsSlideshow.slides.length && i< 4) ; i++){%>
                                     <div class="oc-item"><a href="<%- sponsorsSlideshow.slides[i].link1 %>" target="_BLANK"><img src="image/resized/<%- sponsorsSlideshow.slides[i].images[0].filename %>" alt="Sponsor lfbk"></a></div>
@@ -548,7 +283,7 @@
 
                         <script type="text/javascript">
 
-                            jQuery(document).ready(function($) {
+                            $(function() {
 
                                 var ocClients = $("#oc-clients");
 
@@ -567,6 +302,8 @@
                                         1200:{ items:6 }
                                     }
                                 });
+                                $('.owl-prev').hide()
+                                $('.owl-next').hide()
 
                             });
 
@@ -586,18 +323,15 @@
                         <div id="headquarters-map" class="col-md-8 col-sm-6 gmap hidden-xs"></div>
                         <div class="col-md-4 col-sm-6" style="background-color: #F5F5F5;">
                             <div class="col-padding max-height">
-                                <h3 class="font-body t400 ls1">Notre Aérodrome</h3>
+                                <h3 class="font-body t400 ls1"><%- __('Notre Aérodrome') %></h3>
 
                                 <div style="font-size: 16px; line-height: 1.7;">
                                     <address style="line-height: 1.7;">
-                                       
-                                            Aérodrome St Yan<br>
-                                             71600 Saint-Yan <br>
-                                             FRANCE <br>
+                                            <%- __('home-adresse') %>
                                     </address>
 
                                 </div>
-                                 <h3 class="font-body t400 ls1">Nous contactez</h3>
+                                 <h3 class="font-body t400 ls1"><%- __('Nous contactez') %></h3>
                                  <div style="font-size: 16px; line-height: 1.7;">
                                     
 
@@ -814,32 +548,32 @@
                                 <div class="form-process"></div>
 
                                 <div class="col_half">
-                                    <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control border-form-control required" placeholder="Nom & Prénom*" required/>
+                                    <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control border-form-control required" placeholder="<%- __('Nom & Prénom*') %>" required/>
                                 </div>
                                 <div class="col_half col_last">
-                                    <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control border-form-control" placeholder="Email" />
+                                    <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control border-form-control" placeholder="<%- __('Email') %>" />
                                 </div>
 
                                 <div class="clear"></div>
 
                                 <div class="col_one_third">
-                                    <input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control border-form-control" placeholder="Téléphone" />
+                                    <input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control border-form-control" placeholder="<%- __('Téléphone') %>" />
                                 </div>
 
                                 <div class="col_two_third col_last">
-                                    <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control border-form-control" placeholder="Objet *" required />
+                                    <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control border-form-control" placeholder="<%- __('Objet *') %>" required />
                                 </div>
 
                                 <div class="clear"></div>
 
                                 <div class="col_full">
-                                    <textarea class="required sm-form-control border-form-control" id="template-contactform-message" name="template-contactform-message" rows="7" cols="30" placeholder="Message *" required></textarea>
+                                    <textarea class="required sm-form-control border-form-control" id="template-contactform-message" name="template-contactform-message" rows="7" cols="30" placeholder="<%- __('Message *') %>" required></textarea>
                                 </div>
 
                                 <div class="col_full center">
-                                    <button class="button button-border button-circle t500 noleftmargin topmargin-sm" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Envoyer</button>
+                                    <button class="button button-border button-circle t500 noleftmargin topmargin-sm" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit"><%- __('Envoyer') %></button>
                                     <br>
-                                    <small style="display: block; font-size: 13px; margin-top: 15px;">Nous faisons de notre mieux pour vour répondre rapidements</small>
+                                    <small style="display: block; font-size: 13px; margin-top: 15px;"><%- __('Nous faisons de notre mieux pour vour répondre rapidements') %></small>
                                 </div>
 
                                 <div class="clear"></div>

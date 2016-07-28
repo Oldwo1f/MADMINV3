@@ -12984,3 +12984,8 @@ h2 span.bigNumber:not(.nocolor) {
 /*.form-process{opacity:0;}*/
 .form-process img{width:100%}
 /*loading_spinner.gif*/
+
+.portfolio-image .portfolio-overlay {
+    background-color: rgba(0,0,0,0.5);
+}
+.portfolio-image .portfolio-overlay .portfolio-desc h3{ color:#333;}

@@ -11,8 +11,8 @@
         <section id="page-title">
 
             <div class="container clearfix">
-                <h1>Infos pratiques</h1>
-                <span>Tous les informations dont vous pourriez avoir besoins au même endroit.</span>
+                <h1><%- __('Infos pratiques') %></h1>
+                <span><%- __('Infos pratiques-subtitle') %></span>
                 <!-- <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Pages</a></li>
@@ -31,13 +31,13 @@
                 
                 <div class="container ">
                     <div class="promo promo-light bottommargin">
-                        <h3>Appeller nous aux <span>06 80 38 74 07</span> ou ecrivez nous à <span>beatrice.nutrimarketing@wanadoo.fr</span></h3>
-                        <span>Nous répondons à tout vos email.</span>
-                        <a href="mailTo:beatrice.nutrimarketing@wanadoo.fr" class="button button-xlarge  button-dark button-rounded">Nous écrire</a>
+                        <h3><%- __('Appler-nous-test') %></h3>
+                        <span><%- __('Nous répondons à tout vos email.') %></span>
+                        <a href="mailTo:beatrice.nutrimarketing@wanadoo.fr" class="button button-xlarge  button-dark button-rounded"><%- __('Nous écrire') %></a>
                     </div>
                     
                     <div class="fancy-title title-dotted-border title-center">
-                        <h3>Prix public pour le spectacle du samedi 23 Juin </h3>
+                        <h3><%- __('Prix public pour le spectacle') %></h3>
                     </div>
                     <div class="pricing bottommargin clearfix">
 
@@ -45,15 +45,15 @@
 
                             <div class="pricing-box">
                                 <div class="pricing-title">
-                                    <h3>Gratuit</h3>
+                                    <h3><%- __('Gratuit') %></h3>
                                 </div>
                                 <div class="pricing-price">
                                     <span class="price-unit">€</span>0
                                 </div>
                                 <div class="pricing-features">
                                     <ul>
-                                        <li>Enfants <strong>-12 ans</strong></li>
-                                        <li>Personne Handicapé</li>
+                                        <li><%- __('Enfants <strong>-12 ans</strong>') %></li>
+                                        <li><%- __('Personne Handicapé') %></li>
                                     </ul>
                                 </div>
                                 <!-- <div class="pricing-action">
@@ -67,11 +67,11 @@
 
                             <div class="pricing-box best-price">
                                 <div class="pricing-title">
-                                    <h3 style="color:#005b96">Normal</h3>
+                                    <h3 style="color:#005b96"><%- __('Normal') %></h3>
                                     <!-- <span>Most Popular</span> -->
                                 </div>
                                 <div class="pricing-price">
-                                    <span class="price-unit">€</span>12
+                                    <span class="price-unit">€</span><%- __('Prix-Normal') %>
                                 </div>
                               <!--   <div class="pricing-features">
                                     <ul> -->
@@ -97,15 +97,15 @@
 
                             <div class="pricing-box">
                                 <div class="pricing-title">
-                                    <h3>Réduit</h3>
+                                    <h3><%- __('Réduit') %></h3>
                                 </div>
                                 <div class="pricing-price">
-                                    <span class="price-unit">€</span>5
+                                    <span class="price-unit">€</span><%- __('Prix-Reduit') %>
                                 </div>
                                 <div class="pricing-features">
                                     <ul>
-                                        <li>Jeunes <strong>-20</strong> ans</li>
-                                        <li>Senior <strong>+80</strong> ans</li>
+                                        <li><%- __('Jeunes <strong>-20</strong> ans') %></li>
+                                        <li><%- __('Senior <strong>+80</strong> ans') %></li>
                                     </ul>
                                 </div>
                                <!--  <div class="pricing-action">
@@ -121,67 +121,54 @@
                 <div class="container topmargin">
                     
                 <div class="promo promo-border">
-                        <h3>Télécharger les<span> status </span>de l'association <span>FlyIn LFBK</span></h3>
+                        <h3><%- __('Télécharger les<span> status </span>de l\'association <span>FlyIn LFBK</span>') %></h3>
                         <!-- <span>We strive to provide Our Customers with Top Notch Support to make their Theme Experience Wonderful</span> -->
-                        <a href="#" class="button button-xlarge button-rounded">Télécharger</a>
+                        <a href="#" class="button button-xlarge button-rounded"><%- __('Télécharger') %></a>
                 </div>
                 </div>
+                <% if(linkSlideshow && linkSlideshow.slides.length > 0){%>
+                    
                 <div class="container topmargin bottommargin">
                     <div class="fancy-title title-dotted-border title-center">
-                        <h3>Liens utiles</h3>
+                        <h3><%- __('Liens utiles') %></h3>
                     </div>
                     <div class="row clear-bottommargin">
-
+                        <% for(var i=0; (i< linkSlideshow.slides.length && i< 4) ; i++){%>
                         <div class="col-md-4 col-sm-6 bottommargin">
-                            <div class="promo promo-dark promo-flat promo-mini promo-uppercase promo-right">
-                                <h3>Zephyr 28 pour <span>préserver</span> le patrimoine <span>aéronautique</span>.</h3>
-                                <a href="http://www.zephyr28.com/" class="button button-large button-dark button-rounded">Aller voir</a>
+                            <div class="promo promo-dark promo-mini promo-uppercase  <% if(i%2 ==0){%><%- 'promo-flat' %><%}%>">
+                                <h3><%- linkSlideshow.slides[i].content %></h3>
+                                <a href="<%- linkSlideshow.slides[i].link1 %>" class="button button-large button-dark button-rounded"><%- __('Aller voir') %></a>
                             </div>
                         </div>
-
-                        <div class="col-md-4 col-sm-6 bottommargin">
-                            <div class="promo promo-dark promo-mini promo-center">
-                                <h3>Le site de la<span> Fédération francaise</span> de Vol à voile.</h3>
-                                <a href="http://www.ffvb.org/" class="button button-large button-dark button-rounded">Aller voir</a>
-                            </div>
-                        </div>
-
-                        <div class="clearfix visible-sm"></div>
-
-                        <div class="col-md-4 bottommargin">
-                            <div class="promo promo-dark promo-flat promo-mini promo-uppercase promo-right">
-                                <h3>Date des match de l'équipe de Parachutisme <span>Masculine <i class="icon-line2-symbol-male"></i></span></h3>
-                                <a href="http://www.ffvb.org/front/127-37-1-Competitions-" class="button button-large button-dark button-rounded">Aller voir</a>
-                            </div>
-                        </div>
-
+                        <%}%>
                     </div>
                 </div>
+                <%}%>
                 <div class="promo promo-light promo-full promo-uppercase bottommargin">
                     <div class="container clearfix">
-                        <h3>Appel à cotisation <span>2017</span></h3>
+                        <h3><%- __('Appel à cotisation <span>2017</span>') %></h3>
                         <span>
                         <ul>
-                            <li>Membre actif – Cotisation 20 €   </li>
-                            <li>Membre bienfaiteur – Cotisation 50 €   </li>
-                            <li>Membre ultra-généreux – cotisation à discrétion   </li>
+                            <li><%- __('Membre actif – Cotisation 20 €') %>   </li>
+                            <li><%- __('Membre bienfaiteur – Cotisation 50 €') %>   </li>
+                            <li><%- __('Membre ultra-généreux – cotisation à discrétion') %>   </li>
                         </ul>         
                         </span>
-                        <span>Ordre : FLYIN LFBK – Château des Etourneaux • 03100 Montluçon</span>
-                        <a href="#" class="button button-xlarge button-rounded">Devenir membre</a>
+                        <span><%- __('Ordre : FLYIN LFBK – Château des Etourneaux • 03100 Montluçon') %></span>
+                        <a href="#" class="button button-xlarge button-rounded"><%- __('Devenir membre') %></a>
                     </div>
                 </div>
                 <div class="promo promo-dark promo-full  bottommargin">
                     <div class="container clearfix">
-                        <h3>Newsletter  <span>LFBK</span></h3>
-                        <span>Pour ne recevoir que les informations de l’association FLYIN LFBK <br>& les informations aéronautiques de nos amis, associations sans but lucratif</span>
-                        <a href="#" class="button button-xlarge button-rounded">S'abbonner</a>
+                        <h3><%- __('Newsletter  <span>LFBK</span>') %></h3>
+                        <span><%- __('newletter-text') %></span>
+                        <a href="#" class="button button-xlarge button-rounded"><%- __('S\'abbonner') %></a>
                     </div>
                 </div>
                 <div class="container clearfix bottommargin">
 
                     <div class="fancy-title title-dotted-border title-center">
-                        <h3>Foire aux Questions</h3>
+                        <h3><%- __('Foire aux Questions') %></h3>
                     </div>
 
                     <!-- <p>Votre questions </p> -->
@@ -190,33 +177,37 @@
 
                     <div class="col_half nobottommargin">
 
-                        <h4>Baptème de l'air <small>(3)</small></h4>
+                        <h4><%- __('FAQ-Title-1') %></h4>
 
                         <div class="accordion accordion-border clearfix" data-state="closed">
 
-                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i>How do I become an author?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-
-                            <div class="acctitle"><i class="acc-closed icon-comments-alt"></i><i class="acc-open icon-comments-alt"></i>Helpful Resources for Authors</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.</div>
-
-                            <div class="acctitle"><i class="acc-closed icon-lock3"></i><i class="acc-open icon-lock3"></i>How much money can I make?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!</div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-1-Q-1') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-1-R-1') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-1-Q-2') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-1-R-2') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-1-Q-3') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-1-R-3') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-1-Q-4') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-1-R-4') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-1-Q-5') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-1-R-5') %></div>
 
                         </div>
 
-                        <h4 class="topmargin">Infos Public <small>(5)</small></h4>
+                        <h4 class="topmargin"><%- __('FAQ-Title-2') %></h4>
 
-                        <div class="accordion accordion-border nobottommargin clearfix" data-state="closed">
+                        <div class="accordion accordion-border clearfix" data-state="closed">
 
-                            <div class="acctitle"><i class="acc-closed icon-download-alt"></i><i class="acc-open icon-download-alt"></i>Can I offer my items for free on a promotional basis?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-
-                            <div class="acctitle"><i class="acc-closed icon-ok"></i><i class="acc-open icon-ok"></i>An Introduction to the Marketplaces for Authors</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.</div>
-
-                            <div class="acctitle"><i class="acc-closed icon-credit"></i><i class="acc-open icon-credit"></i>How do I pay for items on the Marketplaces?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!</div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-2-Q-1') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-2-R-1') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-2-Q-2') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-2-R-2') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-2-Q-3') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-2-R-3') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-2-Q-4') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-2-R-4') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-2-Q-5') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-2-R-5') %></div>
 
                         </div>
 
@@ -224,30 +215,37 @@
 
                     <div class="col_half nobottommargin col_last">
 
-                        <h4>Infos pilotes <small>(9)</small></h4>
+                        <h4><%- __('FAQ-Title-3') %></h4>
 
                         <div class="accordion accordion-border clearfix" data-state="closed">
 
-                            <div class="acctitle"><i class="acc-closed icon-picture"></i><i class="acc-open icon-picture"></i>What Images, Videos, Code Can I Use in my Items?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-
-                            <div class="acctitle"><i class="acc-closed icon-file3"></i><i class="acc-open icon-file3"></i>Can I use trademarked names in my items?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.</div>
-
-                            <div class="acctitle"><i class="acc-closed icon-phone3"></i><i class="acc-open icon-phone3"></i>How can I get support for an item?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, fugiat iste nisi tempore nesciunt nemo fuga? Nesciunt, delectus laboriosam nisi repudiandae nam fuga saepe animi recusandae. Asperiores, provident, esse, doloremque, adipisci eaque alias dolore molestias assumenda quasi saepe nisi ab illo ex nesciunt nobis laboriosam iusto quia nulla ad voluptatibus iste beatae voluptas corrupti facilis accusamus recusandae sequi debitis reprehenderit quibusdam. Facilis eligendi a exercitationem nisi et placeat excepturi velit!</div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-3-Q-1') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-3-R-1') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-3-Q-2') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-3-R-2') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-3-Q-3') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-3-R-3') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-3-Q-4') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-3-R-4') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-3-Q-5') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-3-R-5') %></div>
 
                         </div>
 
-                        <h4 class="topmargin">Inscription <small>(3)</small></h4>
+                        <h4 class="topmargin"><%- __('FAQ-Title-4') %></h4>
 
-                        <div class="accordion accordion-border nobottommargin clearfix" data-state="closed">
+                        <div class="accordion accordion-border clearfix" data-state="closed">
 
-                            <div class="acctitle"><i class="acc-closed icon-money"></i><i class="acc-open icon-money"></i>Quel est le prix de l'inscription ?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
-
-                            <div class="acctitle"><i class="acc-closed icon-bar-chart"></i><i class="acc-open icon-bar-chart"></i>Quel document faut-il ramener?</div>
-                            <div class="acc_content clearfix">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, placeat, architecto rem dolorem dignissimos repellat veritatis in et eos doloribus magnam aliquam ipsa alias assumenda officiis quasi sapiente suscipit veniam odio voluptatum. Enim at asperiores quod velit minima officia accusamus cumque eligendi consequuntur fuga? Maiores, quasi, voluptates, exercitationem fuga voluptatibus a repudiandae expedita omnis molestiae alias repellat perferendis dolores dolor.</div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-4-Q-1') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-4-R-1') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-4-Q-2') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-4-R-2') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-4-Q-3') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-4-R-3') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-4-Q-4') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-4-R-4') %></div>
+                            <div class="acctitle"><i class="acc-closed icon-question-sign"></i><i class="acc-open icon-question-sign"></i><%- __('FAQ-4-Q-5') %></div>
+                            <div class="acc_content clearfix"><%- __('FAQ-4-R-5') %></div>
 
                         </div>
 
@@ -256,147 +254,29 @@
                 </div>
                 <div class="container topmargin">
                     <div class="heading-block center  topmargin">
-                        <h2>Notre équipes de Bénévoles</h2>
-                        <span>Ils font tout le nésséssaire afin de rendre l'evenement possible: <br><b>un très grand merci à eux</b>.</span>
+                        <h2><%- __('Notre équipes de Bénévoles') %></h2>
+                        <span><%- __('Benevole-text') %></span>
                     </div>
                     <div class="row clear-bottommargin">
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Alix Momcilovic">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Alix Momcilovic</h4><span>Grande Chef de tout</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
+                        <% if(beneSlideshow && beneSlideshow.slides.length > 0){%>
+                                <% for(var i=0; (i< beneSlideshow.slides.length && i< 4) ; i++){%>
+                                <div class="col-md-6 bottommargin">
+                                    <div class="team team-list clearfix">
+                                        <div class="team-image">
+                                             <% if(beneSlideshow.slides[i].images && beneSlideshow.slides[i].images.length){%>
+                                                <img src="image/resized/<%- beneSlideshow.slides[i].images[0].filename %>" alt="<%- beneSlideshow.slides[i].title %>">
+                                             <%}%>
+                                        </div>
+                                        <div class="team-desc">
+                                            <div class="team-title"><h4><%- beneSlideshow.slides[i].title %></h4><span><%- beneSlideshow.slides[i].btn %></span></div>
+                                            <div class="team-content">
+                                                <%- beneSlideshow.slides[i].content %>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Béatrice Paris</h4><span>Coordinations Générale</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Thierry Paris</h4><span>Coordination au sol</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Nix Maxwell</h4><span>Coordination en l'air</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Alix Momcilovic">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Alix Momcilovic</h4><span>Grande Chef de tout</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Béatrice Paris</h4><span>Coordinations Générale</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Thierry Paris</h4><span>Coordination au sol</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Nix Maxwell</h4><span>Coordination en l'air</span></div>
-                                    <div class="team-content">
-                                        <ul>
-                                            <li>Email : gegregregregre@gergre.fr</li>
-                                            <li>Téléphone : 06 32 54 65 87</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                                <%}%>
+                        <%}%>
                     </div>
                 </div>
 
