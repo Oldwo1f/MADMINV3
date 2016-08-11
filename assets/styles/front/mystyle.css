@@ -36,3 +36,37 @@ BLEU  #262C63
 Bleu Claire #3AA8E0
 
 */
+.slider-wrap img {width:100%;}
+.flex-control-nav li a, .flex-control-nav li a {border-color:#111;}
+.flex-control-nav li:hover a, .flex-control-nav li a.flex-active{ background-color:#111;}
+.flex-control-nav{right: 30px;top: 24px;}
+.portfolio-1 .portfolio-desc{padding-top: 20px}
+.portfolio-1 .portfolio-desc span.m2{font-size: 1.5em;margin-top: -10px}
+.slidebg{background: url('/../images/front/projets/projetVide.png')}
+.slidebg:nth-child(3n+1){background: url('/../images/front/projets/projetVide2.png')}
+.slidebg:nth-child(3n+2){background: url('/../images/front/projets/projetVide3.png')}
+.portfolio-filter li.activeFilter a{background: #262C63;}
+h1 > span:not(.nocolor), h2 > span:not(.nocolor), h3 > span:not(.nocolor), h4 > span:not(.nocolor), h5 > span:not(.nocolor), h6 > span:not(.nocolor){color:#262C63;}
+.button,.button.button-3d:hover{background-color:#262C63 !important}
+.button:hover{background: #262C63;
+background: -moz-linear-gradient(45deg, rgba(38,44,99,1) 0%, rgba(58,169,224,1) 100%) !important;
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(38,44,99,1)), color-stop(100%, rgba(58,169,224,1))) !important;
+background: -webkit-linear-gradient(45deg, rgba(38,44,99,1) 0%, rgba(58,169,224,1) 100%) !important;
+background: -o-linear-gradient(45deg, rgba(38,44,99,1) 0%, rgba(58,169,224,1) 100%) !important;
+background: -ms-linear-gradient(45deg, rgba(38,44,99,1) 0%, rgba(58,169,224,1) 100%) !important;
+background: linear-gradient(45deg, rgba(38,44,99,1) 0%, rgba(58,169,224,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262c63', endColorstr='#3aa9e0', GradientType=1 ) !important;}
+/*{background: }*/
+.twoImgContainer { width: 720px;height: 400px;position: relative;}
+.twoImgContainer img{position: absolute;left: 0;top:0;}
+.twoImgContainer img.couleur{opacity:0; transition:opacity 0.5s ease-out;}
+.slide:hover .twoImgContainer img.couleur{opacity:1; transition:opacity 1s ease-in;}
+.portfolio-filter li a:hover{color:#262C63;}
+.breadcrumb a:hover{color:#262C63;}
+.breadcrumb li.active{color:#262C63;}
+
+.headerlogo{position:relative;float:left;margin-right: 40px;margin-top: -25px;}
+#page-title{padding: 50px 0 40px 0px;}
+.process-steps li.active a, .process-steps li.ui-tabs-active a {background-color:#262C63 !important;border-color:#262C63 !important;}
+.process-steps li.active h5, .process-steps li.ui-tabs-active h5{color:#262C63;}
+.process-steps li{margin-bottom: 30px;}

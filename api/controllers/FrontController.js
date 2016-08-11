@@ -54,6 +54,100 @@ module.exports = {
 	    // })
 
 		
+	}, 
+	maisons:function(req,res,next){
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		console.log('HOME');
+		// var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
+	 //    .limit(4).populateAll();
+
+		// articlesPromise
+	 //    .then(function(articles) {   
+	 //        var articlesWithAuthorsPromises = articles.map(function(article) {
+	 //            var authorsPromises = article.authors.map(function(author) {
+	 //                return User.findOne(author.id).populateAll();
+	 //            });
+
+	 //            return Promise.all(authorsPromises)
+	 //                  .then(function(fullfilledAuthors) {
+	 //                  	  article = article.toObject()
+	 //                      article.authors = fullfilledAuthors;
+	 //                      article.content = truncate(article.content, 250)
+	 //                      return article;
+	 //                   })
+	 //        })
+
+	 //        return Promise.all(articlesWithAuthorsPromises)
+	 //    })
+	 //   .then(function(articles) {
+	   		
+	   		// result.articles = articles
+	   		
+	   		
+	   		res.status(200).view('front/maisons',{
+				// articles:articles,
+				// articles: articles,
+				title: req.__('SEO_MAISON_title'),
+				keyword: req.__('SEO_MAISON_keyword'),
+				description:req.__('SEO_MAISON_description'),
+				scripturl:'home.js',
+				menu:'home',
+				baseurl:'',
+
+			})
+
+
+	    // })
+
+		
+	},
+	modeles:function(req,res,next){
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		console.log('modeles');
+		// var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
+	 //    .limit(4).populateAll();
+
+		// articlesPromise
+	 //    .then(function(articles) {   
+	 //        var articlesWithAuthorsPromises = articles.map(function(article) {
+	 //            var authorsPromises = article.authors.map(function(author) {
+	 //                return User.findOne(author.id).populateAll();
+	 //            });
+
+	 //            return Promise.all(authorsPromises)
+	 //                  .then(function(fullfilledAuthors) {
+	 //                  	  article = article.toObject()
+	 //                      article.authors = fullfilledAuthors;
+	 //                      article.content = truncate(article.content, 250)
+	 //                      return article;
+	 //                   })
+	 //        })
+
+	 //        return Promise.all(articlesWithAuthorsPromises)
+	 //    })
+	 //   .then(function(articles) {
+	   		
+	   		// result.articles = articles
+	   		
+	   		
+	   		res.status(200).view('front/modeles',{
+				// articles:articles,
+				// articles: articles,
+				title: req.__('SEO_MAISON_title'),
+				keyword: req.__('SEO_MAISON_keyword'),
+				description:req.__('SEO_MAISON_description'),
+				scripturl:'home.js',
+				menu:'home',
+				baseurl:'',
+
+			})
+
+
+	    // })
+
+		
 	},
 	article:function(req,res,next){
 		console.log(req.params.id);

@@ -119,5 +119,8 @@ module.exports.routes = {
   //FRONT
 
   'GET /':'FrontController.home',
+  'GET /maisons':'FrontController.maisons',
+  'GET /modeles':'FrontController.modeles',
+  'GET /modele/:id':'FrontController.modele',
 
 };
