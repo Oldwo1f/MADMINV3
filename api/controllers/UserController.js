@@ -19,7 +19,7 @@ module.exports = {
 		user.email ='alexismomcilovic@gmail.com';
 
 		User.create(user, function(err, user) {
-
+			console.log(err);
 			if (!user) {
 				return res.status(401).send({ message: 'Invalid email and/or password' });
 			}

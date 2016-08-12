@@ -1,0 +1,416 @@
+<body class="stretched">
+
+    <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+       <% include menu.ejs %>
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
+
+            <div class="container clearfix">
+                <h1>L'école de Volley: Poussins & Pupilles</h1>
+                <!-- <div id="portfolio-navigation">
+                    <a href="#"><i class="icon-angle-left"></i></a>
+                    <a href="#"><i class="icon-line-grid"></i></a>
+                    <a href="#"><i class="icon-angle-right"></i></a>
+                </div> -->
+            </div>
+
+        </section><!-- #page-title end -->
+
+        <!-- Portfolio Single Gallery
+        ============================================= -->
+        <section id="slider" class="slider-parallax swiper_wrapper clearfix" style="height: 600px;">
+
+            <div class="swiper-container swiper-parent">
+                <div class="swiper-wrapper">
+                    <!-- <div class="swiper-slide" style="background-image: url('images/volley/.jpg');"></div> -->
+                    <div class="swiper-slide" style="background-image: url('images/volley/poussinsgroupe.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/4.jpg');"></div>
+                </div>
+                <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+            </div>
+
+            <script>
+                jQuery(document).ready(function($){
+                    var swiperSlider = new Swiper('.swiper-parent',{
+                        paginationClickable: false,
+                        slidesPerView: 1
+                    });
+
+                    $('#slider-arrow-left').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipePrev();
+                    });
+
+                    $('#slider-arrow-right').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipeNext();
+                    });
+                });
+            </script>
+
+        </section><!-- .portfolio-single-image end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap">
+
+                <div class="container clearfix">
+
+                    <div class="col_half">
+
+                        <h3>Pré-requis</h3>
+
+                        <p>Nous acceptons tout le monde, même les plus petits sont les bienvenues. <br>
+                            La seul condition est de pouvoir ratraper un ballon <br>
+                           
+                         Il faut aussi venir avec de la bonne hummeur.</p>
+
+                    </div>
+
+                    <div class="col_half col_last">
+
+                        <h3>Notre politique</h3>
+
+                        <p>Tout le monde s'amuse<br>
+                            Le fun avant tout <br>
+                            La compétition n'est pas obligatoire
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="container clearfix bottommargin poussinText">
+
+                    <h3 class="bottommargin">Voila se que l'on fait à l'école du volley</h3>
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-th"></i></a>
+                            </div>
+                            <h3>de la Coordination</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="200">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-params"></i></a>
+                            </div>
+                            <h3>des Sauts</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third col_last">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="400">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-screenshot"></i></a>
+                            </div>
+                            <h3>de la Présisions</h3>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="600">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-dribbble"></i></a>
+                            </div>
+                            <h3>du Controle de balle</h3>
+                        </div>
+                    </div>
+
+                    
+                    <div class="col_one_third nobottommargin">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1200">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-bolt2"></i></a>
+                            </div>
+                            <h3>de la Vitesse</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third nobottommargin col_last">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1400">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-double-angle-down"></i></a>
+                            </div>
+                            <h3>des Plongeons</h3>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="800">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-study"></i></a>
+                            </div>
+                            <h3>Apprentissage volley</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third ">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1000">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-trophy"></i></a>
+                            </div>
+                            <h3>Volley Compétition</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third col_last">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1600">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-stethoscope"></i></a>
+                            </div>
+                            <h3>et On ne se blesse pas</h3>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                    <ul class="testimonials-grid grid-3 clearfix topmargin bottommargin" style="padding-left:0px;">
+                        <li style="height: 197px;">
+                            <div class="testimonial">
+                                <div class="testi-image">
+                                    <a href="#"><img src="/images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+                                </div>
+                                <div class="testi-content">
+                                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum repellendus!</p>
+                                    <div class="testi-meta">
+                                        Lenny
+                                        <span>7 ans</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="height: 197px;">
+                            <div class="testimonial">
+                                <div class="testi-image">
+                                    <a href="#"><img src="/images/testimonials/2.jpg" alt="Customer Testimonails"></a>
+                                </div>
+                                <div class="testi-content">
+                                    <p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
+                                    <div class="testi-meta">
+                                        Leïlou
+                                        <span>6 ans</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="height: 197px;">
+                            <div class="testimonial">
+                                <div class="testi-image">
+                                    <a href="#"><img src="/images/testimonials/7.jpg" alt="Customer Testimonails"></a>
+                                </div>
+                                <div class="testi-content">
+                                    <p>Fugit officia dolor sed harum excepturi ex iusto magnam asperiores molestiae qui natus obcaecati facere sint amet.</p>
+                                    <div class="testi-meta">
+                                        Mathilde
+                                        <span>5 ans</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="height: 197px;">
+                            <div class="testimonial">
+                                <div class="testi-image">
+                                    <a href="#"><img src="/images/testimonials/3.jpg" alt="Customer Testimonails"></a>
+                                </div>
+                                <div class="testi-content">
+                                    <p>Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?</p>
+                                    <div class="testi-meta">
+                                        Sean
+                                        <span>8 ans</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="height: 197px;">
+                            <div class="testimonial">
+                                <div class="testi-image">
+                                    <a href="#"><img src="/images/testimonials/4.jpg" alt="Customer Testimonails"></a>
+                                </div>
+                                <div class="testi-content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, perspiciatis illum totam dolore deleniti labore.</p>
+                                    <div class="testi-meta">
+                                        Marie
+                                        <span>10 ans</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="height: 197px;">
+                            <div class="testimonial">
+                                <div class="testi-image">
+                                    <a href="#"><img src="/images/testimonials/8.jpg" alt="Customer Testimonails"></a>
+                                </div>
+                                <div class="testi-content">
+                                    <p>Porro dolorem saepe reiciendis nihil minus neque. Ducimus rem necessitatibus repellat laborum nemo quod.</p>
+                                    <div class="testi-meta">
+                                        Lola
+                                        <span>6 ans</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                    <div class="clear"></div>
+
+                <a class="button button-primary button-full center tright" href="/contact">
+                    <div class="container clearfix">
+                        On à besoins de toi pour <strong>renforcer nos équipes</strong><i class="icon-caret-right" style="top:4px;"></i> Viens essayer <strong>Gratuitement</strong>
+                    </div>
+                </a>
+                    <div class="clear"></div>
+
+                <div class="section dark nomargin noborder" style="height: 550px;">
+                    <div class="container vertical-middle center clearfix">
+                        <i class="i-plain i-large icon-line-video divcenter" data-animate="fadeInDown"></i>
+                        <div class="emphasis-title nomargin" data-animate="fadeInUp">
+                            <h2 style="font-size: 56px;">Un Entrainement <br><span><small>17h30 - 19h</small></span></h2>
+                        </div>
+                    </div>
+                    <div class="video-wrap">
+                        <video poster="images/videos/explore-poster.jpg" preload="auto" loop autoplay muted>
+                            <source src='images/videos/explore.mp4' type='video/mp4' />
+                            <source src='images/videos/explore.webm' type='video/webm' />
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
+                </div>
+
+                <div class="section dark notopmargin nobottommargin noborder" style="padding: 60px 0;background-color: #222;">
+                    <div class="container-fluid clearfix">
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn">
+                            <div class="counter counter-large" style="color: #1abc9c;"><span data-from="0" data-to="12" data-refresh-interval="10" data-speed="1500"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Match gagné</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn" data-delay="200">
+                            <div class="counter counter-large" style="color: #e74c3c;"><span data-from="0" data-to="7" data-refresh-interval="10" data-speed="2000"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Match perdu</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn" data-delay="400">
+                            <div class="counter counter-large" style="color: #e67e22;"><span data-from="0" data-to="19" data-refresh-interval="10" data-speed="2500"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Joueurs</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn" data-delay="600">
+                            <div class="counter counter-large" style="color: #3498db;"><span data-from="0" data-to="4" data-refresh-interval="10" data-speed="2000"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Équipes en compétions</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center col_last" data-animate="bounceIn" data-delay="800">
+                            <div class="counter counter-large" style="color: #9b59b6;"><span data-from="49000" data-to="49985" data-refresh-interval="10" data-speed="4000" ></span></div>
+                            <h5 title="Chiffre aproximatif" style="cursor:pointer">Bombecs avalés</h5>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 nopadding common-height ohidden">
+                    <div class="col-md-6 col-padding" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;">
+                        <div>&nbsp;</div>
+                    </div>
+                    <div class="col-md-6 col-padding">
+
+                        <div class="clearfix">
+                            <h3>Coach : Alexis</h3>
+
+                            <div class="col-sm-9 nopadding topmargin-sm clearfix">
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect" data-animate="fadeIn">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-et-happy"></i></a>
+                                    </div>
+                                    <h3>Fun/délire</h3>
+                                    <p>Un gymnase et quelques ballons suffisent pour l'enchanter. Hiver comme été l'important c'est de s'amuser.</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="200">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-et-strategy"></i></a>
+                                    </div>
+                                    <h3>Tactique</h3>
+                                    <p>Un ballon facile sur le moins bon joueur vaut mieux qu'un difficile sur le meuilleur.</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="400">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-food"></i></a>
+                                    </div>
+                                    <h3>Gourmandise</h3>
+                                    <p>Sucré ou salé, il n'arrête pas de s'empiffrer. Heuresement pour ses coéquipiers, il aime bien partager.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+                <div class="section nomargin">
+                    <div class="container clearfix">
+                        <div class="heading-block center nomargin">
+                            <h3>À propos de l'équipe</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=""  style="margin: 20px 0px">
+                    <div class="container clearfix">
+                        <% if( project.content && project.content){%>
+                                <%- marked(project.content) %>                        
+                        <% } %>  
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+                <div class="section nomargin">
+                    <div class="container clearfix">
+                        <div class="heading-block center nomargin">
+                            <h3>Quelques photos</h3>
+                        </div>
+                    </div>
+                </div>
+                <% if( project.images && project.images.length){%>  
+                <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
+                    <% for(var i=0; i<project.images.length; i++) {%>
+                    <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
+                    <% } %>  
+                </div>
+                <% } %> 
+
+                
+
+            </div>
+
+        </section><!-- #content end -->
+
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <!-- // <script type="text/javascript" src="js/functions.js"></script> -->
+
+</body>
