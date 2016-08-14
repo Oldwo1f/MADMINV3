@@ -8,14 +8,34 @@
         ============================================= -->
         <section id="page-title" class="">
 
-            <div class="container clearfix">
+           <% if(thiscategory){%>
+                <div class="container clearfix">
+                    <span></span>
+                    <!-- <ol class="breadcrumb"> -->
+                        <!-- <li><a href="#">Home</a></li> -->
+                        <!-- <li class="active">Blog</li> -->
+                    <!-- </ol> -->
+                    <% if(thiscategory && thiscategory.images.length ){%>
+                        <div style="margin-bottom:20px;">
+                            <img class="myimgcat" src="image/resized/<%= thiscategory.images[0].filename %>" alt="<%= thiscategory.name %>">
+                            <h1 class="h1absolute"><%= thiscategory.name %></h1>
+
+                        </div>
+                    <%}else{%>
+                        <h1><%- __('blog-title') %></h1>
+                        <span><%= thiscategory.name %></span>
+                    <%}%> 
+                </div>
+            <%}else{%> 
+                <div class="container clearfix">
                 <h1><%- __('blog-title') %></h1>
                 <span><%- __('blog-subtitle') %></span>
                 <!-- <ol class="breadcrumb"> -->
                     <!-- <li><a href="#">Home</a></li> -->
                     <!-- <li class="active">Blog</li> -->
                 <!-- </ol> -->
-            </div>
+                </div>
+            <%}%> 
 
         </section><!-- #page-title end -->
         
@@ -24,10 +44,7 @@
 
 var articles = <%- JSON.stringify(articles) %>;
         console.log(articles);
-var recent = <%- JSON.stringify(recent) %>;
-        console.log(recent);
-var popular = <%- JSON.stringify(popular) %>;
-        console.log(popular);
+
 </script>
         <!-- Content
         ============================================= -->
@@ -60,7 +77,7 @@ var popular = <%- JSON.stringify(popular) %>;
                                 <% if(articles[i].video && articles[i].publishVideo){%>
                                      <%- articles[i].video  %> 
                                 <% }else if(articles[i].images.length == 1){%>
-                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" ><img class="image_fade" src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" alt="<%-articles[i].images[0].img.alt %>"></a>
+                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" ><img class="image_fade" src="image/resized/<%-articles[i].images[0].filename %>" alt="<%-articles[i].images[0].alt %>"></a>
                                     
 
                                  <%} else if(articles[i].images.length > 1){%>
@@ -68,9 +85,9 @@ var popular = <%- JSON.stringify(popular) %>;
                                         <div class="flexslider">
                                             <div class="slider-wrap">
                                                  <% for(var j=0; j< articles[i].images.length ; j++){%>
-                                                    <% if(articles[i].images[j].img){%>
+                                                    <% if(articles[i].images[j]){%>
                                                       
-                                                        <div class="slide" ><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl %>"><img src="file/image/originalsize/<%- articles[i].images[j].img.filename %>" alt=""></a></div>
+                                                        <div class="slide" ><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl %>"><img src="image/resized/<%- articles[i].images[j].filename %>" alt=""></a></div>
                                                     <%}%>
                                                  <%}%>
                                             </div>
@@ -95,7 +112,7 @@ var popular = <%- JSON.stringify(popular) %>;
                                     <%}%>
                                 </ul>
                                 <div class="entry-content">
-                                    <%- marked(articles[i].content) %>
+                                    <%- articles[i].content %>
                                     <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"class="more-link"><%- __('readmore') %></a>
                                 </div>
                             </div>
@@ -109,8 +126,7 @@ var popular = <%- JSON.stringify(popular) %>;
 
                     </div><!-- .postcontent end -->
 
-                   <% include sidebar.ejs %>
-
+                    <%- include sidebar.ejs %>
                 </div>
 
             </div>

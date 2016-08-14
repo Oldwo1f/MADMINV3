@@ -24,7 +24,7 @@ module.exports = {
         videoUrl:{type:'text',defaultsTo:null},
         videoHost:{type:'text',defaultsTo:null},
         categories:{collection:'category', via: 'projects',dominant:true},
-
+        players:{collection:'player', via: 'projects',dominant:true}, 
         // categorie: {collection: 'categoryArticle',defaultsTo:[]},
         tags:{collection:'tag', via: 'projects',dominant:true},
         documents:{collection:'document',defaultsTo:[]},

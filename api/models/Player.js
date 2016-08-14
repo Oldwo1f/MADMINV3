@@ -11,68 +11,80 @@ schema: true,
   		name:{type:'string',required:true},
   		poste:{type:'int',defaultsTo:0},
   		dateofbirth:{type:'int',defaultsTo:0},
-        nbProjects:{type:'int',defaultsTo:0},
-  		total:{type:'int',defaultsTo:0},
-        articles:{collection:'article', via: 'tags'},
-        projects:{collection:'project', via: 'tags'},
+        projects:{collection:'project', via: 'players'},
+        taille:{type:'int',defaultsTo:0},
+        detente:{type:'int',defaultsTo:0},
+        attaque:{type:'int',defaultsTo:0},
+        contre:{type:'int',defaultsTo:0},
+        defence:{type:'int',defaultsTo:0},
+        recep:{type:'int',defaultsTo:0},
+        passe:{type:'int',defaultsTo:0},
+        plongeon:{type:'int',defaultsTo:0},
+        service:{type:'int',defaultsTo:0},
+        vision:{type:'int',defaultsTo:0},
+        mail:{type:'int',defaultsTo:0},
+        facebook:{type:'int',defaultsTo:0},
+        twitter:{type:'int',defaultsTo:0},
+        instagram:{type:'int',defaultsTo:0},
+        snapchat:{type:'int',defaultsTo:0},
         selfUpdate:function(options,cb){
         
-        if(options.parentType == 'project')
-        {
-            if(options.verb == 'add'){
+        // if(options.parentType == 'project')
+        // {
+        //     if(options.verb == 'add'){
 
-                Tag.findOne(this.id).then(function(data){
-                    data.nbProjects= Number(data.nbProjects)+1;
-                    data.total= Number(data.total)+1;
-                    return Tag.update(data.id ,
-                    {
-                        nbProjects : data.nbProjects,
-                        total : data.total
-                    }).then(function(result){
+        //         Tag.findOne(this.id).then(function(data){
+        //             data.nbProjects= Number(data.nbProjects)+1;
+        //             data.total= Number(data.total)+1;
+        //             return Tag.update(data.id ,
+        //             {
+        //                 nbProjects : data.nbProjects,
+        //                 total : data.total
+        //             }).then(function(result){
 
-                        Tag.publishUpdate( data.id , {
-                                nbProjects : data.nbProjects,
-                                total : data.total
-                        } )
-                        cb(null,result[0]);
+        //                 Tag.publishUpdate( data.id , {
+        //                         nbProjects : data.nbProjects,
+        //                         total : data.total
+        //                 } )
+        //                 cb(null,result[0]);
                         
-                    })
+        //             })
                    
-                }).catch(function (err) {
-                    cb(err,null);
-                });
-            }
+        //         }).catch(function (err) {
+        //             cb(err,null);
+        //         });
+        //     }
         
-            if(options.verb == 'remove'){
+        //     if(options.verb == 'remove'){
 
-              Tag.findOne(this.id).then(function(data){
-                    data.nbProjects= Number(data.nbProjects) -1;
-                    data.total= Number(data.total) -1;
-                    if(data.total<=0){
-                        return Tag.destroy(data.id).then(function(result){
-                            cb(null,result[0]);
-                            Tag.publishDestroy( data.id )
-                        })
-                    }else{
-                        return Tag.update(data.id ,
-                        {
-                            nbProjects : data.nbProjects,
-                            total : data.total
-                        }).then(function(result){
-                            Tag.publishUpdate( data.id , {
-                                nbProjects : data.nbProjects,
-                                total : data.total
-                            } )
-                            cb(null,result);
-                        })
+        //       Tag.findOne(this.id).then(function(data){
+        //             data.nbProjects= Number(data.nbProjects) -1;
+        //             data.total= Number(data.total) -1;
+        //             if(data.total<=0){
+        //                 return Tag.destroy(data.id).then(function(result){
+        //                     cb(null,result[0]);
+        //                     Tag.publishDestroy( data.id )
+        //                 })
+        //             }else{
+        //                 return Tag.update(data.id ,
+        //                 {
+        //                     nbProjects : data.nbProjects,
+        //                     total : data.total
+        //                 }).then(function(result){
+        //                     Tag.publishUpdate( data.id , {
+        //                         nbProjects : data.nbProjects,
+        //                         total : data.total
+        //                     } )
+        //                     cb(null,result);
+        //                 })
 
-                    }
+        //             }
                    
-                }).catch(function (err) {
-                    cb(err,null);
-                });
-            }
-        }
+        //         }).catch(function (err) {
+        //             cb(err,null);
+        //         });
+        //     }
+        // }
 
 
 

@@ -15,7 +15,7 @@
         ============================================= -->
         <section id="slider" class="slider-parallax full-screen force-full-screen">
              <div id="logobig">
-                        <a href="/" class="standard-logo" data-dark-logo="images/ctvblogo.svg"><img src="images/ctvblogo.svg" alt="CTVB - chateau thierry volley ball Logo" height="100%" width="100%"></a>
+                        <a href="/" class="standard-logo" data-dark-logo="images/front/ctvblogo.svg"><img src="images/front/ctvblogo.svg" alt="CTVB - chateau thierry volley ball Logo" height="100%" width="100%"></a>
                         
             </div>
 
@@ -26,9 +26,9 @@
                         <!-- <h2 class="nobottommargin ls1 font-body">Concentration.</h2> -->
                     </div>
                     <div class="video-wrap">
-                        <video id="slide-video" poster="images/videos/1.png" preload="auto" loop muted>
-                            <source src='images/videos/1.webm' type='video/webm' />
-                            <source src='images/videos/1.mp4' type='video/mp4' />
+                        <video id="slide-video" poster="images/front/videos/1.png" preload="auto" loop muted>
+                            <source src='images/front/videos/1.webm' type='video/webm' />
+                            <source src='images/front/videos/1.mp4' type='video/mp4' />
                         </video>
                         <div class="video-overlay" style="background-color: rgba(0,91,150, 0.4);"></div>
                     </div>
@@ -38,9 +38,9 @@
                         <!-- <h2 class="nobottommargin ls1 font-body">Travail d'équipe.</h2> -->
                     </div>
                     <div class="video-wrap">
-                        <video id="slide-video" poster="images/videos/5.png" preload="auto" loop muted>
-                            <source src='images/videos/5.webm' type='video/webm' />
-                            <source src='images/videos/5.mp4' type='video/mp4' />
+                        <video id="slide-video" poster="images/front/videos/5.png" preload="auto" loop muted>
+                            <source src='images/front/videos/5.webm' type='video/webm' />
+                            <source src='images/front/videos/5.mp4' type='video/mp4' />
                         </video>
                         <div class="video-overlay" style="background-color: rgba(0,91,150, 0.4);"></div>
                     </div>
@@ -50,9 +50,9 @@
                         <!-- <h2 class="nobottommargin ls1 font-body">Du sol au plafond.</h2> -->
                     </div>
                     <div class="video-wrap">
-                        <video id="slide-video" poster="images/videos/5.png" preload="auto" loop muted>
-                            <source src='images/videos/5.webm' type='video/webm' />
-                            <source src='images/videos/5.mp4' type='video/mp4' />
+                        <video id="slide-video" poster="images/front/videos/5.png" preload="auto" loop muted>
+                            <source src='images/front/videos/5.webm' type='video/webm' />
+                            <source src='images/front/videos/5.mp4' type='video/mp4' />
                         </video>
                         <div class="video-overlay" style="background-color: rgba(0,91,150, 0.4);"></div>
                     </div>
@@ -62,9 +62,9 @@
                         <!-- <h2 class="nobottommargin ls1 font-body">Technicité.</h2> -->
                     </div>
                     <div class="video-wrap">
-                        <video id="slide-video" poster="images/videos/1.png" preload="auto" loop muted>
-                            <source src='images/videos/1.webm' type='video/webm' />
-                            <source src='images/videos/1.mp4' type='video/mp4' />
+                        <video id="slide-video" poster="images/front/videos/1.png" preload="auto" loop muted>
+                            <source src='images/front/videos/1.webm' type='video/webm' />
+                            <source src='images/front/videos/1.mp4' type='video/mp4' />
                         </video>
                         <div class="video-overlay" style="background-color: rgba(0,91,150, 0.4)"></div>
                     </div>
@@ -112,7 +112,7 @@
 
                                 <div class="team">
                                     <div class="team-image">
-                                        <img src="images/team/1.jpg" alt="John Doe">
+                                        <img src="images/front/team/1.jpg" alt="John Doe">
                                         <div class="team-overlay">
                                             <div class="team-social-icons">
                                                 <a href="#" class="social-icon si-borderless si-small si-facebook" title="Facebook">
@@ -141,7 +141,7 @@
 
                                 <div class="team">
                                     <div class="team-image">
-                                        <img src="images/team/2.jpg" alt="Josh Clark">
+                                        <img src="images/front/team/2.jpg" alt="Josh Clark">
                                         <div class="team-overlay">
                                             <div class="team-social-icons">
                                                 <a href="#" class="social-icon si-borderless si-small si-twitter" title="Twitter">
@@ -170,7 +170,7 @@
 
                                 <div class="team">
                                     <div class="team-image">
-                                        <img src="images/team/3.jpg" alt="Mary Jane">
+                                        <img src="images/front/team/3.jpg" alt="Mary Jane">
                                         <div class="team-overlay">
                                             <div class="team-social-icons">
                                                 <a href="#" class="social-icon si-borderless si-small si-twitter" title="Twitter">
@@ -209,7 +209,7 @@
                             <script>
 
 var articles = <%- JSON.stringify(articles) %>;
-        // console.log(articles);
+        console.log(articles);
                             </script>
                             <div class="row  clearfix">
                                 <h2 class="center uppercase t300 ls3 font-body colorwhite">À la Une</h2>
@@ -221,15 +221,17 @@ var articles = <%- JSON.stringify(articles) %>;
                                             <div class="entry-image nobottommargin">
                                                 
                                                 <% if(articles[i].images.length >= 1){%>
-                                                <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><img src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" class="image_fade"alt="<%-articles[i].images[0].img.alt %>"></a>
+                                                <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><img src="/image/resized/<%-articles[i].images[0].filename %>" class="image_fade"alt="<%-articles[i].images[0].filename %>"></a>
 
                                                 <%} %>
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-top: 20px;">
-                                             <% if(articles[i].category){%>
-                                        
-                                            <span class="before-heading colorwhite" style="font-style: normal;"><%- articles[i].category.name %> </span>
+                                            <% if(articles[i].categories.length > 0){%>
+                                                <% for(var j=0; j< articles[i].categories.length ; j++){%>
+                                                    <span class="before-heading colorwhite" style="font-style: normal; display: inline-block;"><%- articles[i].categories[j].name %><% if(articles[i].categories.length > j+1){%>,<%}%></span>
+                                                     
+                                                <%}%>
                                             <%}%>
                                             <div class="entry-title">
                                                 <h3 class="t400 colorwhite2" style="font-size: 22px;"><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><%- articles[i].title %></a></h3>
@@ -269,7 +271,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         <article class="portfolio-item pf-media pf-icons wide">
                             <div class="portfolio-image">
                                 <a href="#">
-                                    <img src="images/portfolio/mixed/1.jpg" alt="Open Imagination">
+                                    <img src="images/front/portfolio/mixed/1.jpg" alt="Open Imagination">
                                 </a>
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-desc">
@@ -283,7 +285,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         <article class="portfolio-item pf-illustrations">
                             <div class="portfolio-image">
                                 <a href="#">
-                                    <img src="images/portfolio/mixed/2.jpg" alt="Locked Steel Gate">
+                                    <img src="images/front/portfolio/mixed/2.jpg" alt="Locked Steel Gate">
                                 </a>
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-desc">
@@ -297,7 +299,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         <article class="portfolio-item pf-graphics pf-uielements">
                             <div class="portfolio-image">
                                 <a href="#">
-                                    <img src="images/portfolio/mixed/3.jpg" alt="Mac Sunglasses">
+                                    <img src="images/front/portfolio/mixed/3.jpg" alt="Mac Sunglasses">
                                 </a>
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-desc">
@@ -311,7 +313,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         <article class="portfolio-item pf-media pf-icons wide">
                             <div class="portfolio-image">
                                 <a href="#">
-                                    <img src="images/portfolio/mixed/4.jpg" alt="Open Imagination">
+                                    <img src="images/front/portfolio/mixed/4.jpg" alt="Open Imagination">
                                 </a>
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-desc">
@@ -325,7 +327,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         <article class="portfolio-item pf-uielements pf-media wide">
                             <div class="portfolio-image">
                                 <a href="#">
-                                    <img src="images/portfolio/mixed/5.jpg" alt="Console Activity">
+                                    <img src="images/front/portfolio/mixed/5.jpg" alt="Console Activity">
                                 </a>
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-desc">
@@ -339,7 +341,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         <article class="portfolio-item pf-media pf-icons">
                             <div class="portfolio-image">
                                 <a href="#">
-                                    <img src="images/portfolio/mixed/6.jpg" alt="Open Imagination">
+                                    <img src="images/front/portfolio/mixed/6.jpg" alt="Open Imagination">
                                 </a>
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-desc">
@@ -353,7 +355,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         <article class="portfolio-item pf-uielements pf-icons">
                             <div class="portfolio-image">
                                 <a href="#">
-                                    <img src="images/portfolio/mixed/7.jpg" alt="Backpack Contents">
+                                    <img src="images/front/portfolio/mixed/7.jpg" alt="Backpack Contents">
                                 </a>
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-desc">
@@ -407,7 +409,7 @@ var articles = <%- JSON.stringify(articles) %>;
 
                     <div class="common-height clearfix">
 
-                        <div class="col-md-4 hidden-xs" style="background: url('images/volley/sf6.jpg') center left no-repeat; background-size: cover;"></div>
+                        <div class="col-md-4 hidden-xs" style="background: url('images/front/volley/sf6.jpg') center left no-repeat; background-size: cover;"></div>
                         <div class="col-md-8">
                             <div class="max-height">
                                 <div class="row common-height grid-border clearfix">
@@ -478,7 +480,7 @@ var articles = <%- JSON.stringify(articles) %>;
                         </div>
                     </div>
 
-                    <div class="section parallax nomargin dark" style="background: url('images/volley/ctvb1.jpg') center top / cover no-repeat; padding: 150px 0;" data-stellar-background-ratio="1.3">
+                    <div class="section parallax nomargin dark" style="background: url('images/front/volley/ctvb1.jpg') center top / cover no-repeat; padding: 150px 0;" data-stellar-background-ratio="1.3">
 
                         <div class="container clearfix">
 
@@ -529,16 +531,16 @@ var articles = <%- JSON.stringify(articles) %>;
                     <h2 class="center uppercase t300 ls3 font-body">Un très très grand merci à nos sponsores</h2>
                     <div id="oc-clients" class="owl-carousel topmargin image-carousel">
 
-                        <div class="oc-item"><a href="#"><img src="images/clients/1.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/2.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/3.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/4.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/5.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/6.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/7.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/8.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/9.png" alt="Clients"></a></div>
-                        <div class="oc-item"><a href="#"><img src="images/clients/10.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/1.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/2.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/3.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/4.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/5.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/6.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/7.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/8.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/9.png" alt="Clients"></a></div>
+                        <div class="oc-item"><a href="#"><img src="images/front/clients/10.png" alt="Clients"></a></div>
 
                     </div>
 
@@ -603,7 +605,7 @@ var articles = <%- JSON.stringify(articles) %>;
                     </div>
 
                     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-                    <script type="text/javascript" src="../js/jquery.gmap.js"></script>
+                    <script type="text/javascript" src="../js/front/jquery.gmap.js"></script>
 
                     <script type="text/javascript">
 
@@ -617,7 +619,7 @@ var articles = <%- JSON.stringify(articles) %>;
                                         address: "28 Rue du Buisson, 02400 Château-Thierry, France",
                                         html: "Brise Bêche",
                                         icon: {
-                                            image: "images/icons/map-icon-red.png",
+                                            image: "images/front/icons/map-icon-red.png",
                                             iconsize: [32, 39],
                                             iconanchor: [14,44]
                                         }
@@ -882,7 +884,7 @@ var articles = <%- JSON.stringify(articles) %>;
 
     <!-- Footer Scripts
     ============================================= -->
-    <script type="text/javascript" src="../js/functions.js"></script>
+    <script type="text/javascript" src="../js/front/functions.js"></script>
 
 </body>
 
