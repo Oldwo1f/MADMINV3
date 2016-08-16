@@ -8,10 +8,13 @@
 module.exports = {
 schema: true,
   	attributes: {
-  		name:{type:'string',required:true},
-  		poste:{type:'int',defaultsTo:0},
+  		name:{type:'string',defaultsTo:''},
+  		rank:{type:'int'},
+        poste:{type:'string',defaultsTo:''},
+        content:{type:'text'},
   		dateofbirth:{type:'int',defaultsTo:0},
         projects:{collection:'project', via: 'players'},
+        images:{collection:'image',defaultsTo:[]},
         taille:{type:'int',defaultsTo:0},
         detente:{type:'int',defaultsTo:0},
         attaque:{type:'int',defaultsTo:0},
@@ -22,69 +25,54 @@ schema: true,
         plongeon:{type:'int',defaultsTo:0},
         service:{type:'int',defaultsTo:0},
         vision:{type:'int',defaultsTo:0},
-        mail:{type:'int',defaultsTo:0},
-        facebook:{type:'int',defaultsTo:0},
-        twitter:{type:'int',defaultsTo:0},
-        instagram:{type:'int',defaultsTo:0},
-        snapchat:{type:'int',defaultsTo:0},
+        mail:{type:'string',defaultsTo:null},
+        facebook:{type:'string',defaultsTo:null},
+        twitter:{type:'string',defaultsTo:null},
+        instagram:{type:'string',defaultsTo:null},
+        snapchat:{type:'string',defaultsTo:null},
         selfUpdate:function(options,cb){
-        
-        // if(options.parentType == 'project')
-        // {
-        //     if(options.verb == 'add'){
+            console.log('SELFUPDATE PLAYERS');
+            console.log(options);
+            console.log(this.id);
+            var thisID = this.id
+            if(options.parentType == 'project')
+            {
+                if(options.verb == 'add'){
+                    Project.findOne(options.parentId).then(function(project){
 
-        //         Tag.findOne(this.id).then(function(data){
-        //             data.nbProjects= Number(data.nbProjects)+1;
-        //             data.total= Number(data.total)+1;
-        //             return Tag.update(data.id ,
-        //             {
-        //                 nbProjects : data.nbProjects,
-        //                 total : data.total
-        //             }).then(function(result){
+                        console.log(project);
+                        console.log(this.id);
+                        Player.findOne(thisID).then(function(data){
+                           console.log(data);
+                            return Player.update(data.id ,
+                            {
+                                // nbArticles : data.nbArticles,
+                                rank : project.players.length
+                            }).then(function(result){
+                                cb(null,data);
+                                
+                            })
+                           
+                        }).catch(function (err) {
+                            cb(err,null);
+                        });
+                    }).catch(function (err) {
+                        cb(err,null);
+                    });
+                }
+            
+                if(options.verb == 'remove'){
 
-        //                 Tag.publishUpdate( data.id , {
-        //                         nbProjects : data.nbProjects,
-        //                         total : data.total
-        //                 } )
-        //                 cb(null,result[0]);
-                        
-        //             })
-                   
-        //         }).catch(function (err) {
-        //             cb(err,null);
-        //         });
-        //     }
-        
-        //     if(options.verb == 'remove'){
-
-        //       Tag.findOne(this.id).then(function(data){
-        //             data.nbProjects= Number(data.nbProjects) -1;
-        //             data.total= Number(data.total) -1;
-        //             if(data.total<=0){
-        //                 return Tag.destroy(data.id).then(function(result){
-        //                     cb(null,result[0]);
-        //                     Tag.publishDestroy( data.id )
-        //                 })
-        //             }else{
-        //                 return Tag.update(data.id ,
-        //                 {
-        //                     nbProjects : data.nbProjects,
-        //                     total : data.total
-        //                 }).then(function(result){
-        //                     Tag.publishUpdate( data.id , {
-        //                         nbProjects : data.nbProjects,
-        //                         total : data.total
-        //                     } )
-        //                     cb(null,result);
-        //                 })
-
-        //             }
-                   
-        //         }).catch(function (err) {
-        //             cb(err,null);
-        //         });
-        //     }
-        // }
+                  Player.findOne(this.id).then(function(data){
+                       
+                                cb(null,data);
+                          
+                       
+                    }).catch(function (err) {
+                        cb(err,null);
+                    });
+                }
+            }
 
 
 
@@ -92,28 +80,28 @@ schema: true,
         // cb();
       }
 	},
-    // afterCreate: function (value, callback){
-    //     es.create('tag',value).then(function(){
-    //         return callback()
-    //     }).catch(function(err){
-    //            console.log(err);
-    //     })
+    afterCreate: function (value, callback){
+        es.create('player',value).then(function(){
+            return callback()
+        }).catch(function(err){
+               console.log(err);
+        })
  
-    // },
-    // afterUpdate: function (value, callback){
-    //     es.update('tag',value).then(function(){
-    //         return callback()
-    //     }).catch(function(err){
-    //            console.log(err);
-    //     })
-    // },
-    // afterDestroy: function (value, callback){
-    //     es.delete('tag',value[0]).then(function(){
-    //         return callback()
-    //     }).catch(function(err){
-    //            console.log(err);
-    //     })
-    // },
+    },
+    afterUpdate: function (value, callback){
+        es.update('player',value).then(function(){
+            return callback()
+        }).catch(function(err){
+               console.log(err);
+        })
+    },
+    afterDestroy: function (value, callback){
+        es.delete('player',value[0]).then(function(){
+            return callback()
+        }).catch(function(err){
+               console.log(err);
+        })
+    },
 };
 
 

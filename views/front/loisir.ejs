@@ -12,7 +12,7 @@
         <section id="page-title">
 
             <div class="container clearfix">
-                <h1>Senior <i class="icon-line2-symbol-male"></i> Loisir</h1>
+                <h1>Senior <i class="icon-line2-symbol-male"></i><i class="icon-line2-symbol-female"></i> Loisir</h1>
                 <!-- <div id="portfolio-navigation">
                     <a href="#"><i class="icon-angle-left"></i></a>
                     <a href="#"><i class="icon-line-grid"></i></a>
@@ -70,211 +70,50 @@
                 </div>
                 </div>
                 <div class="container">
-                <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Christophe</h4><span>Passeur</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
+                    <% for(var i=0; i< project.players.length ; i++){%>
                         <div class="col-md-6 bottommargin">
                             <div class="team team-list clearfix">
                                 <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
+                                    
+                                
+                                     <% if(project.players[i].images && project.players[i].images.length){%>
+                                        <img src="image/resized/<%- project.players[i].images[0].filename %>" alt="ctvb - <%- project.players[i].images[0].filename %>">
+                                     <%}else{%>
+                                         <img src="images/team/4.jpg" alt="CTVB ">
+                                     <%}%>
                                 </div>
+                                
                                 <div class="team-desc">
-                                    <div class="team-title"><h4>Valentin</h4><span>Central</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
+                                    <div class="team-title"><h4><%- project.players[i].name %></h4><span><%- project.players[i].poste %></span></div>
+                                    <% if(project.players[i].content){%>
+                                        <div class="team-content">
+                                            <%- project.players[i].content %>
+                                        </div>
+                                    <%}%>
+                                    <% if(project.players[i].facebook ){%>
+                                        <a href="<%- project.players[i].facebook %>" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                            <i class="icon-facebook"></i><i class="icon-facebook"></i>
+                                        </a>
+                                     <%}%>
+                                     <% if(project.players[i].twitter ){%>
+                                        <a href="<%- project.players[i].twitter %>" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                            <i class="icon-twitter"></i><i class="icon-twitter"></i>
+                                        </a>
+                                     <%}%>
+                                     <% if(project.players[i].instagram ){%>
+                                        <a href="<%- project.players[i].instagram %>" class="social-icon inline-block si-small si-light si-rounded si-instagram">
+                                            <i class="icon-instagram"></i><i class="icon-instagram"></i>
+                                        </a>
+                                     <%}%>
+                                     <% if(project.players[i].snapchat ){%>
+                                        <a href="<%- project.players[i].snapchat %>" class="social-icon inline-block si-small si-light si-rounded si-snapchat">
+                                            <i class="icon-snapchat"></i><i class="icon-snapchat"></i>
+                                        </a>
+                                     <%}%>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Patoche</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Laurent</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Alexis</h4><span>Central</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Gérome</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Viencent</h4><span>Passeur</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Alban</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <%}%>
                 </div>
                 
                 
@@ -296,7 +135,7 @@
                 <div class=""  style="margin: 20px 0px">
                     <div class="container clearfix">
                         <% if( project.content && project.content){%>
-                                <%- marked(project.content) %>                        
+                                <%- project.content %>                        
                         <% } %>  
                     </div>
                 </div>
@@ -312,11 +151,11 @@
                 <% if( project.images && project.images.length){%>  
                 <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
                     <% for(var i=0; i<project.images.length; i++) {%>
-                    <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
+                    <a href="image/originalSize/<%= project.images[i].filename %>" data-lightbox="gallery-item"><img class="image_fade" src="image/adminThumbs/<%= project.images[i].filename %>" alt="<%= project.images[i].alt %>"></a>
                     <% } %>  
                 </div>
-                <% } %> 
-
+                <% } %>
+                
 
                 
 
