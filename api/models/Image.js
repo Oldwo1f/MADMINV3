@@ -333,6 +333,81 @@ module.exports = {
         	}).catch(function(err){
         		console.log(err);
         	})
+        }if(options.parentType == 'player')
+        {
+
+        	Player.findOne(options.parentId).populate('images').then(function(player){
+        		
+        		if(options.verb == 'add'){
+	               Image.findOne(childID).then(function(data){
+	                    return Image.update(data.id ,
+	                    {
+	                        rank : player.images.length
+	                    }).then(function(result){
+	                        cb(null,data);
+	                        
+	                    })
+	                   
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+	            }
+	  
+	            if(options.verb == 'remove'){
+	            	return Promise.bind({})
+	            	.then(function(){
+	            		return Image.findOne(childID)
+	            	})
+	            	.then(function(data){
+	            		this.imgToremove = data
+	                    return Promise.map(player.images,function(img){
+	                    	if(img.rank > data.rank)
+	                    	{
+	                    		Image.findOne(img.id).then(function(data1){
+				                    return Image.update(data1.id ,
+				                    {
+				                        rank : data1.rank-1
+				                    }).then(function(result){
+				                        // cb(null,data);
+				                        return
+				                    })
+				                   
+				                })
+
+	                    	}
+	                    	else{
+	                    		return;
+	                    	} 
+	                    		
+	                    })
+	                   
+	                }).then(function(){
+	                	
+	                	// if()
+	                	return Image.destroy(this.imgToremove.id).then(function(data){
+                            cb(null,data);
+		                })
+
+
+	                	// return data.images.map
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+
+	            }	
+
+
+
+
+
+
+
+
+
+
+        	}).catch(function(err){
+        		console.log(err);
+        	})
         }
         if(options.parentType == 'user')
         {

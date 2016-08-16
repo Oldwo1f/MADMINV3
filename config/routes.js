@@ -46,6 +46,7 @@ module.exports.routes = {
   'GET /api/category/searchAutocomplete/:searchText':'categoryController.searchAutocomplete',
   'POST /api/article/:id/documents':'articleController.uploadDocument',
   'POST /api/article/:id/images':'articleController.uploadImage',
+  'POST /api/player/:id/images':'playerController.uploadImage',
   'POST /api/category/:id/images':'categoryController.uploadImage',
   'GET /image/:size/:name':'ImageController.serveImage',
   'GET /document/:name':'DocumentController.serveDocument',
@@ -142,5 +143,12 @@ module.exports.routes = {
 
   'get /createNotif':'NotificationController.createNotif',
   'get /createComment':'NotificationController.createComment',
+
+  'GET /poussin':'FrontController.poussin',
+  'GET /seniorf':'FrontController.seniorf',
+  'GET /seniorm':'FrontController.seniorm',
+  'GET /cadetm':'FrontController.cadetm',
+  'GET /benjaminm':'FrontController.benjaminm',
+  'GET /loisir':'FrontController.loisir',
 
 };

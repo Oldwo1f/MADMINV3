@@ -12,7 +12,7 @@
         <section id="page-title">
 
             <div class="container clearfix">
-                <h1>Senior <i class="icon-line2-symbol-female"></i> Pre-Nationale</h1>
+                <h1>Senior <i class="icon-line2-symbol-female"></i> Régionale</h1>
                 <!-- <div id="portfolio-navigation">
                     <a href="#"><i class="icon-angle-left"></i></a>
                     <a href="#"><i class="icon-line-grid"></i></a>
@@ -28,9 +28,8 @@
 
             <div class="swiper-container swiper-parent">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-image: url('images/volley/sf3.jpg');"></div>
-                    <div class="swiper-slide" style="background-image: url('images/volley/sf2.jpg');"></div>
-                    <div class="swiper-slide" style="background-image: url('images/volley/sf1.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/front/portfolio/extended/1.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/front/portfolio/extended/4.jpg');"></div>
                 </div>
                 <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
                 <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
@@ -71,489 +70,64 @@
                 </div>
                 
                 <div class="container">
-                    
+                    <% for(var i=0; i< project.players.length ; i++){%>
                     <div class="row common-height clearfix">
-
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/nat.jpg') center center no-repeat; background-size: cover;"></div>
+                        
+                        <% if(i%2 ==0){%>
+                            <div class="col-sm-7 col-padding borderr-red" 
+                             <% if(project.players[i].images && project.players[i].images.length){%>
+                                style="background: url('image/resized/<%- project.players[i].images[0].filename %>') center center no-repeat; background-size: cover;"
+                             <%}else{%>
+                                 style="background: url('images/front/volley/ballon.jpg') center center no-repeat; background-size: cover;"
+                                
+                             <%}%>
+                            ></div>
+                        <%}%>
 
                         <div class="col-sm-5 col-padding">
                             <div>
                                 <div class="heading-block">
-                                    <span class="before-heading color">Récep / 4</span>
-                                    <h3>Nathalie</h3>
+                                    <span class="before-heading color"><%- project.players[i].poste %></span>
+                                    <h3><%- project.players[i].name %></h3>
                                 </div>
 
                                 <div class="row clearfix ">
 
                                     <div class="col-md-12">
-                                        <div class="" id="radarChart3" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas3" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        <div class="" id="radarChart<%- i %>" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas<%- i %>" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
                                         </div>
                                     </div>
                                     <div class="col-md-12 topmargin">
+                                         <% if(project.players[i].facebook ){%>
+                                            <a href="<%- project.players[i].facebook %>" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                                <i class="icon-facebook"></i><i class="icon-facebook"></i>
+                                            </a>
+                                         <%}%>
+                                         <% if(project.players[i].twitter ){%>
+                                            <a href="<%- project.players[i].twitter %>" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                                <i class="icon-twitter"></i><i class="icon-twitter"></i>
+                                            </a>
+                                         <%}%>
+                                         <% if(project.players[i].instagram ){%>
+                                            <a href="<%- project.players[i].instagram %>" class="social-icon inline-block si-small si-light si-rounded si-instagram">
+                                                <i class="icon-instagram"></i><i class="icon-instagram"></i>
+                                            </a>
+                                         <%}%>
+                                         <% if(project.players[i].snapchat ){%>
+                                            <a href="<%- project.players[i].snapchat %>" class="social-icon inline-block si-small si-light si-rounded si-snapchat">
+                                                <i class="icon-snapchat"></i><i class="icon-snapchat"></i>
+                                            </a>
+                                         <%}%>
                                         
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
+                                        
                                     </div>
 
 
                                 </div>
 
                             </div>
-                            <script type="text/javascript">
 
-                            jQuery(window).load( function(){
-                                
-
-                                var radarChartData3 = {
-                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    datasets : [
-                                        {
-                                            fillColor : "rgba(220,220,220,0.5)",
-                                            strokeColor : "rgba(220,220,220,1)",
-                                            pointColor : "rgba(220,220,220,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [60,60,70,40,70,75,50,30,80,70]
-                                        }
-                                    ]
-
-                                };
-
-
-
-                                function showRadarChart3(){
-                                    var ctx = document.getElementById("radarChartCanvas3").getContext("2d");
-                                    new Chart(ctx).Radar(radarChartData3,globalGraphSettings);
-                                }
-
-
-
-                                $('#radarChart3').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart3,300); },{accX: 0, accY: -155},'easeInCubic');
-                                
-                                });
-                                </script>
-                        </div>
-
-                    </div>
-
-                   
-
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-5 col-padding noleftpadding">
-                            <div>
-                                <div class="heading-block"><span class="before-heading color">Récep / 4</span>
-                                    <h3>Moustafette</h3>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart6" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas6" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-                                    
-
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery(window).load( function(){
-                                    //------------------------------------------------------
-
-                                    var radarChartData6 = {
-                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                        datasets : [
-                                            {
-                                                fillColor : "rgba(220,220,220,0.5)",
-                                                strokeColor : "rgba(220,220,220,1)",
-                                                pointColor : "rgba(220,220,220,1)",
-                                                pointStrokeColor : "#fff",
-                                                data : [90,90,70,80,56,55,40,50,80,30]
-                                            }
-                                        ]
-
-                                    };
-
-
-
-                                    function showRadarChart6(){
-                                        var ctx = document.getElementById("radarChartCanvas6").getContext("2d");
-                                        new Chart(ctx).Radar(radarChartData6,globalGraphSettings);
-                                    }
-
-
-
-                                    $('#radarChart6').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart6,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                                });
-
-                                </script>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/mousta.jpg') center center no-repeat; background-size: cover;"></div>
-
-                    </div>
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
-
-                        <div class="col-sm-5 col-padding">
-                            <div>
-                                <div class="heading-block">
-                                    <span class="before-heading color">Central & capitaine</span>
-                                    <h3>Aline</h3>
-                                </div>
-
-                                <div class="row clearfix ">
-
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart3" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas3" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <script type="text/javascript">
-
-                            jQuery(window).load( function(){
-                                
-
-                                var radarChartData3 = {
-                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    datasets : [
-                                        {
-                                            fillColor : "rgba(220,220,220,0.5)",
-                                            strokeColor : "rgba(220,220,220,1)",
-                                            pointColor : "rgba(220,220,220,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [60,60,70,40,70,75,50,30,80,70]
-                                        }
-                                    ]
-
-                                };
-
-
-
-                                function showRadarChart3(){
-                                    var ctx = document.getElementById("radarChartCanvas3").getContext("2d");
-                                    new Chart(ctx).Radar(radarChartData3,globalGraphSettings);
-                                }
-
-
-
-                                $('#radarChart3').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart3,300); },{accX: 0, accY: -155},'easeInCubic');
-                                
-                                });
-                                </script>
-                        </div>
-
-                    </div>
-
-                   
-
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-5 col-padding noleftpadding">
-                            <div>
-                                <div class="heading-block"><span class="before-heading color">Récep / 4</span>
-                                    <h3>Qidzi</h3>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart6" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas6" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-                                    
-
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery(window).load( function(){
-                                    //------------------------------------------------------
-
-                                    var radarChartData6 = {
-                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                        datasets : [
-                                            {
-                                                fillColor : "rgba(220,220,220,0.5)",
-                                                strokeColor : "rgba(220,220,220,1)",
-                                                pointColor : "rgba(220,220,220,1)",
-                                                pointStrokeColor : "#fff",
-                                                data : [90,90,70,80,56,55,40,50,80,30]
-                                            }
-                                        ]
-
-                                    };
-
-
-
-                                    function showRadarChart6(){
-                                        var ctx = document.getElementById("radarChartCanvas6").getContext("2d");
-                                        new Chart(ctx).Radar(radarChartData6,globalGraphSettings);
-                                    }
-
-
-
-                                    $('#radarChart6').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart6,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                                });
-
-                                </script>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/kidzy.jpg') center center no-repeat; background-size: cover;"></div>
-
-                    </div>
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
-
-                        <div class="col-sm-5 col-padding">
-                            <div>
-                                <div class="heading-block">
-                                    <span class="before-heading color">Récep / 4</span>
-                                    <h3>Raphi</h3>
-                                </div>
-
-                                <div class="row clearfix ">
-
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart3" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas3" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <script type="text/javascript">
-
-                            jQuery(window).load( function(){
-                                
-
-                                var radarChartData3 = {
-                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    datasets : [
-                                        {
-                                            fillColor : "rgba(220,220,220,0.5)",
-                                            strokeColor : "rgba(220,220,220,1)",
-                                            pointColor : "rgba(220,220,220,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [60,60,70,40,70,75,50,30,80,70]
-                                        }
-                                    ]
-
-                                };
-
-
-
-                                function showRadarChart3(){
-                                    var ctx = document.getElementById("radarChartCanvas3").getContext("2d");
-                                    new Chart(ctx).Radar(radarChartData3,globalGraphSettings);
-                                }
-
-
-
-                                $('#radarChart3').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart3,300); },{accX: 0, accY: -155},'easeInCubic');
-                                
-                                });
-                                </script>
-                        </div>
-
-                    </div>
-
-                   
-
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-5 col-padding noleftpadding">
-                            <div>
-                                <div class="heading-block"><span class="before-heading color">Central</span>
-                                    <h3>Cyriel</h3>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart6" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas6" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-                                    
-
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery(window).load( function(){
-                                    //------------------------------------------------------
-
-                                    var radarChartData6 = {
-                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                        datasets : [
-                                            {
-                                                fillColor : "rgba(220,220,220,0.5)",
-                                                strokeColor : "rgba(220,220,220,1)",
-                                                pointColor : "rgba(220,220,220,1)",
-                                                pointStrokeColor : "#fff",
-                                                data : [90,90,70,80,56,55,40,50,80,30]
-                                            }
-                                        ]
-
-                                    };
-
-
-
-                                    function showRadarChart6(){
-                                        var ctx = document.getElementById("radarChartCanvas6").getContext("2d");
-                                        new Chart(ctx).Radar(radarChartData6,globalGraphSettings);
-                                    }
-
-
-
-                                    $('#radarChart6').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart6,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                                });
-
-                                </script>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/cyriel.jpg') center center no-repeat; background-size: cover;"></div>
-
-                    </div>
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-7 col-padding borderr-red" style="background : url('images/volley/caro.jpg') left top no-repeat; background-size: cover;"></div>
-
-                        <div class="col-sm-5 col-padding">
-                            <div>
-                                <div class="heading-block">
-                                    <span class="before-heading color">Passeuse</span>
-                                    <h3>Caroline</h3>
-                                </div>
-
-                                <div class="row clearfix ">
-
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="https://www.facebook.com/caroline.brochot" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <!-- <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a> -->
-                                    </div>
-
-
-                                </div>
-
-                            </div>
                             <script type="text/javascript">
 
                             jQuery(window).load( function(){
@@ -567,7 +141,7 @@
                                             strokeColor : "rgba(220,220,220,1)",
                                             pointColor : "rgba(220,220,220,1)",
                                             pointStrokeColor : "#fff",
-                                            data : [64,60,70,65,60,65,95,60,90,80]
+                                            data : [<%- project.players[i].taille %>,<%- project.players[i].detente %>,<%- project.players[i].attaque %>,<%- project.players[i].contre %>,<%- project.players[i].defence %>,<%- project.players[i].recep %>,<%- project.players[i].passe %>,<%- project.players[i].plongeon %>,<%- project.players[i].service %>,<%- project.players[i].vision %>]
                                         }
                                     ]
 
@@ -576,176 +150,84 @@
 
 
                                 function showRadarChart(){
-                                    var ctx = document.getElementById("radarChartCanvas").getContext("2d");
+                                    var ctx = document.getElementById("radarChartCanvas<%- i %>").getContext("2d");
                                     new Chart(ctx).Radar(radarChartData,globalGraphSettings);
                                 }
 
 
 
-                                $('#radarChart').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart,300); },{accX: 0, accY: -155},'easeInCubic');
+                                $('#radarChart<%- i %>').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart,300); },{accX: 0, accY: -155},'easeInCubic');
                                 
                                 });
                                 </script>
                         </div>
-
-                    </div>
-
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-5 col-padding noleftpadding">
-                            <div>
-                                <div class="heading-block"><span class="before-heading color">Libéro</span>
-                                    <h3>Kholliane</h3>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart4" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas4" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        <a href="mailto:khollianexdream@hotmail.fr" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-mail"></i>
-                                            <i class="icon-mail"></i>
-                                        </a>
-                                        <a href="https://www.facebook.com/kholliane.keo?fref=ts" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                       <!--  <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a> -->
-                                    </div>
-
-                                    
-
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery(window).load( function(){
-                                    //------------------------------------------------------
-
-                                    var radarChartData4 = {
-                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                        datasets : [
-                                            {
-                                                fillColor : "rgba(220,220,220,0.5)",
-                                                strokeColor : "rgba(220,220,220,1)",
-                                                pointColor : "rgba(220,220,220,1)",
-                                                pointStrokeColor : "#fff",
-                                                data : [63,52,50,40,80,85,60,78,80,20]
-                                            }
-                                        ]
-
-                                    };
-
-
-
-                                    function showRadarChart4(){
-                                        var ctx = document.getElementById("radarChartCanvas4").getContext("2d");
-                                        new Chart(ctx).Radar(radarChartData4,globalGraphSettings);
-                                    }
-
-
-
-                                    $('#radarChart4').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart4,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                                });
-
-                                </script>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
-
-                    </div>
-
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/manon.jpg') center center no-repeat; background-size: cover;"></div>
-
-                        <div class="col-sm-5 col-padding">
-                            <div>
-                                <div class="heading-block">
-                                    <span class="before-heading color">Passeuse</span>
-                                    <h3>Manon</h3>
-                                </div>
-
-                                <div class="row clearfix ">
-
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart3" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas3" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="mailto:manonsarazin02400@gmail.com" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-mail"></i>
-                                            <i class="icon-mail"></i>
-                                        </a>
-                                        <a href="https://www.facebook.com/profile.php?id=100010435909193&fref=ts" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="https://twitter.com/manone02" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="https://www.instagram.com/manon_srz/" class="social-icon inline-block si-small si-light si-rounded si-instagram">
-                                            <i class="icon-instagram"></i>
-                                            <i class="icon-instagram"></i>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <script type="text/javascript">
-
-                            jQuery(window).load( function(){
+                        <% if(i%2 !=0){%>
+                            <div class="col-sm-7 col-padding borderr-red" 
+                             <% if(project.players[i].images && project.players[i].images.length){%>
+                                style="background: url('image/resized/<%- project.players[i].images[0].filename %>') center center no-repeat; background-size: cover;"
+                             <%}else{%>
+                                 style="background: url('images/front/volley/ballon.jpg') center center no-repeat; background-size: cover;"
                                 
-
-                                var radarChartData3 = {
-                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    datasets : [
-                                        {
-                                            fillColor : "rgba(220,220,220,0.5)",
-                                            strokeColor : "rgba(220,220,220,1)",
-                                            pointColor : "rgba(220,220,220,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [65,52,50,40,45,40,70,60,60,30]
-                                        }
-                                    ]
-
-                                };
-
-
-
-                                function showRadarChart3(){
-                                    var ctx = document.getElementById("radarChartCanvas3").getContext("2d");
-                                    new Chart(ctx).Radar(radarChartData3,globalGraphSettings);
-                                }
-
-
-
-                                $('#radarChart3').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart3,300); },{accX: 0, accY: -155},'easeInCubic');
-                                
-                                });
-                                </script>
-                        </div>
-
+                             <%}%>
+                            ></div>
+                        <%}%>
                     </div>
-
-                </div>
+                    <%}%>
                     
+                    
+                </div><!-- container-end -->
+
+                        
+
+                <a class="button button-primary button-full center tright" href="/contact">
+                    <div class="container clearfix">
+                        On à besoins de toi pour <strong>renforcer l'équipe</strong> <br><i class="icon-caret-right" style="top:4px;"></i> Viens faire <strong> un tour à l'entrainement</strong>
+                    </div>
+                </a>
+                    <div class="clear"></div>
+
+                
+
+                <div class="col-md-12 nopadding common-height ohidden">
+                    <div class="col-md-6 col-padding" style="background: url('images/front/volley/alexis.jpg') center center no-repeat; background-size: cover;">
+                        <div>&nbsp;</div>
+                    </div>
+                    <div class="col-md-6 col-padding">
+
+                        <div class="clearfix">
+                            <h3>Entraineur : Keke & Alexis  Coach : Nico</h3>
+
+                            <div class="col-sm-9 nopadding topmargin-sm clearfix">
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect" data-animate="fadeIn">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-et-strategy"></i></a>
+                                    </div>
+                                    <h3>2 en 1</h3>
+                                    <p>La crèmes des coachs pour une progressions aussi bien tactique que technique.</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="200">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-et-happy"></i></a>
+                                    </div>
+                                    <h3>Coaching N2</h3>
+                                    <p>Un coaching en match de très haut nivaux avec Nico</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="400">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-food"></i></a>
+                                    </div>
+                                    <h3>Gourmandise</h3>
+                                    <p>Sucré ou salé, il n'arrête pas de s'empiffrer. Heuresement pour ses coéquipiers, il aime bien partager.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div class="clear"></div>
                 <div class="section nomargin">
@@ -759,7 +241,7 @@
                 <div class=""  style="margin: 20px 0px">
                     <div class="container clearfix">
                         <% if( project.content && project.content){%>
-                                <%- marked(project.content) %>                        
+                                <%- project.content %>                        
                         <% } %>  
                     </div>
                 </div>
@@ -775,12 +257,10 @@
                 <% if( project.images && project.images.length){%>  
                 <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
                     <% for(var i=0; i<project.images.length; i++) {%>
-                    <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
+                    <a href="image/originalSize/<%= project.images[i].filename %>" data-lightbox="gallery-item"><img class="image_fade" src="image/adminThumbs/<%= project.images[i].filename %>" alt="<%= project.images[i].alt %>"></a>
                     <% } %>  
                 </div>
                 <% } %> 
-
-
                 
 
                 

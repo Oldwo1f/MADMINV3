@@ -58,6 +58,46 @@ angular.module('core')
         return deferred.promise;
     };
 
+    service.createBlankPlayer=function(projectid){
+
+        console.log('createBlankPlayer');
+
+        // var data = {date : new Date(),status:'draft'};
+        var deferred = $q.defer();
+        // user.password = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $sailsSocket.post('/api/project/'+projectid+'/players',{}).success(function (data,status) {
+            console.log('SUCCESS');
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+
+    service.savePlayers=function(id,values){
+
+        console.log('saveIndex');
+        console.log(id);
+        console.log(values);
+
+        var deferred = $q.defer();
+        var promises = [];
+
+        $sailsSocket.put('/api/player/'+id,values).success(function (data,status) {
+            console.log('SUCCESS');
+            console.log(data);
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            
+            console.log('serviceErr');
+            console.log(data);
+            deferred.reject(data);
+        })
+        
+        return deferred.promise; 
+        
+    }
 
     // service.autocomplete= function(query) {
     //     var deferred = $q.defer();
@@ -170,6 +210,57 @@ angular.module('core')
         return deferred.promise;      
     }
 
+    service.savePlayer=function(playerID,formData){
+
+        console.log('ADDNEW Service');
+
+        // var data = {date : new Date(),status:'draft'};
+        var deferred = $q.defer();
+        // user.password = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $sailsSocket.put('/api/player/'+playerID,formData).success(function (data,status) {
+            console.log('SUCCESS');
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+
+    service.deletePlayer=function(playerID,projectId){
+
+        console.log('DELETE Service');
+        console.log(playerID,projectId);
+
+        // var data = {date : new Date(),status:'draft'};
+        var deferred = $q.defer();
+        // user.password = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $sailsSocket.delete('/api/project/'+projectId+'/players/'+playerID).success(function (data,status) {
+        // $sailsSocket.delete('/api/slide/'+slideID).success(function (data,status) {
+            console.log('SUCCESS');
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+    service.fetchPlayer= function(id) {
+        var deferred = $q.defer();
+
+        $sailsSocket.get('/api/player/'+id).success(function (data,status) {
+            console.log(data);
+            deferred.resolve(data[0]);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(status);
+            // console.log(data);
+            // console.log(status);
+        })
+
+        return deferred.promise;
+    };
     service.removeCategory=function(id,newCategory){
 
         var deferred = $q.defer();

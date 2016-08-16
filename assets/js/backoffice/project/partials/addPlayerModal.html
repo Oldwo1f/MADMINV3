@@ -1,0 +1,175 @@
+<md-dialog  class="userAddContainer editSLIDE"  ng-cloak>
+  <form>
+    <!-- <md-toolbar>
+      <div class="md-toolbar-tools">
+      	<div>Ajouter une gallerie</div>
+		<div ngf-drop="addImgCrop($files)" ngf-pattern="'image/*'"ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposer une image ici</div>
+        <div class="button btnADDIMG" ngf-select="addImgCrop($files)" ng-model="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <i class="pe-7s-plus"></i></div>
+      </div>
+    </md-toolbar> -->
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+		<div ngf-drop="addImgCrop($files)" ngf-pattern="'image/*'"ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposer une image ici</div>
+        <div class="button btnADDIMG" ngf-select="addImgCrop($files)" ng-model="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <i class="pe-7s-plus"></i></div>
+      </div>
+    </md-toolbar>
+    <md-dialog-content >
+				
+			<article class="widget widget__form">
+			<div class="form_col">
+				<div class="imgrelativecontainer addImages">
+				
+					<div image-crop2
+							suffix="22" 
+				    		aspect-ratio="imgcrop.aspectRatio" 
+				    		img-src="imgcrop.imgSrc" 
+				    		img-load="'imgLoader.gif'" 
+				    		display-height="imgcrop.displayHeight"
+				    		display-width = "imgcrop.displayWidth"
+				    		scaled-height="imgcrop.scaledHeight" 
+				    		scaled-width="imgcrop.scaledWidth" 
+				    		scaled-top="imgcrop.scaledTop" 
+				    		scaled-left="imgcrop.scaledLeft" 
+				    		container-width="imgcrop.containerWidth" 
+				    		container-height="imgcrop.containerHeight" 
+				    		style=" width: 100%; position:relative;" class="imageCropper" ng-class="{imageCropperH0: !imgcrop.imgSrc}">
+						</div>
+					<button ng-if="imgcrop.imgSrc" class="btn red pull-left" ng-click="removeImgCrop()">Annuler</button>
+					<button ng-if="imgcrop.scaledWidth && !imgcrop.imgEditId" class="btn blue pull-left" ng-click="uploadImage()">Ajouter cette image</button>
+					<button ng-if="imgcrop.scaledWidth && imgcrop.imgEditId" class="btn blue pull-left" ng-click="resizeOnly()">Redimentionner l'image</button>
+					<!-- <div class="landscapeportrait"  ng-if="imgcrop.scaledWidth"> -->
+						<!-- <button class="btn blue" ng-click="changeOrientation()"><i class="fa fa-exchange"></i></button> -->
+					<!-- </div> -->
+					<p class="messageImage pull-left"  ng-if="imgcrop.imgSrc && !imgcrop.scaledWidth"><span>Vous devez redimentionner votre image avant de l'envoyer ver le server. <br> Faite un rectangle dessu le plus grand possible.</span></p>
+				</div>
+				<div ng-if="playerData.images.length" class="imageList" ui-sortable="sortOption" ng-model="playerData.images">
+					<figure class="pull-left post__img" ng-repeat="img in playerData.images">
+						<img class="media-object" ng-src="image/resized/{{img.filename}}" alt="new">
+						<div class="btnreresize" ng-click="resizeagain(img)"><i class="fa fa-crop"></i></div>
+						<removeremove class="removeremove" action="removeImg" itemid="img.id"></removeremove>
+					</figure>
+					
+					<!-- ng-if  number of image > 4 -->
+					<div class="completor"></div>
+				</div>
+			<div class="clearfix"></div>
+				<label for="input-3" class="stacked-label"><i class="pe-7s-flag"></i></label>
+				<input type="text" ng-blur="savePlayer('name')" name="name"  class="stacked-input"  ng-model="playerData.name" id="input-3" placeholder="Nom du joueur">
+				<label for="input-3" class="stacked-label" title="Poste"><i class="pe-7s-keypad"></i></label>
+				<input type="text" ng-blur="savePlayer('poste')" name="poste"  class="stacked-input"  ng-model="playerData.poste" id="input-3" placeholder="Poste">
+
+				<!-- <label for="input-3" class="stacked-label"><i class="pe-7s-flag"></i></label>
+				<input type="text" ng-blur="saveSlide('title')" name="title"  class="stacked-input"  ng-model="playerData.title" id="input-3" placeholder="Poste"> -->
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="taille" class="stacked-label" ><i class="fa fa-arrows-v"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('taille')" style="margin-top: 1px;"type="number" ng-model="playerData.taille" aria-label="violet" aria-controls="taille-slider">
+			      
+			      <md-slider style="margin-top: 1px;" class="md-primary" ng-blur="savePlayer('taille')" flex min="0" max="100" ng-model="playerData.taille" aria-label="violet" id="taille-slider">
+			      </md-slider>
+				</div>
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="detente" class="stacked-label" ><i class="fa fa-angle-double-up"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('detente')" style="margin-top: 1px;"type="number" ng-model="playerData.detente" aria-label="violet" aria-controls="taille-detente">
+			      
+			      <md-slider style="margin-top: 1px;"class="md-primary"flex min="0" max="100" ng-blur="savePlayer('detente')"  ng-model="playerData.detente" aria-label="violet" id="taille-detente">
+			      </md-slider>
+				</div>
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="attaque" class="stacked-label" ><i class="fa fa-bolt"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('attaque')" style="margin-top: 1px;"type="number" ng-model="playerData.attaque" aria-label="violet" aria-controls="taille-attaque">
+			      
+			      <md-slider style="margin-top: 1px;"class="md-primary"flex ng-blur="savePlayer('attaque')" min="0" max="100" ng-model="playerData.attaque" aria-label="violet" id="taille-attaque">
+			      </md-slider>
+				</div>
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="contre" class="stacked-label" ><i class="fa fa-envelope-o"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('contre')" style="margin-top: 1px;"type="number" ng-model="playerData.contre" aria-label="violet" aria-controls="taille-contre">
+			      
+			      <md-slider style="margin-top: 1px;"class="md-primary" ng-blur="savePlayer('contre')"  flex min="0" max="100" ng-model="playerData.contre" aria-label="violet" id="taille-contre">
+			      </md-slider>
+				</div>
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="defence" class="stacked-label" ><i class="fa fa-angle-double-right"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('defence')" style="margin-top: 1px;"type="number" ng-model="playerData.defence" aria-label="violet" aria-controls="taille-defence">
+			      
+			      <md-slider style="margin-top: 1px;"class="md-primary" ng-blur="savePlayer('defence')" flex min="0" max="100" ng-model="playerData.defence" aria-label="violet" id="taille-defence">
+			      </md-slider>
+				</div>
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="recep" class="stacked-label" ><i class="fa fa-angle-right"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('recep')" style="margin-top: 1px;"type="number" ng-model="playerData.recep" aria-label="violet" aria-controls="taille-recep">
+			      
+			      <md-slider style="margin-top: 1px;"class="md-primary"  ng-blur="savePlayer('recep')" flex min="0" max="100" ng-model="playerData.recep" aria-label="violet" id="taille-recep">
+			      </md-slider>
+				</div>
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="passe" class="stacked-label" ><i class="fa fa-dot-circle-o"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('passe')" style="margin-top: 1px;"type="number" ng-model="playerData.passe" aria-label="violet" aria-controls="taille-passe">
+			      
+			      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('passe')" class="md-primary"flex min="0" max="100" ng-model="playerData.passe" aria-label="violet" id="taille-passe">
+			      </md-slider>
+				</div>
+
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="plongeon" class="stacked-label" ><i class="fa fa-angle-double-down"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('plongeon')" style="margin-top: 1px;"type="number" ng-model="playerData.plongeon" aria-label="violet" aria-controls="taille-plongeon">
+			      
+			      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('plongeon')" class="md-primary"flex min="0" max="100" ng-model="playerData.plongeon" aria-label="violet" id="taille-plongeon">
+			      </md-slider>
+				</div>
+
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="service" class="stacked-label" ><i class="fa fa-hand-paper-o"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('service')" style="margin-top: 1px;"type="number" ng-model="playerData.service" aria-label="violet" aria-controls="taille-service">
+			      
+			      <md-slider style="margin-top: 1px;"ng-blur="savePlayer('service')" class="md-primary"flex min="0" max="100" ng-model="playerData.service" aria-label="violet" id="taille-service">
+			      </md-slider>
+				</div>
+				<div class="rowform" style="">
+					
+			      <label for="input-4" title="vision" class="stacked-label" ><i class="fa fa-eye"></i></label>
+			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('vision')" style="margin-top: 1px;"type="number" ng-model="playerData.vision" aria-label="violet" aria-controls="taille-vision">
+			      
+			      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('vision')" class="md-primary"flex min="0" max="100" ng-model="playerData.vision" aria-label="violet" id="taille-vision">
+			      </md-slider>
+				</div>
+
+				
+				
+				<label for="input-3" class="stacked-label"><i class="socicon-facebook"></i></label>
+				<input type="text" ng-blur="savePlayer('facebook')" name="facebook"  class="stacked-input"  ng-model="playerData.facebook" id="input-3" placeholder="Facebook">
+				<label for="input-3" class="stacked-label"><i class="socicon-twitter"></i></label>
+				<input type="text" ng-blur="savePlayer('twitter')" name="twitter"  class="stacked-input"  ng-model="playerData.twitter" id="input-3" placeholder="Twitter">
+				<label for="input-3" class="stacked-label"><i class="socicon-instagram"></i></label>
+				<input type="text" ng-blur="savePlayer('instagram')" name="instagram"  class="stacked-input"  ng-model="playerData.instagram" id="input-3" placeholder="Instagram">
+				<label for="input-3" class="stacked-label"><i class="socicon-snapchat"></i></label>
+				<input type="text" ng-blur="savePlayer('snapchat')" name="snapchat"  class="stacked-input"  ng-model="playerData.snapchat" id="input-3" placeholder="Snapchat">
+
+				<label for="input-4" class="stacked-label "><i class="pe-7s-note"></i></label>
+				<textarea  class="tinymcetextarea margedubas" ng-model="playerData.content" msd-elastic  ng-model="tinymceModel" ng-blur="savePlayer('content')" placeholder="Contenu texte"></textarea>
+
+
+
+				<div class="removeremovecontainer">
+					
+					<removeremove class="removeremove" action="deletePlayer" itemid="playerData.id"><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </button></removeremove>
+				</div>
+
+			</div>
+		</article>
+			
+    </md-dialog-content>
+    <!-- <md-dialog-actions layout="row"> -->
+      <!-- <removeremove class="removeremove ng-isolate-scope" action="removeThis" itemid="playerData.id"><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </button></removeremove> -->
+    <!-- </md-dialog-actions> -->
+  </form>
+</md-dialog>

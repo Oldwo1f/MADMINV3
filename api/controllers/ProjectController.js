@@ -105,6 +105,29 @@ module.exports = {
 						}
 				}).then(function(){
 					
+					return new Promise(function(resolve,reject){
+					
+						if(typeof(project.players) != 'undefined'){
+
+							return Promise.map(project.players,function(player){
+
+								return Player.findOne(player.id).populateAll()
+								
+							}).then(function(t){
+								art.players = t;
+								resolve(art)
+							})
+							// 
+						}else
+						{
+							resolve(project)
+						}
+					})
+					
+					
+					
+				}).then(function(){
+					
 					idsCom = _.map(art.comments,function(o){return o.id})
 					return Comment.find(idsCom).populate('responses')
 					

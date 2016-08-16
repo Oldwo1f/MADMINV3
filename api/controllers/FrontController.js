@@ -519,4 +519,239 @@ module.exports={
 
 
 	},
+
+	cadetm:function(req,res,next){
+		moment.locale(req.locale);
+		var result = {};
+		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+	    .then(function(project) {
+	    	var newnbView = Number(project.nbView) + 1 ; 
+	    	project.nbView = newnbView
+	    	result.tmpproject = project
+	    	return Project.update(req.params.id,{nbView:newnbView})
+	    })
+	    .then(function(project) {  
+	    	project = result.tmpproject
+	            var playersPromises = project.players.map(function(player) {
+	                return Player.findOne(player.id).populateAll();
+	            });
+	            return Promise.all(playersPromises)
+	                  .then(function(fullfilledPlayers) {
+	                  	  project = project.toObject()
+	                      project.players = fullfilledPlayers;
+	                      return project;
+	                   })
+	    })
+	   .then(function(project) {
+	   		result.project = project
+	    	res.status(200).view('front/cadetm',{
+				project:result.project,
+				title: result.project.title,
+				keyword: result.project.keyword,
+				description:result.project.description,
+				scripturl:'blog.js',
+				menu:'cadetm',
+				moment: moment,
+				baseurl:''
+			})
+	    })
+	    .catch(function(e){
+	    	console.log(e);
+	    })
+	},
+	poussin:function(req,res,next){
+		moment.locale(req.locale);
+		var result = {};
+		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+	    .then(function(project) {
+	    	var newnbView = Number(project.nbView) + 1 ; 
+	    	project.nbView = newnbView
+	    	result.tmpproject = project
+	    	return Project.update(req.params.id,{nbView:newnbView})
+	    })
+	    .then(function(project) {  
+	    	project = result.tmpproject
+	            var playersPromises = project.players.map(function(player) {
+	                return Player.findOne(player.id).populateAll();
+	            });
+	            return Promise.all(playersPromises)
+	                  .then(function(fullfilledPlayers) {
+	                  	  project = project.toObject()
+	                      project.players = fullfilledPlayers;
+	                      return project;
+	                   })
+	    })
+	   .then(function(project) {
+	   		result.project = project
+	    	res.status(200).view('front/poussin',{
+				project:result.project,
+				title: result.project.title,
+				keyword: result.project.keyword,
+				description:result.project.description,
+				scripturl:'blog.js',
+				menu:'poussin',
+				moment: moment,
+				baseurl:''
+			})
+	    })
+	    .catch(function(e){
+	    	console.log(e);
+	    })
+	},
+	benjaminm:function(req,res,next){
+		moment.locale(req.locale);
+		var result = {};
+		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+	    .then(function(project) {
+	    	var newnbView = Number(project.nbView) + 1 ; 
+	    	project.nbView = newnbView
+	    	result.tmpproject = project
+	    	return Project.update(req.params.id,{nbView:newnbView})
+	    })
+	    .then(function(project) {  
+	    	project = result.tmpproject
+	            var playersPromises = project.players.map(function(player) {
+	                return Player.findOne(player.id).populateAll();
+	            });
+	            return Promise.all(playersPromises)
+	                  .then(function(fullfilledPlayers) {
+	                  	  project = project.toObject()
+	                      project.players = fullfilledPlayers;
+	                      return project;
+	                   })
+	    })
+	   .then(function(project) {
+	   		result.project = project
+	    	res.status(200).view('front/benjaminm',{
+				project:result.project,
+				title: result.project.title,
+				keyword: result.project.keyword,
+				description:result.project.description,
+				scripturl:'blog.js',
+				menu:'benjaminm',
+				moment: moment,
+				baseurl:''
+			})
+	    })
+	    .catch(function(e){
+	    	console.log(e);
+	    })
+	},
+	seniorm:function(req,res,next){
+		moment.locale(req.locale);
+		var result = {};
+		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+	    .then(function(project) {
+	    	var newnbView = Number(project.nbView) + 1 ; 
+	    	project.nbView = newnbView
+	    	result.tmpproject = project
+	    	return Project.update(req.params.id,{nbView:newnbView})
+	    })
+	    .then(function(project) {  
+	    	project = result.tmpproject
+	            var playersPromises = project.players.map(function(player) {
+	                return Player.findOne(player.id).populateAll();
+	            });
+	            return Promise.all(playersPromises)
+	                  .then(function(fullfilledPlayers) {
+	                  	  project = project.toObject()
+	                      project.players = fullfilledPlayers;
+	                      return project;
+	                   })
+	    })
+	   .then(function(project) {
+	   		result.project = project
+	    	res.status(200).view('front/seniorm',{
+				project:result.project,
+				title: result.project.title,
+				keyword: result.project.keyword,
+				description:result.project.description,
+				scripturl:'blog.js',
+				menu:'seniorm',
+				moment: moment,
+				baseurl:''
+			})
+	    })
+	    .catch(function(e){
+	    	console.log(e);
+	    })
+	},
+	seniorf:function(req,res,next){
+		moment.locale(req.locale);
+		var result = {};
+		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+	    .then(function(project) {
+	    	var newnbView = Number(project.nbView) + 1 ; 
+	    	project.nbView = newnbView
+	    	result.tmpproject = project
+	    	return Project.update(req.params.id,{nbView:newnbView})
+	    })
+	    .then(function(project) {  
+	    	project = result.tmpproject
+	            var playersPromises = project.players.map(function(player) {
+	                return Player.findOne(player.id).populateAll();
+	            });
+	            return Promise.all(playersPromises)
+	                  .then(function(fullfilledPlayers) {
+	                  	  project = project.toObject()
+	                      project.players = fullfilledPlayers;
+	                      return project;
+	                   })
+	    })
+	   .then(function(project) {
+	   		result.project = project
+	    	res.status(200).view('front/seniorf',{
+				project:result.project,
+				title: result.project.title,
+				keyword: result.project.keyword,
+				description:result.project.description,
+				scripturl:'blog.js',
+				menu:'seniorf',
+				moment: moment,
+				baseurl:''
+			})
+	    })
+	    .catch(function(e){
+	    	console.log(e);
+	    })
+	},
+	loisir:function(req,res,next){
+		moment.locale(req.locale);
+		var result = {};
+		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+	    .then(function(project) {
+	    	var newnbView = Number(project.nbView) + 1 ; 
+	    	project.nbView = newnbView
+	    	result.tmpproject = project
+	    	return Project.update(req.params.id,{nbView:newnbView})
+	    })
+	    .then(function(project) {  
+	    	project = result.tmpproject
+	            var playersPromises = project.players.map(function(player) {
+	                return Player.findOne(player.id).populateAll();
+	            });
+	            return Promise.all(playersPromises)
+	                  .then(function(fullfilledPlayers) {
+	                  	  project = project.toObject()
+	                      project.players = fullfilledPlayers;
+	                      return project;
+	                   })
+	    })
+	   .then(function(project) {
+	   		result.project = project
+	    	res.status(200).view('front/loisir',{
+				project:result.project,
+				title: result.project.title,
+				keyword: result.project.keyword,
+				description:result.project.description,
+				scripturl:'blog.js',
+				menu:'loisir',
+				moment: moment,
+				baseurl:''
+			})
+	    })
+	    .catch(function(e){
+	    	console.log(e);
+	    })
+	},
 }

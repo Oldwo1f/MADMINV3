@@ -26,9 +26,9 @@
 
             <div class="swiper-container swiper-parent">
                 <div class="swiper-wrapper">
-                    <!-- <div class="swiper-slide" style="background-image: url('images/volley/.jpg');"></div> -->
-                    <div class="swiper-slide" style="background-image: url('images/volley/poussinsgroupe.jpg');"></div>
-                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/4.jpg');"></div>
+                    <!-- <div class="swiper-slide" style="background-image: url('images/front/volley/.jpg');"></div> -->
+                    <div class="swiper-slide" style="background-image: url('images/front/volley/poussinsgroupe.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/front/portfolio/extended/4.jpg');"></div>
                 </div>
                 <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
                 <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
@@ -90,7 +90,7 @@
 
                 <div class="container clearfix bottommargin poussinText">
 
-                    <h3 class="bottommargin">Voila se que l'on fait à l'école du volley</h3>
+                    <h3 class="bottommargin">Voila ce que l'on fait à l'école du volley</h3>
                     <div class="col_one_third">
                         <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn">
                             <div class="fbox-icon">
@@ -178,91 +178,35 @@
                     </div>
 
                     <div class="clear"></div>
+                    <h3 class="bottommargin">Les joueurs</h3>
                     <ul class="testimonials-grid grid-3 clearfix topmargin bottommargin" style="padding-left:0px;">
-                        <li style="height: 197px;">
+                        
+                        <% for(var i=0; i< project.players.length ; i++){%>
+                            <li style="height: 197px;">
                             <div class="testimonial">
                                 <div class="testi-image">
-                                    <a href="#"><img src="/images/testimonials/1.jpg" alt="Customer Testimonails"></a>
+                                    <% if(project.players[i].images && project.players[i].images.length){%>
+                                        <img src="image/resized/<%- project.players[i].images[0].filename %>" alt="ctvb - <%- project.players[i].images[0].filename %>">
+                                     <%}else{%>
+                                         <img src="images/front/team/4.jpg" alt="CTVB ">
+                                     <%}%>
                                 </div>
                                 <div class="testi-content">
-                                    <p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum repellendus!</p>
+                                    <% if(project.players[i].content){%>
+                                        <p><%- project.players[i].content %></p>
+                                     
+                                    <%}else{%>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus corporis temporibus delectus molestiae deleniti.</p>
+                                    <%}%>
                                     <div class="testi-meta">
-                                        Lenny
-                                        <span>7 ans</span>
+                                        <%- project.players[i].name %>
+                                        <span><%- project.players[i].contre %> ans</span>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li style="height: 197px;">
-                            <div class="testimonial">
-                                <div class="testi-image">
-                                    <a href="#"><img src="/images/testimonials/2.jpg" alt="Customer Testimonails"></a>
-                                </div>
-                                <div class="testi-content">
-                                    <p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
-                                    <div class="testi-meta">
-                                        Leïlou
-                                        <span>6 ans</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li style="height: 197px;">
-                            <div class="testimonial">
-                                <div class="testi-image">
-                                    <a href="#"><img src="/images/testimonials/7.jpg" alt="Customer Testimonails"></a>
-                                </div>
-                                <div class="testi-content">
-                                    <p>Fugit officia dolor sed harum excepturi ex iusto magnam asperiores molestiae qui natus obcaecati facere sint amet.</p>
-                                    <div class="testi-meta">
-                                        Mathilde
-                                        <span>5 ans</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li style="height: 197px;">
-                            <div class="testimonial">
-                                <div class="testi-image">
-                                    <a href="#"><img src="/images/testimonials/3.jpg" alt="Customer Testimonails"></a>
-                                </div>
-                                <div class="testi-content">
-                                    <p>Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?</p>
-                                    <div class="testi-meta">
-                                        Sean
-                                        <span>8 ans</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li style="height: 197px;">
-                            <div class="testimonial">
-                                <div class="testi-image">
-                                    <a href="#"><img src="/images/testimonials/4.jpg" alt="Customer Testimonails"></a>
-                                </div>
-                                <div class="testi-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, perspiciatis illum totam dolore deleniti labore.</p>
-                                    <div class="testi-meta">
-                                        Marie
-                                        <span>10 ans</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li style="height: 197px;">
-                            <div class="testimonial">
-                                <div class="testi-image">
-                                    <a href="#"><img src="/images/testimonials/8.jpg" alt="Customer Testimonails"></a>
-                                </div>
-                                <div class="testi-content">
-                                    <p>Porro dolorem saepe reiciendis nihil minus neque. Ducimus rem necessitatibus repellat laborum nemo quod.</p>
-                                    <div class="testi-meta">
-                                        Lola
-                                        <span>6 ans</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                                     
+                        <%}%>       
                     </ul>
                 </div>
                     <div class="clear"></div>
@@ -282,9 +226,9 @@
                         </div>
                     </div>
                     <div class="video-wrap">
-                        <video poster="images/videos/explore-poster.jpg" preload="auto" loop autoplay muted>
-                            <source src='images/videos/explore.mp4' type='video/mp4' />
-                            <source src='images/videos/explore.webm' type='video/webm' />
+                        <video poster="images/front/videos/explore-poster.jpg" preload="auto" loop autoplay muted>
+                            <source src='images/front/videos/explore.mp4' type='video/mp4' />
+                            <source src='images/front/videos/explore.webm' type='video/webm' />
                         </video>
                         <div class="video-overlay"></div>
                     </div>
@@ -322,7 +266,7 @@
                 </div>
 
                 <div class="col-md-12 nopadding common-height ohidden">
-                    <div class="col-md-6 col-padding" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;">
+                    <div class="col-md-6 col-padding" style="background: url('images/front/portrait.jpg') center center no-repeat; background-size: cover;">
                         <div>&nbsp;</div>
                     </div>
                     <div class="col-md-6 col-padding">
@@ -366,7 +310,7 @@
                 <div class="section nomargin">
                     <div class="container clearfix">
                         <div class="heading-block center nomargin">
-                            <h3>À propos de l'équipe</h3>
+                            <h3>Informations</h3>
                         </div>
                     </div>
                 </div>
@@ -374,7 +318,7 @@
                 <div class=""  style="margin: 20px 0px">
                     <div class="container clearfix">
                         <% if( project.content && project.content){%>
-                                <%- marked(project.content) %>                        
+                                <%- project.content %>                        
                         <% } %>  
                     </div>
                 </div>
@@ -387,13 +331,13 @@
                         </div>
                     </div>
                 </div>
-                <% if( project.images && project.images.length){%>  
+               <% if( project.images && project.images.length){%>  
                 <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
                     <% for(var i=0; i<project.images.length; i++) {%>
-                    <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
+                    <a href="image/originalSize/<%= project.images[i].filename %>" data-lightbox="gallery-item"><img class="image_fade" src="image/adminThumbs/<%= project.images[i].filename %>" alt="<%= project.images[i].alt %>"></a>
                     <% } %>  
                 </div>
-                <% } %> 
+                <% } %>
 
                 
 
