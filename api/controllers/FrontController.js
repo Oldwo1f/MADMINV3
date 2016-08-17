@@ -3,6 +3,23 @@ var nodemailer = require('nodemailer');
 var moment = require('moment');
 // var marked = require('marked');
 var truncate = require('html-truncate');
+var TEAMIDS = {
+		benjamin : '57b4139e9c22273d1a44797f',
+		cadet : '57b417cb9c22273d1a4479a6',
+		loisir : '57b417b89c22273d1a4479a4',
+		seniorF : '57b417889c22273d1a4479a0',
+		seniorG : '57b417459c22273d1a44799c',
+		poussin : '57b417009c22273d1a44798f',
+}
+//LOCALE AMMM TEAMID
+// var TEAMIDS = {
+// 		benjamin : '57ae08a108297ce20dc2bf15',
+// 		cadet : '57ae08a108297ce20dc2bf15',
+// 		loisir : '57ae08a108297ce20dc2bf15',
+// 		seniorF : '57ae08a108297ce20dc2bf15',
+// 		seniorG : '57ae08a108297ce20dc2bf15',
+// 		poussin : '57ae08a108297ce20dc2bf15',
+// }
 
 module.exports={
 	home:function(req,res,next) {
@@ -523,7 +540,7 @@ module.exports={
 	cadetm:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
-		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+		Project.findOne(TEAMIDS.cadet).populate('images').populate('players')
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
 	    	project.nbView = newnbView
@@ -562,7 +579,7 @@ module.exports={
 	poussin:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
-		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+		Project.findOne(TEAMIDS.poussin).populate('images').populate('players')
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
 	    	project.nbView = newnbView
@@ -601,7 +618,7 @@ module.exports={
 	benjaminm:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
-		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+		Project.findOne(TEAMIDS.benjamin).populate('images').populate('players')
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
 	    	project.nbView = newnbView
@@ -640,7 +657,7 @@ module.exports={
 	seniorm:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
-		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+		Project.findOne(TEAMIDS.seniorG).populate('images').populate('players')
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
 	    	project.nbView = newnbView
@@ -679,7 +696,7 @@ module.exports={
 	seniorf:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
-		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+		Project.findOne(TEAMIDS.seniorF).populate('images').populate('players')
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
 	    	project.nbView = newnbView
@@ -718,7 +735,7 @@ module.exports={
 	loisir:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
-		Project.findOne('57ae08a108297ce20dc2bf15').populate('images').populate('players')
+		Project.findOne(TEAMIDS.loisir).populate('images').populate('players')
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
 	    	project.nbView = newnbView
