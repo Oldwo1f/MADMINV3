@@ -11,7 +11,7 @@ var TEAMIDS = {
 		seniorG : '57b417459c22273d1a44799c',
 		poussin : '57b417009c22273d1a44798f',
 }
-//LOCALE AMMM TEAMID
+// // LOCALE AMMM TEAMID
 // var TEAMIDS = {
 // 		benjamin : '57ae08a108297ce20dc2bf15',
 // 		cadet : '57ae08a108297ce20dc2bf15',
@@ -618,6 +618,7 @@ module.exports={
 	benjaminm:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
+		console.log( TEAMIDS );
 		Project.findOne(TEAMIDS.benjamin).populate('images').populate('players')
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
