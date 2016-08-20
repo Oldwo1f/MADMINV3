@@ -176,13 +176,54 @@
                             <h3>et On ne se blesse pas</h3>
                         </div>
                     </div>
+                        
+
+
+
+
+
+
+
+
+
+
 
                     <div class="clear"></div>
                     <h3 class="bottommargin">Les joueurs</h3>
+                    <ul class="legendPoussin">
+                        <li class="service">
+                            <span class="icon iconctvb-ballon"></span>
+                            <p>Service</p>
+                        </li>
+                        <li class="recep">
+                            <span class="icon iconctvb-recep"></span>
+                            <p>Manchette</p>
+                        </li>
+                        <li class="passe">
+                            <span class="icon iconctvb-passe"></span>
+                            <p>Passe</p>
+                        </li>
+                        <li class="concentration">
+                            <span class="icon iconctvb-concentration"></span>
+                            <p>Concentration</p>
+                        </li>
+                        <li class="precision">
+                            <span class="icon iconctvb-precision"></span>
+                            <p>Précision</p>
+                        </li>
+                        <li class="plongeon2">
+                            <span class="icon iconctvb-plongeon2"></span>
+                            <p>Plongeon</p>
+                        </li>
+                        <li class="arbitre">
+                            <span class="icon iconctvb-arbitre"></span>
+                            <p>Arbitrage</p>
+                        </li>
+                    </ul>
                     <ul class="testimonials-grid grid-3 clearfix topmargin bottommargin" style="padding-left:0px;">
                         
                         <% for(var i=0; i< project.players.length ; i++){%>
-                            <li style="height: 197px;">
+                        <li style="height: 197px;">
                             <div class="testimonial">
                                 <div class="testi-image">
                                     <% if(project.players[i].images && project.players[i].images.length){%>
@@ -203,11 +244,71 @@
                                         <span><%- project.players[i].contre %> ans</span>
                                     </div>
                                 </div>
+                                    <div class="blockprogressPoussin">
+                                        <div class="oneprogress" title="Service">
+                                            <span class="icon iconctvb-service"></span>  
+                                            <div class="progress">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].service %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*20)/100)%>%;">
+                                                    <%- project.players[i].service %>
+                                              </div>
+                                            </div>   
+                                        </div>    
+                                        <div class="oneprogress" title="Manchette">
+                                            <span class="icon iconctvb-recep"></span>  
+                                            <div class="progress">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].recep %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*20)/100)%>%;">
+                                                    <%- project.players[i].recep %>
+                                              </div>
+                                            </div>   
+                                        </div>    
+                                        <div class="oneprogress" title="Passe">
+                                            <span class="icon iconctvb-passe"></span>  
+                                            <div class="progress">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].passe %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*20)/100)%>%;">
+                                                    <%- project.players[i].passe %>
+                                              </div>
+                                            </div>   
+                                        </div>   
+                                        <div class="oneprogress" title="Plongeon">
+                                            <span class="icon iconctvb-plongeon2"></span>  
+                                            <div class="progress">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].plongeon %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*20)/100)%>%;">
+                                                    <%- project.players[i].plongeon %>
+                                              </div>
+                                            </div>   
+                                        </div>    
+                                        <div class="oneprogress" title="Concentration">
+                                            <span class="icon iconctvb-concentration"></span>  
+                                            <div class="progress">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].contre %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*20)/100)%>%;">
+                                                    <%- project.players[i].contre %>
+                                              </div>
+                                            </div>   
+                                        </div>    
+                                        <div class="oneprogress" title="precision">
+                                            <span class="icon iconctvb-precision"></span>  
+                                            <div class="progress">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].taille %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*20)/100)%>%;">
+                                                    <%- project.players[i].taille %>
+                                              </div>
+                                            </div>   
+                                        </div>        
+                                        <div class="oneprogress" title="arbitrage">
+                                            <span class="icon iconctvb-arbitre"></span>  
+                                            <div class="progress">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].detente %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*20)/100)%>%;">
+                                                    <%- project.players[i].detente %>
+                                              </div>
+                                            </div>   
+                                        </div>    
+                                    </div>
+                               
                             </div>
+                            
                         </li>
-                                     
-                        <%}%>       
+                        <%}%>   
                     </ul>
+
                 </div>
                     <div class="clear"></div>
 
@@ -312,6 +413,7 @@
                         <div class="heading-block center nomargin">
                             <h3>Informations</h3>
                         </div>
+
                     </div>
                 </div>
 
@@ -319,7 +421,9 @@
                     <div class="container clearfix">
                         <% if( project.content && project.content){%>
                                 <%- project.content %>                        
-                        <% } %>  
+                        <% } %> 
+
+
                     </div>
                 </div>
                 <div class="clear"></div>
