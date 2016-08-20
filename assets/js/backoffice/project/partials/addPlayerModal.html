@@ -57,7 +57,7 @@
 				<input type="text" ng-blur="savePlayer('name')" name="name"  class="stacked-input"  ng-model="playerData.name" id="input-3" placeholder="Nom du joueur">
 				
 				
-			<div ng-if="poussin == false">
+			<div ng-if="!poussin">
 				<label for="input-3" class="stacked-label" title="Poste"><i class="pe-7s-keypad"></i></label>
 				<input type="text" ng-blur="savePlayer('poste')" name="poste"  class="stacked-input"  ng-model="playerData.poste" id="input-3" placeholder="Poste">
 				<div class="rowform" style="">
@@ -156,7 +156,7 @@
 				
 
 			</div>
-			<div ng-if="poussin == true">
+			<div ng-if="poussin">
 					
 						<label for="input-3" class="stacked-label" title="Age"><i class="pe-7s-calendar"></i></label>
 						<input type="text" ng-blur="savePlayer('poste')" name="poste"  class="stacked-input"  ng-model="playerData.poste" id="input-3" placeholder="Age">

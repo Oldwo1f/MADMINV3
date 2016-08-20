@@ -1282,9 +1282,9 @@ angular.module('momi-projects')
 			     //  	},
 			      	controller: function($scope,$rootScope,sliderService){
 
-			      		$scope.poussin == false
+			      		$scope.poussin = false;
 			      		if(projectID == '57b417009c22273d1a44798f')
-			      			$scope.poussin == true
+			      			$scope.poussin = true;
 			      		console.log(player);
 			      		$scope.playerData = {};
 			      		$scope.playerData.id = player.id;
