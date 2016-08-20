@@ -57,7 +57,7 @@
 				<input type="text" ng-blur="savePlayer('name')" name="name"  class="stacked-input"  ng-model="playerData.name" id="input-3" placeholder="Nom du joueur">
 				
 				
-			<div ng-if="projid !='57b417009c22273d1a44798f'">
+			<div ng-if="poussin == false">
 				<label for="input-3" class="stacked-label" title="Poste"><i class="pe-7s-keypad"></i></label>
 				<input type="text" ng-blur="savePlayer('poste')" name="poste"  class="stacked-input"  ng-model="playerData.poste" id="input-3" placeholder="Poste">
 				<div class="rowform" style="">
@@ -136,7 +136,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="vision" class="stacked-label" ><i class="icon iconctvb iconctvb-jeux"></i></label>
+			      <label for="input-4" title="vision" class="stacked-label" ><i class="icon iconctvb iconctvb-vision"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('vision')" style="margin-top: 1px;"type="number" ng-model="playerData.vision" aria-label="violet" aria-controls="taille-vision">
 			      
 			      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('vision')" class="md-primary"flex min="0" max="100" ng-model="playerData.vision" aria-label="violet" id="taille-vision">
@@ -156,7 +156,7 @@
 				
 
 			</div>
-			<div ng-if="projid =='57b417009c22273d1a44798f'">
+			<div ng-if="poussin == true">
 					
 						<label for="input-3" class="stacked-label" title="Age"><i class="pe-7s-calendar"></i></label>
 						<input type="text" ng-blur="savePlayer('poste')" name="poste"  class="stacked-input"  ng-model="playerData.poste" id="input-3" placeholder="Age">
