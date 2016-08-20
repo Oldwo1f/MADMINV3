@@ -1272,6 +1272,7 @@ angular.module('momi-projects')
 				var aspectRatioSlideshow = '4/3';
 				var playerID = player.id;
 				var projectID = projid;
+				
 			    $mdDialog.show({
 			    	// resolve:{
 			     //  		slide:function(sliderService){
@@ -1281,7 +1282,9 @@ angular.module('momi-projects')
 			     //  	},
 			      	controller: ["$scope", "$rootScope", "sliderService", function($scope,$rootScope,sliderService){
 
-
+			      		$scope.poussin = false;
+			      		if(projectID == '57b417009c22273d1a44798f')
+			      			$scope.poussin = true;
 			      		console.log(player);
 			      		$scope.playerData = {};
 			      		$scope.playerData.id = player.id;
