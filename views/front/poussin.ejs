@@ -189,37 +189,7 @@
 
 
                     <div class="clear"></div>
-                    <h3 class="bottommargin">Les joueurs</h3>
-                    <ul class="legendPoussin">
-                        <li class="service">
-                            <span class="icon iconctvb-ballon"></span>
-                            <p>Service</p>
-                        </li>
-                        <li class="recep">
-                            <span class="icon iconctvb-recep"></span>
-                            <p>Manchette</p>
-                        </li>
-                        <li class="passe">
-                            <span class="icon iconctvb-passe"></span>
-                            <p>Passe</p>
-                        </li>
-                        <li class="concentration">
-                            <span class="icon iconctvb-concentration"></span>
-                            <p>Concentration</p>
-                        </li>
-                        <li class="precision">
-                            <span class="icon iconctvb-precision"></span>
-                            <p>Précision</p>
-                        </li>
-                        <li class="plongeon2">
-                            <span class="icon iconctvb-plongeon2"></span>
-                            <p>Plongeon</p>
-                        </li>
-                        <li class="arbitre">
-                            <span class="icon iconctvb-arbitre"></span>
-                            <p>Arbitrage</p>
-                        </li>
-                    </ul>
+                    
                     <ul class="testimonials-grid grid-3 clearfix topmargin bottommargin" style="padding-left:0px;">
                         
                         <% for(var i=0; i< project.players.length ; i++){%>
@@ -256,7 +226,7 @@
                                         <div class="oneprogress" title="Manchette">
                                             <span class="icon iconctvb-recep"></span>  
                                             <div class="progress">
-                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].recep %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*100)/20)%>%;">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].recep %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].recep*100)/20)%>%;">
                                                     <%- project.players[i].recep %>
                                               </div>
                                             </div>   
@@ -264,7 +234,7 @@
                                         <div class="oneprogress" title="Passe">
                                             <span class="icon iconctvb-passe"></span>  
                                             <div class="progress">
-                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].passe %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*100)/20)%>%;">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].passe %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].passe*100)/20)%>%;">
                                                     <%- project.players[i].passe %>
                                               </div>
                                             </div>   
@@ -272,7 +242,7 @@
                                         <div class="oneprogress" title="Plongeon">
                                             <span class="icon iconctvb-plongeon2"></span>  
                                             <div class="progress">
-                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].plongeon %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*100)/20)%>%;">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].plongeon %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].plongeon*100)/20)%>%;">
                                                     <%- project.players[i].plongeon %>
                                               </div>
                                             </div>   
@@ -280,7 +250,7 @@
                                         <div class="oneprogress" title="Concentration">
                                             <span class="icon iconctvb-concentration"></span>  
                                             <div class="progress">
-                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].contre %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*100)/20)%>%;">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].contre %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].contre*100)/20)%>%;">
                                                     <%- project.players[i].contre %>
                                               </div>
                                             </div>   
@@ -288,7 +258,7 @@
                                         <div class="oneprogress" title="precision">
                                             <span class="icon iconctvb-precision"></span>  
                                             <div class="progress">
-                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].taille %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*100)/20)%>%;">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].taille %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].taille*100)/20)%>%;">
                                                     <%- project.players[i].taille %>
                                               </div>
                                             </div>   
@@ -296,7 +266,7 @@
                                         <div class="oneprogress" title="arbitrage">
                                             <span class="icon iconctvb-arbitre"></span>  
                                             <div class="progress">
-                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].detente %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].service*100)/20)%>%;">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="<%- project.players[i].detente %>" aria-valuemin="0" aria-valuemax="20" style="width: <%- ((project.players[i].detente*100)/20)%>%;">
                                                     <%- project.players[i].detente %>
                                               </div>
                                             </div>   

@@ -55,14 +55,14 @@
 			<div class="clearfix"></div>
 				<label for="input-3" class="stacked-label"><i class="pe-7s-flag"></i></label>
 				<input type="text" ng-blur="savePlayer('name')" name="name"  class="stacked-input"  ng-model="playerData.name" id="input-3" placeholder="Nom du joueur">
+				 <% if(projid !="57b417009c22273d1a44798f"){%>
+				 
+				 
 				<label for="input-3" class="stacked-label" title="Poste"><i class="pe-7s-keypad"></i></label>
 				<input type="text" ng-blur="savePlayer('poste')" name="poste"  class="stacked-input"  ng-model="playerData.poste" id="input-3" placeholder="Poste">
-
-				<!-- <label for="input-3" class="stacked-label"><i class="pe-7s-flag"></i></label>
-				<input type="text" ng-blur="saveSlide('title')" name="title"  class="stacked-input"  ng-model="playerData.title" id="input-3" placeholder="Poste"> -->
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="taille" class="stacked-label" ><i class="ctvbicontaille"></i></label>
+			      <label for="input-4" title="taille" class="stacked-label" ><i class="icon iconctvb-taille"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('taille')" style="margin-top: 1px;"type="number" ng-model="playerData.taille" aria-label="violet" aria-controls="taille-slider">
 			      
 			      <md-slider style="margin-top: 1px;" class="md-primary" ng-blur="savePlayer('taille')" flex min="0" max="100" ng-model="playerData.taille" aria-label="violet" id="taille-slider">
@@ -70,7 +70,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="detente" class="stacked-label" ><i class="ctvbicondetente"></i></label>
+			      <label for="input-4" title="detente" class="stacked-label" ><i class="icon iconctvb-detente"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('detente')" style="margin-top: 1px;"type="number" ng-model="playerData.detente" aria-label="violet" aria-controls="taille-detente">
 			      
 			      <md-slider style="margin-top: 1px;"class="md-primary"flex min="0" max="100" ng-blur="savePlayer('detente')"  ng-model="playerData.detente" aria-label="violet" id="taille-detente">
@@ -78,7 +78,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="attaque" class="stacked-label" ><i class="ctvbiconattaque"></i></label>
+			      <label for="input-4" title="attaque" class="stacked-label" ><i class="icon iconctvb-attaque"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('attaque')" style="margin-top: 1px;"type="number" ng-model="playerData.attaque" aria-label="violet" aria-controls="taille-attaque">
 			      
 			      <md-slider style="margin-top: 1px;"class="md-primary"flex ng-blur="savePlayer('attaque')" min="0" max="100" ng-model="playerData.attaque" aria-label="violet" id="taille-attaque">
@@ -86,7 +86,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="contre" class="stacked-label" ><i class="ctvbiconcontre"></i></label>
+			      <label for="input-4" title="contre" class="stacked-label" ><i class="icon iconctvb-contre"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('contre')" style="margin-top: 1px;"type="number" ng-model="playerData.contre" aria-label="violet" aria-controls="taille-contre">
 			      
 			      <md-slider style="margin-top: 1px;"class="md-primary" ng-blur="savePlayer('contre')"  flex min="0" max="100" ng-model="playerData.contre" aria-label="violet" id="taille-contre">
@@ -94,7 +94,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="defence" class="stacked-label" ><i class="ctvbicondefence"></i></label>
+			      <label for="input-4" title="defence" class="stacked-label" ><i class="icon iconctvb-defence"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('defence')" style="margin-top: 1px;"type="number" ng-model="playerData.defence" aria-label="violet" aria-controls="taille-defence">
 			      
 			      <md-slider style="margin-top: 1px;"class="md-primary" ng-blur="savePlayer('defence')" flex min="0" max="100" ng-model="playerData.defence" aria-label="violet" id="taille-defence">
@@ -102,7 +102,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="recep" class="stacked-label" ><i class="ctvbiconrecep"></i></label>
+			      <label for="input-4" title="recep" class="stacked-label" ><i class="icon iconctvb-recep"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('recep')" style="margin-top: 1px;"type="number" ng-model="playerData.recep" aria-label="violet" aria-controls="taille-recep">
 			      
 			      <md-slider style="margin-top: 1px;"class="md-primary"  ng-blur="savePlayer('recep')" flex min="0" max="100" ng-model="playerData.recep" aria-label="violet" id="taille-recep">
@@ -110,7 +110,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="passe" class="stacked-label" ><i class="ctvbiconpasse"></i></label>
+			      <label for="input-4" title="passe" class="stacked-label" ><i class="icon iconctvb-passe"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('passe')" style="margin-top: 1px;"type="number" ng-model="playerData.passe" aria-label="violet" aria-controls="taille-passe">
 			      
 			      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('passe')" class="md-primary"flex min="0" max="100" ng-model="playerData.passe" aria-label="violet" id="taille-passe">
@@ -119,7 +119,7 @@
 
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="plongeon" class="stacked-label" ><i class="ctvbiconplongeon"></i></label>
+			      <label for="input-4" title="plongeon" class="stacked-label" ><i class="icon iconctvb-plongeon"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('plongeon')" style="margin-top: 1px;"type="number" ng-model="playerData.plongeon" aria-label="violet" aria-controls="taille-plongeon">
 			      
 			      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('plongeon')" class="md-primary"flex min="0" max="100" ng-model="playerData.plongeon" aria-label="violet" id="taille-plongeon">
@@ -128,7 +128,7 @@
 
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="service" class="stacked-label" ><i class="ctvbiconservice"></i></label>
+			      <label for="input-4" title="service" class="stacked-label" ><i class="icon iconctvb-service"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('service')" style="margin-top: 1px;"type="number" ng-model="playerData.service" aria-label="violet" aria-controls="taille-service">
 			      
 			      <md-slider style="margin-top: 1px;"ng-blur="savePlayer('service')" class="md-primary"flex min="0" max="100" ng-model="playerData.service" aria-label="violet" id="taille-service">
@@ -136,7 +136,7 @@
 				</div>
 				<div class="rowform" style="">
 					
-			      <label for="input-4" title="vision" class="stacked-label" ><i class="ctvbiconvision-jeux"></i></label>
+			      <label for="input-4" title="vision" class="stacked-label" ><i class="icon iconctvb-jeux"></i></label>
 			      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('vision')" style="margin-top: 1px;"type="number" ng-model="playerData.vision" aria-label="violet" aria-controls="taille-vision">
 			      
 			      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('vision')" class="md-primary"flex min="0" max="100" ng-model="playerData.vision" aria-label="violet" id="taille-vision">
@@ -153,7 +153,97 @@
 				<input type="text" ng-blur="savePlayer('instagram')" name="instagram"  class="stacked-input"  ng-model="playerData.instagram" id="input-3" placeholder="Instagram">
 				<label for="input-3" class="stacked-label"><i class="socicon-snapchat"></i></label>
 				<input type="text" ng-blur="savePlayer('snapchat')" name="snapchat"  class="stacked-input"  ng-model="playerData.snapchat" id="input-3" placeholder="Snapchat">
+				
 
+				<%}else{%>
+					
+						<label for="input-3" class="stacked-label" title="Age"><i class="pe-7s-calendar"></i></label>
+						<input type="text" ng-blur="savePlayer('poste')" name="poste"  class="stacked-input"  ng-model="playerData.poste" id="input-3" placeholder="Age">
+						<div class="rowform" style="">
+							
+					      <label for="input-4" title="precision" class="stacked-label" ><span class="icon iconctvb-precision"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('taille')" style="margin-top: 1px;"type="number" ng-model="playerData.taille" aria-label="violet" aria-controls="taille-slider">
+					      
+					      <md-slider style="margin-top: 1px;" class="md-primary" ng-blur="savePlayer('taille')" flex min="0" max="20" ng-model="playerData.taille" aria-label="violet" id="taille-slider">
+					      </md-slider>
+						</div>
+						<div class="rowform" style="">
+							
+					      <label for="input-4" title="arbitre" class="stacked-label" ><span class="icon iconctvb-arbitre"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('detente')" style="margin-top: 1px;"type="number" ng-model="playerData.detente" aria-label="violet" aria-controls="taille-detente">
+					      
+					      <md-slider style="margin-top: 1px;"class="md-primary"flex min="0" max="20" ng-blur="savePlayer('detente')"  ng-model="playerData.detente" aria-label="violet" id="taille-detente">
+					      </md-slider>
+						</div>
+						<!-- <div class="rowform" style="">
+							
+					      <label for="input-4" title="attaque" class="stacked-label" ><span class="icon iconctvb-attaque"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('attaque')" style="margin-top: 1px;"type="number" ng-model="playerData.attaque" aria-label="violet" aria-controls="taille-attaque">
+					      
+					      <md-slider style="margin-top: 1px;"class="md-primary"flex ng-blur="savePlayer('attaque')" min="0" max="20" ng-model="playerData.attaque" aria-label="violet" id="taille-attaque">
+					      </md-slider>
+						</div> -->
+						<div class="rowform" style="">
+							
+					      <label for="input-4" title="concentration" class="stacked-label" ><span class="icon iconctvb-concentration"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('contre')" style="margin-top: 1px;"type="number" ng-model="playerData.contre" aria-label="violet" aria-controls="taille-contre">
+					      
+					      <md-slider style="margin-top: 1px;"class="md-primary" ng-blur="savePlayer('contre')"  flex min="0" max="20" ng-model="playerData.contre" aria-label="violet" id="taille-contre">
+					      </md-slider>
+						</div>
+						<!-- <div class="rowform" style="">
+							
+					      <label for="input-4" title="defence" class="stacked-label" ><i class="ctvbicondefence"></i></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('defence')" style="margin-top: 1px;"type="number" ng-model="playerData.defence" aria-label="violet" aria-controls="taille-defence">
+					      
+					      <md-slider style="margin-top: 1px;"class="md-primary" ng-blur="savePlayer('defence')" flex min="0" max="20" ng-model="playerData.defence" aria-label="violet" id="taille-defence">
+					      </md-slider>
+						</div> -->
+						<div class="rowform" style="">
+							
+					      <label for="input-4" title="Manchette" class="stacked-label" ><span class="icon iconctvb-recep"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('recep')" style="margin-top: 1px;"type="number" ng-model="playerData.recep" aria-label="violet" aria-controls="taille-recep">
+					      
+					      <md-slider style="margin-top: 1px;"class="md-primary"  ng-blur="savePlayer('recep')" flex min="0" max="20" ng-model="playerData.recep" aria-label="violet" id="taille-recep">
+					      </md-slider>
+						</div>
+						<div class="rowform" style="">
+							
+					      <label for="input-4" title="passe" class="stacked-label" ><span class="icon iconctvb-passe"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('passe')" style="margin-top: 1px;"type="number" ng-model="playerData.passe" aria-label="violet" aria-controls="taille-passe">
+					      
+					      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('passe')" class="md-primary"flex min="0" max="20" ng-model="playerData.passe" aria-label="violet" id="taille-passe">
+					      </md-slider>
+						</div>
+
+						<div class="rowform" style="">
+							
+					      <label for="input-4" title="plongeon" class="stacked-label" ><span class="icon iconctvb-plongeon2"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('plongeon')" style="margin-top: 1px;"type="number" ng-model="playerData.plongeon" aria-label="violet" aria-controls="taille-plongeon">
+					      
+					      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('plongeon')" class="md-primary"flex min="0" max="20" ng-model="playerData.plongeon" aria-label="violet" id="taille-plongeon">
+					      </md-slider>
+						</div>
+
+						<div class="rowform" style="">
+							
+					      <label for="input-4" title="service" class="stacked-label" ><span class="icon iconctvb-service2"></span></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('service')" style="margin-top: 1px;"type="number" ng-model="playerData.service" aria-label="violet" aria-controls="taille-service">
+					      
+					      <md-slider style="margin-top: 1px;"ng-blur="savePlayer('service')" class="md-primary"flex min="0" max="20" ng-model="playerData.service" aria-label="violet" id="taille-service">
+					      </md-slider>
+						</div>
+						<!-- <div class="rowform" style="">
+							
+					      <label for="input-4" title="vision" class="stacked-label" ><i class="ctvbiconvision-jeux"></i></label>
+					      <input  required class="rangeInput stacked-input" ng-blur="savePlayer('vision')" style="margin-top: 1px;"type="number" ng-model="playerData.vision" aria-label="violet" aria-controls="taille-vision">
+					      
+					      <md-slider style="margin-top: 1px;" ng-blur="savePlayer('vision')" class="md-primary"flex min="0" max="20" ng-model="playerData.vision" aria-label="violet" id="taille-vision">
+					      </md-slider>
+						</div> -->
+					
+
+				<%}%>
 				<label for="input-4" class="stacked-label "><i class="pe-7s-note"></i></label>
 				<textarea  class="tinymcetextarea margedubas" ng-model="playerData.content" msd-elastic  ng-model="tinymceModel" ng-blur="savePlayer('content')" placeholder="Contenu texte"></textarea>
 

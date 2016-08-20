@@ -1274,6 +1274,7 @@ angular.module('momi-projects')
 				var aspectRatioSlideshow = '4/3';
 				var playerID = player.id;
 				var projectID = projid;
+				$scope.projid = projid;
 			    $mdDialog.show({
 			    	// resolve:{
 			     //  		slide:function(sliderService){
