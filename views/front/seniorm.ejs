@@ -1,6 +1,20 @@
 <body class="stretched">
     <script>
-        var globalGraphSettings = {animation : Modernizr.canvas,scaleOverride: true,scaleSteps: 10,scaleStepWidth: 10,scaleStartValue: 0};
+        var globalGraphSettings = {animation : Modernizr.canvas,scaleOverride: true,scaleSteps: 10,scaleStepWidth: 10,scaleStartValue: 0,
+
+            tooltipTemplate: function(v) {
+                console.log(v);
+                if(v.label == 'Détente'){
+                    return v.label + ' : ' + v.value/1.66 +'cm';
+                }else if(v.label == 'Taille'){
+                    return v.label + ' : 1m' + v.value ;
+                }else{
+                    return v.label + ' : ' + v.value;
+
+                }
+
+            },
+        };
     </script>
     <!-- Document Wrapper
     ============================================= -->
@@ -133,10 +147,9 @@
 
                             jQuery(window).load( function(){
                                 
-
+                                console.log('HERE');
                                 var radarChartData = {
                                     labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    tooltipTemplate: "<%if (label && label=='detente'){%><%=label %>: <%= (value/1.66) + ' cm' %> <%}%> <%if (label && label!='detente'){%><%=label %>: <%= value + ' %' %> <%}%>",
                                     datasets : [
                                         {
                                             fillColor : "rgba(0,91,150,0.5)",
