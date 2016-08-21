@@ -3,23 +3,23 @@ var nodemailer = require('nodemailer');
 var moment = require('moment');
 // var marked = require('marked');
 var truncate = require('html-truncate');
-// var TEAMIDS = {
-// 		benjamin : '57b4139e9c22273d1a44797f',
-// 		cadet : '57b417cb9c22273d1a4479a6',
-// 		loisir : '57b417b89c22273d1a4479a4',
-// 		seniorF : '57b417889c22273d1a4479a0',
-// 		seniorG : '57b417459c22273d1a44799c',
-// 		poussin : '57b417009c22273d1a44798f',
-// }
-// // LOCALE AMMM TEAMID
 var TEAMIDS = {
-		benjamin : '57ae08a108297ce20dc2bf15',
-		cadet : '57ae08a108297ce20dc2bf15',
-		loisir : '57ae08a108297ce20dc2bf15',
-		seniorF : '57ae08a108297ce20dc2bf15',
-		seniorG : '57ae08a108297ce20dc2bf15',
-		poussin : '57ae08a108297ce20dc2bf15',
+		benjamin : '57b4139e9c22273d1a44797f',
+		cadet : '57b417cb9c22273d1a4479a6',
+		loisir : '57b417b89c22273d1a4479a4',
+		seniorF : '57b417889c22273d1a4479a0',
+		seniorG : '57b417459c22273d1a44799c',
+		poussin : '57b417009c22273d1a44798f',
 }
+// // LOCALE AMMM TEAMID
+// var TEAMIDS = {
+// 		benjamin : '57ae08a108297ce20dc2bf15',
+// 		cadet : '57ae08a108297ce20dc2bf15',
+// 		loisir : '57ae08a108297ce20dc2bf15',
+// 		seniorF : '57ae08a108297ce20dc2bf15',
+// 		seniorG : '57ae08a108297ce20dc2bf15',
+// 		poussin : '57ae08a108297ce20dc2bf15',
+// }
 
 module.exports={
 	home:function(req,res,next) {
