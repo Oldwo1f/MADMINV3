@@ -1,6 +1,20 @@
 <body class="stretched">
     <script>
-        var globalGraphSettings = {animation : Modernizr.canvas,scaleOverride: true,scaleSteps: 10,scaleStepWidth: 10,scaleStartValue: 0};
+                var globalGraphSettings = {animation : Modernizr.canvas,scaleOverride: true,scaleSteps: 10,scaleStepWidth: 10,scaleStartValue: 0,
+
+            tooltipTemplate: function(v) {
+                console.log(v);
+                if(v.label == 'Détente'){
+                    return v.label + ' : ' + v.value/1.66 +'cm';
+                }else if(v.label == 'Taille'){
+                    return v.label + ' : 1m' + v.value ;
+                }else{
+                    return v.label + ' : ' + v.value;
+
+                }
+
+            },
+        };
     </script>
     <!-- Document Wrapper
     ============================================= -->
@@ -142,7 +156,7 @@
                                             strokeColor : "rgba(1,31,75,0.5)",
                                             pointColor : "rgba(1,31,75,0.5)",
                                             pointStrokeColor : "#fff",
-                                            data : [<%- project.players[i].taille %>,<%- project.players[i].detente %>,<%- project.players[i].attaque %>,<%- project.players[i].contre %>,<%- project.players[i].defence %>,<%- project.players[i].recep %>,<%- project.players[i].passe %>,<%- project.players[i].plongeon %>,<%- project.players[i].service %>,<%- project.players[i].vision %>]
+                                            data : [<%- project.players[i].taille %>,<%- project.players[i].detente %>*1.66,<%- project.players[i].attaque %>,<%- project.players[i].contre %>,<%- project.players[i].defence %>,<%- project.players[i].recep %>,<%- project.players[i].passe %>,<%- project.players[i].plongeon %>,<%- project.players[i].service %>,<%- project.players[i].vision %>]
                                         }
                                     ]
 
