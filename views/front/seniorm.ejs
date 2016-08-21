@@ -136,7 +136,7 @@
 
                                 var radarChartData = {
                                     labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    tooltipTemplate: "<%if (label && label=='detente'){%><%=label %>: <%= value/1.66 + ' %' %> <%}%> <%if (label && label!='detente'){%><%=label %>: <%= value + ' %' %> <%}%>",
+                                    tooltipTemplate: "<%if (label && label=='detente'){%><%=label %>: <%= (value/1.66) + ' cm' %> <%}%> <%if (label && label!='detente'){%><%=label %>: <%= value + ' %' %> <%}%>",
                                     datasets : [
                                         {
                                             fillColor : "rgba(0,91,150,0.5)",
