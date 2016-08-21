@@ -692,6 +692,8 @@ angular.module('momi-projects')
 					        console.log('ON bbbblur');
 				         	if (editor.getContent().length === 0) {
 						    	editor.setContent(placeholder);
+					    	}else{
+					    		is_default = false;
 					    	}
 				      	});
 		      		}
