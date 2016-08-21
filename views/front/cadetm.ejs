@@ -5,7 +5,7 @@
             tooltipTemplate: function(v) {
                 console.log(v);
                 if(v.label == 'Détente'){
-                    return v.label + ' : ' + v.value/1.66 +'cm';
+                    return v.label + ' : ' + Math.round(v.value/1.66) +'cm';
                 }else if(v.label == 'Taille'){
                     return v.label + ' : 1m' + v.value ;
                 }else{
