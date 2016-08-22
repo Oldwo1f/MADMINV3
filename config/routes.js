@@ -118,5 +118,8 @@ module.exports.routes = {
 
   //FRONT
 
+  'GET /':'FrontController.home',
+  'GET /home':'FrontController.home',
+
 
 };
