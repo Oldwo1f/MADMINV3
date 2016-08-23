@@ -36,7 +36,7 @@ module.exports.routes = {
   //   view: 'homepage'
   // },
   '/admin':'adminController.serveApp',
-
+  'GET /':'FrontController.home',
 
 
  
@@ -118,8 +118,9 @@ module.exports.routes = {
 
   //FRONT
 
-  'GET /':'FrontController.home',
+  
   'GET /home':'FrontController.home',
+  'GET /tatata':'FrontController.TATATA',
 
 
 };
