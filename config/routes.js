@@ -120,7 +120,7 @@ module.exports.routes = {
 
   
   'GET /home':'FrontController.home',
-  'GET /tatata':'FrontController.TATATA',
+  'GET /blog':'FrontController.blog',
 
 
 };
