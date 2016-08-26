@@ -18,3 +18,21 @@ body{background:black;}
 .photosHover:hover{z-index:200;};
 
 .momLogoFond{font-family: 'momfont'; font-size: 300px; color:red !important;}
+
+.userRealtime { font-size: 12em; border:10px solid white;border-radius:500px;width:300px;height: 300px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex; align-items:center;justify-content:center;-moz-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-webkit-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-o-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=100);}
+.userRealtime i{padding-bottom:5px;text-shadow: 0px 0px 20px #FFF;}
+
+.rs-parallaxlevel-3 .userRealtime { font-size: 10em; border:8px solid white;border-radius:500px;width:250px;height: 250px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex; align-items:center;justify-content:center;-moz-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-webkit-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-o-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=100);}
+.rs-parallaxlevel-3 .userRealtime i{padding-bottom:5px;text-shadow: 0px 0px 20px #FFF;}
+
+.rs-parallaxlevel-4 .userRealtime { font-size: 8em; border:6px solid white;border-radius:500px;width:200px;height: 200px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex; align-items:center;justify-content:center;-moz-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-webkit-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-o-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=100);}
+.rs-parallaxlevel-4 .userRealtime i{padding-bottom:5px;text-shadow: 0px 0px 20px #FFF;}
+
+.rs-parallaxlevel-5 .userRealtime { font-size: 6em; border:4px solid white;border-radius:500px;width:150px;height: 150px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex; align-items:center;justify-content:center;-moz-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-webkit-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;-o-box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;box-shadow: 0px 0px 30px 0px white, inset 0px 0px 30px 0px #FFF;filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=100);}
+.rs-parallaxlevel-5 .userRealtime i{padding-bottom:5px;text-shadow: 0px 0px 20px #FFF;}
+
+.rs-parallaxlevel-6 .userRealtime { font-size: 3em; border:3px solid white;border-radius:500px;width:80px;height: 80px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex; align-items:center;justify-content:center;-moz-box-shadow: 0px 0px 15px 0px white, inset 0px 0px 15px 0px #FFF;-webkit-box-shadow: 0px 0px 15px 0px white, inset 0px 0px 15px 0px #FFF;-o-box-shadow: 0px 0px 15px 0px white, inset 0px 0px 15px 0px #FFF;box-shadow: 0px 0px 15px 0px white, inset 0px 0px 15px 0px #FFF;filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=100);}
+.rs-parallaxlevel-6 .userRealtime i{padding-bottom:5px;text-shadow: 0px 0px 20px #FFF;}
+
+.rs-parallaxlevel-7 .userRealtime { font-size: 2em; border:2px solid white;border-radius:500px;width:50px;height: 50px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex; align-items:center;justify-content:center;-moz-box-shadow: 0px 0px 10px 0px white, inset 0px 0px 10px 0px #FFF;-webkit-box-shadow: 0px 0px 10px 0px white, inset 0px 0px 10px 0px #FFF;-o-box-shadow: 0px 0px 10px 0px white, inset 0px 0px 10px 0px #FFF;box-shadow: 0px 0px 10px 0px white, inset 0px 0px 10px 0px #FFF;filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=100);}
+.rs-parallaxlevel-7 .userRealtime i{padding-bottom:5px;text-shadow: 0px 0px 20px #FFF;}
