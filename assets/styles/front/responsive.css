@@ -1108,7 +1108,7 @@
 	body { padding: 0 !important; }
 
 	#wrapper { width: 100% !important; }
-
+	#wrapper{    padding-bottom: 50px;}
 	.container-fullwidth {
 		margin: 0 auto;
 		padding: 0 15px !important;
