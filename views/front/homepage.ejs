@@ -494,13 +494,18 @@ var articles = <%- JSON.stringify(articles) %>;
 
                         jQuery(window).load( function(){
                             jQuery('#headquarters-map').gMap({
-                                address: "28 Rue du Buisson, 02400 Château-Thierry, France",
+                                address: "",
+
+                                latitude : 49.054072,
+                                longitude: 3.392760,
                                 maptype: 'ROADMAP',
                                 zoom: 14,
                                 markers: [
                                     {
-                                        address: "28 Rue du Buisson, 02400 Château-Thierry, France",
-                                        html: "Brise Bêche",
+                                        
+                                        latitude : 49.054072,
+                                        longitude: 3.392760,
+                                        html: "Brise Bêche <br>28 Rue du Buisson <br>02400 Château-Thierry",
                                         icon: {
                                             image: "images/front/map-icon-red.png",
                                             iconsize: [32, 39],
