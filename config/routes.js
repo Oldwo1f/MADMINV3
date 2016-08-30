@@ -117,7 +117,7 @@ module.exports.routes = {
   ***************************************************************************/
 
 
-  //FRONT
+  //FRONT 
 
   'GET /':'FrontController.home',
   'GET /contact':'FrontController.contact',
