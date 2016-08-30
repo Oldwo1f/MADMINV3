@@ -123,18 +123,19 @@
             ============================================= -->
             <section id="google-map" class="gmap"></section>
 
-            <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAbD7AeRCGXIkgwCLYn0ommXLfDFmQ8Jz8&sensor=false"></script>
+            <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAbD7AeRCGXIkgwCLYn0ommXLfDFmQ8Jz8"></script>
             <script type="text/javascript" src="js/front/jquery.gmap.js"></script>
 
             <script type="text/javascript">
-
                 jQuery('#google-map').gMap({
-                                address: "28 Rue du Buisson, 02400 Château-Thierry, France",
+                                latitude : 49.054072,
+                                longitude: 3.392760,
                                 maptype: 'ROADMAP',
                                 zoom: 14,
                                 markers: [
                                     {
-                                        address: "28 Rue du Buisson, 02400 Château-Thierry, France",
+                                        latitude : 49.054072,
+                                        longitude: 3.392760,
                                         html: "Brise Bêche",
                                         icon: {
                                             image: "images/front/map-icon-red.png",
