@@ -14,10 +14,15 @@
 		        	<!-- <div class="dragger"></div> -->
 
 		        </div>
+		        <!-- MENU WIDGET PAI -->
+		        <div gridster-item="widgetList['menuPaiWidget']" ng-class="{'no-resize': widgetList['menuPaiWidget'].noresize }" ng-show="widgetList['menuPaiWidget'].enabled">
+		        	<menu-pai-widget></menu-pai-widget><div class="dragger"></div>
+		        </div>
 		    <!-- MENU WIDGET -->
 		        <div gridster-item="widgetList['menuWidget']" ng-class="{'no-resize': widgetList['menuWidget'].noresize }" ng-show="widgetList['menuWidget'].enabled">
 		        	<menu-widget></menu-widget><div class="dragger"></div>
 		        </div>
+		    
 		    <!-- dashboardconfig WIDGET -->
 		        <div gridster-item="widgetList['dashboardconfigWidget']" ng-class="{'no-resize': widgetList['dashboardconfigWidget'].noresize }" ng-show="widgetList['dashboardconfigWidget'].enabled">
 		        	<dashboardconfig-widget></dashboardconfig-widget>

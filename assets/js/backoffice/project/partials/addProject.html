@@ -9,13 +9,19 @@
 			<a  class="rightBtn" ng-click="returnPreviousState()">
 				<span  ><i class="fa fa-long-arrow-left"></i></span>
 			</a>
-			<div class="pageTitle">
-				<i class="pe-7f-note"></i><h3>Projet : {{formData.title}}</h3>
+			
+			<div class="contentTypeSelector2">
+				<div class="formGroup ">
+					<div class="btn-group block ">
+					  <a ng-click="formData.contentType='etude';update('contentType')" type="button" class="fakeColor-etude btn "  ng-class="{'Color-etude':formData.contentType=='etude','Color-rapport':formData.contentType=='rapport','Color-conso':formData.contentType=='conso','Color-tendance':formData.contentType=='tendance','Color-book':formData.contentType=='book','Color-autre':formData.contentType=='autre','active': formData.contentType=='etude'}" style="border-right:0px">Étude de marché</a>
+					  <a ng-click="formData.contentType='rapport';update('contentType')" type="button" class="fakeColor-rapport btn " ng-class="{'Color-etude':formData.contentType=='etude','Color-rapport':formData.contentType=='rapport','Color-conso':formData.contentType=='conso','Color-tendance':formData.contentType=='tendance','Color-book':formData.contentType=='book','Color-autre':formData.contentType=='autre','active': formData.contentType=='rapport'}" >Rapport d'étonement</a>
+					  <a ng-click="formData.contentType='conso';update('contentType')" type="button" class="fakeColor-conso btn " ng-class="{'Color-etude':formData.contentType=='etude','Color-rapport':formData.contentType=='rapport','Color-conso':formData.contentType=='conso','Color-tendance':formData.contentType=='tendance','Color-book':formData.contentType=='book','Color-autre':formData.contentType=='autre','active': formData.contentType=='conso'}"  style="border-left:0px;">Étude consomateur</a>
+					  <a ng-click="formData.contentType='tendance';update('contentType')" type="button" class="fakeColor-tendance btn " ng-class="{'Color-etude':formData.contentType=='etude','Color-rapport':formData.contentType=='rapport','Color-conso':formData.contentType=='conso','Color-tendance':formData.contentType=='tendance','Color-book':formData.contentType=='book','Color-autre':formData.contentType=='autre','active': formData.contentType=='tendance'}"  style="border-left:0px;">Tendance</a>
+					  <a ng-click="formData.contentType='book';update('contentType')" type="button" class="fakeColor-book btn " ng-class="{'Color-etude':formData.contentType=='etude','Color-rapport':formData.contentType=='rapport','Color-conso':formData.contentType=='conso','Color-tendance':formData.contentType=='tendance','Color-book':formData.contentType=='book','Color-autre':formData.contentType=='autre','active': formData.contentType=='book'}"  style="border-left:0px;">Book</a>
+					  <a ng-click="formData.contentType='autre';update('contentType')" type="button" class="fakeColor-autre btn " ng-class="{'Color-etude':formData.contentType=='etude','Color-rapport':formData.contentType=='rapport','Color-conso':formData.contentType=='conso','Color-tendance':formData.contentType=='tendance','Color-book':formData.contentType=='book','Color-autre':formData.contentType=='autre','active': formData.contentType=='autre'}"  style="border-left:0px">Autre</a>
+					</div>
+				</div>
 			</div>
-			<!-- <div class="searchBar">
-				<input class="" type="text" ng-blur="searchProject()" ng-model="searchSlug" placeholder="Recherche dans les projects">
-				<span class="iconsearch"><i class="fa fa-search"></i></span>
-			</div> -->
 			<a class="leftBtn" href="">
 				<removeremove class="removeremove" action="removeThis" itemid="formData.id"></removeremove>
 			</a>
@@ -32,7 +38,7 @@
 			<input type="text" class="stacked-input" ng-blur="update('title')" ng-model="formData.title" id="input-1" placeholder="Titre">
 <!-- category -->
 			<label for="input-2" class="stacked-label"><i class="pe-7s-way"></i></label>
-			<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)" add-on-enter="true"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
+			<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
             	<auto-complete source="autocompleteCategories($query)" display-property="name" select-first-match="true" ></auto-complete>
         	</tags-input>
         	<script type="text/ng-template" id="myCatTemplate">
@@ -46,7 +52,7 @@
 <!-- tag -->
 			<label for="input-3" class="stacked-label"><i class="pe-7s-ticket"></i></label>
 			
-		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" add-on-enter="true" ng-blur="unselectOnBlur()" >
+		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)"  ng-blur="unselectOnBlur()" >
             	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
         	</tags-input>
 <!-- content  -->
@@ -55,11 +61,11 @@
 			<textarea  class="tinymcetextarea" ui-tinymce="tinymceOption" ng-model="formData.content" ng-model="tinymceModel" ng-blur="update('content')" placeholder="Contenu du projet"></textarea>
 <!-- category -->
 			<label for="input-5" class="stacked-label mt0"><i class="pe-7s-user"></i></label>
-			<tags-input add-from-autocomplete-only="true" class="mycategoriesinput inputtag  mb" ng-model="formData.authors" on-tag-removed="removeAuthor($tag)" on-tag-adding="addAuthor($tag)" add-on-enter="true"  ng-blur="unselectOnBlur()"  placeholder="Ajouter un auteur" display-property="name" template="myAuthorTemplate">
+			<tags-input add-from-autocomplete-only="true" class="mycategoriesinput inputtag  mb" ng-model="formData.authors" on-tag-removed="removeAuthor($tag)" on-tag-adding="addAuthor($tag)"  ng-blur="unselectOnBlur()"  placeholder="Ajouter un auteur" display-property="name" template="myAuthorTemplate">
             	<auto-complete source="autocompleteAuthors($query)" template="autocomplete-template" display-property="name" select-first-match="true" ></auto-complete>
         	</tags-input>
         	<script type="text/ng-template" id="myAuthorTemplate">
-        		<div class="author-template" >
+        		<div class="author-template" ui-sref="users">
 
 			        	<img ng-if="data.images[0]" class="myprofiletableimage" width="50" height="50"  ng-src="image/profile/{{data.images[0].filename}}" alt="">
 		        		<ng-letter-avatar  ng-if="!data.images[0]" charCount="1" data="{{data.firstname}} {{data.name}}" fontsize="25" height="50" width="50" shape="round"></ng-letter-avatar>
@@ -69,7 +75,7 @@
 			     </div>
 			</script>
 		 	<script type="text/ng-template" id="autocomplete-template">
-				<div class="autocomplete-template">
+				<div class="autocomplete-template" >
 				<div class="left-panel pull-left">
 				  <img ng-if="data.images[0]" width="50" height="50" ng-src="image/profile/{{data.images[0].filename}}" />
 				  <ng-letter-avatar  ng-if="!data.images[0]" charCount="1" data="{{data.firstname}} {{data.name}}" fontsize="15" height="50" width="50" shape="round"></ng-letter-avatar>
@@ -90,7 +96,7 @@
 			</div>
 			<div class="formGroup">
 			<label for="input-2" class="stacked-label"><i class="pe-7s-repeat"></i></label>
-			<input ng-model="formData.rewriteurl" inputcount="1000" urlprefixerwidth="222px" urlprefixer="http://momsite.com/projects/project/" type="text" class="stacked-input" id="input-2" placeholder="Réécriture d'url" ng-blur="update('rewriteurl')">
+			<input ng-model="formData.rewriteurl" inputcount="1000" urlprefixerwidth="218px" urlprefixer="http://momsite.com/projects/" type="text" class="stacked-input" id="input-2" placeholder="Réécriture d'url" ng-blur="update('rewriteurl')">
 			</div>
 			<div class="formGroup mb">
 				<label for="input-2" class="stacked-label"><i class="pe-7s-note2"></i></label>
@@ -241,7 +247,7 @@
 			<input ng-blur="update('videoUrl')" type="text" class="stacked-input " ng-model="formData.videoUrl" id="input-1" placeholder="Url de la video">
 		</div>
 		<div class="col-md-12 form_col_r">
-			<div class="form_title formTitleSpecial"><i class="pe-7s-copy-file"></i>Ajouter des pièces jointes
+			<div class="form_title formTitleSpecial"><i class="pe-7s-copy-file"></i>Les documents
 				<div class="button btnADDIMG" ngf-select="uploadDocument($files)" ng-model="document"  ngf-max-size="700MB"> <i class="pe-7s-plus"></i></div>
 				<div ngf-drop="uploadDocument($files)"  ngf-max-size="20MB"  ngf-drag-over-class="'dragover'" ng-model="document" class="drop-zone" >Déposer vos fichiers ici</div>
 			</div>
@@ -311,7 +317,7 @@
 						<md-tooltip md-direction="top"> {{doc.type}}</md-tooltip>
 					</span>
 
-					<span class="documentTitle"> {{ doc.name}}</span>
+					<a href="{{ doc.name.filename }}" target="_BLANK"><span class="documentTitle"> {{ doc.name}}</span></a>
 					<removeremove class="removeremove" action="removeDocument" itemid="doc.id"></removeremove>
 				</div>
 				<!-- <div class="document">
@@ -349,6 +355,55 @@
 				<!-- ng-if  number of image > 4 -->
 				<!-- <div class="completor"></div> -->
 			</div>
+		</div>
+		<div class="col-md-12 form_col_r pull-right" ng-if="formData.contentType!='articlepai' && !formData.isPaiContent && formData.initialPrice == 0">
+				
+				
+				
+
+				<div class="form_title"><i class="pe-7s-hammer"></i>Validez le contenus</div>
+				<p ng-if="!formData.solded" class="validatePoint">Ceci est un contenus offert en echange de <strong>{{formData.nbPoints}}</strong> points Collabs</p>
+				<p ng-if="formData.solded && formData.validate == true" class="validatePoint">Les points pour ce contenus sont déjà attribuer (<strong>{{formData.nbPoints}}</strong> points Collabs)</p>
+				<p ng-if="formData.solded && formData.validate != true" class="validatePoint">Ce contenus à déjà été juger <strong>Invalide</strong></p>
+				
+				<div ng-if="!formData.solded" class="validationBTNgroup">
+					<div ng-click="validateProject()" class="btn green btn-lg fakeColorGreen">Validez l'échange</div>
+					<div class="btn red fakeColorRed" ng-click="unvalidateProject('noEmail')">Refus sans email</div>
+					
+				</div>
+				<div ng-if="!formData.solded" class="validationBTNgroup">
+					
+					<div class="btn  orange fakeColorOrange" ng-click="unvalidateProject('counterOffer')">Refus email contre offre <input type="number" ng-model="formData.counterOffer" style="width: 50px;color: black;padding-right: 0px;padding-left: 10px;" /> </div>
+					<div class="btn red fakeColorRed" ng-click="unvalidateProject('sansRapport')">Refus email (sans rapport)</div>
+				</div>
+				
+				<div class="clearfix"></div>
+				<div class="smallSeparator"></div>
+
+		</div>
+		<div class="col-md-12 form_col_r pull-right" ng-if="formData.initialPrice > 0">
+				
+				
+				
+
+				<div class="form_title"><i class="pe-7s-hammer"></i>Validez le contenus pour la vente</div>
+				
+				<p ng-if="formData.solded" class="validatePoint">Ce contenus à déjà été juger <strong ng-if="formData.validate == true">valide</strong> <strong ng-if="formData.validate == false">Invalide</strong></p>
+
+				<div ng-if="!formData.solded" class="validationBTNgroup">
+					<div ng-click="validateProject()" class="btn green btn-lg fakeColorGreen">Validez le contenus payent</div>
+					<div class="btn red fakeColorRed" ng-click="unvalidateProject('noEmail')">Refus sans email</div>
+					
+				</div>
+				<div ng-if="!formData.solded" class="validationBTNgroup">
+					
+					<div class="btn  red fakeColorRed" ng-click="unvalidateProject('abus')">Refus email (abus)</div>
+					<div class="btn red fakeColorRed" ng-click="unvalidateProject('sansRapport')">Refus email (sans rapport)</div>
+				</div>
+				
+				<div class="clearfix"></div>
+				<div class="smallSeparator"></div>
+
 		</div>
 		<div class="form_col">
 			<div class="form_title"><i class="pe-7s-chat"></i>Commentaires ( {{formData.comments.length}} )</div>

@@ -299,5 +299,10 @@ module.exports={
 		// console.log('COME HERE');
  
 		return res.render('homepage');
+	},
+	servePAI:function(req,res){
+		// console.log('COME HERE');
+ 
+		return res.render('paiclub');
 	}
 };

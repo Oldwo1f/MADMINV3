@@ -32,8 +32,15 @@
 		  	<thead>
 		  		<tr>
 		  			<th width="90" ng-click="changeSort('date');" >Date <i ng-if="!searchSlug" ng-show="sort=='date DESC'" class="pe-7s-angle-down"></i>  <i ng-if="!searchSlug" ng-show="sort=='date ASC'" class="pe-7s-angle-up"></th>
-		  			<th width="500" ng-click="changeSort('status');">Titre <i ng-if="!searchSlug" ng-show="sort=='status DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='status ASC'" class="pe-7s-angle-up pull-right" />
-		  			<span class="pull-right">Status</span>
+		  			<th width="500"><span  ng-click="changeSort('title');">Titre </span>
+
+		  				<i ng-if="!searchSlug" ng-show="sort=='title DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='title ASC'" class="pe-7s-angle-up" />
+
+		  				<i ng-if="!searchSlug" ng-show="sort=='status DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='status ASC'" class="pe-7s-angle-up pull-right" />
+		  				<span style="margin-left:5px;" class="pull-right" ng-click="changeSort('status');">Status</span>
+
+			  			<i ng-if="!searchSlug" ng-show="sort=='contentType DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='contentType ASC'" class="pe-7s-angle-up pull-right" />
+			  			<span class="pull-right"  ng-click="changeSort('contentType');">Type de contenus</span>
 		  			</th>
 		  			<th>Post Info</th>
 		  			<th style="width: 75px;">Auteurs</th>
@@ -55,8 +62,14 @@
 		  				</p>
 		  			</td>
 		  			<td>
-		  				<div class="media">
-
+		  				<div class="btn-group blockVertical">
+						  <a ng-if="article.contentType=='article';" type="button" class="fakeColorWhite btn active white">Article</a>
+						  <a ng-if="article.contentType=='sponsored';" type="button" class="fakeColorWhite btn active blue" >Article sponso</a>
+						  <a ng-if="article.contentType=='link';" type="button" class="fakeColorWhite btn active violet" >Link</a>
+						  <a ng-if="article.contentType=='articlepai';" type="button" class="fakeColorWhite btn active pink"  >Article PAI</a>
+						</div>
+		  					<div class="media">
+								
 								<figure class="pull-left post__img" ng-if="article.images.length > 0 && (!article.videoUrl || !article.videoHost)">
 									<img class="media-object" ng-src="image/adminThumbs/{{article.images[0].filename}}">
 								</figure>

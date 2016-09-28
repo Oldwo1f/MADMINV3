@@ -23,12 +23,16 @@ module.exports = {
 	    newuserhash : {type:'string'},
 	    dateMember : {type:'date'},
 	    lastActivity : {type:'date'},
-
+  		nbCollabsPoints:{type:'integer',defaultsTo:0},
+  		nbCollabsPointsTotal:{type:'integer',defaultsTo:0},
+  		collabsPoints:{collection:'collabsPoints', via: 'user',dominant:true},
   		// dashboard:{type:'json'},
   		theme:{type:'string',defaultsTo:'bg1'},
-  		nbArticles:{type:'int',defaultsTo:0},
-        nbProjects:{type:'int',defaultsTo:0},
-  		total:{type:'int',defaultsTo:0},
+  		nbArticles:{type:'integer',defaultsTo:0},
+        nbProjects:{type:'integer',defaultsTo:0},
+  		total:{type:'integer',defaultsTo:0},
+  		yellowCards:{type:'integer',defaultsTo:0},
+  		redCards:{type:'integer',defaultsTo:0},
 
 	    images:{collection:'image',defaultsTo:[]},
 	    selfUpdate:function(options,cb){

@@ -30,6 +30,34 @@
 module.exports = function(grunt) {
 
   grunt.config.set('sails-linker', {
+    devJsPai: {
+      options: {
+        startTag: '<!--SCRIPTSPAI-->',
+        endTag: '<!--SCRIPTSPAI END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsPaiFilesToInject,
+        'views/**/*.html': require('../pipeline').jsPaiFilesToInject,
+        'views/**/*.ejs': require('../pipeline').jsPaiFilesToInject
+      }
+    },
+    devJsPaiRelative: {
+      options: {
+        startTag: '<!--SCRIPTSPAI-->',
+        endTag: '<!--SCRIPTSPAI END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public',
+        relative: true
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsPaiFilesToInject,
+        'views/**/*.html': require('../pipeline').jsPaiFilesToInject,
+        'views/**/*.ejs': require('../pipeline').jsPaiFilesToInject
+      }
+    },
+
     devJs: {
       options: {
         startTag: '<!--SCRIPTS-->',
@@ -116,6 +144,36 @@ module.exports = function(grunt) {
         '.tmp/public/**/*.html': require('../pipeline').cssFilesToInject,
         'views/**/*.html': require('../pipeline').cssFilesToInject,
         'views/**/*.ejs': require('../pipeline').cssFilesToInject
+      }
+    },
+    devPaiStyles: {
+      options: {
+        startTag: '<!--STYLESPAI-->',
+        endTag: '<!--STYLESPAI END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
+
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').cssPaiFilesToInject,
+        'views/**/*.html': require('../pipeline').cssPaiFilesToInject,
+        'views/**/*.ejs': require('../pipeline').cssPaiFilesToInject
+      }
+    },
+
+    devPaiStylesRelative: {
+      options: {
+        startTag: '<!--STYLESPAI-->',
+        endTag: '<!--STYLESPAI END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public',
+        relative: true
+      },
+
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').cssPaiFilesToInject,
+        'views/**/*.html': require('../pipeline').cssPaiFilesToInject,
+        'views/**/*.ejs': require('../pipeline').cssPaiFilesToInject
       }
     },
 

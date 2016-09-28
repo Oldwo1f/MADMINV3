@@ -402,8 +402,26 @@ angular.module('momi-user')
 			      	controller: function($scope,$rootScope,userService, $timeout){
 			      	
 			      		$scope.formData = user;
+			      		$scope.tempsrestant = new Date();
 			      		// $scope.formData.role = 'admin';
 			      		// deleteUser
+			      		$scope.goToContent=function(contentModel,contentID){
+			      			console.log(contentID);
+			      			console.log(contentModel);
+
+
+			      			if(contentModel=='article')
+			      			{
+			      				$state.go('blog.edit',{id:contentID})
+			      				$mdDialog.hide()
+			      			}
+			      			if(contentModel=='project')
+			      			{
+			      				$state.go('projects.edit',{id:contentID})
+			      				$mdDialog.hide()
+			      			}
+			      		}
+
 			      		$scope.update=function(attribute){
 							console.log(user.id);
 							$rootScope.startSpin();

@@ -10,6 +10,8 @@ var fs = require('fs'), Writable = require('stream').Writable;
 var sid = require('shortid');
 var easyimg = require('easyimage');
 var IsThere = require("is-there");
+var moment = require("moment");
+
 module.exports = {
 		fetch:function(req,res,next){
 			
@@ -42,6 +44,314 @@ module.exports = {
 		    .catch(function(e){
 		    	console.log(e);
 		    })
+
+
+			
+		},
+		fetchFront:function(req,res,next){
+			var nbPerPage = 5 ;
+			var page = req.params.page -1
+			var projectsPromise = Project.find({status:'actif'}).sort('date DESC')
+		    .skip(page * nbPerPage).limit(nbPerPage).populateAll();
+
+			projectsPromise
+		    .then(function(projects) {   
+		        var projectsWithAuthorsPromises = projects.map(function(project) {
+		            var authorsPromises = project.authors.map(function(author) {
+		                return User.findOne(author.id).populateAll();
+		            });
+
+		            return Promise.all(authorsPromises)
+		                  .then(function(fullfilledAuthors) {
+		                  	  project = project.toObject()
+		                      project.authors = fullfilledAuthors;
+		                      return project;
+		                   })
+		        })
+
+		        return Promise.all(projectsWithAuthorsPromises)
+		    })
+		   .then(function(fullData) {
+		   	var ids = _.map(fullData,'id')
+		   		Project.subscribe(req,ids)
+		   		Project.watch(req)
+		        res.send(fullData)
+		    })
+		    .catch(function(e){
+		    	console.log(e);
+		    })
+
+
+			
+		},
+		validatePai2:function(req,res,next){
+			
+			var calcprice = function(price){
+
+				var iprice = price;
+				var partClub = 0.3;
+				var calculatePrices = {};
+				var tmpNumber = 0;
+
+
+				calculatePrices.m0 = {};
+				calculatePrices.m0.sellprice = Math.round(iprice);
+				calculatePrices.m0.benefvendeur =  Math.round(iprice-(iprice * partClub));
+
+				calculatePrices.m6 = {};
+				tmpNumber = iprice - (25 * iprice / 100);
+				calculatePrices.m6.sellprice = Math.round(tmpNumber);
+				calculatePrices.m6.benefvendeur =  Math.round(tmpNumber-(tmpNumber * partClub));
+
+				calculatePrices.m12 = {}
+				tmpNumber = iprice - (50*iprice/100);
+				calculatePrices.m12.sellprice = Math.round(tmpNumber);
+				calculatePrices.m12.benefvendeur =  Math.round(tmpNumber-(tmpNumber * partClub));
+
+				calculatePrices.m18 = {}
+				tmpNumber = iprice - (75*iprice/100);
+				calculatePrices.m18.sellprice = Math.round(tmpNumber);
+				calculatePrices.m18.benefvendeur =  Math.round(tmpNumber-(tmpNumber * partClub));
+
+				return calculatePrices;
+
+			};
+			
+			var total = 0;
+
+			Project.findOne(req.params.id).populate('collabsPoints').then(function(project){
+				if(project.solded){
+					res.status(404).end()
+				}else{
+					return CollabsPoints.findOne(project.collabsPoints[0].id).populate('user').then(function(collabs){
+						total = Number(collabs.score) ;
+						var attrToUpdate={
+							bonus : 0,
+							total : total,
+							status : 'accepted',
+							dateValidation : new Date()
+						}
+
+						return CollabsPoints.update(project.collabsPoints[0].id,attrToUpdate).then(function(){
+						
+							return User.findOne(collabs.user[0].id).then(function(user){
+								user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
+								var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(total);
+								
+
+								return User.update(collabs.user[0].id,{nbCollabsPoints : NewnbCollabsPoints}).then(function(){
+									
+									return Project.update(req.params.id,{validate:true,nbPoints : total,solded:true,status:'actif'}).then(function(projectdata){
+										
+										//SEND VALIDATION MAIL
+
+										var mydata = {};
+
+										mydata.name = user.name;
+										mydata.title = project.title;
+										mydata.firstname = user.firstname;
+										mydata.nbCollabsPoints = user.nbCollabsPoints;
+										mydata.score = collabs.score;
+										mydata.bonus = attrToUpdate['bonus'];
+										
+
+										if(mydata.initialPrice == 0){
+
+											//SEND VALIDATION MAIL
+											mail.sendEmail({
+									             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+									             to: user.email, // list of receivers 
+									             subject: sails.config.company+' - Contenus validé', // Subject line 
+									        },'validateContent',{data:mydata, URL_HOME:sails.config.URL_HOME  }).then(function(data){
+									        });
+
+										}else{
+
+											mydata.payment = project.payment;
+											mydata.initialPrice = project.initialPrice;
+
+											//SEND VALIDATION MAIL
+											mail.sendEmail({
+									             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+									             to: user.email, // list of receivers 
+									             subject: sails.config.company+' - Contenus validé', // Subject line 
+									        },'validateContentPayment',{calculatePrices: calcprice(mydata.initialPrice),data:mydata, URL_HOME:sails.config.URL_HOME ,moment:moment }).then(function(data){
+									        });
+
+										}
+
+										res.send({data:projectdata})
+									})
+
+								})
+							})
+
+						})
+					})
+				}
+			})
+		},
+		unvalidatePai2:function(req,res,next){
+			
+			
+			
+			var total = 0;
+			var counterOffer = req.body.counterOffer ? req.body.counterOffer : 0;;
+
+			Project.findOne(req.params.id).populate('collabsPoints').then(function(project){
+				if(project.solded){
+					res.status(404).end()
+				}else{
+					return CollabsPoints.findOne(project.collabsPoints[0].id).populate('user').then(function(collabs){
+						total = Number(collabs.score) + Number(req.body.bonus);
+						var attrToUpdate={
+							counterOffer : counterOffer,
+							bonus : 0,
+							total : 0,
+							status : 'rejected',
+							dateValidation : new Date()
+						}
+							return CollabsPoints.update(project.collabsPoints[0].id,attrToUpdate).then(function(){
+								return User.findOne(collabs.user[0].id).then(function(user){
+									user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
+									var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(total);
+									
+
+									
+										return Project.update(req.params.id,{validate:false,solded:true,status:'inactif'}).then(function(projectdata){
+											
+											var mydata = {};
+
+											mydata.title = project.title;
+											mydata.projid = project.id;
+											mydata.raison = req.body.raison;
+											mydata.score = collabs.score;
+
+											if(req.body.raison == 'abus'){
+
+												var newyellowCards = Number(user.yellowCards) + 1;
+												var newredCards = 0;
+												if(newyellowCards == 3 )
+													newredCards=1;
+
+												return User.update(project.collabsPoints[0].id,{yellowCards : newyellowCards,redCards:newredCards}).then(function(){
+													mail.sendEmail({
+											             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+											             to: user.email, // list of receivers 
+											             subject: sails.config.company+' - Carton jaune', // Subject line 
+											        	},'unvalidateContent',{data:mydata, URL_HOME:sails.config.URL_HOME }).then(function(data){
+											        });
+												})
+											}
+											else
+											if(req.body.raison == 'counterOffer' && counterOffer){
+
+													mydata.counterOffer = counterOffer;
+													var linkValid = sails.config.URL_HOME +'/validcontreoffre/'+ mydata.projid;
+													var linkRefus = sails.config.URL_HOME +'/refuscontreoffre/'+ mydata.projid;
+													mail.sendEmail({
+											             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+											             to: user.email, // list of receivers 
+											             subject: sails.config.company+' - Contre proposition', // Subject line 
+											        	},'unvalidateContent',{data:mydata, linkValid:linkValid, linkRefus:linkRefus, URL_HOME:sails.config.URL_HOME }).then(function(data){
+											        });
+												
+											}
+											else
+											if(req.body.raison != 'noEmail'){
+
+												//SEND VALIDATION MAIL
+												mail.sendEmail({
+										             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+										             to: user.email, // list of receivers 
+										             subject: sails.config.company+' - Contenus rejeté', // Subject line 
+										        },'unvalidateContent',{data:mydata, URL_HOME:sails.config.URL_HOME , ipport:sails.config.URL_HOME+':'+ sails.config.port +'/' }).then(function(data){
+										        });
+
+											}
+
+											res.send({data:projectdata})
+										})
+
+								})
+
+							})
+						
+					})
+				}
+				
+
+
+
+			})
+
+			
+
+
+		},
+		validcontreoffre:function(req,res,next){
+
+			Project.findOne(req.params.id).populate('collabsPoints').then(function(project){
+				if(project.solded){
+					res.redirect(sails.config.URL_HOME+'/club');
+				}else{
+				return CollabsPoints.findOne(project.collabsPoints[0].id).populate('user').then(function(collabs){
+						total = Number(collabs.counterOffer);
+						var attrToUpdate={
+							score : collabs.counterOffer,
+							bonus : 0,
+							total : collabs.counterOffer,
+							status : 'accepted',
+							dateValidation : new Date()
+						}
+							return CollabsPoints.update(project.collabsPoints[0].id,attrToUpdate).then(function(){
+								return User.findOne(collabs.user[0].id).then(function(user){
+									user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
+									var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(collabs.counterOffer);
+									return User.update(collabs.user[0].id,{nbCollabsPoints : NewnbCollabsPoints}).then(function(){
+										
+											return Project.update(req.params.id,{nbPoints: collabs.counterOffer, validate:true,solded:true,status:'actif', }).then(function(projectdata){
+												res.send('projet valider')
+											})
+
+									})
+								})
+
+							})
+						
+					})
+				}
+			})
+
+			
+		},
+		refuscontreoffre:function(req,res,next){
+
+			Project.findOne(req.params.id).populate('collabsPoints').then(function(project){
+				if(project.solded){
+					res.redirect(sails.config.URL_HOME+'/club');
+				}else{
+				return CollabsPoints.findOne(project.collabsPoints[0].id).populate('user').then(function(collabs){
+						total = Number(collabs.counterOffer);
+						var attrToUpdate={
+							score : collabs.counterOffer,
+							bonus : 0,
+							total : 0,
+							status : 'rejected',
+							dateValidation : new Date()
+						}
+							return CollabsPoints.update(project.collabsPoints[0].id,attrToUpdate).then(function(){
+
+										return Project.destroy(req.params.id).then(function(projectdata){
+											res.send('projet detruit')
+										})
+							})
+						
+					})
+				}
+			}).catch(function(e){
+				res.redirect(sails.config.URL_HOME+'/club');
+			})
 
 
 			
@@ -127,6 +437,8 @@ module.exports = {
 			})
 		},
 		uploadDocument:function(req,res,next) {
+
+			console.log('UPLOAD DOCUMENT');
 		res.setTimeout(0);
 		sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 		sid.seed(10);
@@ -151,11 +463,8 @@ module.exports = {
 
 	      if(pat.test(files[0].type))
 	      {
-			    try{
-	      			fs.mkdirSync('uploads/files');
-      			}
-      			catch(e){
-      			}
+			console.log('UPLOAD DOCUMENT2');
+			   
 
 			    		var file = files[0];
 			    		var ext = file.filename.substring(file.filename.lastIndexOf('.'),file.filename.length)
@@ -188,9 +497,14 @@ module.exports = {
 			    		file.nbDowload = Math.round(Math.random()*100)
 			    		file.date = new Date();
 
-
+			    		console.log('UPLOAD DOCUMENT3');
 
 			    		Document.create(file).exec(function(err,doc) {
+
+			    			console.log(err);
+			    			
+					   		console.log(doc);
+					   		console.log('next');
 					   					
 					   		req.secondid = doc.id		
 					   		req.params.toto = doc.id		

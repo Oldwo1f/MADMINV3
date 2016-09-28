@@ -38,6 +38,40 @@ angular.module('momi-projects')
 		          
 
 		   });
+
+		  	window.onbeforeunload = function (e) {
+				console.log('HEYHEYHEY HOOOOOOOOOOOOOOOOOO');
+				console.log($scope.formData.title);
+				console.log(e);
+
+			  if(1 == 2){
+				  	var e = e || window.event;
+
+				  // For IE and Firefox
+				  if (e) {
+				    e.returnValue = 'Any string1';
+				  }
+
+			  // For Safari
+			  	return 'Any string';
+			  }
+			  else{
+			  	if($scope.touched == false){
+	      			projectService.removeSyncro($scope.formData.id).then(function(data){
+						console.log('----------------------------------------------------------');
+						$rootScope.$broadcast('projectSelfRemove',data.id);
+						
+	            		// $state.go('^')
+
+	        			$rootScope.stopSpin();
+					},function(d){
+						console.log('EROOR'); 
+					})
+      			}
+      			
+			  	// return null;
+			  }
+			};
       		$scope.returnParentState=function(){
 				$state.go('^')
 			}
@@ -350,6 +384,53 @@ angular.module('momi-projects')
 					console.log('EROOR');
 				})
 			}
+
+
+			$scope.validateProject=function(){
+				$rootScope.startSpin();
+				
+				projectService.validatePai($scope.formData.id).then(function(data){
+					console.log(data);
+					if(data.data[0].solded){
+						$scope.formData.solded = true; 
+					}
+					if(data.data[0].validate){
+						$scope.formData.validate = data.data[0].validate; 
+					}
+					if(data.data[0].status){
+						$scope.formData.status = data.data[0].status; 
+					}
+        			$rootScope.stopSpin();
+				},function(d){
+					console.log('EROOR');
+				})
+			}
+
+			$scope.unvalidateProject=function(raison){
+
+				if(raison == 'counterOffer' && !$scope.formData.counterOffer)
+					return;
+
+				$rootScope.startSpin();
+
+				projectService.unvalidatePai($scope.formData.id,raison,$scope.formData.counterOffer).then(function(data){
+					console.log(data);
+					if(data.data[0].solded){
+						$scope.formData.solded = true; 
+					}
+					if(data.data[0].validate){
+						$scope.formData.validate = data.data[0].validate; 
+					}
+					if(data.data[0].status){
+						$scope.formData.status = data.data[0].status; 
+					}
+        			$rootScope.stopSpin();
+				},function(d){
+					console.log('EROOR');
+				})
+			}
+			
+
 			$scope.updateComment=function(id,attribute,value){
 				console.log(id);
 				$rootScope.startSpin();

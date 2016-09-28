@@ -11,11 +11,19 @@
 			</a>
 			<div class="pageTitle">
 				<i class="pe-7f-note"></i><h3>Articles : {{formData.title}}</h3>
+
 			</div>
-			<!-- <div class="searchBar">
-				<input class="" type="text" ng-blur="searchArticle()" ng-model="searchSlug" placeholder="Recherche dans les articles">
-				<span class="iconsearch"><i class="fa fa-search"></i></span>
-			</div> -->
+			<div class="contentTypeSelector">
+			<div class="formGroup ">
+					<div class="btn-group block autowidth">
+					  <a ng-click="formData.contentType='article';update('contentType')" type="button" class="fakeColorWhite btn active"  ng-class="{'white':formData.contentType=='article','blue':formData.contentType=='sponsored','violet':formData.contentType=='link','pink':formData.contentType=='articlepai'}" style="border-right:0px">Article</a>
+					  <a ng-click="formData.contentType='sponsored';update('contentType')" type="button" class="fakeColorBlue btn active" ng-class="{'white':formData.contentType=='article','blue':formData.contentType=='sponsored','violet':formData.contentType=='link','pink':formData.contentType=='articlepai'}" >Article sponso</a>
+					  <a ng-click="formData.contentType='link';update('contentType')" type="button" class="fakeColorViolet btn active" ng-class="{'white':formData.contentType=='article','blue':formData.contentType=='sponsored','violet':formData.contentType=='link','pink':formData.contentType=='articlepai'}"  style="border-left:0px">Link</a>
+					  <a ng-click="formData.contentType='articlepai';update('contentType')" type="button" class="fakeColorPink btn active" ng-class="{'white':formData.contentType=='article','blue':formData.contentType=='sponsored','violet':formData.contentType=='link','pink':formData.contentType=='articlepai'}"  style="border-left:0px">Article PAI</a>
+					</div>
+			</div> 
+			</div>
+			
 			<a class="leftBtn" href="">
 				<removeremove class="removeremove" action="removeThis" itemid="formData.id"></removeremove>
 			</a>
@@ -30,9 +38,12 @@
 <!-- title -->
 			<label for="input-1" class="stacked-label"><i class="pe-7s-flag"></i></label>
 			<input type="text" class="stacked-input" ng-blur="update('title')" ng-model="formData.title" id="input-1" placeholder="Titre">
+<!-- link -->
+			<label ng-if="formData.contentType=='link'" for="input-1" class="stacked-label"><i class="pe-7s-link"></i></label>
+			<input ng-if="formData.contentType=='link'" type="text" class="stacked-input" ng-blur="update('link')" ng-model="formData.link" id="input-1" placeholder="http://">
 <!-- category -->
 			<label for="input-2" class="stacked-label"><i class="pe-7s-way"></i></label>
-			<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)" add-on-enter="true"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
+			<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
             	<auto-complete source="autocompleteCategories($query)" display-property="name" select-first-match="true" ></auto-complete>
         	</tags-input>
         	<script type="text/ng-template" id="myCatTemplate">
@@ -46,20 +57,25 @@
 <!-- tag -->
 			<label for="input-3" class="stacked-label"><i class="pe-7s-ticket"></i></label>
 			
-		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" add-on-enter="true" ng-blur="unselectOnBlur()" >
+		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" ng-blur="unselectOnBlur()" >
             	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
         	</tags-input>
+
+
+
+
+        	
 <!-- content  -->
 
 			<label for="input-4" class="stacked-label mt0"><i class="pe-7s-note"></i></label>
 			<textarea  class="tinymcetextarea" ui-tinymce="tinymceOption" ng-model="formData.content" ng-model="tinymceModel" ng-blur="update('content')" placeholder="Contenu de l'article"></textarea>
 <!-- category -->
 			<label for="input-5" class="stacked-label mt0"><i class="pe-7s-user"></i></label>
-			<tags-input add-from-autocomplete-only="true" class="mycategoriesinput inputtag  mb" ng-model="formData.authors" on-tag-removed="removeAuthor($tag)" on-tag-adding="addAuthor($tag)" add-on-enter="true"  ng-blur="unselectOnBlur()"  placeholder="Ajouter un auteur" display-property="name" template="myAuthorTemplate">
+			<tags-input add-from-autocomplete-only="true" class="mycategoriesinput inputtag  mb" ng-model="formData.authors" on-tag-removed="removeAuthor($tag)" on-tag-adding="addAuthor($tag)"   ng-blur="unselectOnBlur()"  placeholder="Ajouter un auteur" display-property="name" template="myAuthorTemplate">
             	<auto-complete source="autocompleteAuthors($query)" template="autocomplete-template" display-property="name" select-first-match="true" ></auto-complete>
         	</tags-input>
         	<script type="text/ng-template" id="myAuthorTemplate">
-        		<div class="author-template" >
+        		<div class="author-template" ui-sref="users">
 
 			        	<img ng-if="data.images[0]" class="myprofiletableimage" width="50" height="50"  ng-src="image/profile/{{data.images[0].filename}}" alt="">
 		        		<ng-letter-avatar  ng-if="!data.images[0]" charCount="1" data="{{data.firstname}} {{data.name}}" fontsize="25" height="50" width="50" shape="round"></ng-letter-avatar>
@@ -101,6 +117,7 @@
 			</div>
 			<div class="groupSeparator"></div>
 			<div class="form_title"><i class="pe-7s-config"></i>Options de publication </div>
+			
 			<div class="formGroup mb  fullwidthgroup">
 				<div class="btn-group block">
 				  <a ng-click="formData.status='actif';update('status')" type="button" class="fakeColorGreen btn active"  ng-class="{'green':formData.status=='actif','orange':formData.status=='draft','red':formData.status=='inactif'}" style="border-right:0px">Actif</a>
@@ -315,7 +332,32 @@
 					<removeremove class="removeremove" action="removeDocument" itemid="doc.id"></removeremove>
 				</div>
 				
+				
 			</div>
+		</div>
+		<div class="col-md-12 form_col_r" ng-if="formData.contentType!='articlepai'">
+
+				<div class="form_title"><i class="pe-7s-hammer"></i>Validez l'article
+				</div>
+				<p ng-if="!formData.solded" class="validatePoint">Ceci est un contenus à <strong>{{formData.nbPoints}}</strong> points Collabs</p>
+				<p ng-if="formData.solded && formData.validate == true" class="validatePoint">Les points pour ce contenus sont déjà attribuer (<strong>{{formData.nbPoints}}</strong> points Collabs)</p>
+				<p ng-if="formData.solded && formData.validate != true" class="validatePoint">Ce contenus à déjà été juger <strong>Invalide</strong></p>
+				
+				<div ng-if="!formData.solded" class="validationBTNgroup">
+					<div ng-click="validateArticle(0)" class="btn green fakeColorGreen">Validez</div>
+					<div ng-click="validateArticle(5)" class="btn btn-lg green fakeColorGreen">Validez +5</div>
+					<div ng-click="validateArticle(10)" class="btn green fakeColorGreen">Validez +10</div>
+					<div ng-click="validateArticle(15)" class="btn green fakeColorGreen">Validez +15</div>
+					<div ng-click="validateArticle(20)" class="btn green fakeColorGreen">Validez +20</div>
+				</div>
+				<div ng-if="!formData.solded" class="validationBTNgroup">
+					<div class="btn red fakeColorGreen" ng-click="unvalidateArticle('noEmail')" >Refus sans email</div>
+					<div class="btn btn-lg red fakeColorGreen" ng-click="unvalidateArticle('abus')" >Refus email (abus)</div>
+					<div class="btn red fakeColorGreen" ng-click="unvalidateArticle('sansRapport')" >Refus email (sans rapport)</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="smallSeparator"></div>
+
 		</div>
 		
 		<div class="form_col">

@@ -1,0 +1,183 @@
+{
+  "https://github.com/DataTables/DataTables.git": {
+    "1.10.12": "b31abf704462a45f6ba7db439862d23c8cedc1f4"
+  },
+  "https://github.com/DataTables/Plugins.git": {
+    "1.0.1": "a94e328df63c79af43123b99ada5ff88d601a31d"
+  },
+  "https://github.com/DataTables/Responsive.git": {
+    "1.0.7": "435b1bd36ed29de73dd704121de0571a5c1a50a6"
+  },
+  "https://github.com/DmitryBaranovskiy/raphael.git": {
+    "2.2.0": "a5cd61ad7864f3ad155db0fb937385de28bc389c"
+  },
+  "https://github.com/FortAwesome/Font-Awesome.git": {
+    "4.2.0": "0b924144a95a54fa738d0450ff66c1dabd11ae74",
+    "4.5.0": "593ad563a987977f14102be935d0abc2a172903e"
+  },
+  "https://github.com/IronSummitMedia/startbootstrap-sb-admin-2.git": {
+    "1.0.8": "afb82ee156913a9bc2274e578e94d4998ead5420"
+  },
+  "https://github.com/ManifestWebDesign/angular-gridster.git": {
+    "0.13.10": "b6dd44cd440225d1c6356bc50166c4ee88f53d22"
+  },
+  "https://github.com/Trustroots/trustpass.git": {
+    "0.2.0": "78877a3b623ec43959ff6c4486ddb4ccee092476"
+  },
+  "https://github.com/adobe-webplatform/eve.git": {
+    "eef80ed": "eef80ed"
+  },
+  "https://github.com/angular-ui/angular-ui-router-bower.git": {
+    "0.2.18": "2b8d5241b4c631ca2aef079bb96690b213eff449"
+  },
+  "https://github.com/angular-ui/ui-sortable.git": {
+    "0.14.2": "93e51c3d79fff2e62c9c11882bb84da98c9e43fa"
+  },
+  "https://github.com/angular-ui/ui-tinymce.git": {
+    "0.0.16": "4f6b0f6ba66fbf8c8f269b3ce6ece2f18b0120ee"
+  },
+  "https://github.com/angular/bower-angular-animate.git": {
+    "1.5.0": "19b035b16ccf4b1db231207b9453f4a8df0d4a09"
+  },
+  "https://github.com/angular/bower-angular-aria.git": {
+    "1.5.7": "cc7648955bfa6aa37f4b8fa9de1c948151a42e21"
+  },
+  "https://github.com/angular/bower-angular-messages.git": {
+    "1.5.7": "834750277f1fe5613fa2541566a8176ead5d167a"
+  },
+  "https://github.com/angular/bower-angular-sanitize.git": {
+    "1.5.7": "d79425a1591d0068d450edb437c2aa33ff979c85"
+  },
+  "https://github.com/angular/bower-angular-touch.git": {
+    "1.5.7": "c06f7eaad06c55bfbe01b1e19344551a748ce451"
+  },
+  "https://github.com/angular/bower-angular.git": {
+    "1.2.29": "adf9e91df1d6196fadc9e5153cbe88433172235c",
+    "1.3.20": "0cd10f27471310fe07167b00f8a4242c6bba4df2",
+    "1.4.12": "639d3950c461f706a97cda97ba89e97d706d06f9",
+    "1.5.0": "017a583b226a335740c5b50b3e9381a52d0bb260",
+    "1.5.7": "8b7bc41468112797f501b2f6502a2be5c6a1bf5f"
+  },
+  "https://github.com/angular/bower-material.git": {
+    "1.0.7": "8a7e717a542200a2d1fb0deafbc7598371690683"
+  },
+  "https://github.com/balderdashy/angularSails.git": {
+    "0.12.1": "1deb8a05d737e5cb9224096378ebe949586cf570"
+  },
+  "https://github.com/balderdashy/sails.io.js.git": {
+    "0.13.8": "1d687ab9c0b7cb734dbd3a8af457dfce1579d818"
+  },
+  "https://github.com/bgrins/TinyColor.git": {
+    "1.3.0": "71379c1cb50cedab2386a3b40f07eb866697d679"
+  },
+  "https://github.com/components/jqueryui.git": {
+    "1.11.4": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1"
+  },
+  "https://github.com/dalelotts/angular-bootstrap-datetimepicker.git": {
+    "1.0.1": "7e0eca93935a42c358a502df4d18fe92bd977d7c"
+  },
+  "https://github.com/danialfarid/angular-file-upload-bower.git": {
+    "12.0.4": "5210947d260b4c442c3912950bf7092a9ab2a3a7"
+  },
+  "https://github.com/fgnass/spin.js.git": {
+    "2.3.2": "5a9ea41651105302fe76d15cb294070c5863e759"
+  },
+  "https://github.com/flot/flot.git": {
+    "0.8.3": "453b017cc5acfd75e252b93e8635f57f4196d45d"
+  },
+  "https://github.com/ghostbar/angular-file-model.git": {
+    "0.3.1": "abbbd3f4ad2568b13a215ecd03fe885e05459ce5"
+  },
+  "https://github.com/imsky/holder.git": {
+    "2.4.1": "bd2e0be3c5c86afbdef1da092eb72c8ce7d52dce"
+  },
+  "https://github.com/inuyaksa/jquery.nicescroll.git": {
+    "3.6.8": "050267822f045f59d0b0d0ac5d84c36ff8c98e1e"
+  },
+  "https://github.com/jacob-meacham/angular-notification-icons.git": {
+    "0.4.3": "160756cce2b1dccb023dee213c2036f7c5230e7a"
+  },
+  "https://github.com/jquery/jquery-dist.git": {
+    "2.2.1": "788eaba2f83e7b7445c7a83a50c81c0704423874"
+  },
+  "https://github.com/jtblin/angular-chart.js.git": {
+    "0.10.2": "3ddc3a29c1217e9bfd2662d574c45e6e873e870d"
+  },
+  "https://github.com/kentcdodds/genie.git": {
+    "0.4.0": "2653660c990e93cabc4f4e621711f773eefed46d"
+  },
+  "https://github.com/kentcdodds/ux-genie.git": {
+    "0.3.3": "56891d941c13de9f353be586003e468c83da92f9"
+  },
+  "https://github.com/krzysu/flot.tooltip.git": {
+    "0.8.7": "042a27d8b33d22207af8b7e76d9f0a14c840a5ae"
+  },
+  "https://github.com/lipis/bootstrap-social.git": {
+    "4.8.0": "918fc55c3c938377a7618ec0f115846e50d4b883"
+  },
+  "https://github.com/mbenford/ngTagsInput-bower.git": {
+    "3.0.0": "686019b903c487e1124c19d569ed592971177f9f"
+  },
+  "https://github.com/mistic100/jQCloud.git": {
+    "2.0.2": "e9c99ba7d68686a2f834ecd05bff3f5bf5157f7d"
+  },
+  "https://github.com/mochajs/mocha.git": {
+    "1.17.1": "7fc565ee3e225cb7a66bf39ae9c2c05b346675c1"
+  },
+  "https://github.com/moment/moment.git": {
+    "2.10.6": "446ce77eb08c5c862d7b0b11ef1d2e884d12e3d7",
+    "2.13.0": "f90b5150a46651fabd7724d06438d7df2db59401"
+  },
+  "https://github.com/monospaced/angular-elastic.git": {
+    "2.5.1": "4c2c75e413e668b4117bf2b3741272b2ab9e24c5"
+  },
+  "https://github.com/morrisjs/morris.js.git": {
+    "0.5.1": "d5cf1410eda7055eaf2c7d218d4cb24ec5ed55c8"
+  },
+  "https://github.com/nervgh/angular-file-upload.git": {
+    "2.2.0": "f8c81dfa1eb6334a374ad3e976715492ab602dbc"
+  },
+  "https://github.com/nnnick/Chart.js.git": {
+    "1.1.1": "a62537a80029cd5a2e230769a652904e2de2d5d4",
+    "2.1.6": "07662b158d829f395b2c97d732e60599b8b5c4e4"
+  },
+  "https://github.com/onokumus/metisMenu.git": {
+    "1.1.3": "8e179d59f60a593203667c092119779dc36f5171"
+  },
+  "https://github.com/puikinsh/gentelella.git": {
+    "1.3.0": "6f90d7cc133f5c13fa4513a54cdd2740249cc0f3"
+  },
+  "https://github.com/revolunet/angular-carousel.git": {
+    "1.0.1": "5b07a351ce971d6b49a5d0b855b950c25d4b14fd"
+  },
+  "https://github.com/ruhley/angular-color-picker.git": {
+    "1.1.6": "78ab5dedc0f30ffb01d1da487cadc15be533c214"
+  },
+  "https://github.com/sahat/satellizer.git": {
+    "0.14.1": "dfd873afdb8c84197e13054b20c924df3f3b65ac"
+  },
+  "https://github.com/sdecima/javascript-detect-element-resize.git": {
+    "0.5.3": "1b79a1a0d3624e075c5ffb1e4c8dd8b9f42ff1f4"
+  },
+  "https://github.com/sroze/ngInfiniteScroll.git": {
+    "1.0.0": "02d58a06eadbc57681755560540cdddfb807fa00"
+  },
+  "https://github.com/tinymce/tinymce-dist.git": {
+    "4.3.13": "c473385c5a4579248fd1a446ef91a4131dfe9221"
+  },
+  "https://github.com/tushariscoolster/angular-nicescroll.git": {
+    "0.0.9": "1e10719b1a5ed377cde913f7503da1e3c8a2f6a2"
+  },
+  "https://github.com/twbs/bootstrap.git": {
+    "3.3.6": "81df608a40bf0629a1dc08e584849bb1e43e0b7a"
+  },
+  "https://github.com/urish/angular-moment.git": {
+    "0.10.3": "07d373b7a2fd17ff25ab927ff7fcb0b53b2d13fd"
+  },
+  "https://github.com/urish/angular-spinner.git": {
+    "0.8.1": "6cbf56991eb21756597ca675bbde804db136cbb5"
+  },
+  "https://github.com/uttesh/ngletteravatar.git": {
+    "4.0.2": "29217976f9b3a99167e0e67f41fbd5db41d11511"
+  }
+}

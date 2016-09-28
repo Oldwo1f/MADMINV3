@@ -2,7 +2,7 @@ var Promise = require("bluebird");
 var elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
-  log: 'trace'
+  log: 'error'
 });
 
 module.exports ={
@@ -114,6 +114,9 @@ module.exports ={
 		});
 	},
 	update:function(type, body, parent){
+		console.log('ES UPDATE');
+		console.log(type, body, parent);
+
    		return client.update({
 		  index: sails.config.esName,
 		  type: type,

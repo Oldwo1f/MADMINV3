@@ -36,6 +36,7 @@ module.exports.routes = {
   //   view: 'homepage'
   // },
   '/admin':'adminController.serveApp',
+  '/club':'adminController.servePAI',
   'GET /':'FrontController.home',
 
 
@@ -100,6 +101,24 @@ module.exports.routes = {
   'GET /getLangs':'ParamsController.getLangs',
   'GET /getConfig':'ParamsController.getConfig',
   'GET /restartSite':'ParamsController.restartSite',
+
+
+  // VALIDATEPAI
+
+  'POST /validatePaiArticle/:id':'articleController.validatePai',
+  'POST /unvalidatePaiArticle/:id':'articleController.unvalidatePai',
+
+  'POST /validatePaiProject/:id':'projectController.validatePai2',
+  'POST /unvalidatePaiProject/:id':'projectController.unvalidatePai2',
+
+  'GET /refuscontreoffre/:id':'projectController.refuscontreoffre',
+  'GET /validcontreoffre/:id':'projectController.validcontreoffre',
+
+
+  // FETCH FRONT
+
+  'GET /marketplace/fetchItem/:page':'projectController.fetchFront',
+
 
   // 'POST /article/:id/tags/:pk':'ArticleController.addTag',
   // 'POST /article/:id/tags':'ArticleController.addTag',

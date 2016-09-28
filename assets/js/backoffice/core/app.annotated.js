@@ -31,7 +31,7 @@ var listWidgetDirectivesApp = function listWidgetDirectivesApp() {
 
 
 
-angular.module('core', ['angular-notification-icons','chart.js','angular-nicescroll','uxGenie','ngLetterAvatar','sails.io','color.picker','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','gridster','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner','momi-social','momi-user','momi-blog','momi-categories','momi-login','momi-params','momi-projects','momi-sliders'])
+angular.module('core', ['mwl.calendar','ui.bootstrap','angular-notification-icons','chart.js','angular-nicescroll','uxGenie','ngLetterAvatar','sails.io','color.picker','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','gridster','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner','momi-social','momi-user','momi-blog','momi-categories','momi-login','momi-params','momi-projects','momi-sliders','momi-agenda'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 
     $stateProvider
@@ -92,7 +92,35 @@ angular.module('core', ['angular-notification-icons','chart.js','angular-nicescr
 
 
 
+}])
+.config(["calendarConfig", function(calendarConfig) {
+
+    console.log(calendarConfig); //view all available config
+
+    // calendarConfig.templates.calendarMonthView = 'path/to/custom/template.html'; //change the month view template globally to a custom template
+
+    calendarConfig.dateFormatter = 'moment'; //use either moment or angular to format dates on the calendar. Default angular. Setting this will override any date formats you have already set.
+
+    calendarConfig.allDateFormats.moment.date.hour = 'HH:mm'; //this will configure times on the day view to display in 24 hour format rather than the default of 12 hour
+
+    calendarConfig.allDateFormats.moment.title.day = 'ddd D MMM'; //this will configure the day view title to be shorter
+    calendarConfig.allDateFormats.moment.title.week = 'Semaine {week}'; //this will configure the day view title to be shorter
+
+    calendarConfig.i18nStrings.weekNumber = '{week}'; //This will set the week number hover label on the month view
+
+    calendarConfig.displayAllMonthEvents = true; //This will display all events on a month view even if they're not in the current month. Default false.
+
+    calendarConfig.showTimesOnWeekView = true; //Make the week view more like the day view, with the caveat that event end times are ignored.
+
+    calendarConfig.showWeekBox = false;
+
+
+    // calendarConfig.dayViewStart = '06:00';
+    // calendarConfig.dayViewEnd = '23:00';
 }]);
+
+
+
 angular.module('core').controller('appController',["$scope", "$rootScope", "$auth", "$state", "$sailsSocket", "paramsService", "userService", function ($scope,$rootScope,$auth,$state, $sailsSocket,paramsService, userService){
 
     // $scope.currentTheme = 'bg1';

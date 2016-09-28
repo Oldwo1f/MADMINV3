@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             files: [
                 {
                     expand: true,
-                    src: ['assets/js/backoffice/**/*.js','!assets/js/backoffice/**/*.annotated.js'],
+                    src: ['assets/js/backoffice/**/*.js','!assets/js/backoffice/**/*.annotated.js','assets/js/front/PAI/**/*.js','!assets/js/front/PAI/**/*.annotated.js'],
                     ext: '.annotated.js', // Dest filepaths will have this extension.
                     extDot: 'last',       // Extensions in filenames begin after the last dot
                 },

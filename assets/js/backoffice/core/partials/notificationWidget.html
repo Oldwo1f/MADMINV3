@@ -46,6 +46,73 @@
 			        		<div class="info1" ng-bind-html="notif.info1"></div>
 			        		<div class="info2" ng-bind-html="notif.info2"></div>
 		        		</div>
+		        		<div ng-if="notif.type=='validate-link'" >
+		        			
+			        		<div class="title">Liens à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-sponsored'" >
+		        			
+			        		<div class="title">Article sponso à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-article'" >
+		        			
+			        		<div class="title">Article à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+
+		        		<div ng-if="notif.type=='validate-etude'" >
+			        		<div class="title">Études à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-conso'" >
+			        		<div class="title">Études conso à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-tendance'" >
+			        		<div class="title">Tendance à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-book'" >
+			        		<div class="title">Livre à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-rapport'" >
+			        		<div class="title">Rapport à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-autre'" >
+			        		<div class="title">Marketplace à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
 		        	</li>
 		        </ul>
 		    </div>

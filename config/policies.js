@@ -26,7 +26,8 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': 'ensureAdmin',
+  '*': true,
+  // '*': 'ensureAdmin',
 
   /***************************************************************************
   *                                                                          *
@@ -37,6 +38,7 @@ module.exports.policies = {
 
     adminController:{
       'serveApp':true,
+      'servePAI':true,
     },
     tagController:{
       'searchAutocomplete':true,

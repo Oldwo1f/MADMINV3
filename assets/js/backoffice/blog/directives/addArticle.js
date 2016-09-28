@@ -38,6 +38,37 @@ angular.module('momi-blog')
 		          
 
 		   });
+      		window.onbeforeunload = function (e) {
+				console.log('HEYHEYHEY HOOOOOOOOOOOOOOOOOO');
+				console.log($scope.formData.title);
+
+			  if(1 == 2){
+				  	var e = e || window.event;
+
+				  // For IE and Firefox
+				  if (e) {
+				    e.returnValue = 'Any string1';
+				  }
+
+			  // For Safari
+			  	return 'Any string';
+			  }
+			  else{
+			  	if($scope.touched == false){
+	      			articleService.removeSyncro($scope.formData.id).then(function(data){
+						console.log('----------------------------------------------------------');
+						$rootScope.$broadcast('articleSelfRemove',data.id);
+						
+	            		// $state.go('^')
+
+	        			$rootScope.stopSpin();
+					},function(d){
+						console.log('EROOR'); 
+					})
+      			}
+			  }
+			};
+
       		$scope.returnParentState=function(){
 				$state.go('^')
 			}
@@ -333,6 +364,7 @@ angular.module('momi-blog')
 			$scope.closeDatePicker=function(t,tt){
 				$('.open').removeClass('open')
 			}
+
 			$scope.update=function(attribute){
 
 				$rootScope.startSpin();
@@ -345,6 +377,45 @@ angular.module('momi-blog')
 					$scope.touched = true;
 					$rootScope.$broadcast('articleSelfChange',data);
 
+        			$rootScope.stopSpin();
+				},function(d){
+					console.log('EROOR');
+				})
+			}
+
+			$scope.validateArticle=function(bonus){
+				$rootScope.startSpin();
+				
+				articleService.validatePai($scope.formData.id,bonus).then(function(data){
+					console.log(data);
+					if(data.data[0].solded){
+						$scope.formData.solded = true; 
+					}
+					if(data.data[0].validate){
+						$scope.formData.validate = data.data[0].validate; 
+					}
+					if(data.data[0].status){
+						$scope.formData.status = data.data[0].status; 
+					}
+        			$rootScope.stopSpin();
+				},function(d){
+					console.log('EROOR');
+				})
+			}
+			$scope.unvalidateArticle=function(raison){
+				$rootScope.startSpin();
+				
+				articleService.unvalidatePai($scope.formData.id,raison).then(function(data){
+					console.log(data);
+					if(data.data[0].solded){
+						$scope.formData.solded = true; 
+					}
+					if(data.data[0].validate){
+						$scope.formData.validate = data.data[0].validate; 
+					}
+					if(data.data[0].status){
+						$scope.formData.status = data.data[0].status; 
+					}
         			$rootScope.stopSpin();
 				},function(d){
 					console.log('EROOR');

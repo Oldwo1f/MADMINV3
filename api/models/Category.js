@@ -14,10 +14,12 @@ module.exports = {
   		color:{type:'string',defaultsTo:'green'},
   		nbArticles:{type:'int',defaultsTo:0},
         nbProjects:{type:'int',defaultsTo:0},
+        nbEvents:{type:'int',defaultsTo:0},
   		total:{type:'int',defaultsTo:0},
         images:{collection:'image',defaultsTo:[]},
         articles:{collection:'article', via: 'categories'},
         projects:{collection:'project', via: 'categories'},
+        events:{collection:'event', via: 'categories'},
   		selfUpdate:function(options,cb){
 
         if(options.parentType == 'article')
@@ -119,6 +121,61 @@ module.exports = {
                             cb(null,result[0]);
                             Category.publishUpdate( data.id , {
                                 nbProjects : data.nbProjects,
+                                total : data.total
+                            } )
+                        })
+
+                    }
+                   
+                }).catch(function (err) {
+                    cb(err,null);
+                });
+            }
+        }
+        if(options.parentType == 'event')
+        {
+            if(options.verb == 'add'){
+
+                Category.findOne(this.id).then(function(data){
+                    data.nbEvents= Number(data.nbEvents)+1;
+                    data.total= Number(data.total)+1;
+                    return Category.update(data.id ,
+                    {
+                        nbEvents : data.nbEvents,
+                        total : data.total
+                    }).then(function(result){
+                        cb(null,result[0]);
+                        Category.publishUpdate( data.id , {
+                                nbEvents : data.nbEvents,
+                                total : data.total
+                        } )
+                    })
+                   
+                }).catch(function (err) {
+                    cb(err,null);
+                });
+            }
+  
+            if(options.verb == 'remove'){
+
+              Category.findOne(this.id).then(function(data){
+                    data.nbEvents= Number(data.nbEvents) -1;
+                    data.total= Number(data.total) -1;
+                    if(data.total<=0){
+                     //&& data.nbEvents<=0 && data.nbEvents<=0 &&
+                        return Category.destroy(data.id).then(function(result){
+                            cb(null,result[0]);
+                            Category.publishDestroy( data.id )
+                        })  
+                    }else{
+                        return Category.update(data.id ,
+                        {
+                            nbEvents : data.nbEvents,
+                            total : data.total
+                        }).then(function(result){
+                            cb(null,result[0]);
+                            Category.publishUpdate( data.id , {
+                                nbEvents : data.nbEvents,
                                 total : data.total
                             } )
                         })

@@ -275,7 +275,7 @@ angular.module('core')
 
         var authorId = $auth.getPayload().sub
         console.log(authorId);
-        article = {date : new Date(),status:'draft'};
+        article = {date : new Date(),status:'draft',contentType:'articlepai',isPaiContent:true};
         var deferred = $q.defer();
         $sailsSocket.post('/api/article',article).success(function (data,status) {
             
@@ -356,6 +356,30 @@ angular.module('core')
         })
         return deferred.promise;      
     }
+    service.validatePai=function(id, bonus){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/validatePaiArticle/'+id,{bonus:bonus}).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+    service.unvalidatePai=function(id, raison){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/unvalidatePaiArticle/'+id,{raison:raison}).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
     service.updateComment=function(id, values){
 
         var deferred = $q.defer();
@@ -404,7 +428,17 @@ angular.module('core')
         })
         return deferred.promise;      
     }
-
+    service.removeSyncro=function(id){
+        // var deferred = $q.defer();
+        $.ajax({
+            method:'delete',
+            url:'/api/article/'+id,
+            cache: false,
+            async: false
+        }).done(function() {
+            return;
+        });
+    }
     
 
 

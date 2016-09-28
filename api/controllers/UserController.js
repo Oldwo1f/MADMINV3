@@ -24,10 +24,17 @@ module.exports = {
 				return res.status(401).send({ message: 'Invalid email and/or password' });
 			}
 			else{
-				res.send(user);
+				es.create('user',user).then(function(){
+					res.send(user);
+		            // return callback()
+		        }).catch(function(err){
+		               console.log(err);
+		        })
+
+
 			}
 
-		});
+		}); 
 	},
 	login:function(req,res,next){
 		function createJWT(user) {

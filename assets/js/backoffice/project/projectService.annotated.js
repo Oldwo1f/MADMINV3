@@ -29,6 +29,7 @@ angular.module('core')
 
         return deferred.promise;
     };
+
     service.fetchLast= function() {
         var deferred = $q.defer();
 
@@ -275,7 +276,7 @@ angular.module('core')
 
         var authorId = $auth.getPayload().sub
         console.log(authorId);
-        project = {date : new Date(),status:'draft'};
+        project = {date : new Date(),status:'draft',contentType:'autre',isPaiContent:true};
         var deferred = $q.defer();
         $sailsSocket.post('/api/project',project).success(function (data,status) {
             
@@ -326,6 +327,32 @@ angular.module('core')
         })
         return deferred.promise;      
     }
+
+    service.validatePai=function(id){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/validatePaiProject/'+id).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+    service.unvalidatePai=function(id, raison,counterOffer){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/unvalidatePaiProject/'+id,{raison:raison,counterOffer:counterOffer}).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+
     service.fetchOne=function(id){
 
         // project = {date : new Date(),status:'draft'};
@@ -411,6 +438,17 @@ angular.module('core')
             deferred.reject(data);
         })
         return deferred.promise;      
+    }
+    service.removeSyncro=function(id){
+        // var deferred = $q.defer();
+        $.ajax({
+            method:'delete',
+            url:'/api/project/'+id,
+            cache: false,
+            async: false
+        }).done(function() {
+            return;
+        });
     }
 
     

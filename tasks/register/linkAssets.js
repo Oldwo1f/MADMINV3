@@ -13,6 +13,8 @@
  */
 module.exports = function(grunt) {
   grunt.registerTask('linkAssets', [
+    'sails-linker:devPaiStyles',
+    'sails-linker:devJsPai',
     'sails-linker:devJs',
     'sails-linker:devStyles',
     'sails-linker:devTpl',

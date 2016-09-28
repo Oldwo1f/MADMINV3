@@ -1,0 +1,196 @@
+		<section id="content" >
+
+			<div class="content-wrap">
+				
+				<div class="container clearfix">
+
+					<div class="subheader topmargin">
+						
+						<h4>Acheter et revendez vos documents sur le MarketPlace.<br>Vous pouvez egalement offrir un document en échange de points collabs.</h4>
+						<a ui-sref="addMarketplace" class="btn btn-primary btn-lg">Ajouter des documents</a>
+					</div>
+
+					<!-- Portfolio Filter
+					============================================= -->
+					<ul id="portfolio-filter" class="portfolio-filter  clearfix" data-container="#portfolio">
+
+						<li class="btn-all" ng-class="{'activeFilter': Filter=='*'}"><a  ng-click="changeFilter('*')">Tous</a></li>
+						<li class="btn-etude" ng-class="{'activeFilter': Filter=='etude'}"><a  ng-click="changeFilter('etude')">Étude de marché</a></li>
+						<li class="btn-conso" ng-class="{'activeFilter': Filter=='conso'}"><a  ng-click="changeFilter('conso')">Étude consomateur</a></li>
+						<li class="btn-tendance" ng-class="{'activeFilter': Filter=='tendance'}"><a  ng-click="changeFilter('tendance')">Analyse de tendance</a></li>
+						<li class="btn-rapport" ng-class="{'activeFilter': Filter=='rapport'}"><a  ng-click="changeFilter('rapport')">Rapport d'étonnement</a></li>
+						<li class="btn-book" ng-class="{'activeFilter': Filter=='book'}"><a  ng-click="changeFilter('book')">Ebook</a></li>
+						<li class="btn-autre" ng-class="{'activeFilter': Filter=='autre'}"><a  ng-click="changeFilter('autre')">Divers</a></li>
+
+					</ul><!-- #portfolio-filter end -->
+
+					
+					<div class="clear"></div>
+
+					<!-- Portfolio Items
+					============================================= -->
+
+					<div id="portfolio"  infinite-scroll="myPagingFunction()" infinite-scroll-distance="1" reload-on-resize reload-on-show class="portfolio grid-container portfolio-3 topmargin clearfix" masonry>
+					
+						
+
+						<article ng-repeat="item in itemList | projectType :{'contentType' : Filter}" class="masonry-brick portfolio-item" 
+						ng-class="{'pf-etude':item.contentType == 'etude',
+						'pf-conso':item.contentType == 'conso',
+						'pf-autre':item.contentType == 'autre',
+						'pf-tendance':item.contentType == 'tendance',
+						'pf-book':item.contentType == 'book',
+						'pf-rapport':item.contentType == 'rapport'}
+						">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo" ng-if="item.contentType == 'etude'">Étude de marché</span>
+									<span class="subtitleportfo" ng-if="item.contentType == 'conso'">Étude consomateur</span>
+									<span class="subtitleportfo" ng-if="item.contentType == 'autre'">Divers</span>
+									<span class="subtitleportfo" ng-if="item.contentType == 'tendance'">Analyse de tendance</span>
+									<span class="subtitleportfo" ng-if="item.contentType == 'book'">Ebook</span>
+									<span class="subtitleportfo" ng-if="item.contentType == 'rapport'">Rapport d'étonnement</span>
+									
+
+									<h3>{{item.title}}</h3>
+									<span class="autheurportfo">par {{item.authors[0].firstname}} {{item.authors[0].name}} -  {{item.date | amCalendar}}</span>
+									<span class="initialPrice" ng-if="reduced(item.date)"> {{ item.initialPrice }} €</span>
+									<span class="price">{{calcInitialPrice(item.initialPrice,item.date)}}</span>
+								</div>
+							</div>
+						</article>
+
+						
+						<!-- <article class="portfolio-item pf-book">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Ebook</span>
+									<h3><a href="portfolio-single.html">La consomation de produit laitier dans le monde, en europe et en asie du sud ouest.</a></h3>
+									<span class="autheurportfo">par Mike Zambini</span>
+
+									<span class="initialPrice"></span>
+									<span class="price">1350€</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item pf-conso">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Étude consomateur</span>
+									<h3><a href="portfolio-single.html">Les produits laiters</a></h3>
+									<span class="autheurportfo">par Mike Zambini</span>
+
+									<span class="initialPrice"></span>
+									<span class="price">110€</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="portfolio-item pf-rapport">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Rapport d'etonnement</span>
+									<h3><a href="portfolio-single.html">La consomation de produit laitier dans le monde, en europe et en asie du sud ouest.</a></h3>
+									<span class="autheurportfo">par Mike Zambini</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item pf-autre">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Divers</span>
+									<h3>Le gluten et ses dérivés</h3>
+									<span class="autheurportfo">par Blaise Maxime</span>
+
+									<span class="price">Gratuit</span>
+								</div> 
+							</div>
+						</article>
+						<article class="portfolio-item pf-etude">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Étude de marché</span>
+									<h3><a href="portfolio-single.html">Le gluten et ses dérivés</a></h3>
+									<span class="autheurportfo">par Alexis Momcilovic</span>
+								</div>
+
+									<span class="price">gratuit</span>
+							</div>
+						</article>
+						<article class="portfolio-item pf-book">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Ebook</span>
+									<h3><a href="portfolio-single.html">La consomation de produit laitier dans le monde, en europe et en asie du sud ouest.</a></h3>
+									<span class="autheurportfo">par Mike Zambini</span>
+									<span class="price">gratuit</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item pf-conso">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Étude consomateur</span>
+									<h3><a href="portfolio-single.html">Les produits laiters</a></h3>
+									<span class="autheurportfo">par Mike Zambini</span>
+									<span class="price">gratuit</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item pf-autre">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Divers</span>
+									<h3>Le gluten et ses dérivés</h3>
+									<span class="autheurportfo">par Blaise Maxime</span>
+									<span class="price">gratuit</span>
+								</div> 
+							</div>
+						</article>
+						<article class="portfolio-item pf-etude">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Étude de marché</span>
+									<h3><a href="portfolio-single.html">Le gluten et ses dérivés</a></h3>
+									<span class="autheurportfo">par Alexis Momcilovic</span>
+									<span class="price">gratuit</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item pf-tendance">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Analyse de tendance</span>
+									<h3><a href="portfolio-single.html">La consomation de produit laitier dans le monde, en europe et en asie du sud ouest.</a></h3>
+									<span class="autheurportfo">par Mike Zambini</span>
+									<span class="price">gratuit</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item pf-conso">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Étude consomateur</span>
+									<h3><a href="portfolio-single.html">Les produits laiters</a></h3>
+									<span class="autheurportfo">par Mike Zambini</span>
+								</div>
+							</div>
+						</article>
+						<article class="portfolio-item pf-etude">
+							<div class="contentPortfo">
+								<div class="portfolio-desc">
+									<span class="subtitleportfo">Étude de marché</span>
+									<h3>Le gluten et ses dérivés</h3>
+									<span class="autheurportfo">par Blaise Maxime</span>
+								</div> 
+							</div>
+						</article> -->
+
+						
+					</div><!-- #portfolio end -->
+					<div class="FINI masonry-brick " ng-if="fin">
+						<span>Tout est là.</span>
+					</div>
+				</div>
+
+			</div>

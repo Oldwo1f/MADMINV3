@@ -166,15 +166,64 @@ module.exports = {
 
 	            }	
 
+        	}).catch(function(err){
+        		console.log(err);
+        	})
+        }
+        if(options.parentType == 'event')
+        {
+        	//find project
+        	Events.findOne(options.parentId).populate('images').then(function(event){
+        		if(options.verb == 'add'){
 
-
-
-
-
-
-
-
-
+	               Image.findOne(childID).then(function(data){
+	                    
+	                    return Image.update(data.id ,
+	                    {
+	                        // nbEventss : data.nbEventss,
+	                        rank : event.images.length
+	                    }).then(function(result){
+	                        cb(null,data);
+	                    })
+	                   
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+	            }
+	            if(options.verb == 'remove'){
+	            	return Promise.bind({})
+	            	.then(function(){
+	            		return Image.findOne(childID)
+	            	})
+	            	.then(function(data){
+	            		this.imgToremove = data
+	                    return Promise.map(event.images,function(img){
+	                    	if(img.rank > data.rank)
+	                    	{
+	                    		Image.findOne(img.id).then(function(data1){
+				                    return Image.update(data1.id ,
+				                    {
+				                        rank : data1.rank-1
+				                    }).then(function(result){
+				                        // cb(null,data);
+				                        return
+				                    })
+				                })
+	                    	}
+	                    	else{
+	                    		return;
+	                    	} 
+	                    })
+	                   
+	                }).then(function(){
+	                	
+	                	return Image.destroy(this.imgToremove.id).then(function(data){
+                            cb(null,data);
+		                })
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+	            }	
         	}).catch(function(err){
         		console.log(err);
         	})

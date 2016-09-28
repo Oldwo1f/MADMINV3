@@ -1,4 +1,8 @@
+	
+
+
 var $ = jQuery.noConflict();
+
 
 $.fn.inlineStyle = function (prop) {
 	return this.prop("style")[$.camelCase(prop)];
@@ -8,6 +12,9 @@ $.fn.doOnce = function( func ) {
 	this.length && func.apply( this );
 	return this;
 }
+
+
+console.log('FUNCTIONS');
 
 if( $().infinitescroll ) {
 
@@ -1097,8 +1104,8 @@ var SEMICOLON = SEMICOLON || {};
 
 			$('body.side-header #primary-menu > ul').superfish({
 				popUpSelector: 'ul',
-				delay: 250,
-				speed: 350,
+				delay: 1250,
+				speed: 1350,
 				animation: {opacity:'show',height:'show'},
 				animationOut:  {opacity:'hide',height:'hide'},
 				cssArrows: false
@@ -1245,7 +1252,7 @@ var SEMICOLON = SEMICOLON || {};
 		},
 
 		sideHeader: function(){
-			$("#header-trigger").click(function(){
+			$("#primary-menu-trigger").click(function(){
 				$('body.open-header').toggleClass("side-header-open");
 				return false;
 			});
@@ -3670,3 +3677,5 @@ var SEMICOLON = SEMICOLON || {};
 	$window.on( 'resize', SEMICOLON.documentOnResize.init );
 
 })(jQuery);
+
+

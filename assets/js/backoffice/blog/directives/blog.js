@@ -156,6 +156,20 @@ angular.module('momi-blog')
 						 	$scope.sort =	'status DESC'
 						}
 					break;
+					case 'contentType':
+						if($scope.sort == 'contentType DESC'){
+							$scope.sort =	'contentType ASC'
+						}else{
+						 	$scope.sort =	'contentType DESC'
+						}
+					break;
+					case 'title':
+						if($scope.sort == 'title DESC'){
+							$scope.sort =	'title ASC'
+						}else{
+						 	$scope.sort =	'title DESC'
+						}
+					break;
 					case 'nbView':
 						if($scope.sort == 'nbView DESC'){
 							$scope.sort =	'nbView ASC'

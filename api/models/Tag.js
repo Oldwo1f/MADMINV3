@@ -11,9 +11,11 @@ module.exports = {
   		nbDocuments:{type:'int',defaultsTo:0},
   		nbArticles:{type:'int',defaultsTo:0},
         nbProjects:{type:'int',defaultsTo:0},
+        nbEvents:{type:'int',defaultsTo:0},
   		total:{type:'int',defaultsTo:0},
         articles:{collection:'article', via: 'tags'},
         projects:{collection:'project', via: 'tags'},
+        events:{collection:'event', via: 'tags'},
         selfUpdate:function(options,cb){
         if(options.parentType == 'article')
         {
@@ -115,6 +117,62 @@ module.exports = {
                         }).then(function(result){
                             Tag.publishUpdate( data.id , {
                                 nbProjects : data.nbProjects,
+                                total : data.total
+                            } )
+                            cb(null,result);
+                        })
+
+                    }
+                   
+                }).catch(function (err) {
+                    cb(err,null);
+                });
+            }
+        }
+        if(options.parentType == 'event')
+        {
+            if(options.verb == 'add'){
+
+                Tag.findOne(this.id).then(function(data){
+                    data.nbEvents= Number(data.nbEvents)+1;
+                    data.total= Number(data.total)+1;
+                    return Tag.update(data.id ,
+                    {
+                        nbEvents : data.nbEvents,
+                        total : data.total
+                    }).then(function(result){
+
+                        Tag.publishUpdate( data.id , {
+                                nbEvents : data.nbEvents,
+                                total : data.total
+                        } )
+                        cb(null,result[0]);
+                        
+                    })
+                   
+                }).catch(function (err) {
+                    cb(err,null);
+                });
+            }
+        
+            if(options.verb == 'remove'){
+
+              Tag.findOne(this.id).then(function(data){
+                    data.nbEvents= Number(data.nbEvents) -1;
+                    data.total= Number(data.total) -1;
+                    if(data.total<=0){
+                        return Tag.destroy(data.id).then(function(result){
+                            cb(null,result[0]);
+                            Tag.publishDestroy( data.id )
+                        })
+                    }else{
+                        return Tag.update(data.id ,
+                        {
+                            nbEvents : data.nbEvents,
+                            total : data.total
+                        }).then(function(result){
+                            Tag.publishUpdate( data.id , {
+                                nbEvents : data.nbEvents,
                                 total : data.total
                             } )
                             cb(null,result);

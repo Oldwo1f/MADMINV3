@@ -178,6 +178,13 @@ angular.module('core')
                 if(type == 'commentProject'){
                     $state.go('projects.edit',{id:id})
                 }
+                if(type == 'validate-link' || type == 'validate-sponsored' || type == 'validate-article' ){
+                    $state.go('blog.edit',{id:id})
+                }
+                if(type == 'validate-conso' || type == 'validate-book' || type == 'validate-etude' ||
+                  type == 'validate-autre' || type == 'validate-tendance' || type == 'validate-rapport' ){
+                    $state.go('projects.edit',{id:id})
+                }
             }
       },
       link:function(scope,element,attrs){

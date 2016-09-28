@@ -123,7 +123,152 @@ module.exports = {
 				})
 			})
 		},
+		validatePai:function(req,res,next){
+			
+			
+			console.log('VALIDATE PAI');
+			console.log(req.body.bonus);
+			var total = 0;
+
+			Article.findOne(req.params.id).populate('collabsPoints').then(function(article){
+				console.log(article);
+				if(article.solded){
+					res.status(404).end()
+				}else{
+					return CollabsPoints.findOne(article.collabsPoints[0].id).populate('user').then(function(collabs){
+						console.log(collabs);
+						total = Number(collabs.score) + Number(req.body.bonus);
+						var attrToUpdate={
+							bonus : Number(req.body.bonus),
+							total : total,
+							status : 'accepted',
+							dateValidation : new Date()
+						}
+
+						return CollabsPoints.update(article.collabsPoints[0].id,attrToUpdate).then(function(){
+						
+							return User.findOne(collabs.user[0].id).then(function(user){
+								user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
+								var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(total);
+								console.log(NewnbCollabsPoints);
+								
+
+								return User.update(collabs.user[0].id,{nbCollabsPoints : NewnbCollabsPoints}).then(function(){
+									console.log(user);
+									return Article.update(req.params.id,{validate:true,nbPoints : total,solded:true,status:'actif'}).then(function(articledata){
+										
+										var mydata = {};
+
+										mydata.title = article.title;
+										mydata.name = user.name;
+										mydata.firstname = user.firstname;
+										mydata.nbCollabsPoints = user.nbCollabsPoints;
+										mydata.score = collabs.score;
+										mydata.bonus = attrToUpdate['bonus'];
+
+
+										//SEND VALIDATION MAIL
+										mail.sendEmail({
+								             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+								             to: user.email, // list of receivers 
+								             subject: sails.config.company+' - Contenus validé', // Subject line 
+								        },'validateContent',{data:mydata, URL_HOME:sails.config.URL_HOME  }).then(function(data){
+								        });
+
+
+
+
+
+										res.send({data:articledata})
+									})
+
+								})
+							})
+
+							// 
+
+						})
+					})
+				}
+				
+
+
+
+			})
+
+			
+
+
+		},
+		unvalidatePai:function(req,res,next){
+			
+			
+			console.log('UNVALIDATE PAI');
+			console.log(req.body.raison);
+			var total = 0;
+
+			Article.findOne(req.params.id).populate('collabsPoints').then(function(article){
+				console.log(article);
+				// if(article.solded){
+				// 	res.status(404).end()
+				// }else{
+					return CollabsPoints.findOne(article.collabsPoints[0].id).populate('user').then(function(collabs){
+						console.log(collabs);
+						total = Number(collabs.score) + Number(req.body.bonus);
+						var attrToUpdate={
+							bonus : 0,
+							total : 0,
+							status : 'rejected',
+							dateValidation : new Date()
+						}
+
+						return CollabsPoints.update(article.collabsPoints[0].id,attrToUpdate).then(function(){
+						
+							return User.findOne(collabs.user[0].id).then(function(user){
+								user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
+								var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(total);
+								console.log(NewnbCollabsPoints);
+								
+
+								
+									return Article.update(req.params.id,{validate:false,solded:true,status:'inactif'}).then(function(articledata){
+										
+										var mydata = {};
+
+										mydata.title = article.title;
+										mydata.raison = req.body.raison;
+										if(req.body.raison != 'noEmail'){
+
+											//SEND VALIDATION MAIL
+											mail.sendEmail({
+									             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+									             to: user.email, // list of receivers 
+									             subject: sails.config.company+' - Contenus rejeté', // Subject line 
+									        },'unvalidateContent',{data:mydata, URL_HOME:sails.config.URL_HOME , }).then(function(data){
+									        });
+
+										}
+
+										res.send({data:articledata})
+									})
+
+							})
+
+						})
+					})
+				// }
+				
+
+
+
+			})
+
+			
+
+
+		},
 		uploadDocument:function(req,res,next) {
+
 		res.setTimeout(0);
 		sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 		sid.seed(10);
@@ -184,13 +329,12 @@ module.exports = {
 			    		file.nbDowload = 0
 			    		file.date = new Date();
 
-
-
 			    		Document.create(file).exec(function(err,doc) {
 					   					
 					   		req.secondid = doc.id		
 					   		req.params.toto = doc.id		
-					   		req.params.tata = 'doc.id'		
+					   		req.params.tata = 'doc.id'	
+	
 			    			next();
 			    		});
 
