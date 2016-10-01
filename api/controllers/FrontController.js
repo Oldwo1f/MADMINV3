@@ -579,7 +579,7 @@ module.exports={
 	poussin:function(req,res,next){
 		moment.locale(req.locale);
 		var result = {};
-		Project.findOne(TEAMIDS.poussin).populate('images').populate('players')
+		Project.findOne(TEAMIDS.poussin).populate('images').populate('players', { sort: 'name ASC' })
 	    .then(function(project) {
 	    	var newnbView = Number(project.nbView) + 1 ; 
 	    	project.nbView = newnbView
