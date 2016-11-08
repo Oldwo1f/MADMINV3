@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var words = _.map(tags,function(o){
-        return {text:o.text,weight:o.nbArticles,link:'blog/tags/'+o.id+'/'+o.text}
+        return {text:o.text,weight:o.nbArticles,link:'grimpes/tags/'+o.id+'/'+o.text}
         
     })
     console.log('wordswordswordswordswordswordswordswordswordswordswordswordswords');
