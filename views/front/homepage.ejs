@@ -96,7 +96,7 @@
                         <a href="/" class="mainlogo" data-dark-logo="images/front/ctvbwhitelogo.svg"><img src="images/front/ctvbwhitelogo.svg" alt="CTVB - chateau thierry volley ball Logo" height="100%" width="100%"></a>
                         <h2 class="divcenter bottommargin font-body" style="max-width: 700px; font-size: 40px;">Chateau Thierry Volley Ball</h2>
 
-                        <p class="lead divcenter bottommargin" style="max-width: 800px;">Un petit club en plein changement</p>
+                        <p class="lead divcenter bottommargin" style="max-width: 800px;">Un petit club en grand changement</p>
 
                         <p class="bottommargin" style="font-size: 16px;"><a href="/about" class="more-link">En savoir plus <i class="icon-angle-right"></i></a></p>
 
@@ -138,6 +138,7 @@ var articles = <%- JSON.stringify(articles) %>;
                                                     <span class="before-heading colorwhite" style="font-style: normal; display: inline-block;"><%- articles[i].categories[j].name %><% if(articles[i].categories.length > j+1){%>,<%}%></span>
                                                      
                                                 <%}%>
+                                                <small><%- moment(articles[i].date).fromNow() %></small>
                                             <%}%>
                                             <div class="entry-title">
                                                 <h3 class="t400 colorwhite2" style="font-size: 22px;"><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><%- articles[i].title %></a></h3>
@@ -348,13 +349,13 @@ var articles = <%- JSON.stringify(articles) %>;
 
                     <div class="section dark nomargin">
                         <div class="divcenter center" style="max-width: 900px;">
-                            <h2 class="nobottommargin t300 ls1">Envie d'essayer ? <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;">Faite le test</a></h2>
+                            <h2 class="nobottommargin t300 ls1">Envie d'essayer ? <a href="/contact" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;">Nous contactez</a></h2>
                         </div>
                     </div>
 
                     <div class="promo promo-dark promo-flat promo-full ">
                         <div class="container clearfix">
-                            <h3>Tu est <span>Pupille</span> , <span>Poussin</span> , ou <span>Benjamin</span> Renseigne toi sur <span>l'école de volley</span></h3>
+                            <h3>Tu es <span>Pupille</span> , <span>Poussin</span> , ou <span>Benjamin</span> Renseigne-toi sur <span>l'école de volley</span></h3>
                             <a href="/poussin" class="button button-xlarge button-rounded">Je me renseigne</a>
                         </div>
                     </div>
