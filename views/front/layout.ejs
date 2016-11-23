@@ -7,13 +7,23 @@
 
 	<!-- Stylesheets
 	============================================= -->
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700,800,900|Roboto%3A400%2C100%2C300%2C500%2C700%2C900|Permanent%2BMarker|Permanent+Marker%3A400" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Montserrat:400,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="styles/front/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="styles/front/style.css" type="text/css" />
+	<link rel="stylesheet" href="styles/front/swiper.css" type="text/css" />
+
+	<!-- Medical Demo Specific Stylesheet -->
+	<link rel="stylesheet" href="medical/medical.css" type="text/css" />
+	<!-- / -->
+
 	<link rel="stylesheet" href="styles/front/dark.css" type="text/css" />
 	<link rel="stylesheet" href="styles/front/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="styles/front/fontDental.css" type="text/css" />
+	<link rel="stylesheet" href="medical/css/medical-icons.css" type="text/css" />
 	<link rel="stylesheet" href="styles/front/animate.css" type="text/css" />
 	<link rel="stylesheet" href="styles/front/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="medical/fonts.css" type="text/css" />
 
 	<link rel="stylesheet" href="styles/front/responsive.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,110 +31,80 @@
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
 
-	<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
-	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/settings.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/layers.css">
-	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/navigation.css">
-	<link rel="stylesheet" type="text/css" href="styles/front/mystyle.css">
-	
+	<link rel="stylesheet" href="styles/front/colors.php?color=DE6262" type="text/css" />
 
 	<!-- Document Title
 	============================================= -->
-	<title>MOMCREATION</title>
-	
-	<link rel="shortcut icon" href="/faviconadmin/favicon.ico">
-	<link rel="icon" sizes="16x16 32x32 64x64" href="/faviconadmin/favicon.ico">
-	<link rel="icon" type="image/png" sizes="196x196" href="/faviconadmin/favicon-192.png">
-	<link rel="icon" type="image/png" sizes="160x160" href="/faviconadmin/favicon-160.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/faviconadmin/favicon-96.png">
-	<link rel="icon" type="image/png" sizes="64x64" href="/faviconadmin/favicon-64.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/faviconadmin/favicon-32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/faviconadmin/favicon-16.png">
-	<link rel="apple-touch-icon" href="/faviconadmin/favicon-57.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/faviconadmin/favicon-114.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/faviconadmin/favicon-72.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/faviconadmin/favicon-144.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/faviconadmin/favicon-60.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/faviconadmin/favicon-120.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/faviconadmin/favicon-76.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/faviconadmin/favicon-152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/faviconadmin/favicon-180.png">
-	<meta name="msapplication-TileColor" content="#FFFFFF">
-	<meta name="msapplication-TileImage" content="/faviconadmin/favicon-144.png">
-	<meta name="msapplication-config" content="/faviconadmin/browserconfig.xml">
+	<title>Medical Demo | Canvas</title>
 
 	<style>
-
-		.demos-filter {
-			margin: 0;
-			text-align: right;
-		}
-
-		.demos-filter li {
-			list-style: none;
-			margin: 10px 0px;
-		}
-
-		.demos-filter li a {
-			display: block;
-			border: 0;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			color: #444;
-		}
-
-		.demos-filter li a:hover,
-		.demos-filter li.activeFilter a { color: #1ABC9C; }
-
-		@media (max-width: 991px) {
-			.demos-filter { text-align: center; }
-
-			.demos-filter li {
-				float: left;
-				width: 33.3%;
-				padding: 0 20px;
-			}
-		}
-
-		@media (max-width: 767px) {
-			.demos-filter li { width: 50%; }
-		}
-
-		.revo-slider-emphasis-text {
-			font-size: 64px;
-			font-weight: 700;
-			letter-spacing: -1px;
-			font-family: 'Raleway', sans-serif;
-			padding: 15px 20px;
-			border-top: 2px solid #FFF;
-			border-bottom: 2px solid #FFF;
-		}
-
-		.revo-slider-desc-text {
-			font-size: 20px;
-			font-family: 'Lato', sans-serif;
-			width: 650px;
-			text-align: center;
-			line-height: 1.5;
-		}
-
-		.revo-slider-caps-text {
-			font-size: 16px;
-			font-weight: 400;
-			letter-spacing: 3px;
-			font-family: 'Raleway', sans-serif;
-		}
-		.tp-video-play-button { display: none !important; }
-
-		.tp-caption { white-space: nowrap; }
-
+		.form-control.error { border: 2px solid red; }
 	</style>
 
 </head>
 
-<body class="stretched">
-<%- body %>
+<body class="stretched" data-loader-html="<div id='css3-spinner-svg-pulse-wrapper'><svg id='css3-spinner-svg-pulse' version='1.2' height='210' width='550' xmlns='http://www.w3.org/2000/svg' viewport='0 0 60 60' xmlns:xlink='http://www.w3.org/1999/xlink'><path id='css3-spinner-pulse' stroke='#DE6262' fill='none' stroke-width='2' stroke-linejoin='round' d='M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210' /></svg></div>">
+	<%- body %>
 
+
+		<footer id="footer" style="background-color: #F5F5F5;border-top: 2px solid rgba(0,0,0,0.06);">
+
+			<div id="copyrights" class="nobg">
+
+				<div class="container clearfix">
+
+					<div class="col_half">
+						<%- __('Copyrights &copy; 2014 All Rights Reserved by Momcilovic ordinacia.') %><br>
+						<!-- <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div> -->
+					</div>
+
+					<div class="col_half col_last tright">
+						<div class="copyrights-menu copyright-links clearfix">
+							<a href="#" data-scrollto="#slider"><%- __('menu_home') %></a>/<a href="#"  data-scrollto="#about"><%- __('menu_about') %></a>/<a href="#" data-scrollto="#booking-appointment-form"><%- __('menu-appointment') %></a>/<a href="#" data-scrollto="#doctors" ><%- __('menu-doctors') %></a>
+						</div>
+					</div>
+							
+				</div>
+
+			</div>
+
+		</footer>
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script type="text/javascript" src="js/front/jquery.js"></script>
+	<script type="text/javascript" src="js/front/plugins.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script type="text/javascript" src="js/front/functions.js"></script>
+
+	<script type="text/javascript">
+
+		$("#template-medical-form").validate({
+			submitHandler: function(form) {
+				var formButton = $(form).find('button'),
+					formButtonText = formButton.html();
+
+				formButton.prop('disabled', true).html('<i class="icon-line-loader icon-spin norightmargin"></i>');
+				$(form).ajaxSubmit({
+					target: '#medical-form-result',
+					success: function() {
+						formButton.prop('disabled', false).html(formButtonText);
+						$(form).find('.form-control').val('');
+						$('#medical-form-result').attr('data-notify-msg', $('#medical-form-result').html()).html('');
+						SEMICOLON.widget.notifications($('#medical-form-result'));
+					}
+				});
+			}
+		});
+
+	</script>
 </body>
 </html>
-
