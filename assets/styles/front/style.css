@@ -1006,7 +1006,7 @@ body.stretched #header.full-header .container {
 	font-family: 'Raleway', sans-serif;
 	font-size: 36px;
 	line-height: 100%;
-	margin-right: 40px;
+	/*margin-right: 40px;*/
 }
 
 #header.full-header #logo {
