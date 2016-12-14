@@ -32,7 +32,7 @@
 			<input type="text" class="stacked-input" ng-blur="update('title')" ng-model="formData.title" id="input-1" placeholder="Titre">
 <!-- category -->
 			<label for="input-2" class="stacked-label"><i class="pe-7s-way"></i></label>
-			<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)" add-on-enter="true"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
+			<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
             	<auto-complete source="autocompleteCategories($query)" display-property="name" select-first-match="true" ></auto-complete>
         	</tags-input>
         	<script type="text/ng-template" id="myCatTemplate">
@@ -46,7 +46,7 @@
 <!-- tag -->
 			<label for="input-3" class="stacked-label"><i class="pe-7s-ticket"></i></label>
 			
-		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" add-on-enter="true" ng-blur="unselectOnBlur()" >
+		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)"   ng-blur="unselectOnBlur()" >
             	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
         	</tags-input>
 <!-- content  -->

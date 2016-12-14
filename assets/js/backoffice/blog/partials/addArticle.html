@@ -46,7 +46,7 @@
 <!-- tag -->
 			<label for="input-3" class="stacked-label"><i class="pe-7s-ticket"></i></label>
 			
-		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" add-on-enter="true" ng-blur="unselectOnBlur()" >
+		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)"   ng-blur="unselectOnBlur()" >
             	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
         	</tags-input>
 <!-- content  -->
@@ -55,7 +55,7 @@
 			<textarea  class="tinymcetextarea" ui-tinymce="tinymceOption" ng-model="formData.content" ng-model="tinymceModel" ng-blur="update('content')" placeholder="Contenu de l'article"></textarea>
 <!-- category -->
 			<label for="input-5" class="stacked-label mt0"><i class="pe-7s-user"></i></label>
-			<tags-input add-from-autocomplete-only="true" class="mycategoriesinput inputtag  mb" ng-model="formData.authors" on-tag-removed="removeAuthor($tag)" on-tag-adding="addAuthor($tag)" add-on-enter="true"  ng-blur="unselectOnBlur()"  placeholder="Ajouter un auteur" display-property="name" template="myAuthorTemplate">
+			<tags-input add-from-autocomplete-only="true" class="mycategoriesinput inputtag  mb" ng-model="formData.authors" on-tag-removed="removeAuthor($tag)" on-tag-adding="addAuthor($tag)"    ng-blur="unselectOnBlur()"  placeholder="Ajouter un auteur" display-property="name" template="myAuthorTemplate">
             	<auto-complete source="autocompleteAuthors($query)" template="autocomplete-template" display-property="name" select-first-match="true" ></auto-complete>
         	</tags-input>
         	<script type="text/ng-template" id="myAuthorTemplate">
