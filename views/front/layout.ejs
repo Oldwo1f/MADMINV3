@@ -93,15 +93,15 @@
 					formButtonText = formButton.html();
 
 				formButton.prop('disabled', true).html('<i class="icon-line-loader icon-spin norightmargin"></i>');
-				$(form).ajaxSubmit({
-					target: '#medical-form-result',
-					success: function() {
-						formButton.prop('disabled', false).html(formButtonText);
-						$(form).find('.form-control').val('');
-						$('#medical-form-result').attr('data-notify-msg', $('#medical-form-result').html()).html('');
-						SEMICOLON.widget.notifications($('#medical-form-result'));
-					}
-				});
+				// $(form).ajaxSubmit({
+				// 	target: '#medical-form-result',
+				// 	success: function() {
+				// 		formButton.prop('disabled', false).html(formButtonText);
+				// 		$(form).find('.form-control').val('');
+				// 		$('#medical-form-result').attr('data-notify-msg', $('#medical-form-result').html()).html('');
+				// 		SEMICOLON.widget.notifications($('#medical-form-result'));
+				// 	}
+				// });
 			}
 		});
 
