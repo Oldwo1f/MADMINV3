@@ -1,0 +1,91 @@
+<div class="my-container agenda">
+
+
+<div infinite-scroll="myPagingFunction()">
+	<article class="widget userspage">
+
+		<header class="pageHeader">
+
+			<a  class="rightBtn" ng-click="returnDashboardState()">
+				<span ><i class="fa fa-dashboard"></i></span>
+			</a>
+			<a  class="rightBtn" ng-click="returnPreviousState()">
+				<span  ><i class="fa fa-long-arrow-left"></i></span>
+			</a>
+			<div class="pageTitle">
+				<i class="pe-7f-date"></i><h3>Agenda</h3>
+			</div>
+			<div  class="pageTitle">
+				<div class="btn-group">
+			        <button
+			          class="btn btn-primary"
+			          mwl-date-modifier
+			          date="calendarDate"
+			          decrement="calendarView">
+			          Previous
+			        </button>
+			        <button
+			          class="btn btn-default"
+			          mwl-date-modifier
+			          date="calendarDate"
+			          set-to-today>
+			          Today
+			        </button>
+			        <button
+			          class="btn btn-primary"
+			          mwl-date-modifier
+			          date="calendarDate"
+			          increment="calendarView">
+			          Next
+			        </button>
+				</div>
+			</div>
+			<div class="pageTitle">
+				<h2 class="text-center">{{ calendarTitle }}</h2>
+			</div>
+			<div class="pageTitle">
+				<div class="btn-group">
+			        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'year'">Year</label>
+			        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'month'">Month</label>
+			        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'week'">Week</label>
+			        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'">Day</label>
+		      	</div>
+			</div>
+			<!-- <a class="leftBtn" ui-sref="categories">
+				<span  ><i class="pe-7s-way"></i></span>
+			</a> -->
+			<a class="leftBtn" ng-click="ModalAdd()">
+				<span  ><i class="pe-7s-plus"></i></span>
+			</a>
+		</header>
+		
+		<div class="widget__content" >
+				 
+			   <!--  <div class="col-md-6 text-center">
+				     
+				</div>
+
+				<br class="visible-xs visible-sm">
+
+				<div class="col-md-6 text-center">
+				     
+				</div>
+ -->
+				  
+			<mwl-calendar
+			    view="calendarView"
+			    view-date="calendarDate"
+			    view-title="calendarTitle"
+			    events="events"
+			    on-event-click="eventClicked(calendarEvent)"
+			    on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+			    day-view-start="06:00"
+			    day-view-end="23:00"
+			    cell-is-open="true">
+			</mwl-calendar>
+			
+		</div> <!-- /widget__content -->
+
+	</article>
+</div>
+</div>

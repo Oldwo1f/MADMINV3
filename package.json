@@ -12,6 +12,7 @@
     "bluebird": "3.3.4",
     "bower": "1.7.7",
     "chai": "3.5.0",
+    "country-json": "1.0.2",
     "easyimage": "2.1.0",
     "ejs": "2.3.4",
     "elasticsearch": "11.0.1",

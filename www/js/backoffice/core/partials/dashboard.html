@@ -1,0 +1,72 @@
+<div >
+	<!-- <a href="workshop/" genie-wish wish-i-icon="fa-cogs" wish-context="{{demoContext}}">Genie Workshop</a> -->
+	<div ux-lamp rub-class="visible" lamp-visible="genieVisible" rub-shortcut="32"
+  wish-callback="wishMade(wish)"></div>
+
+
+	<div class="pageDash pageVisible">
+		
+
+		<div gridster="gridsterOpts">
+			<!-- TITLE WIDGET -->
+		        <div gridster-item="widgetList['titleDashWidget']"  ng-class="{'no-resize' : widgetList['titleDashWidget'].noresize}" ng-show="widgetList['titleDashWidget'].enabled">
+		        	<title-dash-widget></title-dash-widget><div class="dragger"></div>
+		        	<!-- <div class="dragger"></div> -->
+
+		        </div>
+		        <!-- MENU WIDGET PAI -->
+		        <div gridster-item="widgetList['menuPaiWidget']" ng-class="{'no-resize': widgetList['menuPaiWidget'].noresize }" ng-show="widgetList['menuPaiWidget'].enabled">
+		        	<menu-pai-widget></menu-pai-widget><div class="dragger"></div>
+		        </div>
+		    <!-- MENU WIDGET -->
+		        <div gridster-item="widgetList['menuWidget']" ng-class="{'no-resize': widgetList['menuWidget'].noresize }" ng-show="widgetList['menuWidget'].enabled">
+		        	<menu-widget></menu-widget><div class="dragger"></div>
+		        </div>
+		    
+		    <!-- dashboardconfig WIDGET -->
+		        <div gridster-item="widgetList['dashboardconfigWidget']" ng-class="{'no-resize': widgetList['dashboardconfigWidget'].noresize }" ng-show="widgetList['dashboardconfigWidget'].enabled">
+		        	<dashboardconfig-widget></dashboardconfig-widget>
+		        </div>
+		    <!-- lastArticle WIDGET -->
+		        <div gridster-item="widgetList['lastarticleWidget']" ng-class="{'no-resize': widgetList['lastarticleWidget'].noresize }" ng-show="widgetList['lastarticleWidget'].enabled">
+		        	<lastarticle-widget></lastarticle-widget>
+		        </div>
+		    <!-- lastProject WIDGET -->
+		        <div gridster-item="widgetList['lastprojectWidget']" ng-class="{'no-resize': widgetList['lastprojectWidget'].noresize }" ng-show="widgetList['lastprojectWidget'].enabled">
+		        	<lastproject-widget></lastproject-widget>
+		        </div>
+		    <!-- categorycloudWidget WIDGET -->
+		        <div gridster-item="widgetList['categorycloudWidget']" ng-class="{'no-resize': widgetList['categorycloudWidget'].noresize }" ng-show="widgetList['categorycloudWidget'].enabled">
+		        	<categorycloud-widget></categorycloud-widget>
+		        </div>
+		    <!-- profileWidget WIDGET -->
+		        <div gridster-item="widgetList['profileWidget']" ng-class="{'no-resize': widgetList['profileWidget'].noresize }" ng-show="widgetList['profileWidget'].enabled">
+		        	<profile-widget></profile-widget>
+		        </div>
+		    <!-- tagcloudWidget WIDGET -->
+		        <div gridster-item="widgetList['tagcloudWidget']" ng-class="{'no-resize': widgetList['tagcloudWidget'].noresize }" ng-show="widgetList['tagcloudWidget'].enabled">
+		        	<tagcloud-widget></tagcloud-widget>
+		        </div>
+		    <!-- notificationWidget WIDGET -->
+		        <div gridster-item="widgetList['notificationWidget']" class="notificationWidget" ng-class="{'no-resize': widgetList['notificationWidget'].noresize }" ng-show="widgetList['notificationWidget'].enabled" >
+		        	<notification-widget></notification-widget>
+		        </div>
+		    <!-- analyticsWidget WIDGET -->
+		        <div gridster-item="widgetList['analyticsWidget']" class="analyticsWidget" ng-class="{'no-resize': widgetList['analyticsWidget'].noresize }" ng-show="widgetList['analyticsWidget'].enabled" >
+		        	<analytics-widget></analytics-widget>
+		        </div>
+		    <!-- sliderWidget WIDGET -->
+		        <div gridster-item="widgetList['sliderWidget']" class="sliderWidget" ng-class="{'no-resize': widgetList['sliderWidget'].noresize }" ng-show="widgetList['sliderWidget'].enabled" >
+		        	<slider-widget></slider-widget>
+		        </div>
+		</div>
+	</div>
+	<div class="page1 pageAfter">
+		<!-- <div class="swiperback" ng-click="returnDashboardState()"></div> -->
+		<div ui-view="page1"></div>
+	</div>
+	<div class="page2 pageAfter">
+		<!-- <div class="swiperback" style="background:pink" ng-click="returnDashboardState()"></div> -->
+		<div ui-view="page2" ></div>
+	</div>
+</div>

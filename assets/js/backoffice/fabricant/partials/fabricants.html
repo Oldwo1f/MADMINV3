@@ -1,0 +1,143 @@
+<div class="my-container">
+
+
+<div infinite-scroll="myPagingFunction()">
+	<fabricant class="widget">
+		<header class="pageHeader">
+
+			<a  class="rightBtn" ng-click="returnDashboardState()">
+				<span ><i class="fa fa-dashboard"></i></span>
+			</a>
+			<a  class="rightBtn" ng-click="returnPreviousState()">
+				<span  ><i class="fa fa-long-arrow-left"></i></span>
+			</a>
+			<div class="pageTitle">
+				<i class="pe-7f-id"></i><h3>Mes Fabricants</h3>
+			</div>
+			<div class="searchBar">
+				<input class="" type="text" ng-blur="searchFabricant()" ng-keypress="blurOnEnter($event)" ng-model="searchSlug" placeholder="Recherche dans les ingrédients">
+				<span class="iconsearch"><i class="fa fa-search"></i></span>
+			</div>
+			<a class="leftBtn" ui-sref="categories">
+				<span  ><i class="pe-7s-way"></i></span>
+			</a>
+			<a class="leftBtn" ui-sref="fabricants.add">
+				<span  ><i class="pe-7s-plus"></i></span>
+			</a>
+		</header>
+		
+		<div class="widget__content table-responsive">
+			
+			<table class="table media-table">
+		  	<thead>
+		  		<tr>
+		  			<th width="90" ng-click="changeSort('date');" >Date <i ng-if="!searchSlug" ng-show="sort=='date DESC'" class="pe-7s-angle-down"></i>  <i ng-if="!searchSlug" ng-show="sort=='date ASC'" class="pe-7s-angle-up"></th>
+		  			<th width="500" >
+		  				<span  ng-click="changeSort('name');">Nom </span>
+
+		  				<i ng-if="!searchSlug" ng-show="sort=='name DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='name ASC'" class="pe-7s-angle-up" />
+
+		  				<i ng-if="!searchSlug" ng-show="sort=='status DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='status ASC'" class="pe-7s-angle-up pull-right" />
+		  				<span style="margin-left:5px;" class="pull-right" ng-click="changeSort('status');">Status</span>
+
+			  			<!-- <i ng-if="!searchSlug" ng-show="sort=='contentType DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='contentType ASC'" class="pe-7s-angle-up pull-right" />
+			  			<span class="pull-right"  ng-click="changeSort('contentType');">Type de contenus</span> -->
+		  			</th>
+		  			<th>Post Info</th>
+		  			<th style="width: 75px;">Auteurs</th>
+		  				
+		  			<th style="width: 75px;" ng-click="changeSort('nbView');"> <i class="fa fa-eye"></i> <i ng-if="!searchSlug" ng-show="sort=='nbView DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='nbView ASC'" class="pe-7s-angle-up pull-right" /></th>
+		  		</tr>
+		  	</thead>
+		  	<tbody>
+
+		  	
+		  		<tr class="tableRow" ng-repeat="fabricant in fabricantsList">
+
+		  			<td>
+		  				<p class="post__date">
+		  					
+		  					<span class="dddd">{{fabricant.date | amDateFormat:'dddd'}}</span>
+		  					<span class="DD">{{fabricant.date | amDateFormat:'DD'}}</span>
+		  					<span class="MM ">{{fabricant.date | amDateFormat:'MMM'}}</span>
+		  				</p>
+		  			</td>
+		  			<td>
+		  				<!-- <div class="btn-group blockVertical">
+							<a ng-if="fabricant.contentType=='etude';" type="button" class="fakeColor-etude btn active Color-etude">Marché</a>
+							<a ng-if="fabricant.contentType=='rapport';" type="button" class="fakeColor-rapport btn active Color-rapport" >Rapport</a>
+							<a ng-if="fabricant.contentType=='conso';" type="button" class="fakeColor-conso btn active Color-conso" >Conso</a>
+							<a ng-if="fabricant.contentType=='tendance';" type="button" class="fakeColor-tendance btn active Color-tendance"  >Tendance</a>
+							<a ng-if="fabricant.contentType=='book';" type="button" class="fakeColor-book btn active Color-book"  >Ebook</a>
+							<a ng-if="fabricant.contentType=='autre';" type="button" class="fakeColor-autre btn active Color-autre"  >Divers</a>
+						</div> -->
+		  				<div class="media">
+
+								<figure class="pull-left post__img" ng-if="fabricant.images.length > 0 && (!fabricant.videoUrl || !fabricant.videoHost)">
+									<img class="media-object" ng-src="image/adminThumbs/{{fabricant.images[0].filename}}">
+								</figure>
+								<figure  class="pull-left post__img post_video" ng-if="fabricant.videoUrl && fabricant.videoHost">
+									<div ng-if="fabricant.videoHost =='youtube'"> <i class="socicon-youtube" aria-hidden="true"></i></div>
+									<div ng-if="fabricant.videoHost =='dailymotion'"> <i class="socicon-dailymotion" aria-hidden="true"></i></div> 
+									<div ng-if="fabricant.videoHost =='vimeo'"> <i class="socicon-vimeo" aria-hidden="true"></i></div>
+								</figure>
+								<div class="media-body post_desc">
+									<h3>{{fabricant.name}}</h3>
+									<!-- <p>A classic approach...</p> -->
+									<div class="btnstable">
+										
+										<button class="btn blue btn-sm"  ui-sref="fabricants.edit({id: fabricant.id})" >Edit</button>
+										<div class="btn-group block">
+										  <a ng-click="fabricant.status='actif';update(fabricant.id, 'status','actif')" type="button" class="fakeColorGreen btn active"  ng-class="{'green':fabricant.status=='actif','orange':fabricant.status=='draft','red':fabricant.status=='inactif'}" style="border-right:0px">Actif</a>
+										  <a ng-click="fabricant.status='draft';update(fabricant.id, 'status','draft')" type="button" class="fakeColorOrange btn active" ng-class="{'green':fabricant.status=='actif','orange':fabricant.status=='draft','red':fabricant.status=='inactif'}" >Brouillon</a>
+										  <a ng-click="fabricant.status='inactif';update(fabricant.id, 'status','inactif')" type="button" class="fakeColorRed btn active" ng-class="{'green':fabricant.status=='actif','orange':fabricant.status=='draft','red':fabricant.status=='inactif'}"  style="border-left:0px">Inactif</a>
+										</div>
+										<!-- <div class="lockicon" ng-if="fabricant.privateContent"><i class="fa fa-lock"></i></div> -->
+									</div>
+								</div>
+							</div>
+		  			</td>
+		  			<td class="not-padding">
+		  				<p class="post__info"  ng-bind-html="fabricant.content" parent-id="fabricant.id" content-html="fabricant.content" html-ellipsis>
+		  				</p>
+		  				<div class="infosinfos">
+		  					<div class="tablecat" ng-repeat="cat in fabricant.categories" style="color:{{cat.textColor}};background-color : {{cat.color}};border-color : {{cat.color}}">
+		  						<span>{{cat.name}}</span>
+		  					</div>
+		  					<div class="tabletag" ng-repeat="tag in fabricant.tags">
+		  						<span>{{tag.text}}</span>
+		  					</div>
+		  				</div>
+		  			</td>
+		  			<td>
+		  				<!-- <a href="#" onclick="return false;" class="post__del"><i class="pe-7f-close"></i></a> -->
+		  				<!-- <i class="fa fa-eyes"></i> -->
+		  				<!-- <span class="numberTable">{{fabricant.authors[0].firstname}} {{fabricant.authors[0].name}}</span> -->
+		  				<div ng-repeat="author in fabricant.authors | limitTo:2" class="author">
+		  					<img  ng-if="author.images[0]" height="50" width="50" ng-src="image/profile/{{author.images[0].filename}}" alt="">
+		  					<ng-letter-avatar  ng-if="!author.images[0]" charCount="1" data="{{author.firstname}} {{author.name}}" fontsize="25" height="50" width="50" shape="round"></ng-letter-avatar>
+		  					
+		  				</div>
+		  			</td> 
+		  			<td>
+		  				<!-- <a href="#" onclick="return false;" class="post__del"><i class="pe-7f-close"></i></a> -->
+		  				<span class="numberTable">{{fabricant.nbView}}</span>
+		  			</td>
+		  		</tr>
+
+
+		  	</tbody>
+			</table>
+			<div class="endInfinite">
+				
+				<span us-spinner="spinneropts"  spinner-key="fabricantSpinner"></span>
+				<span ng-if="fin">Fin</span>
+			</div>
+			
+
+			
+		</div> <!-- /widget__content -->
+
+	</fabricant>
+</div>
+</div>

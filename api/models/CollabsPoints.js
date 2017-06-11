@@ -9,28 +9,26 @@ module.exports = {
 
   	attributes: {
 
-      status:{type:'string',defaultsTo:'waiting'},
+        status:{type:'string',defaultsTo:'waiting'},
   		title:{type:'string',defaultsTo:null},
 
-      score:{type:'integer',defaultsTo:0},
+        score:{type:'integer',defaultsTo:0},
   		counterOffer:{type:'integer',defaultsTo:0},
   		bonus:{type:'integer',defaultsTo:0},
-      total:{type:'integer',defaultsTo:0},
+        total:{type:'integer',defaultsTo:0},
   		dateValidation:{type:'date',defaultsTo:null},
-      admin:{type:'boolean',defaultsTo:false},
+        admin:{type:'boolean',defaultsTo:false},
 
-      payment:{type:'boolean',required:false},
-  		
-
-
-
-      contentModel:{type:'string',required:true},
-      contentType:{type:'string',required:true},
+        payment:{type:'boolean',required:false},
+        contentModel:{type:'string',required:true},
+        contentType:{type:'string'},
   		contentID:{type:'string',required:true},
 
         user:{collection:'user', via: 'collabsPoints'},
         article:{collection:'article', via: 'collabsPoints'},
         project:{collection:'project', via: 'collabsPoints'},
+        fabricant:{collection:'fabricant', via: 'collabsPoints'},
+        ingrediant:{collection:'ingrediant', via: 'collabsPoints'},
         event:{collection:'event', via: 'collabsPoints'},
 
         selfUpdate:function(options,cb){

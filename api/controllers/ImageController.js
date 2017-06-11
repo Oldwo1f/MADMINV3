@@ -27,6 +27,8 @@ module.exports = {
 	    
 	},	
 	resizeImage:function  (req,res,next) {
+
+		console.log('RESIZE IMAGE');
 		easyimg.info('uploads/images/originalSize/'+req.body.filename).then(function(file) {
 				info = file;
 				var quality = 100;
@@ -55,7 +57,7 @@ module.exports = {
 					      quality:100
 					}).then(function(image) {
 						
-
+						
 						if(req.body.imgid)
 						{
 							var paysage = true;

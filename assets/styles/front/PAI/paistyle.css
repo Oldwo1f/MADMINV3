@@ -36,10 +36,42 @@ body.mce-content-body {color:grey;}
 .portfolio-item .contentPortfo h3{padding: 10px;}
 .portfolio-item .contentPortfo .autheurportfo{margin: 0;padding: 0 10px;position: relative;}
 .portfolio-item .price{margin: 0;padding: 0 10px;position: absolute;bottom: 0px;right: 10px;font-size: 2em; font-weight: bold;}
-.portfolio-item .initialPrice{margin: 0;padding: 0 10px;position: absolute;bottom: 35px;right: 10px;font-size: 1.2em;text-decoration: line-through;
- }
+.portfolio-item .initialPrice{margin: 0;padding: 0 10px;position: absolute;bottom: 35px;right: 10px;font-size: 1.2em;text-decoration: line-through;}
+
+.portfolio {padding-top: 25px;}
+.portfolio .portfolio-item.ingredient-item {padding-top: 20px;}
+.portfolio-item.ingredient-item .contentPortfo{position: relative;border:2px solid black; cursor:pointer;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;align-items:center;}
+.portfolio-item.ingredient-item .contentPortfo img{height: 90px;margin-left: 2px;}
+.portfolio-item.ingredient-item .subtitleportfo{margin: 0;padding: 0 10px;position: absolute;top: -22px;right: -2px;color:white;font-size: 1em;}
+.portfolio-item.ingredient-item .contentPortfo h3{padding: 10px;}
+.portfolio-item.ingredient-item .contentPortfo .autheurportfo{margin: 0;padding: 0 10px;position: relative;}
+.portfolio-item.ingredient-item .date{margin: 0;padding: 0 10px;position: absolute;bottom: 0px;right: 10px;font-size:1.4em; font-weight: bold;}
+
+.portfolio {padding-top: 25px;}
+.portfolio .portfolio-item.fabricant-item {padding-top: 20px;}
+.portfolio-item.fabricant-item .contentPortfo{position: relative;border:2px solid black; cursor:pointer;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;align-items:center;}
+.portfolio-item.fabricant-item .contentPortfo .portfolio-desc{height: 152px;margin-left: 2px;flex-grow:2;}
+.portfolio-item.fabricant-item .contentPortfo img{height: 142px;margin-left: 2px;}
+.portfolio-item.fabricant-item .subtitleportfo{margin: 0;padding: 0 10px;position: absolute;top: -22px;right: -2px;color:white;font-size: 1em;}
+.portfolio-item.fabricant-item .contentPortfo h3{padding: 10px;}
+.portfolio-item.fabricant-item .contentPortfo h3 small{margin-top: 10px;}
+.portfolio-item.fabricant-item .contentPortfo .autheurportfo{margin: 0;padding: 0 10px;position: relative;}
+.portfolio-item.fabricant-item .date{margin: 0;padding: 0 10px;position: absolute;bottom: 0px;right: 10px;font-size:1.4em; font-weight: bold;}
 
 .FINI {width: 100%;text-align: center;margin: 50px;}
+
+.fabricantChoice1 p{font-size : 1.2em;font-weight: bold;margin-bottom: 10px;}
+.fabricantChoice2 > p{font-size : 1.2em;font-weight: bold;margin-bottom: 10px; margin-top: 30px;}
+.fabricantChoice2 ol {font-size: 1.1em; padding-left: 20px;}
+.fabricantChoice2 ol li{color:black;}
+.fabricantChoice2 ol li a{text-decoration: underline !important;}
+
+#selectFab input[type="search"] { width : 50%;padding: 5px;padding-left: 15px; font-size: 1.2em;border:1px solid black;box-shadow:none;}
+#selectFab .stacked-input { width : 50%;padding: 5px;padding-left: 15px; font-size: 1.2em;border:1px solid black;box-shadow:none;}
+#selectFab .ui-select-choices {    width: 50%; border:1px solid black; max-height: 150px;overflow-y:auto;margin-top: -1px;}
+#selectFab .ui-select-choices .ui-select-choices-row{ padding: 5px 5px;}
+
+.alert{ margin-bottom: 0px;margin-top: 50px;}
 
 /*rose #E1106E rgba(225,16,110,1)  */
 /*roseclaire #F29CB3 rgba(242,156,179,1)  */

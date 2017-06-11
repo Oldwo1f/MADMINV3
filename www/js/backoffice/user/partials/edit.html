@@ -1,0 +1,130 @@
+<md-dialog aria-label="Editer un utilisateur" class="userAddContainer edit" ng-cloak>
+  <form name="myform">
+    
+    <md-dialog-content>
+
+    	<article class="widget widget__form">
+			<div class="form_col" style="margin-bottom: -1px;">
+
+				<div class="formGroup mb  fullwidthgroup">
+					<div class="btn-group block">
+					  <a ng-click="formData.role='admin'; update('role')" type="button" class="fakeColorGreen btn active"  ng-class="{'green':formData.role=='admin','blue':formData.role=='user','violet':formData.role=='premium'}" style="border-right:0px">Administrateur</a>
+					  <a ng-click="formData.role='user'; update('role')" type="button" class="fakeColorBlue btn active" ng-class="{'green':formData.role=='admin','blue':formData.role=='user','violet':formData.role=='premium'}" >User</a>
+					  <a ng-click="formData.role='premium'; update('role')" type="button" class="fakeColorViolet btn active" ng-class="{'green':formData.role=='admin','blue':formData.role=='user','violet':formData.role=='premium'}"  style="border-left:0px">Premium user</a>
+					</div>
+				</div>
+				<div class="smallSeparator"></div>
+				<label for="input-1" class="stacked-label"><i class="pe-7s-mail"></i></label>
+				<!-- <span class="loaderIntput" ng-show="myform.email.$pending.uniqueemail"><i class="fa fa-spinner fa-spin"></i>Vérification de disponibilité</span>
+				<span class="loaderIntput" ng-show="myform.email.$error.uniqueemail"></i>Email déjà utilisée</span> 
+				uniqueemail="formData.email"  validate-email
+				-->
+				<input type="email"  name="email" disabled class="stacked-input" ng-model="formData.email" id="input-1" placeholder="Email">	
+
+				<label for="input-2" class="stacked-label"><i class="pe-7s-user"></i></label>
+				<input type="text" name="name" required class="stacked-input"  ng-model="formData.name" id="input-2" placeholder="Nom">	
+
+				<label for="input-3" class="stacked-label"><i class="pe-7s-user"></i></label>
+				<input type="text" name="firstname" required class="stacked-input"  ng-blur="update('firstname')" ng-model="formData.firstname" id="input-3" placeholder="Prénom">
+
+				<label for="input-4" class="stacked-label margedubas"><i class="pe-7s-note"></i></label>
+				<textarea ui-tinymce="tinymceOption" msd-elastic  ng-model="formData.description"  ng-blur="update('description')" placeholder="Description"></textarea>
+
+
+				<div class="form_title"><i class="pe-7s-hammer"></i>Points Collabs ({{formData.nbCollabsPoints}}) <small>premium jusqu'au {{ tempsrestant | amAdd : formData.nbCollabsPoints : 'days' | amDateFormat:'DD MMMM  YYYY' }}</small> </div>
+				<div class="CollabasPointsList">
+					
+					<!-- <div class="collabsPointsSingle" > -->
+						<table>
+							<thead>
+								<tr>
+									<th style="text-align:left;" >Type</th>
+									<th style="width:100px;">Points</th>
+									<th style="width:100px;">Bonus</th>
+									<th style="width:100px;">Total</th>
+									<th style="width:150px;">Status</th>
+									<th style="width:150px;">Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								<tr class="collabsPointsSingle" ng-repeat="collabs in formData.collabsPoints" ng-if="collabs.payment != true" ng-click="goToContent(collabs.contentModel,collabs.contentID)">
+									<td style="text-align:left;">
+										<span ng-if="collabs.contentType=='link'">Link</span>
+										<span ng-if="collabs.contentType=='sponsored'">Article sponso</span>
+										<span ng-if="collabs.contentType=='article'">Article</span>
+										<span ng-if="collabs.contentType=='etude'">Etude de marché</span>
+										<span ng-if="collabs.contentType=='rapport'">Rapport d'étonement</span>
+										<span ng-if="collabs.contentType=='book'">Ebook</span>
+										<span ng-if="collabs.contentType=='conso'">Étude consomateur</span>
+										<span ng-if="collabs.contentType=='tendance'">Tendance</span>
+										<span ng-if="collabs.contentType=='autre'">Documents</span>
+									</td>
+									<td>{{ collabs.score }}</td>
+									<td ng-if="collabs.contentType=='etude' || collabs.contentType=='rapport' || collabs.contentType=='book' || collabs.contentType=='tendance' || collabs.contentType=='conso' || collabs.contentType=='autre' || collabs.bonus == 0"> - </td>
+									<td ng-if="(collabs.contentType=='link' || collabs.contentType=='sponsored' || collabs.contentType=='article' )&& collabs.bonus != 0 ">{{ collabs.bonus }}</td>
+									<td>{{ collabs.total}}</td>
+									<td><label >{{ collabs.status }}</label></td>
+									<td><label ng-if="collabs.dateValidation" title="{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY HH:mm:ss'}}">{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY'}}</label><label ng-if="!collabs.dateValidation"> - </label></td>
+								</tr>
+							</tbody>
+						</table>
+						
+					<!-- </div> -->
+
+				</div>
+				<div class="form_title"><i class="pe-7s-hammer"></i>Contenus a vendre</div>
+				<div class="CollabasPointsList">
+					
+					<!-- <div class="collabsPointsSingle" > -->
+						<table>
+							<thead>
+								<tr>
+									<th style="text-align:left;width:100px;" >Type</th>
+									<th style="text-align:left;" >Title</th>
+									<th style="width:100px;">Prix initial</th>
+									<th style="width:150px;">Status</th>
+									<th style="width:150px;">Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								<tr class="collabsPointsSingle" ng-repeat="collabs in formData.collabsPoints" ng-if="collabs.payment == true"  ng-click="goToContent(collabs.contentModel,collabs.contentID)"> 
+									<td style="text-align:left;">
+										<span ng-if="collabs.contentType=='link'">Link</span>
+										<span ng-if="collabs.contentType=='sponsored'">Sponso</span>
+										<span ng-if="collabs.contentType=='article'">Article</span>
+										<span ng-if="collabs.contentType=='etude'">Marché</span>
+										<span ng-if="collabs.contentType=='rapport'">Rapport </span>
+										<span ng-if="collabs.contentType=='book'">Ebook</span>
+										<span ng-if="collabs.contentType=='conso'">Consomateur</span>
+										<span ng-if="collabs.contentType=='tendance'">Tendance</span>
+										<span ng-if="collabs.contentType=='autre'">Documents</span>
+									</td>
+									<td style="text-align:left;">{{ collabs.title }}</td>
+									<td><label >{{ collabs.initialPrice }}</label></td>
+									<td><label >{{ collabs.status }}</label></td>
+									<td><label ng-if="collabs.dateValidation" title="{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY HH:mm:ss'}}">{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY'}}</label><label ng-if="!collabs.dateValidation"> - </label></td>
+								</tr>
+							</tbody>
+						</table>
+						
+					<!-- </div> -->
+
+				</div>
+	
+
+			</div>
+		</article>	
+			
+			
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+				<!-- <button class="btn blue pull-left" ng-click="addUser()">Ajouter cet utilisateur</button> -->
+				<div class="removeremovecontainer">
+					
+					<removeremove class="removeremove" action="deleteUser" itemid="formData.id"><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </button></removeremove>
+				</div>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

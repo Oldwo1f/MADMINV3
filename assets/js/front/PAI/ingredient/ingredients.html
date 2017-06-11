@@ -1,0 +1,56 @@
+		<section id="content" >
+
+			<div class="content-wrap">
+				
+				<div class="container clearfix">
+
+					<div class="subheader topmargin">
+						
+						<h4>Tennez vous informer des nouveauté concerant les PAIs.
+							<br>Vous pouvez egalement remplir la base d'ingrédient en échange de points collabs.</h4>
+						<a ui-sref="addIngredient" class="btn btn-primary btn-lg">Ajouter un ingredient</a>
+					</div>
+
+					<!-- <ul id="portfolio-filter" class="portfolio-filter  clearfix" data-container="#portfolio">
+
+						<li class="btn-all" ng-class="{'activeFilter': Filter=='*'}"><a  ng-click="changeFilter('*')">Tous</a></li>
+						<li class="btn-etude" ng-class="{'activeFilter': Filter=='etude'}"><a  ng-click="changeFilter('etude')">Étude de marché</a></li>
+						<li class="btn-conso" ng-class="{'activeFilter': Filter=='conso'}"><a  ng-click="changeFilter('conso')">Étude consomateur</a></li>
+						<li class="btn-tendance" ng-class="{'activeFilter': Filter=='tendance'}"><a  ng-click="changeFilter('tendance')">Analyse de tendance</a></li>
+						<li class="btn-rapport" ng-class="{'activeFilter': Filter=='rapport'}"><a  ng-click="changeFilter('rapport')">Rapport d'étonnement</a></li>
+						<li class="btn-book" ng-class="{'activeFilter': Filter=='book'}"><a  ng-click="changeFilter('book')">Ebook</a></li>
+						<li class="btn-autre" ng-class="{'activeFilter': Filter=='autre'}"><a  ng-click="changeFilter('autre')">Divers</a></li>
+
+					</ul>
+
+					
+					<div class="clear"></div> -->
+
+					
+
+					<div id="portfolio"  infinite-scroll="myPagingFunction()" infinite-scroll-distance="1" reload-on-resize reload-on-show class="portfolio grid-container portfolio-3 topmargin clearfix" masonry>
+					
+						
+
+						<article ng-repeat="item in itemList " class="masonry-brick portfolio-item ingredient-item" >
+							<div class="contentPortfo">
+								<img ng-if="item.images[0].filename" src="image/resized/{{item.images[0].filename}}" alt="">
+								<div class="portfolio-desc">
+
+									<h3>{{item.name}}</h3>
+									<span ng-if="item.fabricant" class="autheurportfo">produit par {{item.fabricant.name}} </span>
+									<span class="date">{{item.date | amDateFormat:'MMMM YYYY'}}</span>
+								</div>
+							</div>
+						</article>
+
+						
+
+						
+					</div><!-- #portfolio end -->
+					<div class="FINI masonry-brick " ng-if="fin">
+						<span>Tout est là.</span>
+					</div>
+				</div>
+
+			</div>

@@ -1,0 +1,105 @@
+<md-dialog aria-label="ajouter un evenement" class="userAddContainer edit" ng-cloak>
+  <form name="myform">
+    
+    <md-dialog-content>
+
+    	<article class="widget widget__form">
+			<div class="form_col" style="margin-bottom: -1px;">
+
+				
+				<div class="smallSeparator"></div>
+
+				<div class="formGroup ">
+					<div class="btn-group block autowidth">
+					  <a ng-click="formData.contentType='colloque';update('contentType')" type="button" class="fakeColorWhite btn active"  ng-class="{'white':formData.contentType=='colloque','blue':formData.contentType=='lunch','violet':formData.contentType=='sallon','pink':formData.contentType=='conf'}" style="border-right:0px">Colloque</a>
+					  <a ng-click="formData.contentType='lunch';update('contentType')" type="button" class="fakeColorBlue btn active" ng-class="{'white':formData.contentType=='colloque','blue':formData.contentType=='lunch','violet':formData.contentType=='sallon','pink':formData.contentType=='conf'}" >Déjeuné débat</a>
+					  <a ng-click="formData.contentType='sallon';update('contentType')" type="button" class="fakeColorViolet btn active" ng-class="{'white':formData.contentType=='colloque','blue':formData.contentType=='lunch','violet':formData.contentType=='sallon','pink':formData.contentType=='conf'}"  style="border-left:0px">Sallon</a>
+					  <a ng-click="formData.contentType='conf';update('contentType')" type="button" class="fakeColorPink btn active" ng-class="{'white':formData.contentType=='colloque','blue':formData.contentType=='lunch','violet':formData.contentType=='sallon','pink':formData.contentType=='conf'}"  style="border-left:0px">Conférence</a>
+					</div>
+				</div>
+	<!-- title -->
+				<label for="input-1" class="stacked-label"><i class="pe-7s-flag"></i></label>
+				<input type="text" class="stacked-input" ng-blur="update('title')" ng-model="formData.title" id="input-1" placeholder="Titre">
+	<!-- link -->
+				<label  for="input-1" class="stacked-label"><i class="pe-7s-link"></i></label>
+				<input  type="text" class="stacked-input" ng-blur="update('link')" ng-model="formData.link" id="input-1" placeholder="http:// liens vers l'évenement">
+	<!-- category -->
+				<label for="input-2" class="stacked-label"><i class="pe-7s-way"></i></label>
+				<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
+	            	<auto-complete source="autocompleteCategories($query)" display-property="name" select-first-match="true" ></auto-complete>
+	        	</tags-input>
+	        	<script type="text/ng-template" id="myCatTemplate">
+	        		<div class=" cat-template" style="background:{{data.color}}">
+				        <div> 
+				          <span  style="color:{{data.textColor}}">{{$getDisplayText()}}</span>
+				          <a class="remove-button"  style="color:{{data.textColor}}" ng-click="$removeTag()">&#10006;</a>
+				        </div>
+				     </div>
+				</script>
+	<!-- tag -->
+				<label for="input-3" class="stacked-label"><i class="pe-7s-ticket"></i></label>
+				
+			    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" ng-blur="unselectOnBlur()" >
+	            	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
+	        	</tags-input>
+
+	<!-- content  -->
+
+				<label for="input-4" class="stacked-label mt0"><i class="pe-7s-note"></i></label>
+				<textarea  class="tinymcetextarea" ui-tinymce="tinymceOption" ng-model="formData.content" ng-model="tinymceModel" ng-blur="update('content')" placeholder="Contenu de l'article"></textarea>
+				
+				<div class="formGroup mb  fullwidthgroup">
+					<div class="btn-group block">
+					  <a ng-click="formData.status='actif';update('status')" type="button" class="fakeColorGreen btn active"  ng-class="{'green':formData.status=='actif','orange':formData.status=='draft','red':formData.status=='inactif'}" style="border-right:0px">Actif</a>
+					  <a ng-click="formData.status='draft';update('status')" type="button" class="fakeColorOrange btn active" ng-class="{'green':formData.status=='actif','orange':formData.status=='draft','red':formData.status=='inactif'}" >Brouillon</a>
+					  <a ng-click="formData.status='inactif';update('status')" type="button" class="fakeColorRed btn active" ng-class="{'green':formData.status=='actif','orange':formData.status=='draft','red':formData.status=='inactif'}"  style="border-left:0px">Inactif</a>
+					</div>
+				</div>
+
+				<div class="smallSeparator"></div>
+				<div class="formGroup mb">
+						<label for="input-2" class="stacked-label"><i class="pe-7s-date"></i></label>
+						
+						<div class="dropdown">
+						  <a class="dropdown-toggle" id="dropdown2" status="button" data-toggle="dropdown" data-target="#" href="#">
+						    <input type="text" class="stacked-input" value="{{formData.dateStart | amDateFormat:'dddd DD MMMM YYYY à HH:mm'}}" placeholder="Date de début">
+						  </a>
+						  <ul class="dropdown-menu" status="menu" aria-labelledby="dLabel">
+						    <datetimepicker data-ng-model="formData.dateStart" data-on-set-time="closeDatePicker(d,dd); update('dateStart')"/>
+						  </ul>
+						</div>
+				</div>
+				<div class="formGroup mb">
+						<label for="input-2" class="stacked-label"><i class="pe-7s-date"></i></label>
+						<div class="dropdown">
+						  <a class="dropdown-toggle" id="dropdown2" status="button" data-toggle="dropdown" data-target="#" href="#">
+						    <input type="text" class="stacked-input" value="{{formData.dateEnd | amDateFormat:'dddd DD MMMM YYYY à HH:mm'}}" placeholder="Date de fin">
+						  </a>
+						  <ul class="dropdown-menu" status="menu" aria-labelledby="dLabel">
+						    <datetimepicker data-ng-model="formData.dateEnd" data-on-set-time="closeDatePicker(d,dd); update('dateEnd')"/>
+						  </ul>
+						</div>
+				</div>
+				<div class="smallSeparator"></div>
+				<div class="formGroup mb">
+					<div class="btn-group block">
+					  <a ng-click="formData.privateContent=false;update('privateContent')" type="button" class="fakeColorBlue btn active"  ng-class="{'blue':formData.privateContent==false,'violet':formData.privateContent==true}" style="border-right:0px">Public</a>
+					  <a ng-click="formData.privateContent=true;update('privateContent')" type="button" class="fakeColorViolet btn active" ng-class="{'blue':formData.privateContent==false,'violet':formData.privateContent==true}" >Premium</a>
+					</div>
+				</div>
+
+			</div>
+		</article>	
+			
+			
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+				<div class="red pull-left" style="color:red;" ng-if="invalid==true" >Vérifier votre saisie</div>
+				<button class="btn blue pull-left" ng-click="addEvent()">Ajouter cet utilisateur</button>
+				<!-- <div class="removeremovecontainer">
+					
+					<removeremove class="removeremove" action="deleteUser" itemid="formData.id"><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </button></removeremove>
+				</div> -->
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -30,6 +30,8 @@ module.exports = {
   		theme:{type:'string',defaultsTo:'bg1'},
   		nbArticles:{type:'integer',defaultsTo:0},
         nbProjects:{type:'integer',defaultsTo:0},
+        nbIngrediants:{type:'integer',defaultsTo:0},
+        nbFabricants:{type:'integer',defaultsTo:0},
   		total:{type:'integer',defaultsTo:0},
   		yellowCards:{type:'integer',defaultsTo:0},
   		redCards:{type:'integer',defaultsTo:0},
@@ -37,6 +39,7 @@ module.exports = {
 	    images:{collection:'image',defaultsTo:[]},
 	    selfUpdate:function(options,cb){
 
+	       	console.log('USER SELFUPDATE');
 	        if(options.parentType == 'article')
 	        {
 	            if(options.verb == 'add'){
@@ -84,7 +87,7 @@ module.exports = {
 	                    cb(err,null);
 	                });
 	            }
-	        }
+	        }else
 	        if(options.parentType == 'project')
 	        {
 	            if(options.verb == 'add'){
@@ -132,6 +135,12 @@ module.exports = {
 	                    cb(err,null);
 	                });
 	            }
+	        }else{
+	        	User.findOne(this.id).then(function(data){
+	        		cb(null,data)
+	        		
+	        	})
+
 	        }
 	    }
 		

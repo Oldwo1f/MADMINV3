@@ -43,7 +43,6 @@ module.exports = {
             var imgsToDestroy = data.images.map(function(img) {
                 return Image.destroy(img.id);
             });
-            });
             var TagsUpdate = data.tags.map(function(tag) {
                 if(tag.total-1 <=0){
                     return Tag.destroy(tag.id).then(function(data){
@@ -75,6 +74,7 @@ module.exports = {
                 })
             })
         })
+        });
         
     }
 };

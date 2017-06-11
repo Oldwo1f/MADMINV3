@@ -331,7 +331,13 @@ angular.module('pai-marketplace')
 		    	return tagService.searchTags(query)
 		    }
 		    $scope.autocompleteCategories =function(query) {
-		    	return categoryService.fetchAll(query)
+		    	if(query.length <= 2 ){
+		    		
+		    		return categoryService.fetchAll()
+		    	}else{
+
+		    		return categoryService.searchCategories(query)
+		    	}
 		    }
 
 		    $scope.unselectOnBlur=function(){

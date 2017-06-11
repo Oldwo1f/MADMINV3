@@ -49,11 +49,14 @@ module.exports = function addToCollection (req, res) {
   var ChildModel = req._sails.models[associationAttr.collection];
   var childPkAttr = ChildModel.primaryKey;
 
+  console.log('---->' + childPkAttr);
+
   // The child record to associate is defined by either...
   var child;
 
   // ...a primary key:
   var supposedChildPk = actionUtil.parsePk(req);
+  console.log(supposedChildPk);
   if (supposedChildPk) {
     child = {};
     child[childPkAttr] = supposedChildPk;
@@ -92,17 +95,19 @@ module.exports = function addToCollection (req, res) {
     // get ahold of the created child record data, unless you create it first.
     actualChildPkValue: ['parent', function(cb) {
 
-
-
       // Below, we use the primary key attribute to pull out the primary key value
       // (which might not have existed until now, if the .add() resulted in a `create()`)
 
       // If the primary key was specified for the child record, we should try to find
       // it before we create it.
+      console.log(child[childPkAttr]);
+      console.log(child);
+
       if (child[childPkAttr]) {
         ChildModel.findOne(child[childPkAttr]).exec(function foundChild(err, childRecord) {
 
           childRecord.selfUpdate({parentType: req.options.model,parentId:parentPk , verb:'add'},function(e,data){
+
             childRecord = data
             if (err) return cb(err);
             // Didn't find it?  Then try creating it.
@@ -116,14 +121,21 @@ module.exports = function addToCollection (req, res) {
       }
       // Otherwise, it must be referring to a new thing, so create it.
       else {
+
         return createChild();
       }
-
+ 
       // Create a new instance and send out any required pubsub messages.
       function createChild() {
+
+        console.log('CREATECHILD');
+        console.log(ChildModel);
+        console.log(child);
         ChildModel.create(child).exec(function createdNewChild (err, newChildRecord){
 
+          console.log(newChildRecord);
 
+          console.log(err);
 
           newChildRecord.selfUpdate({parentType: req.options.model,parentId:parentPk,childId:newChildRecord.id, verb:'add'},function(e,data){
             child.id = data.id
@@ -192,12 +204,20 @@ module.exports = function addToCollection (req, res) {
         // Subscribe to the model you're adding to, if this was a socket request
         if (req.isSocket) { Model.subscribe(req, async_data.parent); }
           // Publish to subscribed sockets
+          console.log('PUBLISH ADD');
         Model.publishAdd(async_data.parent[Model.primaryKey], relation, async_data.actualChildPkValue, !req.options.mirror && req, {noReverse: createdChild});
       }
 
       // Finally, look up the parent record again and populate the relevant collection.
       // TODO: populateRequest
       Model.findOne(parentPk).populate(relation).exec(function(err, matchingRecord) {
+
+
+           
+
+
+
+
         if (err) return res.serverError(err);
         if (!matchingRecord) return res.serverError();
         if (!matchingRecord[relation]) return res.serverError();
@@ -208,7 +228,11 @@ module.exports = function addToCollection (req, res) {
             // return callback()
           // res.created(matchingRecord);
           ChildModel.findOne(child.id).then(function(childd){
-            return res.ok({parent:matchingRecord,child:childd});
+
+             console.log('matchingRecord');
+            console.log(matchingRecord);
+            console.log('matchingRecord END');
+            return res.ok({parent:matchingRecord,child:childd,'cool':true});
             
           })
         }).catch(function(err){

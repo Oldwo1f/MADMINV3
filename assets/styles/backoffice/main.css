@@ -3483,6 +3483,7 @@ input:checked + .swtc2::before {
   font-weight: 100;
   color: white;
 }
+.widget__form input[type="text"].mb{margin-bottom: 1px;}
 .widget__form select.stacked-input,.widget__login input[type="text"].stacked-input,.widget__login input[type="email"].stacked-input, .widget__login input[type="password"].stacked-input, .widget__login button.stacked-input, .widget__form input[type="email"].stacked-input, .widget__form input[type="text"].stacked-input, .widget__form input[type="password"].stacked-input, .widget__form button.stacked-input {
   width: calc(100% - 67px);
   display: inline-block;
@@ -4489,8 +4490,11 @@ input[type=file].addImageBtn{display: inline-block; float:right; font-size: 1rem
 .addImageBtnFakeBtn{;display: inline-block; float:right; font-size: 2rem;cursor: pointer;}
 .addImages .form_col .removeremove { position: absolute; right: 10px;bottom: 10px;}
 .addImages .form_col_r .removeremove{ position: absolute; right: 15px;bottom: 15px;}
+.documentList .removeremove{ position: absolute; right: 15px;bottom: 15px;}
 .addImages .form_col .removeremove .btn, .addImages .form_col_r .removeremove .btn{ width: auto; height:auto; padding:5px 7px 3px 5px;background:rgba(255,0,0,0.25);}
 .addImages .form_col .removeremove .btn:hover, .addImages .form_col_r .removeremove .btn:hover{background:rgba(255,0,0,0.35);}
+.documentList .removeremove .btn, .documentList .removeremove .btn{ width: auto; height:auto; padding:5px 7px 3px 5px;background:rgba(255,0,0,0.25);}
+.documentList .removeremove .btn:hover, .documentList .removeremove .btn:hover{background:rgba(255,0,0,0.35);}
 .imageCropper{margin-bottom:-2px}  
 .imageCropper.imageCropperH0{margin-bottom:0px}  
 .videoiconlist{background:rgba(0,0,0,0.25);padding:10px 0px;display:flex; align-content:center;align-items:center;}
@@ -4513,6 +4517,12 @@ input[type=file].addImageBtn{display: inline-block; float:right; font-size: 1rem
 .addImages .documentList .document span{margin-right:10px;}
 .addImages .documentList .document:last-child{ margin-bottom:0px;}
 .addImages .documentList .document:hover{background: rgba(0,0,0,0.2);}
+
+.documentList { padding: 1px; display:flex;flex-direction:column;flex-wrap:no-wrap;justify-content: flex-start; align-content:stretch;}
+.documentList .document{ padding : 20px;margin-bottom:1px;background: rgba(0,0,0,0.25);position: relative;display: block;}
+.documentList .document span{margin-right:10px;}
+.documentList .document:last-child{ margin-bottom:0px;}
+.documentList .document:hover{background: rgba(0,0,0,0.2);}
 /*.addImages .documentList .document > span{display:inline-block;float:left;}*/
 /*.addImages .documentList .document i{position: relative;display:inline-block;float:left;width: 0;}*/
 
@@ -4763,6 +4773,8 @@ a:focus, a:hover{text-decoration: none;}
 
 .my-container .imageprofile .form_title{display:block;}
 .pageAddProject .mce-tinymce.mce-panel {margin-top: 130px;}
+.pageAddFabricant .mce-tinymce.mce-panel {margin-top: 130px;}
+.pageAddIngrediant .mce-tinymce.mce-panel {margin-top: 130px;}
 .imageList{min-height : 200px;}
 .addImages .imgrelativecontainer .landscapeportrait .btn{width: auto;}
 /*.dashboardconfigWidget #resheight{height: calc(100% - 56px);}*/
@@ -4890,3 +4902,24 @@ ul[rn-carousel] {height: 100%;}
   background-color: red;
 }
 .agenda .btn-group .btn.active {font-size: 14px;}
+
+.selectize-control.single > .selectize-input > input {width: calc((100% - 93px));display: inline-block;height: 62px;margin-top: 1px;background: rgba(0,0,0,0.25);border: none;text-indent: 25px;box-shadow: none;}
+.stacked-input.ui-select-match { padding-top: 15px; width: calc((100% - 67px));display: inline-block;height: 64px;margin-top: 1px;background: rgba(0,0,0,0.25);border: none;text-indent: 25px;box-shadow: none;}
+.ui-select-choices.ui-select-dropdown.selectize-dropdown
+{
+    opacity: 1;
+    position: absolute;
+    top: 67px !important; 
+    background: white;
+    z-index: 100;
+    color: black;
+    width: calc((100% - 70px));
+    margin-left: 67px;
+    max-height: 250px;
+    overflow-y: auto;
+    margin-top: 0px !important;
+}
+.ui-select-choices-row {
+    padding: 7px;
+}
+#selectFab .ui-select-choices.ui-select-dropdown.selectize-dropdown{top:auto !important;}

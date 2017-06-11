@@ -98,6 +98,83 @@ module.exports = {
         		console.log(err);
         	})
         }
+        if(options.parentType == 'fabricant')
+        {
+
+        	//find fabricant
+        	Fabricant.findOne(options.parentId).populate('images').then(function(fabricant){
+        		
+        		if(options.verb == 'add'){
+
+	               Image.findOne(childID).then(function(data){
+	                    return Image.update(data.id ,
+	                    {
+	                        rank : fabricant.images.length
+	                    }).then(function(result){
+	                        cb(null,data);
+	                        
+	                    })
+	                   
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+	            }
+	  
+	            if(options.verb == 'remove'){
+	            	return Promise.bind({})
+	            	.then(function(){
+	            		return Image.findOne(childID)
+	            	})
+	            	.then(function(data){
+	            		this.imgToremove = data
+	                    return Promise.map(fabricant.images,function(img){
+	                    	if(img.rank > data.rank)
+	                    	{
+	                    		Image.findOne(img.id).then(function(data1){
+				                    return Image.update(data1.id ,
+				                    {
+				                        rank : data1.rank-1
+				                    }).then(function(result){
+				                        return
+				                    })
+				                   
+				                })
+
+	                    	}
+	                    	else{
+	                    		return;
+	                    	} 
+	                    		
+	                    })
+	                   
+	                }).then(function(){
+	                	
+	                	// if()
+	                	return Image.destroy(this.imgToremove.id).then(function(data){
+                            cb(null,data);
+		                })
+
+
+	                	// return data.images.map
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+
+	            }	
+
+
+
+
+
+
+
+
+
+
+        	}).catch(function(err){
+        		console.log(err);
+        	})
+        }
         if(options.parentType == 'project')
         {
 
@@ -133,6 +210,78 @@ module.exports = {
 	            	.then(function(data){
 	            		this.imgToremove = data
 	                    return Promise.map(project.images,function(img){
+	                    	if(img.rank > data.rank)
+	                    	{
+	                    		Image.findOne(img.id).then(function(data1){
+				                    return Image.update(data1.id ,
+				                    {
+				                        rank : data1.rank-1
+				                    }).then(function(result){
+				                        // cb(null,data);
+				                        return
+				                    })
+				                   
+				                })
+
+	                    	}
+	                    	else{
+	                    		return;
+	                    	} 
+	                    		
+	                    })
+	                   
+	                }).then(function(){
+	                	
+	                	return Image.destroy(this.imgToremove.id).then(function(data){
+                            cb(null,data);
+		                })
+
+
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+
+	            }	
+
+        	}).catch(function(err){
+        		console.log(err);
+        	})
+        }
+        if(options.parentType == 'ingrediant')
+        {
+
+        	//find ingrediant
+        	Ingrediant.findOne(options.parentId).populate('images').then(function(ingrediant){
+        		
+
+
+        		if(options.verb == 'add'){
+
+	               Image.findOne(childID).then(function(data){
+	                    
+	                    return Image.update(data.id ,
+	                    {
+	                        // nbIngrediants : data.nbIngrediants,
+	                        rank : ingrediant.images.length
+	                    }).then(function(result){
+	                        cb(null,data);
+	                        
+	                    })
+	                   
+	                }).catch(function (err) {
+	                    cb(err,null);
+	                });
+	            }
+	  
+	            if(options.verb == 'remove'){
+
+	            	return Promise.bind({})
+	            	.then(function(){
+	            		return Image.findOne(childID)
+	            	})
+	            	.then(function(data){
+	            		this.imgToremove = data
+	                    return Promise.map(ingrediant.images,function(img){
 	                    	if(img.rank > data.rank)
 	                    	{
 	                    		Image.findOne(img.id).then(function(data1){
@@ -241,7 +390,7 @@ module.exports = {
 	                    
 	                    return Image.update(data.id ,
 	                    {
-	                        // nbArticles : data.nbArticles,
+	                        // nbFabricants : data.nbFabricants,
 	                        rank : category.images.length
 	                    }).then(function(result){
 	                        cb(null,data);

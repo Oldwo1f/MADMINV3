@@ -29,6 +29,7 @@ var cssFilesToInject = [
   'bower_components/angular-notification-icons/dist/angular-notification-icons.min.css',
   'bower_components/angular-chart.js/dist/angular-chart.min.css',
   'bower_components/angular-carousel/dist/angular-carousel.min.css',
+  'bower_components/angular-ui-select/dist/select.css',
   // 'bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css',
   // 'bower_components/angular-material/angular-material.css',
 
@@ -64,6 +65,7 @@ var jsFilesToInject = [
   'bower_components/angular-animate/angular-animate.min.js',
   'bower_components/tinymce-dist/tinymce.js',
   'bower_components/angular-ui-tinymce/src/tinymce.js',
+  'bower_components/angular-ui-select/dist/select.min.js',
   'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
   'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js',
   'bower_components/angular-moment/angular-moment.js',
@@ -138,6 +140,7 @@ var cssPaiFilesToInject = [
   'bower_components/angular-carousel/dist/angular-carousel.min.css',
   'bower_components/angular-wizard/dist/angular-wizard.min.css',
   'bower_components/angular-flash-alert/dist/angular-flash.min.css',
+  'bower_components/angular-ui-select/dist/select.css',
   // 'bower_components/gentelella/build/css/custom.css',
   // 'bower_components/angular-material/angular-material.css',
 
@@ -169,6 +172,7 @@ var jsPaiFilesToInject = [
   'bower_components/moment/moment.js',
   'bower_components/moment/locale/fr.js',
   'bower_components/angular/angular.min.js',
+  'bower_components/angular-ui-select/dist/select.min.js',
   'bower_components/angular-ui-router/release/angular-ui-router.min.js',
   'bower_components/angularSails/dist/ngsails.io.js',
   'bower_components/flexi-list-master/flexi-list.js',

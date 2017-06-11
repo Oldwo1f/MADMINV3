@@ -1,0 +1,247 @@
+<section id="content">
+
+	<div class="content-wrap">
+
+		<div class="container clearfix">
+
+			
+			
+
+			<h1 style="padding-top:30px;">Ajouter un fabricant dans la base de donnée</h1>
+				
+			<div class="clearfix"></div>
+			
+			<div>
+				<wizard on-finish="finishedWizardAddContent()"> 
+				<wz-step wz-title="Avant de publier">
+			    	<h2>Avant de publier</h2>
+			    	<p>Avant de soumettre un ingrédient, merci de lires et comprendre les points suivants</p>
+				
+				 	<uib-accordion close-others="oneAtATime">
+					   	<div uib-accordion-group class="panel-default" is-open="status1.open">
+					      <uib-accordion-heading>
+					        <i class="icon-question-sign"></i> Quels sont les type d'ingrédient que je peux publié ?
+					      </uib-accordion-heading>
+					      Vous pouvez publié tout les types d'ingrédients, même si nous precognisons les ingrédients nouveaux et méconnus.
+					    </div>
+				 	
+					   	<div uib-accordion-group class="panel-default" is-open="status2.open">
+					      <uib-accordion-heading>
+					        <i class="icon-question-sign"></i> Puis-je remplir une fiche ingrédient incomplète ?
+					      </uib-accordion-heading>
+					      Oui, toute information, même partiel est bonne à prendre. <br>
+					      Cependant, un fiche correctement remplis raporte plus de point Collabs.
+					    </div>
+				   
+					   	<div uib-accordion-group class="panel-default" is-open="status3.open">
+					      <uib-accordion-heading>
+					        <i class=" icon-comments-alt"></i> Les fiches ingrédients sont elle relus?
+					      </uib-accordion-heading>
+					      Oui, les fiche ingrédient sont brèvement relus avant la publication. Ceci dans le but d'eviter les malveillances.
+					    </div>
+				    
+					   	<div uib-accordion-group class="panel-default" is-open="status4.open">
+					      <uib-accordion-heading>
+					        <i class="icon-lock3"></i> Ai-je le droit d'ajouter tout les ingrédients produit par ma propre entreprise?
+					      </uib-accordion-heading>
+					      Oui, tout les ingrédient sont les bienvenu afin d'étoffer le moteur de recherche.
+					    </div>
+				    
+					   	<div uib-accordion-group class="panel-default" is-open="status5.open">
+					      <uib-accordion-heading>
+					        <i class=" icon-comments-alt"></i> Ecrire une fiche me raporte des points Collabs ?
+					      </uib-accordion-heading>
+					      Oui, entre 5 et 10 points Collabs selon la complétude avec laquelle vous aurez remplis la fiche.
+					    </div>
+				    
+					   
+					</uib-accordion>
+
+
+			        <input type="submit" class="btn btn-primary btn-lg pull-right" wz-next value="Commencer" />
+			        <div class="clearfix"></div>
+			    </wz-step>
+
+
+				<wz-step wz-title="Fabricant" >
+			        <h2>Choix du fabricant</h2>
+
+					<div class="fabricantChoice1">
+						<p>En premier Lieux, verifier si une fiche fabricant existe déjà en base de donné. Si oui, séléctionner la et passer à l'étape suivante.</p>
+
+						<ui-select id="selectFab" ng-model="t.fabricant" class="mb" theme="selectize"  on-select="onSelectFab($selected.selected)" title="Fabricant"  position="down">
+						    <ui-select-match placeholder="Choisissez un fabricant" class="stacked-input">{{$select.selected.name}}</ui-select-match>
+						    <ui-select-choices repeat="fab in fabList | filter: $select.search" style="top:none !important" >
+						      <span ng-bind-html="fab.name  | highlight: $select.search"></span>
+						    </ui-select-choices>
+						</ui-select>
+						
+					</div>
+					<div class="fabricantChoice2">
+						<p>Si aucune fiche n'existe pour le fabricant de l'ingrédiant à ajouter. Vous avez deux options:</p>
+						<ol>
+							<li><a href="">Creér une fiche fabricant pour cet entreprise. (recommandé) </a></li>
+							<li>Passer directement à l'étape suivant pour creéer une ficher ingrédient sans fabricant associé.</li>
+						</ol>
+						
+					</div>
+
+
+
+
+			        
+			        <input type="submit" class="btn btn-primary btn-lg pull-right" wz-next value="Fiche ingrédient" />
+			        <div class="clearfix"></div>
+			    </wz-step>
+
+				<wz-step wz-title="Fiche ingrédient"  canexit="exitValidationContenus">
+			        <h2>Ingrédient</h2>
+
+					
+					<div class="ADDCONTENT-article addImages" >
+						
+						<div class="form-group">
+						  <label >Name* :</label>
+						  <input type="text" ng-blur="update('name')"  ng-model="formData.name" placeholder="Nom de l'fabricant" class="form-control">
+						</div>
+
+						<div class="form-group">
+						  <label >Contenus* :</label>
+						  <textarea ui-tinymce="tinymceOption" ng-blur="update('content')" ng-model="formData.content" type="text" placeholder="Entrez une petite description de l'ingrédient" class="form-control"> </textarea>
+						</div>
+
+						<div class="form-group">
+						<label >Catégorie : <i class="icon-question-sign" tooltip-popup-delay='500' tooltip-placement="top-left" uib-tooltip-html="cattooltip"></i></label>
+							<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)" ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate" add-from-autocomplete-only="true">
+				            	<auto-complete source="autocompleteCategories($query)" display-property="name" select-first-match="true" ></auto-complete>
+				        	</tags-input>
+			        	</div>
+
+			        	<script type="text/ng-template" id="myCatTemplate">
+			        		<div class=" cat-template" style="background:{{data.color}}">
+						        <div> 
+						          <span  style="color:{{data.textColor}}">{{$getDisplayText()}}</span>
+						          <a class="remove-button"  style="color:{{data.textColor}}" ng-click="$removeTag()">&#10006;</a>
+						        </div>
+						     </div>
+						</script>
+
+						<!-- tag -->
+						<div class="form-group">
+							<label >Tag* : <i class="icon-question-sign" tooltip-popup-delay='500' tooltip-placement="top-left" uib-tooltip-html="tagtooltip"></i></label>
+						    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" ng-blur="unselectOnBlur()" >
+				            	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
+				        	</tags-input>
+						</div>
+						<div class="form_title formTitleSpecial">
+							<label for="">Ajouter des images : </label>
+						<!-- <input type="file"  class="addImageBtn" onchange="angular.element(this).scope().changeImageUrl(this)">
+						<div class="addImageBtnFakeBtn" onclick="$(this).siblings('.addImageBtn').click();"> </div> -->
+							<div class="btn " ngf-select="addImgCrop($files)" ng-model="file" ngf-pattern="'image/*'"
+							    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <i class="fa fa-plus"></i></div>
+							<div ngf-drop="addImgCrop($files)" ngf-pattern="'image/*'"
+							    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposer vos images ici</div>
+						</div>
+						<!-- <div ng-file-drop  name="imgs" ng-multiple="false" ng-file-change="fileDrop($files)" class="drop-zone " 
+					        drag-over-class="dragover" ng-multiple="false" allow-dir="false"
+					        accept=".jpg,.png,.gif">Déposer vos images ici</div> -->
+
+						
+
+						<div class="imgrelativecontainer">
+							
+						<div image-crop 
+					    		aspect-ratio="imgcrop.aspectRatio" 
+					    		img-src="imgcrop.imgSrc" 
+					    		img-load="'imgLoader.gif'" 
+					    		display-height="imgcrop.displayHeight"
+					    		display-width = "imgcrop.displayWidth"
+					    		scaled-height="imgcrop.scaledHeight" 
+					    		scaled-width="imgcrop.scaledWidth" 
+					    		scaled-top="imgcrop.scaledTop" 
+					    		scaled-left="imgcrop.scaledLeft" 
+					    		container-width="imgcrop.containerWidth" 
+					    		container-height="imgcrop.containerHeight" 
+					    		style=" width: 100%; position:relative;" class="imageCropper" ng-class="{imageCropperH0: !imgcrop.imgSrc}">
+							</div>
+						<button ng-if="imgcrop.imgSrc" class="btn red" ng-click="removeImgCrop()">Annuler</button>
+						<button ng-if="imgcrop.scaledWidth && !imgcrop.imgEditId" class="btn blue" ng-click="uploadImage()">Ajouter cette image</button>
+						<button ng-if="imgcrop.scaledWidth && imgcrop.imgEditId" class="btn blue" ng-click="resizeOnly()">Redimentionner l'image</button>
+						<div class="landscapeportrait"  ng-if="imgcrop.scaledWidth">
+							<button class="btn blue" ng-click="changeOrientation()"><i class="fa fa-exchange"></i></button>
+						</div>
+						</div>
+						<!-- <button ng-if="scaledWidth" class="btn blue" ng-click="uploadImage()">Redimentionner votre image</button> -->
+						<p class="messageImage"  ng-if="imgcrop.imgSrc && !imgcrop.scaledWidth"><span>Vous devez redimentionner votre image avant de l'envoyer ver le server. <br> Faite un rectangle dessu le plus grand possible.</span></p>
+						<div class="clearfix"></div>
+						<div class="smallSeparator"></div>
+
+						<div ng-repeat="uploadingImage in uploadingImages" class="uploadingDoc" ng-if="uploadingImage.status == 'progress'">
+							<span>{{uploadingImage.file.name}}</span>
+							<span>{{uploadingImage.text}}</span>
+							<md-progress-linear md-mode="determinate" value="{{uploadingImage.progressPercentage}}"></md-progress-linear>
+								
+						</div> 
+
+						<div class="smallSeparator"></div>
+						<div class="imageList" ui-sortable="sortOption" ng-model="formData.images">
+							<figure class="pull-left post__img" ng-repeat="img in formData.images">
+								<img class="media-object" ng-src="image/adminThumbs/{{img.filename}}" alt="new">
+								<!-- <div class="btnreresize" ng-click="resizeagain(img)"><i class="fa fa-crop"></i></div> -->
+								<removeremove class="removeremove" action="removeImg" itemid="img.id"></removeremove>
+							</figure>
+							
+							<!-- ng-if  number of image > 4 -->
+							<!-- <div class="completor"></div> -->
+						</div>
+        	
+		 	
+
+					</div>
+
+
+					<div class="blankseparator"></div>
+					<div class="clearfix"></div>
+			        <!-- <input type="submit" class="btn btn-primary btn-lg pull-left" wz-previous value="Type de contenus" /> -->
+			        <input type="submit" class="btn btn-primary btn-lg pull-right" wz-next value="Validation" />
+			        <div class="clearfix"></div>
+			    </wz-step>
+				
+				
+
+
+
+
+			    
+			    
+			    <wz-step wz-title="Validation" canenter="enterValidationFinish" canexit="exitValidationFinish">
+			    	<h2>Validation</h2>
+			        <p>Une fois validez, votre contenus sera placer en attente de validation.</p>
+			        <p>Cela peux prendre quelques minutes ou quelques jours selon la disponibilité des relecteurs</p>
+			        <p>Une foi validez, votre contenus vous raportera {{nbPoints}} points collabs</p>
+			        <p>Selon la pertinance de ce dernier, vous pourrez obtenir des points collabs bonus.</p>
+			        <div class="blankseparator"></div>
+					<div class="clearfix"></div>
+
+
+					<!-- <div class="alert alert-success pull-left" ng-if="successMessage">
+					  <strong>Votre contenus à été posté!</strong> Vous aurez des nouvelles de sa validation dans vos email d'ici quelques jours.
+					</div>
+					<div class="alert alert-danger pull-left" ng-if="errorMessage">
+					  <strong>Une erreur est survenu!</strong> Veuillez reessayer plus tard. Si le problème persiste contactez nous.
+					</div> -->
+			        <!-- <input type="submit" class="btn btn-primary btn-lg pull-left" wz-previous value="Contenus" /> -->
+			        <input ng-if="!finishedWizzard" type="submit" class="btn btn-primary btn-lg pull-right" wz-next value="Valider" />
+			        <!-- <a ng-if="finishedWizzard" ui-sref="blog" class="btn btn-primary btn-lg pull-right">Retour au blog</a> -->
+			        <!-- <a ng-if="finishedWizzard" ui-sref="blog.add" class="btn btn-primary btn-lg pull-right">Soumettre un autre article</a> -->
+			        <div class="clearfix"></div>
+			    </wz-step>
+				</wizard>
+			</div>
+
+
+
+
+		</div>
+	</div>
+</div>

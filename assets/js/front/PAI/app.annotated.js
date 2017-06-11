@@ -31,8 +31,8 @@ var listWidgetDirectivesApp = function listWidgetDirectivesApp() {
 
 
 
-angular.module('PAI', ['wu.masonry','infinite-scroll','ui.bootstrap','ngFlash','mgo-angular-wizard','ngLetterAvatar','sails.io','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner',
-  'pai-blog','pai-marketplace'])
+angular.module('PAI', ['wu.masonry','infinite-scroll','ui.select','ui.bootstrap','ngFlash','mgo-angular-wizard','ngLetterAvatar','sails.io','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner',
+  'pai-blog','pai-marketplace','pai-ingredient','pai-fabricant'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 
     $stateProvider
@@ -42,7 +42,7 @@ angular.module('PAI', ['wu.masonry','infinite-scroll','ui.bootstrap','ngFlash','
 
         views:{
             'main':{
-                template:'HOME',
+                template:'HOMEE',
                 controller:["$scope", function($scope){
                     // $scope.widgetlist = widgetlist;
                 }],
@@ -133,10 +133,17 @@ angular.module('PAI').controller('appController',["$scope", "$rootScope", "$auth
 
         $scope.menuTest =function(page){
           
-          console.log('MENU TEST');
-          console.log(page);
-          console.log($state);
+          // console.log('MENU TEST');
+          // console.log(page);
+          // console.log($state);
           switch(page){
+
+            case 'ingredient':
+              if($state.current.name == 'ingredient' || $state.current.name == 'addIngredient' )
+                return true;
+              else
+                return false;
+            break;
 
             case 'marketplace':
               if($state.current.name == 'marketplace' || $state.current.name == 'addMarketplace' )

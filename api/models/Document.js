@@ -47,8 +47,70 @@ module.exports = {
                         cb(err,null);
                     });
                 }
+            } 
+            if(options.parentType == 'fabricant')
+            {
+                if(options.verb == 'add'){
+                   Document.findOne(this.id).then(function(data){
+                        // data.nbArticles= Number(data.nbArticles)+1;
+                        // data.total= Number(data.total)+1;
+                        // console.log(data);
+                        // return Tag.update(data.id ,
+                        // {
+                        //     // nbArticles : data.nbArticles,
+                        //     total : data.total
+                        // }).then(function(result){
+                        //     console.log(result[0]);
+                            cb(null,data);
+                            
+                        // })
+                       
+                    }).catch(function (err) {
+                        cb(err,null);
+                    });
+                }
+      
+                if(options.verb == 'remove'){
+                    Document.destroy(this.id).then(function(data){
+                                cb(null,data);
+                      
+                    }).catch(function (err) {
+                        cb(err,null);
+                    });
+                }
             }
             if(options.parentType == 'project')
+            {
+                if(options.verb == 'add'){
+                   Document.findOne(this.id).then(function(data){
+                        // data.nbArticles= Number(data.nbArticles)+1;
+                        // data.total= Number(data.total)+1;
+                        // console.log(data);
+                        // return Tag.update(data.id ,
+                        // {
+                        //     // nbArticles : data.nbArticles,
+                        //     total : data.total
+                        // }).then(function(result){
+                        //     console.log(result[0]);
+                            cb(null,data);
+                            
+                        // })
+                       
+                    }).catch(function (err) {
+                        cb(err,null);
+                    });
+                }
+      
+                if(options.verb == 'remove'){
+                    Document.destroy(this.id).then(function(data){
+                                cb(null,data);
+                      
+                    }).catch(function (err) {
+                        cb(err,null);
+                    });
+                }
+            }
+            if(options.parentType == 'ingrediant')
             {
                 if(options.verb == 'add'){
                    Document.findOne(this.id).then(function(data){

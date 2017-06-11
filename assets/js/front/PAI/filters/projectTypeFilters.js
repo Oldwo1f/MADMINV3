@@ -1,9 +1,9 @@
 angular.module('PAI').filter('projectType', function() {
     return function(items,filter) {
 
-    	console.log('projectType');
-    	console.log(items);
-    	console.log(filter);
+    	// console.log('projectType');
+    	// console.log(items);
+    	// console.log(filter);
 
 
         if (filter.contentType =='*') return items;

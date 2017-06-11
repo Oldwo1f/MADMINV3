@@ -145,7 +145,7 @@ angular.module('pai-blog')
 							console.log('FINISH');
 							$scope.touched = true;
 							$scope.finishedWizzard = true;
-		        			$rootScope.stopSpin();
+		        			$rootScope.stopSpin(); 
 		        			
 		        			// console.log(data);
 		        			if(data){
@@ -305,7 +305,12 @@ angular.module('pai-blog')
 		    	return tagService.searchTags(query)
 		    }
 		    $scope.autocompleteCategories =function(query) {
-		    	return categoryService.fetchAll(query)
+		    	if(query.length <= 2 ){
+		    		return categoryService.fetchAll()
+		    	}else{
+
+		    		return categoryService.searchCategories(query)
+		    	}
 		    }
 
 		    $scope.unselectOnBlur=function(){

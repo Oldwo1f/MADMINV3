@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/bower_components/angular-carousel/dist/angular-carousel.min.css">
     <link rel="stylesheet" href="/bower_components/angular-wizard/dist/angular-wizard.min.css">
     <link rel="stylesheet" href="/bower_components/angular-flash-alert/dist/angular-flash.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-ui-select/dist/select.css">
     <link rel="stylesheet" href="/styles/front/font-icons.css">
     <link rel="stylesheet" href="/styles/front/fonts.css">
     <link rel="stylesheet" href="/styles/front/animate.css">
@@ -87,8 +88,8 @@
                             <li ng-class="{'current': menuTest('blog')}"><a ui-sref="blog"><div><i class="icon-list-alt"></i>Actualité</div></a></li>
                             <li ng-class="{'current': menuTest('marketplace')}"><a ui-sref="marketplace"><div><i class="icon-line2-graph"></i>MarketPlace</div></a></li>
                             <li><a ui-sref="/"><div><i class="icon-calendar3"></i>Evenement</div></a></li>
-                            <li><a ui-sref="/"><div><i class="icon-line2-chemistry"></i>Ingrediants</div></a></li>
-                            <li><a ui-sref="/"><div><i class="icon-truck"></i>Fabricants</div></a></li>
+                            <li  ng-class="{'current': menuTest('ingredient')}"><a ui-sref="ingredient"><div><i class="icon-line2-chemistry"></i>Ingredients</div></a></li>
+                            <li><a ui-sref="fabricant"><div><i class="icon-truck"></i>Fabricants</div></a></li>
                             <li><a ui-sref="/"><div><i class="icon-search"></i>Recherche</div></a></li>
                                 
                         </ul>
@@ -109,7 +110,9 @@
             </div>
 
         </header><!-- #header end -->
-
+        <div class="container">
+            <flash-message duration="50000" show-close="true"></flash-message>
+        </div>
 
         <section ui-view="main">
         </section>
@@ -130,6 +133,7 @@
     <script src="/bower_components/moment/moment.js"></script>
     <script src="/bower_components/moment/locale/fr.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-select/dist/select.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/bower_components/angularSails/dist/ngsails.io.js"></script>
     <script src="/bower_components/javascript-detect-element-resize/jquery.resize.js"></script>
@@ -169,25 +173,33 @@
     <script src="/bower_components/angular-masonry/angular-masonry.js"></script>
     <script src="/js/front/PAI/app.annotated.js"></script>
     <script src="/js/front/PAI/blog/index.annotated.js"></script>
+    <script src="/js/front/PAI/fabricant/index.annotated.js"></script>
+    <script src="/js/front/PAI/ingredient/index.annotated.js"></script>
     <script src="/js/front/PAI/marketplace/index.annotated.js"></script>
     <script src="/js/front/PAI/blog/addArticleDirectives.annotated.js"></script>
     <script src="/js/front/PAI/blog/articlesDirectives.annotated.js"></script>
     <script src="/js/front/PAI/directives/removeremove.annotated.js"></script>
     <script src="/js/front/PAI/easyImageCrop/colorpicker.annotated.js"></script>
     <script src="/js/front/PAI/easyImageCrop/imageCrop.annotated.js"></script>
+    <script src="/js/front/PAI/fabricant/addFabricantDirectives.annotated.js"></script>
+    <script src="/js/front/PAI/fabricant/fabricant.annotated.js"></script>
     <script src="/js/front/PAI/filters/bigNumerFilter.annotated.js"></script>
     <script src="/js/front/PAI/filters/byteFilters.annotated.js"></script>
     <script src="/js/front/PAI/filters/duration.annotated.js"></script>
     <script src="/js/front/PAI/filters/projectTypeFilters.annotated.js"></script>
     <script src="/js/front/PAI/filters/randomSrc.annotated.js"></script>
     <script src="/js/front/PAI/filters/regex.annotated.js"></script>
+    <script src="/js/front/PAI/ingredient/addIngredientDirectives.annotated.js"></script>
+    <script src="/js/front/PAI/ingredient/ingredientsDirective.annotated.js"></script>
     <script src="/js/front/PAI/marketplace/addProjectDirectives.annotated.js"></script>
     <script src="/js/front/PAI/marketplace/marketplaceDirectives.annotated.js"></script>
     <script src="/js/front/PAI/services/CollabsPointsService.annotated.js"></script>
     <script src="/js/front/PAI/services/articleService.annotated.js"></script>
     <script src="/js/front/PAI/services/categoryService.annotated.js"></script>
     <script src="/js/front/PAI/services/documentService.annotated.js"></script>
+    <script src="/js/front/PAI/services/fabricantService.annotated.js"></script>
     <script src="/js/front/PAI/services/imageService.annotated.js"></script>
+    <script src="/js/front/PAI/services/ingredientService.annotated.js"></script>
     <script src="/js/front/PAI/services/notificationService.annotated.js"></script>
     <script src="/js/front/PAI/services/paramsService.annotated.js"></script>
     <script src="/js/front/PAI/services/projectService.annotated.js"></script>

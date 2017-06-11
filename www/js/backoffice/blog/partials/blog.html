@@ -1,0 +1,140 @@
+<div class="my-container">
+
+
+<div infinite-scroll="myPagingFunction()">
+	<article class="widget">
+		<header class="pageHeader">
+
+			<a  class="rightBtn" ng-click="returnDashboardState()">
+				<span ><i class="fa fa-dashboard"></i></span>
+			</a>
+			<a  class="rightBtn" ng-click="returnPreviousState()">
+				<span  ><i class="fa fa-long-arrow-left"></i></span>
+			</a>
+			<div class="pageTitle">
+				<i class="pe-7f-note"></i><h3>Mes articles</h3>
+			</div>
+			<div class="searchBar">
+				<input class="" type="text" ng-blur="searchArticle()" ng-keypress="blurOnEnter($event)" ng-model="searchSlug" placeholder="Recherche dans les articles">
+				<span class="iconsearch"><i class="fa fa-search"></i></span>
+			</div>
+			<a class="leftBtn" ui-sref="categories">
+				<span  ><i class="pe-7s-way"></i></span>
+			</a>
+			<a class="leftBtn" ui-sref="blog.add">
+				<span  ><i class="pe-7s-plus"></i></span>
+			</a>
+		</header>
+		
+		<div class="widget__content table-responsive">
+			
+			<table class="table media-table">
+		  	<thead>
+		  		<tr>
+		  			<th width="90" ng-click="changeSort('date');" >Date <i ng-if="!searchSlug" ng-show="sort=='date DESC'" class="pe-7s-angle-down"></i>  <i ng-if="!searchSlug" ng-show="sort=='date ASC'" class="pe-7s-angle-up"></th>
+		  			<th width="500"><span  ng-click="changeSort('title');">Titre </span>
+
+		  				<i ng-if="!searchSlug" ng-show="sort=='title DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='title ASC'" class="pe-7s-angle-up" />
+
+		  				<i ng-if="!searchSlug" ng-show="sort=='status DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='status ASC'" class="pe-7s-angle-up pull-right" />
+		  				<span style="margin-left:5px;" class="pull-right" ng-click="changeSort('status');">Status</span>
+
+			  			<i ng-if="!searchSlug" ng-show="sort=='contentType DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='contentType ASC'" class="pe-7s-angle-up pull-right" />
+			  			<span class="pull-right"  ng-click="changeSort('contentType');">Type de contenus</span>
+		  			</th>
+		  			<th>Post Info</th>
+		  			<th style="width: 75px;">Auteurs</th>
+		  				
+		  			<th style="width: 75px;" ng-click="changeSort('nbView');"> <i class="fa fa-eye"></i> <i ng-if="!searchSlug" ng-show="sort=='nbView DESC'" class="pe-7s-angle-down pull-right"></i> <i ng-if="!searchSlug" ng-show="sort=='nbView ASC'" class="pe-7s-angle-up pull-right" /></th>
+		  		</tr>
+		  	</thead>
+		  	<tbody>
+
+		  	
+		  		<tr class="tableRow" ng-repeat="article in articlesList">
+
+		  			<td>
+		  				<p class="post__date">
+		  					
+		  					<span class="dddd">{{article.date | amDateFormat:'dddd'}}</span>
+		  					<span class="DD">{{article.date | amDateFormat:'DD'}}</span>
+		  					<span class="MM ">{{article.date | amDateFormat:'MMM'}}</span>
+		  				</p>
+		  			</td>
+		  			<td>
+		  				<div class="btn-group blockVertical">
+						  <a ng-if="article.contentType=='article';" type="button" class="fakeColorWhite btn active white">Article</a>
+						  <a ng-if="article.contentType=='sponsored';" type="button" class="fakeColorWhite btn active blue" >Article sponso</a>
+						  <a ng-if="article.contentType=='link';" type="button" class="fakeColorWhite btn active violet" >Link</a>
+						  <a ng-if="article.contentType=='articlepai';" type="button" class="fakeColorWhite btn active pink"  >Article PAI</a>
+						</div>
+		  					<div class="media">
+								
+								<figure class="pull-left post__img" ng-if="article.images.length > 0 && (!article.videoUrl || !article.videoHost)">
+									<img class="media-object" ng-src="image/adminThumbs/{{article.images[0].filename}}">
+								</figure>
+								<figure  class="pull-left post__img post_video" ng-if="article.videoUrl && article.videoHost">
+									<div ng-if="article.videoHost =='youtube'"> <i class="socicon-youtube" aria-hidden="true"></i></div>
+									<div ng-if="article.videoHost =='dailymotion'"> <i class="socicon-dailymotion" aria-hidden="true"></i></div> 
+									<div ng-if="article.videoHost =='vimeo'"> <i class="socicon-vimeo" aria-hidden="true"></i></div>
+								</figure>
+								<div class="media-body post_desc">
+									<h3>{{article.title}}</h3>
+									<!-- <p>A classic approach...</p> -->
+									<div class="btnstable">
+										
+										<button class="btn blue btn-sm"  ui-sref="blog.edit({id: article.id})" >Edit</button>
+										<div class="btn-group block">
+										  <a ng-click="article.status='actif';update(article.id, 'status','actif')" type="button" class="fakeColorGreen btn active"  ng-class="{'green':article.status=='actif','orange':article.status=='draft','red':article.status=='inactif'}" style="border-right:0px">Actif</a>
+										  <a ng-click="article.status='draft';update(article.id, 'status','draft')" type="button" class="fakeColorOrange btn active" ng-class="{'green':article.status=='actif','orange':article.status=='draft','red':article.status=='inactif'}" >Brouillon</a>
+										  <a ng-click="article.status='inactif';update(article.id, 'status','inactif')" type="button" class="fakeColorRed btn active" ng-class="{'green':article.status=='actif','orange':article.status=='draft','red':article.status=='inactif'}"  style="border-left:0px">Inactif</a>
+										</div>
+										<div class="lockicon" ng-if="article.privateContent"><i class="fa fa-lock"></i></div>
+									</div>
+								</div>
+							</div>
+		  			</td>
+		  			<td class="not-padding">
+		  				<p class="post__info"  ng-bind-html="article.content" parent-id="article.id" content-html="article.content" html-ellipsis>
+		  				</p>
+		  				<div class="infosinfos">
+		  					<div class="tablecat" ng-repeat="cat in article.categories" style="color:{{cat.textColor}};background-color : {{cat.color}};border-color : {{cat.color}}">
+		  						<span>{{cat.name}}</span>
+		  					</div>
+		  					<div class="tabletag" ng-repeat="tag in article.tags">
+		  						<span>{{tag.text}}</span>
+		  					</div>
+		  				</div>
+		  			</td>
+		  			<td>
+		  				<!-- <a href="#" onclick="return false;" class="post__del"><i class="pe-7f-close"></i></a> -->
+		  				<!-- <i class="fa fa-eyes"></i> -->
+		  				<!-- <span class="numberTable">{{article.authors[0].firstname}} {{article.authors[0].name}}</span> -->
+		  				<div ng-repeat="author in article.authors | limitTo:2" class="author">
+		  					<img  ng-if="author.images[0]" height="50" width="50" ng-src="image/profile/{{author.images[0].filename}}" alt="">
+		  					<ng-letter-avatar  ng-if="!author.images[0]" charCount="1" data="{{author.firstname}} {{author.name}}" fontsize="25" height="50" width="50" shape="round"></ng-letter-avatar>
+		  					
+		  				</div>
+		  			</td> 
+		  			<td>
+		  				<!-- <a href="#" onclick="return false;" class="post__del"><i class="pe-7f-close"></i></a> -->
+		  				<span class="numberTable">{{article.nbView}}</span>
+		  			</td>
+		  		</tr>
+
+
+		  	</tbody>
+			</table>
+			<div class="endInfinite">
+				
+				<span us-spinner="spinneropts"  spinner-key="articleSpinner"></span>
+				<span ng-if="fin">Fin</span>
+			</div>
+			
+
+			
+		</div> <!-- /widget__content -->
+
+	</article>
+</div>
+</div>

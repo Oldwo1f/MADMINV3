@@ -185,6 +185,9 @@ angular.module('core')
                   type == 'validate-autre' || type == 'validate-tendance' || type == 'validate-rapport' ){
                     $state.go('projects.edit',{id:id})
                 }
+                if(type == 'validate-ingrediant' || type == 'validate-ingredient'){
+                    $state.go('ingrediants.edit',{id:id})
+                }
             }
       }],
       link:function(scope,element,attrs){

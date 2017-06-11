@@ -31,7 +31,7 @@ var listWidgetDirectivesApp = function listWidgetDirectivesApp() {
 
 
 
-angular.module('core', ['mwl.calendar','ui.bootstrap','angular-notification-icons','chart.js','angular-nicescroll','uxGenie','ngLetterAvatar','sails.io','color.picker','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','gridster','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner','momi-social','momi-user','momi-blog','momi-categories','momi-login','momi-params','momi-projects','momi-sliders','momi-agenda'])
+angular.module('core', ['mwl.calendar','ui.bootstrap','ui.select','angular-notification-icons','chart.js','angular-nicescroll','uxGenie','ngLetterAvatar','sails.io','color.picker','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','gridster','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner','momi-social','momi-user','momi-blog','momi-categories','momi-login','momi-params','momi-projects','momi-sliders','momi-pai','momi-agenda'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 
     $stateProvider

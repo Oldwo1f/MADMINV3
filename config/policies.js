@@ -64,6 +64,13 @@ module.exports.policies = {
       'fetchActive':true,
       'fetchOne':true,
     },
+    fabricantController:{
+      '*' : true
+      // 'search':true,
+      // 'fetch':true,
+      // 'fetchActive':true,
+      // 'fetchOne':true,
+    },
     projectController:{
       'search':true,
       'fetch':true,
