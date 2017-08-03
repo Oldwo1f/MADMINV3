@@ -10,15 +10,15 @@ module.exports = function(req, res, next) {
       console.log(ua);
 
 
-		res.redirect('homeMobile');
+		
 
-      // if(ua.device.type ==="mobile")
-      // {
-      //       res.send('Site mobile en construction')
-      // }
-      // else{
-      //   next();
-      // }
+      if(ua.device.type ==="mobile")
+      {
+            res.redirect('homeMobile');
+      }
+      else{
+        next();
+      }
 
 
 
