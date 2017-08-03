@@ -65,6 +65,42 @@ module.exports={
 
 
 	},
+	homeMobile:function(req,res,next) {
+
+		
+
+			res.status(200).render('front/mobile',{
+				baseurl : '/',
+				
+				title: req.__('SEO_HOME_title'),
+				keyword: req.__('SEO_HOME_keyword'),
+				description:req.__('SEO_HOME_description'),
+				// scripturl:'script.js',
+				menu:'home',
+			})
+	
+		
+
+
+	},
+	contentMobile:function(req,res,next) {
+
+		
+
+			res.status(200).render('front/contentMobile',{
+				baseurl : '/',
+				
+				title: req.__('SEO_HOME_title'),
+				keyword: req.__('SEO_HOME_keyword'),
+				description:req.__('SEO_HOME_description'),
+				// scripturl:'script.js',
+				menu:'home',
+			})
+	
+		
+
+
+	},
 	blog:function(req,res,next) {
 
 		console.log('BLOG_________');

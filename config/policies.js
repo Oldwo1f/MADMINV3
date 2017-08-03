@@ -76,8 +76,8 @@ module.exports.policies = {
       'login':true,
     },
     FrontController:{
-      '*':'isMobile',
-      // 'home' :'isMobile',
+      '*':true,
+      'home' :'isMobile',
       // 'home' :true,
 
     },
