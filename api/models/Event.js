@@ -12,8 +12,8 @@ module.exports = {
 		lang : {type:'string',defaultsTo:'fr'},
 		title : {type:'string'},
       	content : {type:'text',defaultsTo:''},
-		dateStart : {type:'datetime',required:true},
-		dateEnd : {type:'datetime',required:true},
+		startsAt : {type:'datetime',required:true},
+		endsAt : {type:'datetime',required:true},
 		nbView : {type:'integer',defaultsTo:0},
         status : {type:'string',required:true},
         contentType : {type:'string'},
@@ -61,8 +61,8 @@ module.exports = {
             });
 
             return Promise.all(imgsToDestroy)
-              .then(function() {
-                return Promise.all(docsToDestroy)
+              // .then(function() {
+                // return Promise.all(docsToDestroy)
                   .then(function() {
                        
                     return Promise.all(TagsUpdate)
@@ -71,7 +71,7 @@ module.exports = {
                       .then(function() {
                             callback()
                     })
-                })
+                // })
             })
         })
         });

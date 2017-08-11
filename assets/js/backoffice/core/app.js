@@ -104,7 +104,7 @@ angular.module('core', ['mwl.calendar','ui.bootstrap','ui.select','angular-notif
     calendarConfig.allDateFormats.moment.date.hour = 'HH:mm'; //this will configure times on the day view to display in 24 hour format rather than the default of 12 hour
 
     calendarConfig.allDateFormats.moment.title.day = 'ddd D MMM'; //this will configure the day view title to be shorter
-    calendarConfig.allDateFormats.moment.title.week = 'Semaine {week}'; //this will configure the day view title to be shorter
+    calendarConfig.allDateFormats.moment.title.week = 'S {week}'; //this will configure the day view title to be shorter
 
     calendarConfig.i18nStrings.weekNumber = '{week}'; //This will set the week number hover label on the month view
 

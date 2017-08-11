@@ -1,0 +1,74 @@
+<section id="content" >
+
+	<div class="content-wrap calendarPAge">
+		
+		<div class="container clearfix">
+
+			<div class="subheader topmargin">
+				
+				<h4>Renseignez-vous sur les évènements Agro-Alimentaire à venir. <br>Vous pouvez aussi remplir l'agenda et gagné des pointsCollabs.</h4>
+				<a ui-sref="addEvent" class="btn btn-primary btn-lg">Ajouter un évènement</a>
+			</div>
+
+			
+			<header class="pageHeader">	
+				<div  class="pageTitle">
+					<div class="btn-group">
+				        <button
+				          class="btn btn-primary"
+				          mwl-date-modifier
+				          date="calendarDate"
+				          decrement="calendarView">
+				          Précedent
+				        </button>
+				        <button
+				          class="btn btn-default"
+				          mwl-date-modifier
+				          date="calendarDate"
+				          set-to-today>
+				          Aujourd'hui
+				        </button>
+				        <button
+				          class="btn btn-primary"
+				          mwl-date-modifier
+				          date="calendarDate"
+				          increment="calendarView">
+				          Suivant
+				        </button>
+					</div>
+				</div>
+				<div class="pageTitle">
+					<h2 class="text-center">{{ calendarTitle }}</h2>
+				</div>
+				<div class="pageTitle">
+					<div class="btn-group">
+				        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'year'">Année</label>
+				        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'month'">Moi</label>
+				        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'week'">Semaine</label>
+				        <label class="btn btn-primary" ng-model="calendarView" uib-btn-radio="'day'">Jour</label>
+			      	</div>
+				</div>
+			</header>
+			
+			<div class="widget__content" style="margin-bottom: 20px;" >
+					 
+					  
+				<mwl-calendar
+				    view="calendarView"
+				    view-date="calendarDate"
+				    view-title="calendarTitle"
+				      edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+	            delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+				    events="events"
+				    on-event-click="eventClicked(calendarEvent)"
+				    on-event-times-changed="calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+				    day-view-start="06:00"
+				    day-view-end="23:00"
+				    cell-is-open="true">
+				</mwl-calendar>
+				
+			</div> <!-- /widget__content -->
+		</div>
+	</div>
+</section>
+

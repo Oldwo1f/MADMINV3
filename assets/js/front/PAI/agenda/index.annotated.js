@@ -1,16 +1,15 @@
-angular.module('momi-agenda', ['ui.router'])
+angular.module('pai-agenda', ['ui.router'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 
     $stateProvider
-      .state('agenda', {
+    .state('agenda', {
         url : '/agenda',
-        parent:'dashboard',
         params:{
-                type:'MONTH',
+                type:'YEARS',
                 date: new Date(),
         },
         views:{
-            'page1': {
+            'main': {
                 template: '<agenda items-list="itemsList"></agenda>',
                 controller:["$scope", "itemsList", function($scope, itemsList){
                         $scope.itemsList = itemsList;
@@ -27,7 +26,26 @@ angular.module('momi-agenda', ['ui.router'])
             }
 
         }
-       })
+    })
+    .state('addEvent', {
+        url : '/agenda/add',
+        views:{
+            'main': {
+                template: '<add-event new-event="newEvent"></add-event>',
+                controller:["$scope", "newEvent", function($scope,newEvent){  
+                    $scope.newEvent = newEvent;
+                    console.log('ADD CTRL');
+                }],
+                resolve:{
+                    newEvent :  ["eventService", function(eventService){
+                        
+                        return eventService.createBlank()
+                    }]
+                }
+            }
+
+        }
+    })
       
 
 }]);

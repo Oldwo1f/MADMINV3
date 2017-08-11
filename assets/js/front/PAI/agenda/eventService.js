@@ -1,5 +1,5 @@
-angular.module('core')
-.factory('eventService', ["$http", "$q", "$sailsSocket", "$state", "$auth", function ($http,$q,$sailsSocket,$state,$auth) {
+angular.module('PAI')
+.factory('eventService', function ($http,$q,$sailsSocket,$state,$auth) {
     var service = {};
     service.items=[];  
 
@@ -411,4 +411,4 @@ angular.module('core')
 
 
     return service;
-}]);
+});

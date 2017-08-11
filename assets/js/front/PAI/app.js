@@ -32,30 +32,32 @@ var listWidgetDirectivesApp = function listWidgetDirectivesApp() {
 
 
 angular.module('PAI', ['wu.masonry','infinite-scroll','ui.select','ui.bootstrap','ngFlash','mgo-angular-wizard','ngLetterAvatar','sails.io','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner',
-  'pai-blog','pai-marketplace','pai-ingredient','pai-fabricant'])
+  'pai-blog','pai-marketplace','pai-ingredient','pai-fabricant','pai-home','pai-agenda','mwl.calendar',])
 .config(function($stateProvider, $urlRouterProvider){
 
-    $stateProvider
-      .state('/', {
-        url : '/',
-        // requiredLogin: true,
+    // $stateProvider
+    //   .state('/', {
+    //     url : '/',
+    //     // requiredLogin: true,
 
-        views:{
-            'main':{
-                template:'HOMEE',
-                controller:function($scope){
-                    // $scope.widgetlist = widgetlist;
-                },
-                // resolve:{
-                //     widgetlist:  function(widgetService){
-                //        return widgetService.restoreDash();
-                //     },
-                // },
-
-            }
-        }
+    //     views:{
+    //         'main': {
+    //           template: 'HOMMMMMMME',
+    //           controller:function($scope){  
+                
+    //             console.log('HOME CTRL');
+    //           }
+    //         //   ,
+    //         //   resolve:{
+    //         //           newFabricant :  function(fabricantService){
+                          
+    //         //               return fabricantService.createBlank()
+    //         //           }
+    //         //       }
+    //         }
+    //     }
       
-       }) 
+    //    }) 
       $stateProvider
       .state('toto', {
         url : '/toto1',
@@ -271,4 +273,29 @@ angular.module('PAI').config(['tagsInputConfigProvider', function(tagsInputConfi
 };
 usSpinnerConfigProvider.setDefaults(opts);
 
-}]);
+}])
+.config(function(calendarConfig) {
+
+    console.log(calendarConfig); //view all available config
+
+    // calendarConfig.templates.calendarMonthView = 'path/to/custom/template.html'; //change the month view template globally to a custom template
+
+    calendarConfig.dateFormatter = 'moment'; //use either moment or angular to format dates on the calendar. Default angular. Setting this will override any date formats you have already set.
+
+    calendarConfig.allDateFormats.moment.date.hour = 'HH:mm'; //this will configure times on the day view to display in 24 hour format rather than the default of 12 hour
+
+    calendarConfig.allDateFormats.moment.title.day = 'D ddd MMM'; //this will configure the day view title to be shorter
+    calendarConfig.allDateFormats.moment.title.week = 'Semaine {week}'; //this will configure the day view title to be shorter
+
+    calendarConfig.i18nStrings.weekNumber = '{week}'; //This will set the week number hover label on the month view
+
+    calendarConfig.displayAllMonthEvents = true; //This will display all events on a month view even if they're not in the current month. Default false.
+
+    calendarConfig.showTimesOnWeekView = true; //Make the week view more like the day view, with the caveat that event end times are ignored.
+
+    calendarConfig.showWeekBox = false;
+
+
+    // calendarConfig.dayViewStart = '06:00';
+    // calendarConfig.dayViewEnd = '23:00';
+});

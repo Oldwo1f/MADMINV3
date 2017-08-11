@@ -247,6 +247,9 @@ tags-input .tags .tag-item.selected{
 .flexPrice .futurePrice .benefvendeur span{font-size: 1.3em;}
 
 
+.calendarPAge .pageHeader {display:flex;justify-content:space-between;}
+.cal-month-day small.badge{display:none;}
+.event{width:32px;}
 
 /*image CROP*/
 

@@ -143,7 +143,7 @@ var cssPaiFilesToInject = [
   'bower_components/angular-ui-select/dist/select.css',
   // 'bower_components/gentelella/build/css/custom.css',
   // 'bower_components/angular-material/angular-material.css',
-
+'bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css',
   // 'styles/backoffice/**/*.css',
   'styles/front/font-icons.css',
   'styles/front/fonts.css',
@@ -213,6 +213,7 @@ var jsPaiFilesToInject = [
   'bower_components/angular-flash-alert/dist/angular-flash.min.js',
   'bower_components/angular-masonry/angular-masonry.js',
   'bower_components/ngInfiniteScroll/ng-infinite-scroll.min.js',
+    'bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js',
   // 'bower_components/angular-bootstrap/ui-bootstrap.min.js',
   // 'bower_components/gentelella/build/js/custom.js',
   // 'bower_components/angularjs-color-picker/dist/angularjs-color-picker.min.js',

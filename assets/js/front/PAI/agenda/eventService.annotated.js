@@ -1,4 +1,4 @@
-angular.module('core')
+angular.module('PAI')
 .factory('eventService', ["$http", "$q", "$sailsSocket", "$state", "$auth", function ($http,$q,$sailsSocket,$state,$auth) {
     var service = {};
     service.items=[];  

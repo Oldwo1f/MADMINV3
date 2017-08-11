@@ -9,14 +9,16 @@ angular.module('core')
 
         console.log('FETCH');
         var deferred = $q.defer();
-        sort = sort? sort : 'date DESC'
-        nbPerPage = nbPerPage ? nbPerPage : 3
-        page = page ? page : 1;
+        // sort = sort? sort : 'date DESC'
+        // nbPerPage = nbPerPage ? nbPerPage : 3
+        // page = page ? page : 1;
 
-        console.log('nbPerPage '+ nbPerPage);
-        console.log('page '+ page);
-        console.log('/event/'+sort+'/'+nbPerPage+'/'+nbPerPage*(page-1));
-        $sailsSocket.get('/api/event/'+sort+'/'+nbPerPage+'/'+nbPerPage*(page-1)).success(function (data,status) {
+        // console.log('nbPerPage '+ nbPerPage);
+        // console.log('page '+ page);
+        // console.log('/event/'+sort+'/'+nbPerPage+'/'+nbPerPage*(page-1));
+
+
+        $sailsSocket.get('/api/event').success(function (data,status) {
             console.log(data);
             service.items =data;
             deferred.resolve(data);
@@ -216,13 +218,13 @@ angular.module('core')
         return deferred.promise;      
     }
 
-    service.createBlank=function(event){
+    service.createBlank=function(e){
 
         var authorId = $auth.getPayload().sub
         console.log(authorId);
-        event = {dateStart : new Date(),dateEnd : new Date(),status:'draft',contentType:'eventpai',isPaiContent:true};
+        e = {startsAt : new Date(),endsAt : new Date(),status:'draft',contentType:'eventpai',isPaiContent:true};
         var deferred = $q.defer();
-        $sailsSocket.post('/api/event',event).success(function (data,status) {
+        $sailsSocket.post('/api/event',e).success(function (data,status) {
             
 
             $sailsSocket.post('/api/event/'+data.id+'/authors/'+authorId).success(function (data2,status) {
@@ -382,6 +384,7 @@ angular.module('core')
         return deferred.promise;      
     }
     service.remove=function(id){
+        console.log('REMOVE',id);
 
         var deferred = $q.defer();
         $sailsSocket.delete('/api/event/'+id).success(function (data,status) {

@@ -1,4 +1,4 @@
-<md-dialog aria-label="ajouter un evenement" class="userAddContainer addEvent" ng-cloak>
+<md-dialog aria-label="ajouter un evenement" class="userAddContainer addEvent edit" ng-cloak>
   <form name="myform">
     
     <md-dialog-content>
@@ -95,11 +95,11 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
 				<div class="red pull-left" style="color:red;" ng-if="invalid==true" >Vérifier votre saisie</div>
-				<!-- <button class="btn blue pull-left" ng-click="addEvent()">Ajouter l'évènement</button> -->
-				<!-- <div class="removeremovecontainer">
+				<div class="removeremovecontainer">
 					
-					<removeremove class="removeremove" action="deleteUser" itemid="formData.id"><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </button></removeremove>
-				</div> -->
+					<removeremove class="removeremove" action="deleteEvent" itemid="formData.id"><button type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> </button></removeremove>
+				</div>
+				<!-- <button class="btn blue pull-left" ng-click="updateEvent()">Modifier cet évènement</button> -->
     </md-dialog-actions>
   </form>
 </md-dialog>

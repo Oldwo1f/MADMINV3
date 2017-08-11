@@ -26,3 +26,4 @@
 .blog-pai {background: rgba(255,0,255,0.2); border: 4px solid rgba(255,0,255,0.3);padding-bottom: 0;}
 .blog-pai:before {content:'Club PAI';padding:0 4px; background:rgba(255,0,255,0.5); color:white; position: absolute;right: -4px;top: -25px;}
 .blog-pai .entry-image{ margin-bottom: 0;}
+

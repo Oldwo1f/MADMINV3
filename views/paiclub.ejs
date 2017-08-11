@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'undefined' ? 'MADMIN' : title%></title>
+    <title><%=typeof title == 'undefined' ? 'Club Collabs' : title%></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/bower_components/angular-wizard/dist/angular-wizard.min.css">
     <link rel="stylesheet" href="/bower_components/angular-flash-alert/dist/angular-flash.min.css">
     <link rel="stylesheet" href="/bower_components/angular-ui-select/dist/select.css">
+    <link rel="stylesheet" href="/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
     <link rel="stylesheet" href="/styles/front/font-icons.css">
     <link rel="stylesheet" href="/styles/front/fonts.css">
     <link rel="stylesheet" href="/styles/front/animate.css">
@@ -87,7 +88,7 @@
                             <li><a ui-sref="/"><div><i class="icon-line2-users"></i>Club Collabs</div></a></li>
                             <li ng-class="{'current': menuTest('blog')}"><a ui-sref="blog"><div><i class="icon-list-alt"></i>Actualité</div></a></li>
                             <li ng-class="{'current': menuTest('marketplace')}"><a ui-sref="marketplace"><div><i class="icon-line2-graph"></i>MarketPlace</div></a></li>
-                            <li><a ui-sref="/"><div><i class="icon-calendar3"></i>Evenement</div></a></li>
+                            <li><a ui-sref="agenda"><div><i class="icon-calendar3"></i>Evenement</div></a></li>
                             <li  ng-class="{'current': menuTest('ingredient')}"><a ui-sref="ingredient"><div><i class="icon-line2-chemistry"></i>Ingredients</div></a></li>
                             <li><a ui-sref="fabricant"><div><i class="icon-truck"></i>Fabricants</div></a></li>
                             <li><a ui-sref="/"><div><i class="icon-search"></i>Recherche</div></a></li>
@@ -171,11 +172,17 @@
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="/bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>
     <script src="/bower_components/angular-masonry/angular-masonry.js"></script>
+    <script src="/bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
     <script src="/js/front/PAI/app.annotated.js"></script>
+    <script src="/js/front/PAI/agenda/index.annotated.js"></script>
     <script src="/js/front/PAI/blog/index.annotated.js"></script>
     <script src="/js/front/PAI/fabricant/index.annotated.js"></script>
+    <script src="/js/front/PAI/home/index.annotated.js"></script>
     <script src="/js/front/PAI/ingredient/index.annotated.js"></script>
     <script src="/js/front/PAI/marketplace/index.annotated.js"></script>
+    <script src="/js/front/PAI/agenda/directives/addEvent.annotated.js"></script>
+    <script src="/js/front/PAI/agenda/directives/agenda.annotated.js"></script>
+    <script src="/js/front/PAI/agenda/eventService.annotated.js"></script>
     <script src="/js/front/PAI/blog/addArticleDirectives.annotated.js"></script>
     <script src="/js/front/PAI/blog/articlesDirectives.annotated.js"></script>
     <script src="/js/front/PAI/directives/removeremove.annotated.js"></script>
@@ -189,6 +196,7 @@
     <script src="/js/front/PAI/filters/projectTypeFilters.annotated.js"></script>
     <script src="/js/front/PAI/filters/randomSrc.annotated.js"></script>
     <script src="/js/front/PAI/filters/regex.annotated.js"></script>
+    <script src="/js/front/PAI/home/homePaiDirective.annotated.js"></script>
     <script src="/js/front/PAI/ingredient/addIngredientDirectives.annotated.js"></script>
     <script src="/js/front/PAI/ingredient/ingredientsDirective.annotated.js"></script>
     <script src="/js/front/PAI/marketplace/addProjectDirectives.annotated.js"></script>
