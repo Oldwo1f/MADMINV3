@@ -2,8 +2,8 @@ angular.module('pai-ingredient', ['ui.router'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
     
       $stateProvider
-	    .state('ingredient', {
-	        url : '/ingredient',
+	    .state('ingredients', {
+	        url : '/ingredients',
 	     //    params:{
 	     //    	sort:'date DESC',
 	     //    	page:1,
@@ -44,25 +44,27 @@ angular.module('pai-ingredient', ['ui.router'])
 	        	}
 
 	        }
-       	})
-      	// .state('blog.edit', {
-	      //   url : '/edit/:id',
-	      //   parent:'blog',
-	      //   views:{
-	      //   	'page2@dashboard': {
-	      //   		template: '<add-article new-article="newArticle"></add-article>',
-	      //   		controller:function($scope, newArticle){
-	      //   			$scope.newArticle = newArticle;
-	      //   		},
-	      //   		resolve:{
-	      //               newArticle :  function(articleService,$stateParams){
+       	})      	      	
+      	.state('ingredient', {
+	        url : '/ingredient/:id',
+	        views:{
+	        	'main': {
+	        		template: '<single-ingredient item="curentIngredient"></single-ingredient>',
+	        		controller:["$scope", "curentIngredient", function($scope,curentIngredient){
+	        			console.log('CONTROLLER SINGLE');
+	        			console.log(curentIngredient);
+	        			$scope.curentIngredient = curentIngredient;
+	        		}],
+	        		resolve:{
+	                    curentIngredient :  ["ingredientService", "$stateParams", function(ingredientService,$stateParams){
+	                    	console.log('resolve curentIngredient');
 	                        
-	      //                   return articleService.fetchOne($stateParams.id)
-	      //               }
-	      //           }
-	      //   	}
+	                        return ingredientService.fetchOne($stateParams.id)
+	                    }]
+	                }
+	        	}
 
-	      //   }
-       // 	})
+	        }
+       	})
 
 }]);

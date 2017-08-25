@@ -30,7 +30,7 @@
 .mce-tinymce.mce-container iframe {margin-top: 60px; min-height:300px; background: rgba(0,0,0,.25)}
 .textAraeLabel{height: 63px;}
 body {
-    padding: 20px;
+    padding: 10px;
     background-color: transparent;
     color: grey;
     font-family: Verdana,Arial,Helvetica,sans-serif;

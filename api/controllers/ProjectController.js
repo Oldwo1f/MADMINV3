@@ -699,5 +699,56 @@ var cropOptions = req.body
 
 		
 	}
+	,
+	addComment:function(req,res,next){
+
+		console.log('addCommentProject');
+		console.log(req.params.itemid);
+
+		console.log(req.body);
+		// var commentToCreate =req.body;
+
+		Project.findOne(req.params.itemid)
+		.then(function(project){
+			
+			project.comments.add(req.body)
+			return project.save()	
+
+		}).then(function(d){
+
+			console.log('THEN');
+			console.log(d);
+
+
+				res.status(200).send('OK')
+			
+		})
+		
+	},
+	addReponse:function(req,res,next){
+
+		console.log('addReponse Project');
+
+		console.log(req.body);
+		// var commentToCreate =req.body;
+
+		Comment.findOne(req.params.itemid)
+		.then(function(comment){
+			console.log(comment);
+			
+			comment.responses.add(req.body)
+			return comment.save()	
+
+		}).then(function(d){
+
+			console.log('THEN');
+			console.log(d);
+
+
+				res.status(200).send('OK')
+			
+		})
+		
+	},
 };
 

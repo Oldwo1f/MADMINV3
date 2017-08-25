@@ -137,49 +137,88 @@ module.exports = {
 
 			
 		},
-		validatePai2:function(req,res,next){
+		fetchOne:function(req,res,next){
+
+			console.log('FETCHONE FABRICANT');
 			
-			var calcprice = function(price){
+			var result ;
+			var idsCom ;
+			Fabricant.findOne(req.params.id).populateAll().then(function(fabricant){
+				var fab=_.cloneDeep(fabricant);
+				return new Promise(function(resolve,reject){
+					
+						if(typeof(fabricant.authors) != 'undefined'){
 
-				var iprice = price;
-				var partClub = 0.3;
-				var calculatePrices = {};
-				var tmpNumber = 0;
+							return Promise.map(fabricant.authors,function(author){
+
+								return User.findOne(author.id).populateAll()
+								
+							}).then(function(t){
+								fab.authors = t;
+								resolve(fab)
+							})
+							// 
+						}else
+						{
+							resolve(fabricant)
+						}
+				})
+				.then(function(CommentsFullFilled){
 
 
-				calculatePrices.m0 = {};
-				calculatePrices.m0.sellprice = Math.round(iprice);
-				calculatePrices.m0.benefvendeur =  Math.round(iprice-(iprice * partClub));
+					
+				 	return new Promise(function(resolve,reject){
+					
+						if(typeof(fabricant.ingrediant) != 'undefined'){
 
-				calculatePrices.m6 = {};
-				tmpNumber = iprice - (25 * iprice / 100);
-				calculatePrices.m6.sellprice = Math.round(tmpNumber);
-				calculatePrices.m6.benefvendeur =  Math.round(tmpNumber-(tmpNumber * partClub));
+							return Promise.map(fabricant.ingrediant,function(img){
 
-				calculatePrices.m12 = {}
-				tmpNumber = iprice - (50*iprice/100);
-				calculatePrices.m12.sellprice = Math.round(tmpNumber);
-				calculatePrices.m12.benefvendeur =  Math.round(tmpNumber-(tmpNumber * partClub));
+								return Ingrediant.findOne(img.id).populateAll()
+								
+							}).then(function(t){
 
-				calculatePrices.m18 = {}
-				tmpNumber = iprice - (75*iprice/100);
-				calculatePrices.m18.sellprice = Math.round(tmpNumber);
-				calculatePrices.m18.benefvendeur =  Math.round(tmpNumber-(tmpNumber * partClub));
+								console.log(t);
+								fab.ingrediant = t;
+								resolve(fab)
+							})
+							// 
+						}else
+						{
+							resolve(fabricant)
+						}
+					})
+				})
+				.then(function(CommentsFullFilled){
 
-				return calculatePrices;
 
-			};
+					
+				 	Fabricant.subscribe(req, fab.id);
+
+				 	console.log('fini');
+					res.send(fab)
+				})
 			
+			})
+		},
+		
+		validatePai:function(req,res,next){
+			
+			
+			console.log('VALIDATE PAI');
+			console.log(req.body.bonus);
+			var bonus = req.body.bonus ? req.body.bonus : 0;
 			var total = 0;
 
 			Fabricant.findOne(req.params.id).populate('collabsPoints').then(function(fabricant){
+				console.log(fabricant);
 				if(fabricant.solded){
 					res.status(404).end()
 				}else{
 					return CollabsPoints.findOne(fabricant.collabsPoints[0].id).populate('user').then(function(collabs){
-						total = Number(collabs.score) ;
+						console.log(collabs);
+						total = Number(collabs.score) + Number(bonus);
 						var attrToUpdate={
-							bonus : 0,
+							bonus : Number(bonus),
 							total : total,
 							status : 'accepted',
 							dateValidation : new Date()
@@ -190,48 +229,34 @@ module.exports = {
 							return User.findOne(collabs.user[0].id).then(function(user){
 								user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
 								var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(total);
+								console.log(NewnbCollabsPoints);
 								
 
 								return User.update(collabs.user[0].id,{nbCollabsPoints : NewnbCollabsPoints}).then(function(){
-									
+									console.log(user);
 									return Fabricant.update(req.params.id,{validate:true,nbPoints : total,solded:true,status:'actif'}).then(function(fabricantdata){
 										
-										//SEND VALIDATION MAIL
-
 										var mydata = {};
 
-										mydata.name = user.name;
 										mydata.title = fabricant.title;
+										mydata.name = user.name;
 										mydata.firstname = user.firstname;
 										mydata.nbCollabsPoints = user.nbCollabsPoints;
 										mydata.score = collabs.score;
 										mydata.bonus = attrToUpdate['bonus'];
-										
 
-										if(mydata.initialPrice == 0){
 
-											//SEND VALIDATION MAIL
-											mail.sendEmail({
-									             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
-									             to: user.email, // list of receivers 
-									             subject: sails.config.company+' - Contenus validé', // Subject line 
-									        },'validateContent',{data:mydata, URL_HOME:sails.config.URL_HOME  }).then(function(data){
-									        });
+										//SEND VALIDATION MAIL
+										mail.sendEmail({
+								             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+								             to: user.email, // list of receivers 
+								             subject: sails.config.company+' - Contenus validé', // Subject line 
+								        },'validateContent',{data:mydata, URL_HOME:sails.config.URL_HOME  }).then(function(data){
+								        });
 
-										}else{
 
-											mydata.payment = fabricant.payment;
-											mydata.initialPrice = fabricant.initialPrice;
 
-											//SEND VALIDATION MAIL
-											mail.sendEmail({
-									             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
-									             to: user.email, // list of receivers 
-									             subject: sails.config.company+' - Contenus validé', // Subject line 
-									        },'validateContentPayment',{calculatePrices: calcprice(mydata.initialPrice),data:mydata, URL_HOME:sails.config.URL_HOME ,moment:moment }).then(function(data){
-									        });
 
-										}
 
 										res.send({data:fabricantdata})
 									})
@@ -239,97 +264,9 @@ module.exports = {
 								})
 							})
 
+							// 
+
 						})
-					})
-				}
-			})
-		},
-		unvalidatePai2:function(req,res,next){
-			
-			
-			
-			var total = 0;
-			var counterOffer = req.body.counterOffer ? req.body.counterOffer : 0;;
-
-			Fabricant.findOne(req.params.id).populate('collabsPoints').then(function(fabricant){
-				if(fabricant.solded){
-					res.status(404).end()
-				}else{
-					return CollabsPoints.findOne(fabricant.collabsPoints[0].id).populate('user').then(function(collabs){
-						total = Number(collabs.score) + Number(req.body.bonus);
-						var attrToUpdate={
-							counterOffer : counterOffer,
-							bonus : 0,
-							total : 0,
-							status : 'rejected',
-							dateValidation : new Date()
-						}
-							return CollabsPoints.update(fabricant.collabsPoints[0].id,attrToUpdate).then(function(){
-								return User.findOne(collabs.user[0].id).then(function(user){
-									user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
-									var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(total);
-									
-
-									
-										return Fabricant.update(req.params.id,{validate:false,solded:true,status:'inactif'}).then(function(fabricantdata){
-											
-											var mydata = {};
-
-											mydata.title = fabricant.title;
-											mydata.projid = fabricant.id;
-											mydata.raison = req.body.raison;
-											mydata.score = collabs.score;
-
-											if(req.body.raison == 'abus'){
-
-												var newyellowCards = Number(user.yellowCards) + 1;
-												var newredCards = 0;
-												if(newyellowCards == 3 )
-													newredCards=1;
-
-												return User.update(fabricant.collabsPoints[0].id,{yellowCards : newyellowCards,redCards:newredCards}).then(function(){
-													mail.sendEmail({
-											             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
-											             to: user.email, // list of receivers 
-											             subject: sails.config.company+' - Carton jaune', // Subject line 
-											        	},'unvalidateContent',{data:mydata, URL_HOME:sails.config.URL_HOME }).then(function(data){
-											        });
-												})
-											}
-											else
-											if(req.body.raison == 'counterOffer' && counterOffer){
-
-													mydata.counterOffer = counterOffer;
-													var linkValid = sails.config.URL_HOME +'/validcontreoffre/'+ mydata.projid;
-													var linkRefus = sails.config.URL_HOME +'/refuscontreoffre/'+ mydata.projid;
-													mail.sendEmail({
-											             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
-											             to: user.email, // list of receivers 
-											             subject: sails.config.company+' - Contre proposition', // Subject line 
-											        	},'unvalidateContent',{data:mydata, linkValid:linkValid, linkRefus:linkRefus, URL_HOME:sails.config.URL_HOME }).then(function(data){
-											        });
-												
-											}
-											else
-											if(req.body.raison != 'noEmail'){
-
-												//SEND VALIDATION MAIL
-												mail.sendEmail({
-										             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
-										             to: user.email, // list of receivers 
-										             subject: sails.config.company+' - Contenus rejeté', // Subject line 
-										        },'unvalidateContent',{data:mydata, URL_HOME:sails.config.URL_HOME , ipport:sails.config.URL_HOME+':'+ sails.config.port +'/' }).then(function(data){
-										        });
-
-											}
-
-											res.send({data:fabricantdata})
-										})
-
-								})
-
-							})
-						
 					})
 				}
 				
@@ -342,71 +279,68 @@ module.exports = {
 
 
 		},
-		validcontreoffre:function(req,res,next){
-
-			Fabricant.findOne(req.params.id).populate('collabsPoints').then(function(fabricant){
-				if(fabricant.solded){
-					res.redirect(sails.config.URL_HOME+'/club');
-				}else{
-				return CollabsPoints.findOne(fabricant.collabsPoints[0].id).populate('user').then(function(collabs){
-						total = Number(collabs.counterOffer);
-						var attrToUpdate={
-							score : collabs.counterOffer,
-							bonus : 0,
-							total : collabs.counterOffer,
-							status : 'accepted',
-							dateValidation : new Date()
-						}
-							return CollabsPoints.update(fabricant.collabsPoints[0].id,attrToUpdate).then(function(){
-								return User.findOne(collabs.user[0].id).then(function(user){
-									user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
-									var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(collabs.counterOffer);
-									return User.update(collabs.user[0].id,{nbCollabsPoints : NewnbCollabsPoints}).then(function(){
-										
-											return Fabricant.update(req.params.id,{nbPoints: collabs.counterOffer, validate:true,solded:true,status:'actif', }).then(function(fabricantdata){
-												res.send('projet valider')
-											})
-
-									})
-								})
-
-							})
-						
-					})
-				}
-			})
-
+		unvalidatePai:function(req,res,next){
 			
-		},
-		refuscontreoffre:function(req,res,next){
+			
+			console.log('UNVALIDATE PAI');
+			console.log(req.body.raison);
+			var total = 0;
 
 			Fabricant.findOne(req.params.id).populate('collabsPoints').then(function(fabricant){
-				if(fabricant.solded){
-					res.redirect(sails.config.URL_HOME+'/club');
-				}else{
-				return CollabsPoints.findOne(fabricant.collabsPoints[0].id).populate('user').then(function(collabs){
-						total = Number(collabs.counterOffer);
+				console.log(fabricant);
+				// if(fabricant.solded){
+				// 	res.status(404).end()
+				// }else{
+					return CollabsPoints.findOne(fabricant.collabsPoints[0].id).populate('user').then(function(collabs){
+						console.log(collabs);
+						total = Number(collabs.score) + Number(req.body.bonus);
 						var attrToUpdate={
-							score : collabs.counterOffer,
 							bonus : 0,
 							total : 0,
 							status : 'rejected',
 							dateValidation : new Date()
 						}
-							return CollabsPoints.update(fabricant.collabsPoints[0].id,attrToUpdate).then(function(){
 
-										return Fabricant.destroy(req.params.id).then(function(fabricantdata){
-											res.send('projet detruit')
-										})
-							})
+						return CollabsPoints.update(fabricant.collabsPoints[0].id,attrToUpdate).then(function(){
 						
+							return User.findOne(collabs.user[0].id).then(function(user){
+								user.nbCollabsPoints  = user.nbCollabsPoints ? user.nbCollabsPoints : 0;
+								var NewnbCollabsPoints = Number(user.nbCollabsPoints) + Number(total);
+								console.log(NewnbCollabsPoints);
+								
+
+								
+									return Fabricant.update(req.params.id,{validate:false,solded:true,status:'inactif'}).then(function(fabricantdata){
+										
+										var mydata = {};
+
+										mydata.title = fabricant.title;
+										mydata.raison = req.body.raison;
+										if(req.body.raison != 'noEmail'){
+
+											//SEND VALIDATION MAIL
+											mail.sendEmail({
+									             from: '"'+sails.config.company+'" <'+sails.config.mainEmail+'>', // sender address 
+									             to: user.email, // list of receivers 
+									             subject: sails.config.company+' - Contenus rejeté', // Subject line 
+									        },'unvalidateContent',{data:mydata, URL_HOME:sails.config.URL_HOME , }).then(function(data){
+									        });
+
+										}
+
+										res.send({data:fabricantdata})
+									})
+
+							})
+
+						})
 					})
-				}
-			}).catch(function(e){
-				res.redirect(sails.config.URL_HOME+'/club');
+				// }
+				
+
+
+
 			})
-
-
 			
 		},
 		fetchActive:function(req,res,next){
@@ -443,52 +377,52 @@ module.exports = {
 
 			
 		},
-		fetchOne:function(req,res,next){
+		// fetchOne:function(req,res,next){
 			
-			var result ;
-			var idsCom ;
-			Fabricant.findOne(req.params.id).populateAll().then(function(fabricant){
-				var art=_.cloneDeep(fabricant);
-				return new Promise(function(resolve,reject){
+		// 	var result ;
+		// 	var idsCom ;
+		// 	Fabricant.findOne(req.params.id).populateAll().then(function(fabricant){
+		// 		var art=_.cloneDeep(fabricant);
+		// 		return new Promise(function(resolve,reject){
 					
-						if(typeof(fabricant.authors) != 'undefined'){
+		// 				if(typeof(fabricant.authors) != 'undefined'){
 
-							return Promise.map(fabricant.authors,function(author){
+		// 					return Promise.map(fabricant.authors,function(author){
 
-								return User.findOne(author.id).populateAll()
+		// 						return User.findOne(author.id).populateAll()
 								
-							}).then(function(t){
-								art.authors = t;
-								resolve(art)
-							})
-							// 
-						}else
-						{
-							resolve(fabricant)
-						}
-				}).then(function(){
+		// 					}).then(function(t){
+		// 						art.authors = t;
+		// 						resolve(art)
+		// 					})
+		// 					// 
+		// 				}else
+		// 				{
+		// 					resolve(fabricant)
+		// 				}
+		// 		}).then(function(){
 					
-					idsCom = _.map(art.comments,function(o){return o.id})
-					return Comment.find(idsCom).populate('responses')
+		// 			idsCom = _.map(art.comments,function(o){return o.id})
+		// 			return Comment.find(idsCom).populate('responses')
 					
 					
-				})
-				.then(function(CommentsFullFilled){
+		// 		})
+		// 		.then(function(CommentsFullFilled){
 					
-					art.comments = CommentsFullFilled;
-					var idsToAdd = _.map(CommentsFullFilled,function(com){
-						return _.map(com.responses,function(o){
-							idsCom.push(o.id)
-						return o.id
-						})
-					})
-					// var idsCom = _.map(art.comments,function(o){return o.id})
-					Comment.subscribe(req,idsCom);
-				 	Fabricant.subscribe(req, art.id);
-					res.send(art)
-				})
-			})
-		},
+		// 			art.comments = CommentsFullFilled;
+		// 			var idsToAdd = _.map(CommentsFullFilled,function(com){
+		// 				return _.map(com.responses,function(o){
+		// 					idsCom.push(o.id)
+		// 				return o.id
+		// 				})
+		// 			})
+		// 			// var idsCom = _.map(art.comments,function(o){return o.id})
+		// 			Comment.subscribe(req,idsCom);
+		// 		 	Fabricant.subscribe(req, art.id);
+		// 			res.send(art)
+		// 		})
+		// 	})
+		// },
 		uploadDocument:function(req,res,next) {
 
 			console.log('UPLOAD DOCUMENT');

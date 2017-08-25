@@ -1,0 +1,386 @@
+<section id="content">
+
+	<div class="content-wrap">
+
+		<div class="container clearfix">
+
+			<div class="subheader topmargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="blog" class="btn btn-primary btn-lg">Retour au articles</a>
+			</div>
+
+
+
+			<div class="postcontent nobottommargin clearfix">
+
+				<div class="single-post nobottommargin">
+
+					<!-- Single Post
+					============================================= -->
+					<div class="entry clearfix">
+
+						<!-- Entry Title
+						============================================= -->
+						<div class="entry-title">
+							<h2>{{article.title}}</h2>
+						</div><!-- .entry-title end -->
+
+
+
+						<!-- Entry Meta
+						============================================= -->
+						<ul class="entry-meta clearfix">
+							<li><i class="icon-calendar3" title="Date"></i>{{article.createdAt | amDateFormat:'DD MMM YYYY'}}</li>
+							<li><a href="#"><i class="icon-user" title="Auteur"></i> {{article.authors[0].firstname}} {{article.authors[0].name}}</a></li>
+							
+							<li ng-if="article.comments.length"><a href="#"><i class="icon-comments" title="Commentaires"></i> 43 </a></li>
+						</ul><!-- .entry-meta end -->
+
+						<!-- Entry Image
+						============================================= -->
+						<div ng-if="article.videoHost && article.videoUrl" class="entry-image ">
+							<div ng-if="article.videoHost =='vimeo'" fit-vids>
+								
+								<iframe  width="16" height="9" src="{{ 'https://player.vimeo.com/video/'+article.videoUrl | trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							</div>
+							<div ng-if="article.videoHost =='youtube'" fit-vids>
+								
+								<iframe width="16" height="9" src="{{ 'https://www.youtube.com/embed/'+article.videoUrl +'?ecver=2' | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+							</div>
+							<div ng-if="article.videoHost =='dailymotion'" fit-vids>
+								
+								<iframe width="16" height="9" src="{{ 'http://www.dailymotion.com/embed/video/'+article.videoUrl | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+							</div>
+						</div>
+						<div class="entry-image" ng-if="article.images.length == 1 && ( !article.videoHost || !article.videoUrl)">
+							<a ><img  class="image_fade" ng-src="image/resized/{{article.images[0].filename}}" ></a>
+						</div>
+						<div class="entry-image" ng-if="article.images.length > 1 && article.images.length < 6 && ( !article.videoHost || !article.videoUrl)">
+							<div class="fslider">
+								
+									<flex-slider flex-slide="image in  article.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+										<li>
+											<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+										</li>
+									</flex-slider>
+							</div>
+						</div>
+						<div class="entry-image clearfix" ng-if="article.images.length >= 6&& ( !article.videoHost || !article.videoUrl)">
+							<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+								<a  ng-repeat="img in article.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+								
+							</div>
+						</div><!-- .entry-image end -->
+
+						<!-- Entry Content
+						============================================= -->
+						<div class="entry-content notopmargin" >
+							
+							<div ng-bind-html="article.content"  content-html="article.content"></div>
+							<!-- Tag Cloud
+							============================================= -->
+							<div ng-if="article.tags.length"class="tagcloud clearfix ">
+								<a ng-repeat="tag in article.tags"> <i class="fa fa-tag"></i>{{tag.text}}</a>
+								
+							</div><!-- .tagcloud end -->
+
+							<div class="clear"></div>
+							<div ng-if="article.categories.length" class="catcloud clearfix bottommargin" >
+								<a ng-repeat="cat in article.categories"  style="color:{{cat.textColor}}; background: {{cat.color}};">{{cat.name}}</a>
+								
+							</div><!-- .catcloud end -->
+
+							<div class="clear"></div>
+
+							<!-- Post Single - Share
+							============================================= -->
+							<div class="si-share noborder clearfix">
+								<span>Partager cet article:</span>
+								<div>
+									<a href="" class="social-icon si-borderless si-facebook" socialshare
+										socialshare-provider="facebook"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-quote="{{article.title}}" socialshare-url="http://clubpai.fr/club#/article/{{article.id}}">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i>
+									</a>
+									<a class="social-icon si-borderless si-twitter" socialshare
+										socialshare-provider="twitter"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-text="{{article.title}}" socialshare-url="http://clubpai.fr/club#/article/{{article.id}}">
+										<i class="icon-twitter"></i>
+										<i class="icon-twitter"></i>
+									</a>
+
+									<a href="" class="social-icon si-borderless si-gplus" socialshare
+										socialshare-provider="google"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-text="{{article.title}}" socialshare-url="http://clubpai.fr/club#/article/{{article.id}}">
+										<i class="icon-gplus"></i>
+										<i class="icon-gplus"></i>
+									</a>
+									<a href="" class="social-icon si-borderless si-linkedin" socialshare
+										socialshare-provider="linkedin"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-text="{{article.title}}" socialshare-url="http://clubpai.fr/club#/article/{{article.id}}">
+										<i class="icon-linkedin"></i>
+										<i class="icon-linkedin"></i>
+									</a>
+								
+								</div>
+							</div><!-- Post Single - Share End -->
+
+						</div>
+						<div class="entry-image" ng-if="article.images.length == 1 && ( article.videoHost && article.videoUrl)">
+							<a ><img  class="image_fade" ng-src="image/resized/{{article.images[0].filename}}" ></a>
+						</div>
+						<div class="entry-image" ng-if="article.images.length > 1 && article.images.length < 6 && ( article.videoHost && article.videoUrl)">
+							<div class="fslider">
+								
+									<flex-slider flex-slide="image in  article.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+										<li>
+											<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+										</li>
+									</flex-slider>
+							</div>
+						</div>
+						<div class="entry-image clearfix" ng-if="article.images.length >= 6&& ( article.videoHost && article.videoUrl)">
+							<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+								<a  ng-repeat="img in article.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+								
+							</div>
+						</div>
+					</div><!-- .entry end -->
+
+					
+					<!-- <div class="post-navigation clearfix">
+
+						<div class="col_half nobottommargin">
+							<a href="#">⇐ This is a Standard post with a Slider Gallery</a>
+						</div>
+
+						<div class="col_half col_last tright nobottommargin">
+							<a href="#">This is an Embedded Audio Post ⇒</a>
+						</div>
+
+					</div>
+
+					<div class="line"></div> -->
+
+					<!-- Post Author Info
+					============================================= -->
+					<div class="panel panel-default" ng-repeat="author in article.authors " >
+						<div class="panel-heading">
+							<h3 class="panel-title">Ecrit par <span><a href="#"> {{author.firstname}} {{author.name}}</a></span></h3>
+						</div>
+						<div class="panel-body panel-body-author-description">
+							<div class="author-image">
+								<img  ng-if="author.images[0]" height="50" width="50" ng-src="image/profile/{{author.images[0].filename}}" alt="">
+								<ng-letter-avatar  ng-if="!author.images[0]" charCount="1" data="{{author.firstname}} {{author.name}}" fontsize="25" height="50" width="50" shape="round"></ng-letter-avatar>
+							</div>
+							<div ng-if="author.description" ng-bind-html="author.description"  content-html="author.description" class="author-description"></div>
+							<div ng-if="!author.description" class="author-description"> <span style="margin-top:25px;">Aucune présentation de cet auteur</span></div>
+						</div>
+					</div><!-- Post Single - Author End -->
+						<div>
+		  					
+		  					
+		  					
+		  				</div>
+					<!-- <div class="line"></div> -->
+
+					<!-- <h4>Related Posts:</h4>
+
+					<div class="related-posts clearfix">
+
+						<div class="col_half nobottommargin">
+
+							<div class="mpost clearfix">
+								<div class="entry-image">
+									<a href="#"><img src="http://canvashtml-cdn.semicolonweb.com/images/blog/small/10.jpg" alt="Blog Single"></a>
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h4><a href="#">This is an Image Post</a></h4>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar3"></i> 10th July 2014</li>
+										<li><a href="#"><i class="icon-comments"></i> 12</a></li>
+									</ul>
+									<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
+								</div>
+							</div>
+
+							<div class="mpost clearfix">
+								<div class="entry-image">
+									<a href="#"><img src="http://canvashtml-cdn.semicolonweb.com/images/blog/small/20.jpg" alt="Blog Single"></a>
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h4><a href="#">This is a Video Post</a></h4>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar3"></i> 24th July 2014</li>
+										<li><a href="#"><i class="icon-comments"></i> 16</a></li>
+									</ul>
+									<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col_half nobottommargin col_last">
+
+							<div class="mpost clearfix">
+								<div class="entry-image">
+									<a href="#"><img src="http://canvashtml-cdn.semicolonweb.com/images/blog/small/21.jpg" alt="Blog Single"></a>
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h4><a href="#">This is a Gallery Post</a></h4>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar3"></i> 8th Aug 2014</li>
+										<li><a href="#"><i class="icon-comments"></i> 8</a></li>
+									</ul>
+									<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
+								</div>
+							</div>
+
+							<div class="mpost clearfix">
+								<div class="entry-image">
+									<a href="#"><img src="http://canvashtml-cdn.semicolonweb.com/images/blog/small/22.jpg" alt="Blog Single"></a>
+								</div>
+								<div class="entry-c">
+									<div class="entry-title">
+										<h4><a href="#">This is an Audio Post</a></h4>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar3"></i> 22nd Aug 2014</li>
+										<li><a href="#"><i class="icon-comments"></i> 21</a></li>
+									</ul>
+									<div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div> -->
+
+					<!-- Comments
+					============================================= -->
+					<div id="comments" class="clearfix">
+
+						<h3 id="comments-title"  ng-if="article.comments.length && article.comments.length<=1"><span>{{article.comments.length}}</span> Commentaire</h3>
+						<h3 id="comments-title" ng-if="article.comments.length && article.comments.length>1"><span >{{article.comments.length}}</span> Commentaires</h3>
+
+						<!-- Comments List
+						============================================= -->
+						<ol class="commentlist clearfix" ng-if="article.comments.length">
+
+							<li class="comment even thread-even depth-1" ng-repeat="comment in article.comments | orderBy:{'createdAt':'DESC'}" id="comment-{{comment.id}}">
+
+								<div  class="comment-wrap clearfix">
+
+									<div class="comment-meta">
+
+										<div class="comment-author vcard" ng-if="comment.user">
+
+											<span class="comment-avatar clearfix">
+											<img  ng-if="comment.imgAuthor" height="60" width="60" ng-src="image/profile/{{comment.imgAuthor}}" alt="">
+											<ng-letter-avatar  ng-if="!comment.imgAuthor" charCount="1" data="{{comment.user.firstname}} {{comment.user.name}}" fontsize="25" height="60" width="60" shape="round"></ng-letter-avatar></span>
+ 
+										</div>
+
+									</div>
+
+									<div class="comment-content clearfix">
+
+										<div class="comment-author">{{comment.authorName}}<span><a >{{comment.createdAt | amDateFormat:'DD MMM YYYY à HH:mm'}}</a></span></div>
+
+										<p>{{comment.content}}</p>
+
+										<a class="comment-reply-link" ng-click="commentreply(comment.id,$event)"><i class="icon-reply"></i></a>
+
+										<response action="addReponse" itemid="comment.id">
+
+									</div>
+
+									<div class="clear"></div>
+
+								</div>
+
+
+								<ul ng-if="comment.responses.length" class="children" ng-repeat="response in comment.responses">
+
+									<li class="comment byuser comment-author-_smcl_admin odd alt depth-2" id="li-comment-3">
+
+										<div id="comment-3" class="comment-wrap clearfix">
+
+											<div class="comment-meta">
+	
+												<div class="comment-author vcard" >
+
+													<span class="comment-avatar clearfix">
+													<img  ng-if="comment.imgAuthor" height="40" width="40" ng-src="image/profile/{{comment.imgAuthor}}" alt="">
+											<ng-letter-avatar  ng-if="!comment.imgAuthor" charCount="1" data="{{comment.user.firstname}} {{comment.user.name}}" fontsize="25" height="40" width="40" shape="round"></ng-letter-avatar></span>
+
+												</div>
+
+											</div>
+
+											<div class="comment-content clearfix">
+
+												<div class="comment-author">{{response.authorName}}<span><a >{{response.createdAt | amDateFormat:'DD MMM YYYY à HH:mm'}}</a></span></div>
+
+												<p>{{response.content}}</p>
+
+											</div>
+
+											<div class="clear"></div>
+
+										</div>
+
+									</li>
+
+								</ul>
+
+							</li>
+
+							
+
+						</ol><!-- .commentlist end -->
+
+						<div class="clear"></div>
+
+						<!-- Comment Form
+						============================================= -->
+						<div id="respond" class="clearfix">
+
+							<h3>Laisser un <span>commentaire</span></h3>
+
+							<form class="clearfix" id="commentform">
+
+
+								<div class="clear"></div>
+
+								<div class="col_full">
+									<label for="comment">Votre commentaire</label>
+									<textarea name="comment" ng-model="commentaire" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
+								</div>
+
+								<div class="col_full nobottommargin">
+									<button ng-click="addComment()" id="submit-button" tabindex="5" value="Poster" class="button button-3d nomargin">Post</button>
+								</div>
+
+							</form>
+
+						</div><!-- #respond end -->
+
+					</div><!-- #comments end -->
+
+				</div>
+
+			</div>
+
+			<div class="bottomheader topmargin bottommargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="blog" class="btn btn-primary btn-lg">Retour au articles</a>
+			</div>
+		</div>
+
+	</div>
+
+</section>

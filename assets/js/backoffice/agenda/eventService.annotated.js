@@ -222,7 +222,7 @@ angular.module('core')
 
         var authorId = $auth.getPayload().sub
         console.log(authorId);
-        e = {startsAt : new Date(),endsAt : new Date(),status:'draft',contentType:'eventpai',isPaiContent:true};
+        e = {startsAt : new Date(),endsAt : new Date(),status:'draft',contentType:'eventpai',isPaiContent:true,'solded':true,'validate':true};
         var deferred = $q.defer();
         $sailsSocket.post('/api/event',e).success(function (data,status) {
             
@@ -261,6 +261,31 @@ angular.module('core')
         }).error(function (data,status) {
             if(status == '401')
                 $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+
+    service.validatePai=function(id,bonus){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/validatePaiEvent/'+id,{bonus:bonus}).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+    service.unvalidatePai=function(id, raison){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/unvalidatePaiEvent/'+id,{raison:raison}).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
             deferred.reject(data);
         })
         return deferred.promise;      

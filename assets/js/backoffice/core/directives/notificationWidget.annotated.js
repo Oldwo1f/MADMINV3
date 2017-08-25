@@ -188,6 +188,12 @@ angular.module('core')
                 if(type == 'validate-ingrediant' || type == 'validate-ingredient'){
                     $state.go('ingrediants.edit',{id:id})
                 }
+                if(type == 'validate-fabricant'){
+                    $state.go('fabricants.edit',{id:id})
+                }
+                if(type == 'validate-event' || type == 'validate-event'){
+                    $state.go('agenda')
+                }
             }
       }],
       link:function(scope,element,attrs){

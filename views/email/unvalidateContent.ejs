@@ -138,6 +138,11 @@
                                   Votre contenus n'as pas assez de rapport avec l'agroallimentaire et l'innovation.
                                 <%}%>
 
+                                <% if(data.data.raison =='dejaPresent'){%>
+                                <br><br>
+                                  Votre contenus est déjà présent dans la base de donnée.
+                                <%}%>
+
                                 <% if(data.data.raison =='abus'){%>
                                   <br><br>
                                   Il semble que vous essayer d'abuser des fonctionnalités du club. <br>

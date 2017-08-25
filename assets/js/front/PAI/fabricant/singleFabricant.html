@@ -1,0 +1,199 @@
+<section id="content">
+
+	<div class="content-wrap">
+
+		<div class="container clearfix">
+
+			<div class="subheader topmargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="fabricants" class="btn btn-primary btn-lg">Retour à la liste des fabricant</a>
+			</div>
+
+
+
+			<div class="postcontent nobottommargin clearfix">
+
+				<div class="single-post nobottommargin">
+
+					<!-- Single Post
+					============================================= -->
+					<div class="entry clearfix">
+
+						<!-- Entry Title
+						============================================= -->
+						<div class="entry-title">
+							<h2>{{fabricant.name}}</h2>
+						</div><!-- .entry-title end -->
+
+
+						
+
+						<div class="">
+							<div class="col-6 col-md-6" style="padding-left: 0;">
+								<!-- Entry Image
+								============================================= -->
+								<div ng-if="fabricant.videoHost && fabricant.videoUrl" class="entry-image ">
+									<div ng-if="fabricant.videoHost =='vimeo'" fit-vids>
+										
+										<iframe  width="16" height="9" src="{{ 'https://player.vimeo.com/video/'+fabricant.videoUrl | trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+									</div>
+									<div ng-if="fabricant.videoHost =='youtube'" fit-vids>
+										
+										<iframe width="16" height="9" src="{{ 'https://www.youtube.com/embed/'+fabricant.videoUrl +'?ecver=2' | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+									</div>
+									<div ng-if="fabricant.videoHost =='dailymotion'" fit-vids>
+										
+										<iframe width="16" height="9" src="{{ 'http://www.dailymotion.com/embed/video/'+fabricant.videoUrl | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+									</div>
+								</div>
+								<div class="entry-image" ng-if="fabricant.images.length == 1 && ( !fabricant.videoHost || !fabricant.videoUrl)">
+									<a ><img  class="image_fade" ng-src="image/resized/{{fabricant.images[0].filename}}" ></a>
+								</div>
+								<div class="entry-image" ng-if="fabricant.images.length > 1 && fabricant.images.length < 6 && ( !fabricant.videoHost || !fabricant.videoUrl)">
+									<div class="fslider">
+										
+											<flex-slider flex-slide="image in  fabricant.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+												<li>
+													<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+												</li>
+											</flex-slider>
+									</div>
+								</div>
+								<div class="entry-image clearfix" ng-if="fabricant.images.length >= 6&& ( !fabricant.videoHost || !fabricant.videoUrl)">
+									<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+										<a  ng-repeat="img in fabricant.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+										
+									</div>
+								</div><!-- .entry-image end -->
+						
+								
+							</div>
+							<div class="col-6 col-md-6">
+
+								<map center="[{{fabricant.lat}}, {{fabricant.lng}}]" zoom="5">
+									<marker position="[{{fabricant.lat}}, {{fabricant.lng}}]"></marker>
+								</map>
+
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="">
+							<div class="col-8 col-md-8" style="padding-left: 0;">
+								<!-- Entry Content
+								============================================= -->
+								<div class="entry-content notopmargin" >
+									
+									<div ng-bind-html="fabricant.content"  content-html="fabricant.content"></div>
+									
+									<div ng-if="fabricant.tags.length"class="tagcloud clearfix ">
+										<a ng-repeat="tag in fabricant.tags" > <i class="fa fa-tag"></i>{{tag.text}}</a>
+										
+									</div><!-- .tagcloud end -->
+									<div class="clear"></div>
+
+									<div ng-if="fabricant.categories.length" class="catcloud clearfix bottommargin" >
+										<a ng-repeat="cat in fabricant.categories"  style="color:{{cat.textColor}}; background: {{cat.color}};">{{cat.name}}</a>
+										
+									</div><!-- .catcloud end -->
+
+									<div class="clear"></div>
+
+									
+
+								</div>
+
+
+
+
+								<div class="entry-image" ng-if="fabricant.images.length == 1 && ( fabricant.videoHost && fabricant.videoUrl)">
+									<a ><img  class="image_fade" ng-src="image/resized/{{fabricant.images[0].filename}}" ></a>
+								</div>
+								<div class="entry-image" ng-if="fabricant.images.length > 1 && fabricant.images.length < 6 && ( fabricant.videoHost && fabricant.videoUrl)">
+									<div class="fslider">
+										
+											<flex-slider flex-slide="image in  fabricant.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+												<li>
+													<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+												</li>
+											</flex-slider>
+									</div>
+								</div>
+								<div class="entry-image clearfix" ng-if="fabricant.images.length >= 6 && ( fabricant.videoHost && fabricant.videoUrl)">
+									<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+										<a  ng-repeat="img in fabricant.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-4 col-md-4" style="text-align: right;">
+
+								<h4>Coordonnées</h4>
+
+								<label for="">Adresse:</label>
+								<p>{{fabricant.adress}} <br>
+									{{fabricant.cp}} {{fabricant.ville}} <br>
+									{{fabricant.country}}
+								</p>
+								<label for="">Téléphone:</label>
+								<p>{{fabricant.phone}}</p>
+								<label for="">Site web:</label>
+								<p><a href="http://{{fabricant.website}}">{{fabricant.website}}</a></p>
+
+
+
+
+							</div>
+						</div>
+						
+					</div><!-- .entry end -->
+
+				</div>
+		  	</div>
+					
+
+			<div class="sidebar nobottommargin col_last clearfix">
+				<div class="sidebar-widgets-wrap">
+
+
+				<h4 ng-if="fabricant.ingrediant.length > 1" style="margin-top:30px;">Ingrédiants</h4>
+				<h4 ng-if="fabricant.ingrediant.length == 1" style="margin-top:30px;">Ingrédiant</h4>
+				
+				<div class="ingrediant" ng-repeat="item in fabricant.ingrediant" ng-click="goToingredient(item.id)">
+					<img ng-if="item.images[0].filename"  ng-src="image/resized/{{item.images[0].filename}}" alt="">
+					<div class="portfolio-desc">
+
+						<h3>{{item.name}}</h3>
+						<div ng-if="item.tags.length"class="tagcloud clearfix">
+							<!-- <a ng-repeat="tag in item.tags" href="#">{{tag.text}}</a> -->
+							
+						</div>
+
+						<!-- <span ng-if="item.fabricant" class="autheurportfo">produit par {{item.fabricant.name}} </span> -->
+						<!-- <span class="date">{{item.date | amDateFormat:'MMMM YYYY'}}</span> -->
+					</div>
+				</div>
+
+
+				
+
+				
+
+
+
+				</div>
+
+			</div>	
+
+			<div class="clearfix"></div>
+
+			<div class="bottomheader topmargin bottommargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="fabricants" class="btn btn-primary btn-lg">Retour à la liste des fabricant</a>
+			</div>
+
+
+		</div>
+
+	</div>
+
+</section>

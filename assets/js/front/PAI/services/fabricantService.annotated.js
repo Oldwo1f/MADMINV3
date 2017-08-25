@@ -144,6 +144,18 @@ angular.module('PAI')
     //     return deferred.promise;
     // };
     
+    service.addCollabsPoints=function(id, idCollabs){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/api/fabricant/'+id+'/collabsPoints/'+idCollabs).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
 
     service.removeImage=function(id,imgID){
 
@@ -305,7 +317,7 @@ angular.module('PAI')
 
         var authorId = $auth.getPayload().sub
         console.log(authorId);
-        fabricant = {date : new Date(),status:'draft',contentType:'autre',isPaiContent:true};
+        fabricant = {date : new Date(),status:'draft',contentType:'autre',isPaiContent:false};
         var deferred = $q.defer();
         $sailsSocket.post('/api/fabricant',fabricant).success(function (data,status) {
             
@@ -385,8 +397,9 @@ angular.module('PAI')
     service.fetchOne=function(id){
 
         // fabricant = {date : new Date(),status:'draft'};
+        console.log('FETCHONEFAB');
         var deferred = $q.defer();
-        $sailsSocket.get('/api/fabricant/'+id).success(function (data,status) {
+        $sailsSocket.get('/fabricant/fetchOne/'+id).success(function (data,status) {
             deferred.resolve(data);
         }).error(function (data,status) {
             if(status == '401')

@@ -58,7 +58,7 @@ body.mce-content-body {color:grey;}
 .portfolio-item.fabricant-item .contentPortfo .autheurportfo{margin: 0;padding: 0 10px;position: relative;}
 .portfolio-item.fabricant-item .date{margin: 0;padding: 0 10px;position: absolute;bottom: 0px;right: 10px;font-size:1.4em; font-weight: bold;}
 
-.FINI {width: 100%;text-align: center;margin: 50px;}
+.FINI {width: 100%;text-align: center;margin: 50px;text-indent: -120px;}
 
 .fabricantChoice1 p{font-size : 1.2em;font-weight: bold;margin-bottom: 10px;}
 .fabricantChoice2 > p{font-size : 1.2em;font-weight: bold;margin-bottom: 10px; margin-top: 30px;}
@@ -250,8 +250,73 @@ tags-input .tags .tag-item.selected{
 .calendarPAge .pageHeader {display:flex;justify-content:space-between;}
 .cal-month-day small.badge{display:none;}
 .event{width:32px;}
-
+.addEvent .btn-group>.btn.bigger{font-size: 1.3em;}
 /*image CROP*/
+
+
+
+
+
+.post-grid .entry {float: left;width: 31.4%;}
+.post-grid .entry .entry-title h2 {margin-top: 10px;}
+.post-grid .more-link {margin-bottom: 10px;text-decoration: none;border-bottom: none; }
+
+
+.flexslider .slides > li{
+    display:block;
+}
+.entry-image iframe {
+  /*min-height:200px;*/
+    width: auto;
+    height: auto;
+}
+
+
+
+
+
+
+.modal-content {
+  background: url(../../images/backoffice/bg.jpg);
+  background-size: 700% 700%;
+  border-radius: 0;
+  border: 0;
+}
+.bg1 .modal-content {
+  background: url(../../images/backoffice/bg.jpg);
+}
+.bg2 .modal-content {
+  background: url(../../images/backoffice/bg2.jpg);
+}
+.bg3 .modal-content {
+  background: url(../../images/backoffice/bg3.jpg);
+}
+.bg4 .modal-content {
+  background: url(../../images/backoffice/bg4.jpg);
+}
+.modal-content .close {
+  color: white;
+}
+.modal-content .modal-title {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  font-weight: 100;
+}
+.modal-content .modal-body {
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 21px;
+  padding: 25px 40px;
+}
+.modal-content .modal-header {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.modal-content .modal-footer {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
 
 
 .imageCropResizePoint {

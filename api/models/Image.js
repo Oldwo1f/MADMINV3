@@ -626,29 +626,38 @@ module.exports = {
         })
     },
     afterDestroy: function (value, callback){
-        try{
-	        fs.unlink('uploads/images/originalSize/'+value[0].filename)
-	    }catch(e){
+        
+        fs.unlink('uploads/images/originalSize/'+value[0].filename,function(err){
+        	console.log(err);
+        	
+        })
+        fs.unlink('uploads/images/adminThumbs/'+value[0].filename,function(err){
+        	console.log(err);
+        	
+        })
+        fs.unlink('uploads/images/resized/'+value[0].filename,function(err){
+        	console.log(err);
+        	
+        })
+        fs.unlink('uploads/images/profile/'+value[0].filename,function(err){
+        	console.log(err);
+        	
+        })
 
-	    }try{
-	        fs.unlink('uploads/images/adminThumbs/'+value[0].filename)
-	    }catch(e){
 
-	    }try{
-	        fs.unlink('uploads/images/resized/'+value[0].filename)
-	    }catch(e){
-
-	    }try{
-	        fs.unlink('uploads/images/resized2/'+value[0].filename)
-	    }catch(e){
-
-	    }
+    	console.log('WE ARE HERE');
+        fs.unlink('uploads/images/resized2/'+value[0].filename,function(err){
+        	console.log(err);
+        	
+        })
+	   
 
 
 
         es.delete('image',value[0]).then(function(){
             return callback()
         }).catch(function(err){
+        	return callback()
                console.log(err);
         })
     },

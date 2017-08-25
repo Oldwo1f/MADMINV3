@@ -1,0 +1,177 @@
+<section id="content">
+
+	<div class="content-wrap">
+
+		<div class="container clearfix">
+
+			<div class="subheader topmargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="agenda" class="btn btn-primary btn-lg">Retour aux évènements</a>
+			</div>
+
+
+
+			<div class="postcontent nobottommargin clearfix">
+
+				<div class="single-post nobottommargin">
+
+					<!-- Single Post
+					============================================= -->
+					<div class="entry clearfix">
+
+						<!-- Entry Title
+						============================================= -->
+						<div class="entry-title">
+							<h2>{{eevent.title}}</h2>
+						</div><!-- .entry-title end -->
+
+
+
+						
+						<div ng-if="eevent.startsAt != eevent.endsAt" class="eventDate">
+								<div class="dateStart"> {{eevent.startsAt | amDateFormat:'DD MMM YYYY à HH:mm'}}</div>
+								<div class="flecheEvent"> <span></span> <span class="arrow-right"></span></div>
+								<div class="dateEnd"> {{eevent.endsAt | amDateFormat:'DD MMM YYYY à HH:mm'}}</div>
+
+						</div>
+						<div ng-if="eevent.startsAt == eevent.endsAt" class="eventDate">
+								<div class="dateStart">Le {{eevent.startsAt | amDateFormat:'DD MMM YYYY à HH:mm'}}</div>
+
+						</div>
+						<!-- Entry Image
+						============================================= -->
+						<div ng-if="eevent.videoHost && eevent.videoUrl" class="entry-image ">
+							<div ng-if="eevent.videoHost =='vimeo'" fit-vids>
+								
+								<iframe  width="16" height="9" src="{{ 'https://player.vimeo.com/video/'+eevent.videoUrl | trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							</div>
+							<div ng-if="eevent.videoHost =='youtube'" fit-vids>
+								
+								<iframe width="16" height="9" src="{{ 'https://www.youtube.com/embed/'+eevent.videoUrl +'?ecver=2' | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+							</div>
+							<div ng-if="eevent.videoHost =='dailymotion'" fit-vids>
+								
+								<iframe width="16" height="9" src="{{ 'http://www.dailymotion.com/embed/video/'+eevent.videoUrl | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+							</div>
+						</div>
+						<div class="entry-image" ng-if="eevent.images.length == 1 && ( !eevent.videoHost || !eevent.videoUrl)">
+							<a ><img  class="image_fade" ng-src="image/resized/{{eevent.images[0].filename}}" ></a>
+						</div>
+						<div class="entry-image" ng-if="eevent.images.length > 1 && eevent.images.length < 6 && ( !eevent.videoHost || !eevent.videoUrl)">
+							<div class="fslider">
+								
+									<flex-slider flex-slide="image in  eevent.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+										<li>
+											<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+										</li>
+									</flex-slider>
+							</div>
+						</div>
+						<div class="entry-image clearfix" ng-if="eevent.images.length >= 6&& ( !eevent.videoHost || !eevent.videoUrl)">
+							<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+								<a  ng-repeat="img in eevent.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+								
+							</div>
+						</div><!-- .entry-image end -->
+
+						<!-- Entry Content
+						============================================= -->
+						<div class="entry-content notopmargin" >
+							
+							<div ng-bind-html="eevent.content"  content-html="eevent.content"></div>
+							<!-- Tag Cloud
+							============================================= -->
+							<div ng-if="eevent.tags.length"class="tagcloud clearfix ">
+								<a ng-repeat="tag in eevent.tags"> <i class="fa fa-tag"></i>{{tag.text}}</a>
+								
+							</div><!-- .tagcloud end -->
+
+							<div class="clear"></div>
+							<div ng-if="eevent.categories.length" class="catcloud clearfix bottommargin" >
+								<a ng-repeat="cat in eevent.categories"  style="color:{{cat.textColor}}; background: {{cat.color}};">{{cat.name}}</a>
+								
+							</div><!-- .catcloud end -->
+
+							<div class="clear"></div>
+
+							<!-- Post Single - Share
+							============================================= -->
+							<div class="si-share noborder clearfix">
+								<span>Partager cet évènement:</span>
+								<div>
+									<a href="" class="social-icon si-borderless si-facebook" socialshare
+										socialshare-provider="facebook"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-quote="{{eevent.title}}" socialshare-url="http://clubpai.fr/club#/event/{{eevent.id}}">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i>
+									</a>
+									<a class="social-icon si-borderless si-twitter" socialshare
+										socialshare-provider="twitter"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-text="{{eevent.title}}" socialshare-url="http://clubpai.fr/club#/event/{{eevent.id}}">
+										<i class="icon-twitter"></i>
+										<i class="icon-twitter"></i>
+									</a>
+
+									<a href="" class="social-icon si-borderless si-gplus" socialshare
+										socialshare-provider="google"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-text="{{eevent.title}}" socialshare-url="http://clubpai.fr/club#/event/{{eevent.id}}">
+										<i class="icon-gplus"></i>
+										<i class="icon-gplus"></i>
+									</a>
+									<a href="" class="social-icon si-borderless si-linkedin" socialshare
+										socialshare-provider="linkedin"socialshare-popup-height="800" socialshare-popup-width="800" socialshare-text="{{eevent.title}}" socialshare-url="http://clubpai.fr/club#/event/{{eevent.id}}">
+										<i class="icon-linkedin"></i>
+										<i class="icon-linkedin"></i>
+									</a>
+								
+								</div>
+							</div><!-- Post Single - Share End -->
+
+						</div>
+						<div class="entry-image" ng-if="eevent.images.length == 1 && ( eevent.videoHost && eevent.videoUrl)">
+							<a ><img  class="image_fade" ng-src="image/resized/{{eevent.images[0].filename}}" ></a>
+						</div>
+						<div class="entry-image" ng-if="eevent.images.length > 1 && eevent.images.length < 6 && ( eevent.videoHost && eevent.videoUrl)">
+							<div class="fslider">
+								
+									<flex-slider flex-slide="image in  eevent.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+										<li>
+											<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+										</li>
+									</flex-slider>
+							</div>
+						</div>
+						<div class="entry-image clearfix" ng-if="eevent.images.length >= 6&& ( eevent.videoHost && eevent.videoUrl)">
+							<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+								<a  ng-repeat="img in eevent.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+								
+							</div>
+						</div>
+					</div><!-- .entry end -->
+
+			
+					<!-- <div class="panel panel-default" ng-repeat="author in eevent.authors " >
+						<div class="panel-heading">
+							<h3 class="panel-title">Ecrit par <span><a href="#"> {{author.firstname}} {{author.name}}</a></span></h3>
+						</div>
+						<div class="panel-body panel-body-author-description">
+							<div class="author-image">
+								<img  ng-if="author.images[0]" height="50" width="50" ng-src="image/profile/{{author.images[0].filename}}" alt="">
+								<ng-letter-avatar  ng-if="!author.images[0]" charCount="1" data="{{author.firstname}} {{author.name}}" fontsize="25" height="50" width="50" shape="round"></ng-letter-avatar>
+							</div>
+							<div ng-if="author.description" ng-bind-html="author.description"  content-html="author.description" class="author-description"></div>
+							<div ng-if="!author.description" class="author-description"> <span style="margin-top:25px;">Aucune présentation de cet auteur</span></div>
+						</div>
+					</div> -->
+						
+					
+				</div>
+
+			</div>
+
+			<div class="bottomheader topmargin bottommargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="agenda" class="btn btn-primary btn-lg">Retour aux évènements</a>
+			</div>
+		</div>
+
+	</div>
+
+</section>

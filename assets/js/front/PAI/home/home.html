@@ -3,15 +3,152 @@
 	<div class="content-wrap">
 		<div class="container clearfix">
 
-					<div class="subheader topmargin">
-						
-						<h4>Bonjour Pseduo ,Bienvenue au club collabs
-							<br>Vous avez des points collabs jusqu'au 13 avril ..</h4>
-						<a ui-sref="addFabricant" class="btn btn-primary btn-lg">Ajouter un fabricant</a>
-					</div>
-		</div>
-		<h2></h2>
 
-		<h3> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum eius excepturi veritatis, non dolore velit inventore eum vitae unde. Iure esse, harum ullam tempore ratione mollitia iusto minima officia sit.</h3>
+
+			<div class="row">
+				
+				<div class="col-md-6 col-6">
+					<div id="cloudCat" ng-show="categoriesCloud.length>0"></div>
+					<div id="noCatElment" ng-show="categoriesCloud.length<=0">
+						<span>Aucune catégorie</span>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-6">
+					<div id="cloudTag" ></div>
+					<div id="noTagElment" ng-show="tagsCloud.length<=0">
+						<span>Aucun Tag</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">	
+				<div class="col-6 col-md-6 pointsTitle"  >
+					<h3 ng-if="!user.nbCollabsPoints">Vous n'avez aucun pointCollabs. <small>Vous pouvez en récupérer en ajoutant du contenu sur le site.</small></h3>
+					<h3 ng-if="user.nbCollabsPoints"><small>Vous avez </small>{{user.nbCollabsPoints}} pointsCollabs <small>ce qui vous emmène jusqu'au</small> {{dateToGo}}</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-6">
+
+					<div class="CollabasPointsList">
+						<h4>Vos contenus récement ajouté</h4>
+					<!-- <div class="collabsPointsSingle" > -->
+
+						<p ng-if="!user.collabsPoints.length"> Vous n'avez pas encore ajouter de contenus</p>
+						<table ng-if="user.collabsPoints.length">
+							<thead>
+								<tr>
+									<th style="text-align:left;" >Type</th>
+									<th style="width:100px;">Points</th>
+									<th style="width:100px;">Bonus</th>
+									<th style="width:100px;">Total</th>
+									<th style="width:150px;">Status</th>
+									<th style="width:150px;">Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								<tr class="collabsPointsSingle" ng-repeat="collabs in user.collabsPoints |orderBy:'createdAt':true | limitTo:20" ng-if="collabs.payment != true" ng-click="goToContent(collabs.contentModel,collabs.contentID)">
+									<td style="text-align:left;">
+										<span ng-if="collabs.contentType=='link'">Link</span>
+										<span ng-if="collabs.contentType=='sponsored'">Article sponso</span>
+										<span ng-if="collabs.contentType=='article'">Article</span>
+										<span ng-if="collabs.contentType=='etude'">Etude de marché</span>
+										<span ng-if="collabs.contentType=='rapport'">Rapport d'étonement</span>
+										<span ng-if="collabs.contentType=='book'">Ebook</span>
+										<span ng-if="collabs.contentType=='conso'">Étude consomateur</span>
+										<span ng-if="collabs.contentType=='tendance'">Tendance</span>
+										<span ng-if="collabs.contentType=='autre'">Documents</span>
+										<span ng-if="collabs.contentType=='ingrediant'">Ingrediant</span>
+										<span ng-if="collabs.contentType=='fabricant'">Fabricant</span>
+										<span ng-if="collabs.contentType=='event'">Évènement</span>
+									</td>
+									<td>{{ collabs.score }}</td>
+									<td ng-if="collabs.contentType=='etude' || collabs.contentType=='rapport' || collabs.contentType=='book' || collabs.contentType=='tendance' || collabs.contentType=='conso' || collabs.contentType=='autre' || collabs.bonus == 0"> - </td>
+									<td ng-if="(collabs.contentType=='link' || collabs.contentType=='sponsored' || collabs.contentType=='article' || collabs.contentType=='ingrediant'  || collabs.contentType=='event'  || collabs.contentType=='fabricant' ) && collabs.bonus != 0 ">{{ collabs.bonus }}</td>
+									<td><b>{{ collabs.total}}</b></td>
+									<td>
+										<label ng-if="collabs.status=='waiting'">en attente</label>
+										<label ng-if="collabs.status=='rejected'">rejeté</label>
+										<label ng-if="collabs.status=='accepted'">accepté</label>
+									</td>
+									<td><span ng-if="collabs.dateValidation" title="{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY HH:mm:ss'}}">{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY'}}</span><span ng-if="!collabs.dateValidation"> - </span></td>
+								</tr>
+							</tbody>
+						</table>
+						
+					<!-- </div> -->
+
+				</div>
+					
+			</div>
+
+			<div class="col-md-6 col-6">
+				<div class="CollabasPointsList">
+					<h4>Vos contenus à vendre sur le marketplace</h4>
+
+					<!-- <p ng-if="!user.collabsPoints.length"> Vous n'avez pas encore ajouter de contenus</p> -->
+					<table>
+						<thead>
+							<tr>
+								<th style="text-align:left;width:100px;" >Type</th>
+								<th style="text-align:left;" >Title</th>
+								<th style="width:100px;">Prix initial</th>
+								<th style="width:150px;">Status</th>
+								<th style="width:150px;">Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr class="collabsPointsSingle" ng-repeat="collabs in user.collabsPoints" ng-if="collabs.payment == true"  ng-click="goToContent(collabs.contentModel,collabs.contentID)"> 
+								<td style="text-align:left;">
+									<span ng-if="collabs.contentType=='link'">Link</span>
+									<span ng-if="collabs.contentType=='sponsored'">Sponso</span>
+									<span ng-if="collabs.contentType=='article'">Article</span>
+									<span ng-if="collabs.contentType=='etude'">Marché</span>
+									<span ng-if="collabs.contentType=='rapport'">Rapport </span>
+									<span ng-if="collabs.contentType=='book'">Ebook</span>
+									<span ng-if="collabs.contentType=='conso'">Consomateur</span>
+									<span ng-if="collabs.contentType=='tendance'">Tendance</span>
+									<span ng-if="collabs.contentType=='autre'">Documents</span>
+								</td>
+								<td style="text-align:left;">{{ collabs.title }}</td>
+								<td><label >{{ collabs.initialPrice }}</label></td>
+								<td><label ng-if="collabs.status=='waiting'">en attente</label>
+									<label ng-if="collabs.status=='rejected'">rejeté</label>
+									<label ng-if="collabs.status=='accepted'">accepté</label>
+								</td>
+								<td><span ng-if="collabs.dateValidation" title="{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY HH:mm:ss'}}">{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY'}}</span><span ng-if="!collabs.dateValidation"> - </span></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				
+
+
+
+				<div class="CollabasPointsList">
+					
+						<h4>Vos ventes sur le marketplace</h4>
+
+						<p> Vous n'avez pas encore réalisé de vente.</p>
+						
+
+				
+				</div>
+			</div>
+
+
+
+	
+
+
+
+
+		</div>
+		
 	</div>
 </section>

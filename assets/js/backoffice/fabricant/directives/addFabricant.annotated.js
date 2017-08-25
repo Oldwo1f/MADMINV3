@@ -1,4 +1,4 @@
-angular.module('momi-pai')
+angular.module('momi-pai2')
 .directive('addFabricant', function(){
 
     'use strict';
@@ -386,10 +386,10 @@ angular.module('momi-pai')
 			}
 
 
-			$scope.validateFabricant=function(){
+			$scope.validateFabricant=function(bonus){
 				$rootScope.startSpin();
 				
-				fabricantService.validatePai($scope.formData.id).then(function(data){
+				fabricantService.validatePai($scope.formData.id,bonus).then(function(data){
 					console.log(data);
 					if(data.data[0].solded){
 						$scope.formData.solded = true; 

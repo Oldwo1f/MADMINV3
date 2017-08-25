@@ -1,0 +1,16 @@
+<div>
+	<a class="comment-reply-link" ng-click="show=!show;"><i class="icon-reply"></i></a>
+
+	<form class="clearfix" ng-show="show">
+		<div class="clear"></div>
+		<div class="col_full">
+			<label for="comment">Votre commentaire</label>
+			<textarea  ng-model="commentaire" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
+		</div>
+		<div class="col_full nobottommargin">
+			<button ng-click="addReponse()" tabindex="5" value="Poster" class="button button-3d nomargin">Poster</button>
+		</div>
+	</form>
+
+	
+</div>

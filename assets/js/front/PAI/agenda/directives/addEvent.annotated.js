@@ -27,6 +27,8 @@ angular.module('pai-agenda')
 			console.log($scope.newEvent);
 			$scope.formData= $scope.newEvent;
 			$scope.formData.title= '';
+			$scope.formData.startsAt = new Date();
+			$scope.formData.endsAt = new Date();
 			console.log(this);
 			console.log($scope.formData);
 			console.log($scope);
@@ -143,12 +145,13 @@ angular.module('pai-agenda')
 				console.log(attrToUpdate);
 				eventService.update($scope.formData.id,attrToUpdate).then(function(data){
 					
+					console.log('ici');
 					var collabspoints = {};
 					collabspoints.score = attrToUpdate['nbPoints']
 					collabspoints.contentID = $scope.formData.id
-					collabspoints.contentType = 'ingrediant'
-					collabspoints.contentModel = 'ingrediant'
-					collabspoints.title = $scope.formData.name
+					collabspoints.contentType = 'event'
+					collabspoints.contentModel = 'event'
+					collabspoints.title = $scope.formData.title
 					
 					userService.addCollabsPoints(userService.me.id,collabspoints).then(function(newcollabs){
 
@@ -165,7 +168,7 @@ angular.module('pai-agenda')
 		        			
 		        			console.log(data);
 		        			if(data){
-		        				$state.go('event')
+		        				$state.go('agenda')
 
 		        				console.log(this);
 
@@ -201,16 +204,16 @@ angular.module('pai-agenda')
 				$scope.nbPoints = 0;
 				
 
-        		$scope.nbPoints += 2;
+        		$scope.nbPoints += 0;
         			if($scope.formData.content){
 		                var val = $scope.formData.content.split(' ')
-		        		if(val.length <100)
+		        		if(val.length <50)
 		        			$scope.nbPoints += 1;
-		        		else if(val.length <200)
+		        		else if(val.length <100)
 		        			$scope.nbPoints += 2;
-		        		else if(val.length <400)
+		        		else if(val.length <200)
 		        			$scope.nbPoints += 3;
-		        		else if(val.length >400)
+		        		else if(val.length >300)
 		        			$scope.nbPoints += 4;
 	        		}
 	        		if($scope.formData.tags){
@@ -224,11 +227,11 @@ angular.module('pai-agenda')
 		        		if($scope.formData.categories.length >0)
 		        			$scope.nbPoints += 1;
 	        		}
-					if($scope.formData.images){
+					// if($scope.formData.images){
 		                
-		        		if($scope.formData.images.length >0)
-		        			$scope.nbPoints += 2;
-	        		}
+		   //      		if($scope.formData.images.length >0)
+		   //      			$scope.nbPoints += 2;
+	    //     		}
 
         		
 
@@ -245,13 +248,13 @@ angular.module('pai-agenda')
 			}
 			$scope.exitValidationContenus = function(){
 				
-					if($scope.formData.content && $scope.formData.name && $scope.formData.tags.length)
+					if($scope.formData.content && $scope.formData.title && $scope.formData.tags.length)
 					{
 						return true;
 					}else{
 						var message = 'Veuillez remplir les champs requis';
 		        		Flash.create('warning', message, 5000);
-
+		        		$window.scrollTo(0, 0);
 						return false
 					}
 			}
@@ -447,319 +450,7 @@ angular.module('pai-agenda')
 
 			
 
-        	$scope.indexDocument=0;
-        	$scope.uploadsDocument=[];
-
-			$scope.removeImg=function(img){
-				$rootScope.startSpin();
-				articleService.removeImage($scope.formData.id,img).then(function(data){
-					var index = _.findIndex($scope.formData.images, function(o) { return o.id == img; });
-					if( index !== -1) {
-						$scope.formData.images.splice(index, 1);
-					}
-					//  else {
-					// 	$scope.formData.tags.push(tag_with_id);
-					// }
-					// $rootScope.$broadcast('articleSelfChangeImg',data);
-					$rootScope.stopSpin();
-				},function(d){
-					console.log('EROOR');
-				})
-			}
-
-        	$scope.indexImage=0;
-        	$scope.uploadingImages=[];
-
-        	$scope.resizeOnly=function(){
-        		$rootScope.startSpin();
-				$scope.dataToSend = {};
-		        $scope.dataToSend.displayHeight = $scope.imgcrop.displayHeight;
-		        $scope.dataToSend.displayWidth = $scope.imgcrop.displayWidth;
-		        $scope.dataToSend.scaledWidth = $scope.imgcrop.scaledWidth;
-		        $scope.dataToSend.scaledHeight = $scope.imgcrop.scaledHeight;
-		        $scope.dataToSend.scaledTop = $scope.imgcrop.scaledTop;
-		        $scope.dataToSend.scaledLeft = $scope.imgcrop.scaledLeft;
-		        $scope.dataToSend.aspectRatio = $scope.imgcrop.aspectRatio;
-		        $scope.dataToSend.landscape = $scope.imgcrop.landscape;
-		        $scope.dataToSend.containerWidth = $scope.imgcrop.containerWidth;
-		        $scope.dataToSend.containerHeight = $scope.imgcrop.containerHeight;
-		        $scope.dataToSend.filename= $scope.imgcrop.filename;
-
-		        $scope.dataToSend.normalWidth= 800;
-            	$scope.dataToSend.normalHeight= 450;
-            	if(!$scope.imgcrop.landscape){
-            		$scope.dataToSend.normalWidth= 300;
-            		$scope.dataToSend.normalHeight= 400;
-            	}
-                    	
-				$('#imageCropSource').hide();
-
-		        $scope.imgcrop.imgEditId = 0;
-            	$scope.imgcrop.displayHeight = 0;
-				$scope.imgcrop.displayWidth = 0;
-				$scope.imgcrop.scaledWidth = 0;
-				$scope.imgcrop.scaledHeight = 0;
-				$scope.imgcrop.scaledTop = 0;
-				$scope.imgcrop.scaledLeft = 0;
-				$scope.imgcrop.containerWidth = 0;
-				$scope.imgcrop.containerHeight = 0;
-				$scope.imgcrop.aspectRatio = '16/9';
-				$scope.imgcrop.imgSrc = "";
-
-		        $sailsSocket.post('/api/image/resize/',$scope.dataToSend).success(function (data,status) {
-		            console.log('SUCCESS RESIZE');
-		            $rootScope.stopSpin();
-		            
-		        }).error(function (data,status) {
-		            console.log(data);
-		            console.log('errOR');
-		        })
-	        }
-
-        	$scope.uploadImage = function () {
-
-        		console.log($scope.imgcrop);
-        		console.log('UPLOAD IMAGE');
-		        $scope.dataToSend = {};
-		        $scope.fileToSend = $scope.imgcrop.file; 
-		        $scope.dataToSend.file = $scope.imgcrop.file; 
-		        $scope.dataToSend.displayHeight = $scope.imgcrop.displayHeight;
-		        $scope.dataToSend.displayWidth = $scope.imgcrop.displayWidth;
-		        $scope.dataToSend.scaledWidth = $scope.imgcrop.scaledWidth;
-		        $scope.dataToSend.scaledHeight = $scope.imgcrop.scaledHeight;
-		        $scope.dataToSend.scaledTop = $scope.imgcrop.scaledTop;
-		        $scope.dataToSend.scaledLeft = $scope.imgcrop.scaledLeft;
-		        $scope.dataToSend.aspectRatio = $scope.imgcrop.aspectRatio;
-		        $scope.dataToSend.landscape = $scope.imgcrop.landscape;
-		        $scope.dataToSend.containerWidth = $scope.imgcrop.containerWidth;
-		        $scope.dataToSend.containerHeight = $scope.imgcrop.containerHeight;
-		        $scope.uploadingImages[$scope.indexImage] = {};
-		        $scope.uploadingImages[$scope.indexImage].status = 'start';
-		        $scope.uploadingImages[$scope.indexImage].text='0%';
-		        $scope.uploadingImages[$scope.indexImage].file=$scope.imgcrop.file;
-
-                $scope.uploadingImages[$scope.indexImage].status='progress';
-                (function(indexImage){
-                	$scope.imgcrop.imgEditId = 0;
-                	$scope.imgcrop.displayHeight = 0;
-					$scope.imgcrop.displayWidth = 0;
-					$scope.imgcrop.scaledWidth = 0;
-					$scope.imgcrop.scaledHeight = 0;
-					$scope.imgcrop.scaledTop = 0;
-					$scope.imgcrop.scaledLeft = 0;
-					$scope.imgcrop.containerWidth = 0;
-					$scope.imgcrop.containerHeight = 0;
-					$scope.imgcrop.aspectRatio = '16/9';
-					$scope.imgcrop.imgSrc = "";
-					$('#imageCropSource').hide();
-
-                    Upload.upload({
-                        url: '/api/ingrediant/'+$scope.formData.id+'/images',
-                        data: {file :$scope.fileToSend}
-                        	// 'displayWidth':$scope.dataToSend.displayWidth,
-                        	// 'scaledWidth':$scope.dataToSend.scaledWidth,
-                        	// 'scaledHeight':$scope.dataToSend.scaledHeight,
-                        	// 'scaledTop':$scope.dataToSend.scaledTop,
-                        	// 'scaledLeft':$scope.dataToSend.scaledLeft,
-                        	// 'aspectRatio':$scope.dataToSend.aspectRatio,
-                        	// 'landscape':$scope.dataToSend.landscape,
-                        
-                    }).then(function (data) {
-                    	console.log(data);
-                    	console.log(data.data.child);
-                    	// $rootScope.$broadcast('articleSelfChangeImg',data.data.parent);
-                    	$scope.formData.images.push(data.data.child)
-                    	$scope.dataToSend.imgid= data.data.child.id;
-                    	$scope.dataToSend.normalWidth= 800;
-                    	$scope.dataToSend.normalHeight= 450;
-                    	if(!$scope.imgcrop.landscape){
-                    		$scope.dataToSend.normalWidth= 300;
-                    		$scope.dataToSend.normalHeight= 400;
-                    	}
-                    	$scope.dataToSend.filename= data.data.child.filename;
-                    	$rootScope.startSpin();
-      					$sailsSocket.post('/api/image/resize/',$scope.dataToSend).success(function (data,status) {
-				            console.log('SUCCESS RESIZE');
-				            $rootScope.stopSpin();
-				          
-				        }).error(function (data,status) {
-				            console.log(data);
-				            console.log('errOR');
-				        })
-
-
-                        $scope.uploadingImages[indexImage].text='Envoi terminé';
-						// $scope.touched = true;
-
-                        (function(indexImage){
-
-                            $timeout(function () {
-                                $scope.uploadingImages[indexImage].status = 'success';
-                            },3000)
-                        })(indexImage)
-                    },function (evt) {
-                        //HANDLE ERROR
-                    },function (evt) {
-                        $scope.uploadingImages[indexImage].progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                        $scope.uploadingImages[indexImage].text = $scope.uploadingImages[indexImage].progressPercentage+'%'
-                    });
-                })($scope.indexImage)
-		        $scope.indexImage++;
-		    };
-		    $scope.changeOrientation=function(){
-		    	if($scope.imgcrop.landscape)
-		    	{
-		    		$scope.imgcrop.landscape = false;
-		    		$scope.imgcrop.aspectRatio = $scope.imgcrop.aspectRatioPortrait
-		    	}else{
-		    		$scope.imgcrop.landscape = true;
-		    		$scope.imgcrop.aspectRatio = $scope.imgcrop.aspectRatioPaysage
-		    	}
-		    }
-		    $scope.resizeagain=function(img){
-		    	console.log(img);
-
-		    	$scope.imgcrop.imgSrc = 'image/originalSize/'+img.filename;
-		    	$scope.imgcrop.imgEditId = img.id;
-		    	$scope.imgcrop.filename = img.filename;
-				
-		    }
-		    $scope.imgcrop = {};
-		    $scope.imgcrop.imgEditId = 0;
-			$scope.imgcrop.displayHeight = 0;
-			$scope.imgcrop.displayWidth = 0;
-			$scope.imgcrop.scaledWidth = 0;
-			$scope.imgcrop.scaledHeight = 0;
-			$scope.imgcrop.scaledTop = 0;
-			$scope.imgcrop.scaledLeft = 0;
-			$scope.imgcrop.containerWidth = 0;
-			$scope.imgcrop.containerHeight = 0;
-			$scope.imgcrop.aspectRatio = '16/9';
-			$scope.imgcrop.imgSrc = "";
-			$scope.imgcrop.aspectRatioPaysage = '16/9';
-			$scope.imgcrop.aspectRatioPortrait = '3/4';
-
-			
-			$scope.addImgCrop=function($files){
-				console.log('uploadFiles');
-				console.log($files);
-				// $scope.imgcrop = {};
-				$scope.imgcrop.imgEditId = 0;
-				$scope.imgcrop.displayHeight = 0;
-				$scope.imgcrop.displayWidth = 0;
-				$scope.imgcrop.scaledWidth = 0;
-				$scope.imgcrop.scaledHeight = 0;
-				$scope.imgcrop.scaledTop = 0;
-				$scope.imgcrop.containerWidth = 0;
-				$scope.imgcrop.containerHeight = 0;
-				$scope.imgcrop.scaledLeft = 0;
-				$scope.imgcrop.imgSrc = '';
-				$('#imageCropSelector').css({'display':'none'})
-					
-				// $files[0].$ngfBlobUrl;
-
-				if(typeof($files[0])== 'object'){
-					$scope.imgcrop.imgSrc = $files[0].$ngfBlobUrl;
-					$('#imageCropSource').show();
-
-					$scope.imgcrop.file = $files[0];
-					$scope.$applyAsync();
-				    if($files[0].$ngfWidth < $files[0].$ngfHeight)
-	            	{
-	            		$scope.imgcrop.aspectRatio = $scope.imgcrop.aspectRatioPortrait;
-	            		$scope.imgcrop.landscape = false;
-	            	}else{
-	            		$scope.imgcrop.aspectRatio = $scope.imgcrop.aspectRatioPaysage;
-	            		$scope.imgcrop.landscape = true;
-	            	}
-				}
-
-			};
-			// $scope.uploadDocument=function($files){
-			// 	console.log('fileDrop');
-			// 	console.log($files);
-
-
-
-			// };
-			$scope.removeImgCrop = function(){
-				console.log('CANCEL IMAGE');
-				setTimeout(function(){
-					// $('#imageCropSource').attr('src','');
-					$('#imageCropSource').hide();
-					$scope.imgcrop.imgSrc = '';
-					$scope.$applyAsync();
-					
-				},1)
-				// $scope.$applyAsync();
-			}
-
-        	$scope.uploadDocument = function (files) {
-
-
-        		console.log('uploadDocument');
-		        if (files && files.length) {
-		            for (var i = 0; i < files.length; i++) {
-		                var file = files[i];
-		                $scope.uploadsDocument[$scope.indexDocument]={};
-		                $scope.uploadsDocument[$scope.indexDocument].file=file;
-		                $scope.uploadsDocument[$scope.indexDocument].status='start';
-		                $scope.uploadsDocument[$scope.indexDocument].text='0%';
-		                $scope.indexDocument++;
-		            }
-		            for (var i = 0; i < $scope.uploadsDocument.length; i++) {
-		            	console.log('uploadDocument2');
-		                if( $scope.uploadsDocument[i].status=='start'){
-		                	
-		                    $scope.uploadsDocument[i].status='progress';
-		                    (function(i){
-		                    	console.log('uploadDocument3');
-			                    Upload.upload({
-			                        url: '/api/event/'+$scope.formData.id+'/documents',
-			                        data: {files : $scope.uploadsDocument[i].file,filename:'tt',name:'t'}
-			                    }).then(function (data) {
-			                        $scope.formData.documents = data.data.parent.documents
-			                        console.log(data);
-			                        // $rootScope.$broadcast('eventSelfChange',data.data.parent);
-			                        // $rootScope.$broadcast('eventSelfChangeDoc',data.data.parent);
-			                        // $rootScope.$broadcast('eventSelfChange',data.parent);
-			                        $scope.uploadsDocument[i].text='Envoi terminé';
-									// $scope.touched = true;
-
-			                        (function(i){
-
-	                                    $timeout(function () {
-	                                        $scope.uploadsDocument[i].status = 'success';
-	                                    },3000)
-	                                })(i)
-			                    },function (evt) {
-			                        //HANDLE ERROR
-			                    },function (evt) {
-	                                $scope.uploadsDocument[i].progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-	                                $scope.uploadsDocument[i].text = $scope.uploadsDocument[i].progressPercentage+'%'
-			                    });
-		                    })(i)
-		                } 
-		            };
-		        }
-		    };  
-
-			$scope.removeDocument=function(doc){
-				$rootScope.startSpin();
-				eventService.removeDocument($scope.formData.id,doc).then(function(data){
-					var index = _.findIndex($scope.formData.documents, function(o) { return o.id == doc; });
-					if( index !== -1) {
-						$scope.formData.documents.splice(index, 1);
-					}
-					$rootScope.$broadcast('eventSelfChangeDoc',data);
-					//  else {
-					// 	$scope.formData.tags.push(tag_with_id);
-					// }
-					$rootScope.stopSpin();
-				},function(d){
-					console.log('EROOR');
-				})
-			}
+        	
 
 			
 		}],

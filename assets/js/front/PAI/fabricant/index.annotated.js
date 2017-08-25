@@ -2,8 +2,8 @@ angular.module('pai-fabricant', ['ui.router'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
     
       $stateProvider
-	    .state('fabricant', {
-	        url : '/fabricant',
+	    .state('fabricants', {
+	        url : '/fabricants',
 	     //    params:{
 	     //    	sort:'date DESC',
 	     //    	page:1,
@@ -45,24 +45,27 @@ angular.module('pai-fabricant', ['ui.router'])
 
 	        }
        	})
-      	// .state('blog.edit', {
-	      //   url : '/edit/:id',
-	      //   parent:'blog',
-	      //   views:{
-	      //   	'page2@dashboard': {
-	      //   		template: '<add-article new-article="newArticle"></add-article>',
-	      //   		controller:function($scope, newArticle){
-	      //   			$scope.newArticle = newArticle;
-	      //   		},
-	      //   		resolve:{
-	      //               newArticle :  function(articleService,$stateParams){
+      	      	
+      	.state('fabricant', {
+	        url : '/fabricant/:id',
+	        views:{
+	        	'main': {
+	        		template: '<single-fabricant item="curentFabricant"></single-fabricant>',
+	        		controller:["$scope", "curentFabricant", function($scope,curentFabricant){
+	        			console.log('CONTROLLER SINGLE');
+	        			console.log(curentFabricant);
+	        			$scope.curentFabricant = curentFabricant;
+	        		}],
+	        		resolve:{
+	                    curentFabricant :  ["fabricantService", "$stateParams", function(fabricantService,$stateParams){
+	                    	console.log('resolve curentFabricant');
 	                        
-	      //                   return articleService.fetchOne($stateParams.id)
-	      //               }
-	      //           }
-	      //   	}
+	                        return fabricantService.fetchOne($stateParams.id)
+	                    }]
+	                }
+	        	}
 
-	      //   }
-       // 	})
+	        }
+       	})
 
 }]);

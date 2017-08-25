@@ -46,6 +46,27 @@ angular.module('pai-agenda', ['ui.router'])
 
         }
     })
+    .state('event', {
+        url : '/event/:id',
+        views:{
+            'main': {
+                template: '<single-event item="curentEvent"></single-event>',
+                controller:["$scope", "curentEvent", function($scope,curentEvent){
+                    console.log('CONTROLLER SINGLE');
+                    console.log(curentEvent);
+                    $scope.curentEvent = curentEvent;
+                }],
+                resolve:{
+                    curentEvent :  ["eventService", "$stateParams", function(eventService,$stateParams){
+                        console.log('resolve curentEvent');
+                        
+                        return eventService.fetchOne($stateParams.id)
+                    }]
+                }
+            }
+
+        }
+    })
       
 
 }]);

@@ -33,6 +33,7 @@
 						
 
 						<article ng-repeat="item in itemList " class="masonry-brick portfolio-item ingredient-item" >
+							<a ui-sref="ingredient({id: item.id})">
 							<div class="contentPortfo">
 								<img ng-if="item.images[0].filename" src="image/resized/{{item.images[0].filename}}" alt="">
 								<div class="portfolio-desc">
@@ -42,6 +43,7 @@
 									<span class="date">{{item.date | amDateFormat:'MMMM YYYY'}}</span>
 								</div>
 							</div>
+							</a>
 						</article>
 
 						

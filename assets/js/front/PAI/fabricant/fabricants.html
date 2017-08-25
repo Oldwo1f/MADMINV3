@@ -33,6 +33,7 @@
 						
 
 						<article ng-repeat="item in itemList " class="masonry-brick portfolio-item fabricant-item" >
+							<a ui-sref="fabricant({id: item.id})">
 							<div class="contentPortfo">
 								<img ng-if="item.images[0].filename" src="image/resized/{{item.images[0].filename}}" alt="">
 								<div class="portfolio-desc">
@@ -44,6 +45,7 @@
 									
 								</div>
 							</div>
+							</a>
 						</article>
 
 						

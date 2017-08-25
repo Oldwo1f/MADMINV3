@@ -14,8 +14,9 @@ module.exports = {
 		var filePath = 'uploads/images/'+ req.params.size +'/'+ req.params.name;
 		// +req.params.size+'/'
 		// sails.log(filePath);
-	    var stat = fs.statSync(filePath);
-	    // setTimeout(function (argument) {
+		if (fs.existsSync(filePath)) {
+    
+		    var stat = fs.statSync(filePath);
 	    	res.writeHead(200, {
 		        // 'Content-Type': 'image/',
 		        'Content-Length': stat.size
@@ -23,7 +24,10 @@ module.exports = {
 
 		    var readStream = fs.createReadStream(filePath);
 		    readStream.pipe(res);
-	    // },500)
+		}
+		else{
+			res.send(404)
+		}
 	    
 	},	
 	resizeImage:function  (req,res,next) {

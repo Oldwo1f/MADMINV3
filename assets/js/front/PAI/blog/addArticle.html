@@ -7,7 +7,7 @@
 			
 			<!-- <flash-message duration="5000" show-close="true"></flash-message> -->
 
-			<h1 style="padding-top:30px;">Ajouter un contenus dans le fil d'actus</h1>
+			<h1 style="padding-top:30px;">Ajouter un contenu dans le fil d'actualités</h1>
 				
 			<div class="clearfix"></div>
 			
@@ -15,49 +15,49 @@
 				<wizard on-finish="finishedWizardAddContent()"> 
 				<wz-step wz-title="Avant de publier">
 			    	<h2>Avant de publier</h2>
-			    	<p>Avant de soumettre un contenus, merci de lires et comprendre les points suivants</p>
+			    	<p>Avant de soumettre un contenu, veuillez prendre connaissance des points ci-dessous</p>
 				
 				 	<uib-accordion close-others="oneAtATime">
 					   	<div uib-accordion-group class="panel-default" is-open="status1.open">
 					      <uib-accordion-heading>
-					        <i class="icon-question-sign"></i> Quels sont les type de contenus que je peux publié ?
+					        <i class="icon-question-sign"></i> Quels sont les types de contenu que je peux publier ?
 					      </uib-accordion-heading>
-					      Vous pouvez publié des articles d'actualité, des articles sponsorisés, des liens vers d'autre articles.
+					      Ici, vous pouvez relayer des articles d'actualité, des articles sponsorisés, ou des liens vers d'autres articles et pages qui pourraient intéresser le club des PAI. Évidemment, vous pouvez aussi rédiger vos propres articles ou billets d'humeur. 
 					    </div>
 				 	
 					   	<div uib-accordion-group class="panel-default" is-open="status2.open">
 					      <uib-accordion-heading>
-					        <i class="icon-question-sign"></i> Puis-je mettre une publicité?
+					        <i class="icon-question-sign"></i> M'est-il possible de mettre en ligne un publicité ?
 					      </uib-accordion-heading>
-					      Vous pouvez écrire un article sponsorisé gratuitement. <br>Pour mettre des publicités payantes et donc plus visibles contactez alix@nutrimarketing.fr
+					      Vous pouvez écrire un article sponsorisé gratuitement. <br>Sinon, si vous souhaitez apparaître dans les encarts publicitaires prévus à cet effet et vous allouer une plus large visibilité, contactez alix@nutrimarketing.fr.
 					    </div>
 				   
 					   	<div uib-accordion-group class="panel-default" is-open="status3.open">
 					      <uib-accordion-heading>
-					        <i class=" icon-comments-alt"></i> Les articles sont ils relus?
+					        <i class=" icon-comments-alt"></i> Les articles sont-ils relus avant leur publication en ligne ?
 					      </uib-accordion-heading>
-					      Oui, les articles sont brèvement relus avant la publication. Ceci dans le but d'eviter les malveillances. Les articles ne sont pas corrigés et leur contenu n'est en aucun cas modifié par les relecteurs.
+					      Oui, ils sont relus dans l'unique but d'éviter les malveillances. En revanche, ils ne sont pas corrigés et leur contenu n'est en aucun cas modifié par le modérateur. 
 					    </div>
 				    
 					   	<div uib-accordion-group class="panel-default" is-open="status4.open">
 					      <uib-accordion-heading>
-					        <i class="icon-lock3"></i> Ai-je le droit d'ecrire un article sur ma propre entreprise?
+					        <i class="icon-lock3"></i> Ai-je le droit d'écrire un article traitant de ma propre entreprise ?
 					      </uib-accordion-heading>
-					      Oui, à la seul condition de le précisés lors de la création de votre article (article sponsorisé)
+					      Oui, à la seule et unique condition de préciser, lors de la création de votre article, qu'il s'agit d'un article sponsorisé.
 					    </div>
 				    
 					   	<div uib-accordion-group class="panel-default" is-open="status5.open">
 					      <uib-accordion-heading>
-					        <i class=" icon-comments-alt"></i> Ecrire un article me raporte des PAI-points ?
+					        <i class=" icon-comments-alt"></i> Écrire un article peut-il me rapporter des points Collabs ?
 					      </uib-accordion-heading>
-					      Oui, si votre article à un interet pour l'innovation alimentaire <br> Non, si c'est un article sponsorisé qui parle de vous.
+					      Oui, si votre article possède un intérêt pour l'innovation alimentaire <br> Non, si c'est un article sponsorisé qui parle de vous.
 					    </div>
 				    
 					   	<div uib-accordion-group class="panel-default" is-open="status6.open">
 					      <uib-accordion-heading>
-					        <i class="icon-ok"></i> Puis-je Copier / coller un article trouver sur le web ?
+					        <i class="icon-ok"></i> Suis-je en droit de copier/coller un article trouvé sur le Web ?
 					      </uib-accordion-heading>
-					      Non, vous ne pouvez pas. Vous devez possèder les droits d'auteurs afin de publié un article. <br>En revanche vous pouvez poster un liens vers cet article avec un nouveau titre de votre choix.
+					      Non, car vous devez posséder les droits d'auteur afin de publier un article en ligne. <br>Néanmoins, vous êtes en droit de poster un lien vers cet article avec un nouveau titre de votre choix.
 					    </div>
 					</uib-accordion>
 
@@ -68,23 +68,23 @@
 
 
 				<wz-step wz-title="Type de contenus" canexit="exitValidationContenttype">
-			        <h2>Choix du type de contenus</h2>
+			        <h2>Choix du type de contenu</h2>
 
 					<div class="allChoices">
 						
 						<div class="customradio" ng-class="{selected:formData.contentType == 'article'}" ng-click="formData.contentType = 'article'">
 							<h3>Article d'actualité</h3>
 							<!-- <i class="icon-lock3"></i> -->
-							<p>Un article qui parle d'actualité agroalimentaire et d'innovation.</p>
+							<p>Un article qui traite des actualités du secteur de l'agroalimentaire et de l'innovation.</p>
 							<div class="customcheckbox">
 								<i ng-if="formData.contentType != 'article'" class="fa fa-square-o"></i>
 								<i ng-if="formData.contentType == 'article'" class="fa fa-check-square-o"></i>
 							</div>
 						</div>
 						<div class="customradio" ng-class="{selected:formData.contentType == 'sponsored'}" ng-click="formData.contentType = 'sponsored'">
-							<h3>Article Sponsorisé</h3>
+							<h3>Article sponsorisé</h3>
 							<!-- <i class="icon-lock3"></i> -->
-							<p>Un article qui parle de vous. Votre petite annonce / petite publicité.</p>
+							<p>Un article qui parle de vous ou de votre entreprise. Vous pouvez mettre en ligne votre petite annonce ou votre article publicitaire.</p>
 							<div class="customcheckbox">
 								<i ng-if="formData.contentType != 'sponsored'" class="fa fa-square-o"></i>
 								<i ng-if="formData.contentType == 'sponsored'" class="fa fa-check-square-o"></i>
@@ -93,17 +93,17 @@
 						<div class="customradio" ng-class="{selected:formData.contentType == 'link'}" ng-click="formData.contentType = 'link'">
 							<h3>Liens vers un article du web</h3>
 							<!-- <i class="icon-lock3"></i> -->
-							<p>Un liens vers un article du web.</p>
+							<p>Ici, vous partagez un lien vers un article du web.</p>
 							<div class="customcheckbox">
 								<i ng-if="formData.contentType != 'link'" class="fa fa-square-o"></i>
 								<i ng-if="formData.contentType == 'link'" class="fa fa-check-square-o"></i>
 							</div>
 						</div>
 						<div class="customradio2"  >
-							<h3>Evènements / Documents / Ingrédients nouveaux</h3>
+							<h3>Évènements / Documents / Ingrédients nouveaux</h3>
 							<!-- <i class="icon-lock3"></i> -->
-							<p>Rendez vous dans la page approprier pour ajouter de nouveau contenus. 
-								<br> Il seront automatiquement ajoutés au fils d'actualité.</p>
+							<p>Rendez-vous dans la page appropriée pour ajouter de nouveaux contenus. 
+								<br> Ils seront automatiquement ajoutés au fil d'actualités.</p>
 							<!-- <div class="customcheckbox">
 								<i ng-if="formData.contentType != 'link'" class="fa fa-square-o"></i>
 								<i ng-if="formData.contentType == 'link'" class="fa fa-check-square-o"></i>
@@ -126,7 +126,7 @@
 						
 						<div class="form-group">
 						  <label >Titre*:</label>
-						  <input type="text" placeholder="le titre de votre choix" ng-blur="update('title')" ng-model="formData.title" class="form-control">
+						  <input type="text" placeholder="Le titre de votre choix" ng-blur="update('title')" ng-model="formData.title" class="form-control">
 						</div>
 
 						<div class="form-group">
@@ -136,7 +136,7 @@
 
 						<div class="form-group">
 						  <label >Résumé*:</label>
-						  <textarea ui-tinymce="tinymceOption" ng-model="formData.content" ng-blur="update('content')"  type="text" placeholder="Entrez un petit résumer de l'article en bout de liens" class="form-control"> </textarea>
+						  <textarea ui-tinymce="tinymceOption" ng-model="formData.content" ng-blur="update('content')"  type="text" placeholder="Entrez un petit résumé de l'article en bout de lien" class="form-control"> </textarea>
 						</div>
 
 						<div class="form-group">
@@ -175,7 +175,7 @@
 
 						<div class="form-group">
 						  <label >Contenus* :</label>
-						  <textarea ui-tinymce="tinymceOption" ng-blur="update('content')" ng-model="formData.content" type="text" placeholder="Entrez le contenus de l'article" class="form-control"> </textarea>
+						  <textarea ui-tinymce="tinymceOption" ng-blur="update('content')" ng-model="formData.content" type="text" placeholder="Entrez le contenu de l'article" class="form-control"> </textarea>
 						</div>
 
 						<div class="form-group">
@@ -208,7 +208,7 @@
 							<div class="btn " ngf-select="addImgCrop($files)" ng-model="file" ngf-pattern="'image/*'"
 							    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <i class="fa fa-plus"></i></div>
 							<div ngf-drop="addImgCrop($files)" ngf-pattern="'image/*'"
-							    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposer vos images ici</div>
+							    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposez vos images ici</div>
 						</div>
 						<!-- <div ng-file-drop  name="imgs" ng-multiple="false" ng-file-change="fileDrop($files)" class="drop-zone " 
 					        drag-over-class="dragover" ng-multiple="false" allow-dir="false"
@@ -234,13 +234,13 @@
 							</div>
 						<button ng-if="imgcrop.imgSrc" class="btn red" ng-click="removeImgCrop()">Annuler</button>
 						<button ng-if="imgcrop.scaledWidth && !imgcrop.imgEditId" class="btn blue" ng-click="uploadImage()">Ajouter cette image</button>
-						<button ng-if="imgcrop.scaledWidth && imgcrop.imgEditId" class="btn blue" ng-click="resizeOnly()">Redimentionner l'image</button>
+						<button ng-if="imgcrop.scaledWidth && imgcrop.imgEditId" class="btn blue" ng-click="resizeOnly()">Redimensionner l'image</button>
 						<div class="landscapeportrait"  ng-if="imgcrop.scaledWidth">
 							<button class="btn blue" ng-click="changeOrientation()"><i class="fa fa-exchange"></i></button>
 						</div>
 						</div>
 						<!-- <button ng-if="scaledWidth" class="btn blue" ng-click="uploadImage()">Redimentionner votre image</button> -->
-						<p class="messageImage"  ng-if="imgcrop.imgSrc && !imgcrop.scaledWidth"><span>Vous devez redimentionner votre image avant de l'envoyer ver le server. <br> Faite un rectangle dessu le plus grand possible.</span></p>
+						<p class="messageImage"  ng-if="imgcrop.imgSrc && !imgcrop.scaledWidth"><span>Vous devez redimensionner votre image avant de l'envoyer vers le serveur. <br> Conseil : Faites dessus le plus grand rectangle possible.</span></p>
 						<div class="clearfix"></div>
 						<div class="smallSeparator"></div>
 
@@ -284,10 +284,10 @@
 			    
 			    <wz-step wz-title="Validation" canenter="enterValidationFinish" canexit="exitValidationFinish">
 			    	<h2>Validation</h2>
-			        <p>Une fois validez, votre contenus sera placer en attente de validation.</p>
-			        <p>Cela peux prendre quelques minutes ou quelques jours selon la disponibilité des relecteurs</p>
-			        <p>Une foi validez, votre contenus vous raportera {{nbPoints}} points collabs</p>
-			        <p>Selon la pertinance de ce dernier, vous pourrez obtenir des points collabs bonus.</p>
+			        <p>Une fois validé, votre contenu sera placé en attente, car en cours de validation par le modérateur.</p>
+			        <p>Cela peut prendre quelques minutes ou quelques jours selon la disponibilité des relecteurs-modérateurs.</p>
+			        <p>Une fois validé, votre contenu vous rapportera {{nbPoints}} points collabs</p>
+			        <p>Il vous sera possible d'obtenir des points collabs bonus en fonction de la pertinence de ce dernier.</p>
 			        <div class="blankseparator"></div>
 					<div class="clearfix"></div>
 

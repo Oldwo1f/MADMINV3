@@ -15,15 +15,89 @@
     }
 .captionfaqs{overflow-y:auto; max-height : 600px;}
 .entry{padding:10px;}
+.blog-article2 {background: rgba(220,220,220,0.3); border: 4px solid rgba(200,200,200,0.8);padding-bottom: 0;}
+.blog-article2 .entry-image{ margin-bottom: 0;}
+
 .blog-pub {border: 4px solid rgba(255,0,0,0.5);padding-bottom: 0;}
 .blog-pub:before {content:'Publicité';padding:0 4px; background:rgba(255,0,0,0.5); color:white; position: absolute;right: -4px;top: -25px;}
-.blog-pub .entry-image{ margin-bottom: 0;}
+.blog-pub .entry-image{ margin-bottom: 10px;}
 
-.blog-sponsored {background: rgba(0,0,255,0.2); border: 4px solid rgba(0,0,255,0.3);padding-bottom: 0;}
-.blog-sponsored:before {content:'Sponsorisé';padding:0 4px; background:rgba(0,0,255,0.5); color:white; position: absolute;right: -4px;top: -25px;}
+.blog-sponsored {background: rgba(220,220,220,0.3); border: 4px solid rgba(200,200,200,0.8);padding-bottom: 0;}
+.blog-sponsored:before {content:'Sponsorisé';padding:0 4px; background:rgba(200,200,200,0.8);  color:white; position: absolute;right: -4px;top: -25px;}
 .blog-sponsored .entry-image{ margin-bottom: 0;}
 
 .blog-pai {background: rgba(255,0,255,0.2); border: 4px solid rgba(255,0,255,0.3);padding-bottom: 0;}
 .blog-pai:before {content:'Club PAI';padding:0 4px; background:rgba(255,0,255,0.5); color:white; position: absolute;right: -4px;top: -25px;}
 .blog-pai .entry-image{ margin-bottom: 0;}
 
+.blog-article {background: rgba(0,0,255,0.2); border: 4px solid rgba(0,0,255,0.3);padding-bottom: 0;}
+.blog-article:before {content:'Article';padding:0 4px; background:rgba(0,0,255,0.5);color:white; position: absolute;right: -4px;top: -25px;}
+.blog-article .entry-image{ margin-bottom: 0;} 
+
+.postcontent{
+
+	width: 74%;
+    /*left: 50%;*/
+    margin-right: 2%;
+    float:left;
+}
+.sidebar{width: 23%;}
+.sidebar .priceMarket{font-size: 1.6em;}
+.sidebar li.active .priceMarket{font-size: 2em;}
+.btntelecharger{width: 100%;margin: 0;}
+.sidebar .ingrediant{border: 1px solid rgba(50,50,50,0.1);padding: 5px; margin-bottom: 10px;cursor: pointer;}
+.sidebar .ingrediant a{display: inline-block;width:100%;height:100%;}
+.sidebar .ingrediant:hover{border: 1px solid rgba(50,50,50,0.3);}
+.sidebar .ingrediant .tagcloud{margin-bottom: 0;}
+
+
+
+
+.minicategory a {margin-right: 5px;}
+.minicategory a:last-child {margin-right: 0px;}
+.author-image {border-radius: 40px;width:84px;height: 84px;}
+.author-image img{border-radius: 40px;width:84px;height: 84px;max-width:none;}
+.author-description p:last-child{margin-bottom: 0px;}
+.panel-body-author-description{display: flex; align-items:center;}
+
+
+.tagcloud a{border-radius:15px;}
+.tagcloud a i{margin-right: 5px;}
+.catcloud a {padding: 7px;display: block;float: left;margin-right: 4px;margin-bottom: 4px;padding: 3px 6px;border: 1px solid #E5E5E5;font-size: 13px !important;color: #666;    border-radius: 4px;}
+
+.eventDate{display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;margin-bottom: 10px;}
+.eventDate div{font-size: 1.5em}
+.eventDate div.flecheEvent { margin-right: 10px;margin-left: 10px;}
+.eventDate div.flecheEvent span:first-child{display: inline-block;width: 200px;height: 2px;background: #444;margin-bottom: 8px;}
+.arrow-right {width: 0; height: 0;border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 20px solid #444;
+    display: inline-block;
+    margin-left: -20px;
+    margin-top: 5px;}
+
+#cloudTag {width : 100%; height : 400px; font-size: 1.5rem;}
+#cloudCat {width : 100%; height : 300px; font-size: 1.5rem;}
+#cloudCat .CatInCloud {
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.pointsTitle{margin-top: -100px;}
+.pointsTitle h3{text-align: center;}
+.CollabasPointsList {border :1px solid rgba(0,0,0,0.3);padding: 10px;border-radius: 5px;margin-bottom: 20px;}
+.CollabasPointsList table {width: 100%; text-align: center;}
+.CollabasPointsList table tr:nth-child(odd) td{background: rgba(200,200,200,0.1);}
+.CollabasPointsList table thead tr{border-bottom: 1px solid rgba(0,0,0,0.3);;}
+.CollabasPointsList table td {text-align: center;padding: 5px;}
+.CollabasPointsList table th {text-align: center;padding: 5px;}
+body{color:#333 !important;}
+
+.side-header #secondary-menu ul ul a {font-size: 12px;height: auto !important;line-height: 24px !important;padding: 2px 0 !important;}
+.side-header #secondary-menu ul ul li:hover > a {background-color: transparent !important;color: #444 !important;}
+.dark #header-wrap:not(.not-dark) #secondary-menu > ul {list-style: none;}
+.dark #header-wrap:not(.not-dark) #secondary-menu > ul > li {  text-align: center;margin-bottom: 5px;}
+.dark #header-wrap:not(.not-dark) #secondary-menu > ul > li > a{    color: #EEE;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);font-weight: bold;font-size: 11px;letter-spacing: 1px;text-transform: uppercase;font-family: 'Raleway', sans-serif;}
+#secondary-menu ul li > a i {position: relative;top: -1px;font-size: 10px;width: 16px;text-align: center;margin-right: 6px;vertical-align: top;}
+
+.imageprofile {width: 200px;}

@@ -17,6 +17,7 @@ module.exports = {
 		nbView : {type:'integer',defaultsTo:0},
         status : {type:'string',required:true},
         contentType : {type:'string'},
+         validate : {type:'boolean',defaultsTo:null},
       	isPaiContent : {type:'boolean',defaultsTo:false},
         link : {type:'string'},
         nbPoints : {type:'integer',defaultsTo:0},

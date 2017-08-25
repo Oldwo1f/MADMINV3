@@ -13,9 +13,13 @@ module.exports = {
   		email:{type:'string',required:true,email:true},
   		content:{type:'text',required:true},
   		status:{type:'string',defaultsTo:'new'},
+  		imgAuthor:{type:'string'},
   		articleName:{type:'string'},
   		admin:{type:'boolean',defaultsTo:false},
   		imgpath:{type:'text'},
+  		user: {
+			model: 'user',
+		},
   		article: {
 			model: 'article',
 		},
@@ -26,11 +30,11 @@ module.exports = {
 			collection: 'comment',
 		},
 		selfUpdate:function(options,cb){
-			console.log('SELFUPDATE');
+			console.log('SELFUPDATE'); 
 	        cb(null, this)
 	        if(options.parentType == 'article')
 	        {
-	            if(options.verb == 'add'){
+	            if(options.verb == 'add'){ 
 
 	                // Category.findOne(this.id).then(function(data){
 	                // console.log(data);
@@ -113,6 +117,7 @@ module.exports = {
 		})
 
 
+
 	},
 	beforeCreate:function(value, callback){
 		console.log('BEFORECREATE');
@@ -154,6 +159,7 @@ module.exports = {
 		            return callback(null,data)
 		        }).catch(function(err){
 		               console.log(err);
+		               return callback(null,data)
 		        })
 				
 			})

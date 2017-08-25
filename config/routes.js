@@ -49,6 +49,9 @@ module.exports.routes = {
   'POST /api/article/:id/documents':'articleController.uploadDocument',
   'POST /api/article/:id/images':'articleController.uploadImage',
   'POST /api/category/:id/images':'categoryController.uploadImage',
+  'POST /article/:itemid/addComment':'articleController.addComment',
+  'POST /project/:itemid/addComment':'projectController.addComment',
+  'POST /comment/:itemid/addReponse':'articleController.addReponse',
   'GET /image/:size/:name':'ImageController.serveImage',
   'GET /document/:name':'DocumentController.serveDocument',
   'POST /api/image/resize':'ImageController.resizeImage',
@@ -74,6 +77,13 @@ module.exports.routes = {
   'POST /api/fabricant/:id/documents':'fabricantController.uploadDocument',
   'POST /api/fabricant/:id/images':'fabricantController.uploadImage',
   'get /searchCountries/:slug':'fabricantController.searchCountries',
+  //Event 
+  'get /api/event/search/:sort/:slug':'eventController.search',
+  'get /api/event/:sort/:limit/:page':'eventController.fetch',
+  'get /api/eventActif':'eventController.fetchActive',
+  'get /api/event/:id':'eventController.fetchOne',
+  'POST /api/event/:id/documents':'eventController.uploadDocument',
+  'POST /api/event/:id/images':'eventController.uploadImage',
   //Ingrediant
   'get /api/ingrediant/search/:sort/:slug':'ingrediantController.search',
   'get /api/ingrediant/:sort/:limit/:page':'ingrediantController.fetch',
@@ -82,12 +92,12 @@ module.exports.routes = {
   'POST /api/ingrediant/:id/documents':'ingrediantController.uploadDocument',
   'POST /api/ingrediant/:id/images':'ingrediantController.uploadImage',
     //Fabricant
-  'get /api/fabricant/search/:sort/:slug':'fabricantController.search',
-  'get /api/fabricant/:sort/:limit/:page':'fabricantController.fetch',
-  'get /api/fabricantActif/:sort/:limit/:page':'fabricantController.fetchActive',
-  'get /api/fabricant/:id':'fabricantController.fetchOne',
-  'POST /api/fabricant/:id/documents':'fabricantController.uploadDocument',
-  'POST /api/fabricant/:id/images':'fabricantController.uploadImage',
+  // 'get /api/fabricant/search/:sort/:slug':'fabricantController.search',
+  // 'get /api/fabricant/:sort/:limit/:page':'fabricantController.fetch',
+  // 'get /api/fabricantActif/:sort/:limit/:page':'fabricantController.fetchActive',
+  // 'get /api/fabricant/:id':'fabricantController.fetchOne',
+  // 'POST /api/fabricant/:id/documents':'fabricantController.uploadDocument',
+  // 'POST /api/fabricant/:id/images':'fabricantController.uploadImage',
 
 
   'POST /api/project/:id/documents':'projectController.uploadDocument',
@@ -137,6 +147,12 @@ module.exports.routes = {
   'POST /validatePaiIngrediant/:id':'ingrediantController.validatePai',
   'POST /unvalidatePaiIngrediant/:id':'ingrediantController.unvalidatePai',
 
+  'POST /validatePaiFabricant/:id':'fabricantController.validatePai',
+  'POST /unvalidatePaiFabricant/:id':'fabricantController.unvalidatePai',
+
+  'POST /validatePaiEvent/:id':'eventController.validatePai',
+  'POST /unvalidatePaiEvent/:id':'eventController.unvalidatePai',
+
   'POST /validatePaiProject/:id':'projectController.validatePai2',
   'POST /unvalidatePaiProject/:id':'projectController.unvalidatePai2',
 
@@ -147,8 +163,13 @@ module.exports.routes = {
   // FETCH FRONT
 
   'GET /marketplace/fetchItem/:page':'projectController.fetchFront',
+  'GET /blog/fetchItem/:page':'articleController.fetchFront',
+  'GET /article/fetchOne/:id':'articleController.fetchOne',
   'GET /ingredient/fetchItem/:page':'ingrediantController.fetchFront',
   'GET /fabricant/fetchItem/:page':'fabricantController.fetchFront',
+  'GET /fabricant/fetchOne/:id':'fabricantController.fetchOne',
+  'GET /ingrediant/fetchOne/:id':'ingrediantController.fetchOne',
+  'GET /event/fetchOne/:id':'eventController.fetchOne',
 
 
   // 'POST /article/:id/tags/:pk':'ArticleController.addTag',

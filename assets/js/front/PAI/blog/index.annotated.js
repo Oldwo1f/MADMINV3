@@ -45,17 +45,19 @@ angular.module('pai-blog', ['ui.router'])
 
 	        }
        	})
-      	.state('blog.edit', {
-	        url : '/edit/:id',
-	        parent:'blog',
+      	.state('article', {
+	        url : '/article/:id',
 	        views:{
-	        	'page2@dashboard': {
-	        		template: '<add-article new-article="newArticle"></add-article>',
-	        		controller:["$scope", "newArticle", function($scope, newArticle){
-	        			$scope.newArticle = newArticle;
+	        	'main': {
+	        		template: '<single-article item="curentArticle"></single-article>',
+	        		controller:["$scope", "curentArticle", function($scope,curentArticle){
+	        			console.log('CONTROLLER SINGLE');
+	        			console.log(curentArticle);
+	        			$scope.curentArticle = curentArticle;
 	        		}],
 	        		resolve:{
-	                    newArticle :  ["articleService", "$stateParams", function(articleService,$stateParams){
+	                    curentArticle :  ["articleService", "$stateParams", function(articleService,$stateParams){
+	                    	console.log('resolve curentArticle');
 	                        
 	                        return articleService.fetchOne($stateParams.id)
 	                    }]

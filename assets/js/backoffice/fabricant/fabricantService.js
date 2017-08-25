@@ -362,10 +362,10 @@ angular.module('core')
         return deferred.promise;      
     }
 
-    service.validatePai=function(id){
+    service.validatePai=function(id,bonus){
 
         var deferred = $q.defer();
-        $sailsSocket.post('/validatePaiFabricant/'+id).success(function (data,status) {
+        $sailsSocket.post('/validatePaiFabricant/'+id,{bonus:bonus}).success(function (data,status) {
             deferred.resolve(data);
         }).error(function (data,status) {
             // if(status == '401')

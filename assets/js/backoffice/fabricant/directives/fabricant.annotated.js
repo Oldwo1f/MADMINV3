@@ -1,4 +1,4 @@
-angular.module('momi-pai')
+angular.module('momi-pai2')
   .directive('fabricants', ["fabricantService", function(fabricantService){
 
     'use strict';

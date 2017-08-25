@@ -61,10 +61,11 @@
 										<span ng-if="collabs.contentType=='autre'">Documents</span>
 										<span ng-if="collabs.contentType=='ingrediant'">Ingrediant</span>
 										<span ng-if="collabs.contentType=='fabricant'">Fabricant</span>
+										<span ng-if="collabs.contentType=='event'">Évènement</span>
 									</td>
 									<td>{{ collabs.score }}</td>
 									<td ng-if="collabs.contentType=='etude' || collabs.contentType=='rapport' || collabs.contentType=='book' || collabs.contentType=='tendance' || collabs.contentType=='conso' || collabs.contentType=='autre' || collabs.bonus == 0"> - </td>
-									<td ng-if="(collabs.contentType=='link' || collabs.contentType=='sponsored' || collabs.contentType=='article' || collabs.contentType=='ingrediant'  || collabs.contentType=='fabricant' ) && collabs.bonus != 0 ">{{ collabs.bonus }}</td>
+									<td ng-if="(collabs.contentType=='link' || collabs.contentType=='sponsored' || collabs.contentType=='article' || collabs.contentType=='ingrediant'  || collabs.contentType=='event'  || collabs.contentType=='fabricant' ) && collabs.bonus != 0 ">{{ collabs.bonus }}</td>
 									<td>{{ collabs.total}}</td>
 									<td><label >{{ collabs.status }}</label></td>
 									<td><label ng-if="collabs.dateValidation" title="{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY HH:mm:ss'}}">{{collabs.dateValidation | amDateFormat:'DD MMMM  YYYY'}}</label><label ng-if="!collabs.dateValidation"> - </label></td>

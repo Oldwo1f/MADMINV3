@@ -7,7 +7,7 @@
 			
 			
 
-			<h1 style="padding-top:30px;">Ajouter un évènement dans la base de donnée</h1>
+			<h1 style="padding-top:30px;">Ajouter un évènement dans la base de données</h1>
 				
 			<div class="clearfix"></div>
 			
@@ -15,44 +15,44 @@
 				<wizard on-finish="finishedWizardAddContent()"> 
 				<wz-step wz-title="Avant de publier">
 			    	<h2>Avant de publier</h2>
-			    	<p>Avant de soumettre un évènement, merci de lires et comprendre les points suivants</p>
+			    	<p>Avant de soumettre un évènement, veuillez prendre connaissance des points ci-dessous</p>
 				
 				 	<uib-accordion close-others="oneAtATime">
 					   	<div uib-accordion-group class="panel-default" is-open="status1.open">
 					      <uib-accordion-heading>
-					        <i class="icon-question-sign"></i> Quels sont les type d'evenement que je peux publié ?
+					        <i class="icon-question-sign"></i> Quels sont les types d'évènements que je peux publier ?
 					      </uib-accordion-heading>
-					      Vous pouvez publié tout les types d'évènement, du momment qu'il sont en rapport avec l'innovation allimentaire.
+					      S'ils sont en rapport avec l'innovation du secteur agroalimentaire, vous pouvez publier ici tous les types d'évènements. 
 					    </div>
 				 	
 					   	<div uib-accordion-group class="panel-default" is-open="status2.open">
 					      <uib-accordion-heading>
-					        <i class="icon-question-sign"></i> Puis-je remplir une fiche évènemet incomplète ?
+					        <i class="icon-question-sign"></i> Puis-je remplir une fiche évènement incomplète ?
 					      </uib-accordion-heading>
-					      Oui, toute information, même partiel est bonne à prendre. <br>
-					      Cependant, un fiche correctement remplis raporte plus de point Collabs.
+					      Oui, toute information, même partielle, est bonne à prendre. <br>
+					      Cependant, sachez qu'une fiche correctement remplie vous rapporte plus de points Collabs.
 					    </div>
 				   
 					   	<div uib-accordion-group class="panel-default" is-open="status3.open">
 					      <uib-accordion-heading>
-					        <i class=" icon-comments-alt"></i> Les fiches évènement sont elle relus?
+					        <i class=" icon-comments-alt"></i> Les fiches évènements sont elle relues avant leur publication en ligne ?
 					      </uib-accordion-heading>
-					      Oui, les fiche évènement sont brèvement relus avant la publication. Ceci dans le but d'eviter les malveillances et les évènement sans rapport avec l'alimentaire.
+					      Oui, ils sont relus dans l'unique but d'éviter les malveillances et les évènements sans rapport avec le secteur de l'agroalimentaire. 
 					    </div>
 				    
 					   	<div uib-accordion-group class="panel-default" is-open="status4.open">
 					      <uib-accordion-heading>
-					        <i class="icon-lock3"></i> Ai-je le droit d'ajouter tout les évènement produit par ma propre entreprise?
+					        <i class="icon-lock3"></i> Ai-je le droit d'ajouter des évènements organisés par ma propre entreprise ?
 					      </uib-accordion-heading>
-					      Oui, . . . . .
+					      Oui, si ces évènements sont en rapport avec le secteur de l'agroalimentaire. 
 					    </div>
 				    
 					   	<div uib-accordion-group class="panel-default" is-open="status5.open">
 					      <uib-accordion-heading>
-					        <i class=" icon-comments-alt"></i> Ecrire une fiche me raporte des points Collabs ?
+					        <i class=" icon-comments-alt"></i> Est-ce que je vais gagner des points Collabs si j'ajoute un évènement ?
 					      </uib-accordion-heading>
-					      Oui, entre 2 et 5 points Collabs selon la complétude avec laquelle vous aurez remplis la fiche.
-					    </div>
+					      Oui, entre 2 et 5 points Collabs selon l'importance de l'évènement organisé et partagé avec le club. 					    
+					  </div>
 				    
 					   
 					</uib-accordion>
@@ -95,19 +95,38 @@
 			    </wz-step> -->
 
 				<wz-step wz-title="Fiche ingrédient"  canexit="exitValidationContenus">
-			        <h2>Ingrédient</h2>
+			        <h2>Évènement</h2>
 
 					
-					<div class="ADDCONTENT-article addImages" >
+					<div class="ADDCONTENT-article addEvent" >
 						
 						<div class="form-group">
-						  <label >Name* :</label>
-						  <input type="text" ng-blur="update('name')"  ng-model="formData.name" placeholder="Nom de l'fabricant" class="form-control">
+						  <label >Nom* :</label>
+						  <input type="text" ng-blur="update('title')"  ng-model="formData.title" placeholder="Nom de l'évènement" class="form-control">
+						</div>
+						<div class="form-group ">
+						  <label >Type d'évènement* :</label>
+						  <!-- <input type="date" ng-blur="update('startsAt')"  ng-model="formData.startsAt" placeholder="Date de début" class="form-control"> -->
+							  <div class="btn-group" role="group" aria-label="Basic example">
+							  	<button type="button" class="btn btn-secondary" ng-class="{'bigger':formData.contentType=='conf'}" ng-click="formData.contentType='conf'; update('contentType')">Conférence</button>
+							  	<button type="button" class="btn btn-secondary" ng-class="{'bigger':formData.contentType=='colloque'}" ng-click="formData.contentType='colloque'; update('contentType')">Colloque</button>
+							  	<button type="button" class="btn btn-secondary" ng-class="{'bigger':formData.contentType=='salon'}" ng-click="formData.contentType='salon'; update('contentType')">Salon</button>
+							  	<button type="button" class="btn btn-secondary" ng-class="{'bigger':formData.contentType=='other'}" ng-click="formData.contentType='other'; update('contentType')">Autre</button>
+							  </div>
+						</div>
+						<div class="form-group col-sm-6">
+						  <label >Date de début* :</label>
+						  <input type="date" ng-blur="formData.endsAt=formData.startsAt; update('startsAt')"  ng-model="formData.startsAt" placeholder="Date de début" class="form-control">
+						</div>
+
+						<div class="form-group col-sm-6">
+						  <label >Date de fin* :</label>
+						  <input type="date" ng-blur="update('endsAt')"  ng-model="formData.endsAt" placeholder="Date de fin" class="form-control">
 						</div>
 
 						<div class="form-group">
-						  <label >Contenus* :</label>
-						  <textarea ui-tinymce="tinymceOption" ng-blur="update('content')" ng-model="formData.content" type="text" placeholder="Entrez une petite description de l'ingrédient" class="form-control"> </textarea>
+						  <label >Contenu* :</label>
+						  <textarea ui-tinymce="tinymceOption" ng-blur="update('content')" ng-model="formData.content" type="text" placeholder="Entrez une petite description de l'évènement" class="form-control"> </textarea>
 						</div>
 
 						<div class="form-group">
@@ -133,67 +152,7 @@
 				            	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
 				        	</tags-input>
 						</div>
-						<div class="form_title formTitleSpecial">
-							<label for="">Ajouter des images : </label>
-						<!-- <input type="file"  class="addImageBtn" onchange="angular.element(this).scope().changeImageUrl(this)">
-						<div class="addImageBtnFakeBtn" onclick="$(this).siblings('.addImageBtn').click();"> </div> -->
-							<div class="btn " ngf-select="addImgCrop($files)" ng-model="file" ngf-pattern="'image/*'"
-							    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <i class="fa fa-plus"></i></div>
-							<div ngf-drop="addImgCrop($files)" ngf-pattern="'image/*'"
-							    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposer vos images ici</div>
-						</div>
-						<!-- <div ng-file-drop  name="imgs" ng-multiple="false" ng-file-change="fileDrop($files)" class="drop-zone " 
-					        drag-over-class="dragover" ng-multiple="false" allow-dir="false"
-					        accept=".jpg,.png,.gif">Déposer vos images ici</div> -->
-
 						
-
-						<div class="imgrelativecontainer">
-							
-						<div image-crop 
-					    		aspect-ratio="imgcrop.aspectRatio" 
-					    		img-src="imgcrop.imgSrc" 
-					    		img-load="'imgLoader.gif'" 
-					    		display-height="imgcrop.displayHeight"
-					    		display-width = "imgcrop.displayWidth"
-					    		scaled-height="imgcrop.scaledHeight" 
-					    		scaled-width="imgcrop.scaledWidth" 
-					    		scaled-top="imgcrop.scaledTop" 
-					    		scaled-left="imgcrop.scaledLeft" 
-					    		container-width="imgcrop.containerWidth" 
-					    		container-height="imgcrop.containerHeight" 
-					    		style=" width: 100%; position:relative;" class="imageCropper" ng-class="{imageCropperH0: !imgcrop.imgSrc}">
-							</div>
-						<button ng-if="imgcrop.imgSrc" class="btn red" ng-click="removeImgCrop()">Annuler</button>
-						<button ng-if="imgcrop.scaledWidth && !imgcrop.imgEditId" class="btn blue" ng-click="uploadImage()">Ajouter cette image</button>
-						<button ng-if="imgcrop.scaledWidth && imgcrop.imgEditId" class="btn blue" ng-click="resizeOnly()">Redimentionner l'image</button>
-						<div class="landscapeportrait"  ng-if="imgcrop.scaledWidth">
-							<button class="btn blue" ng-click="changeOrientation()"><i class="fa fa-exchange"></i></button>
-						</div>
-						</div>
-						<!-- <button ng-if="scaledWidth" class="btn blue" ng-click="uploadImage()">Redimentionner votre image</button> -->
-						<p class="messageImage"  ng-if="imgcrop.imgSrc && !imgcrop.scaledWidth"><span>Vous devez redimentionner votre image avant de l'envoyer ver le server. <br> Faite un rectangle dessu le plus grand possible.</span></p>
-						<div class="clearfix"></div>
-						<div class="smallSeparator"></div>
-
-						<div ng-repeat="uploadingImage in uploadingImages" class="uploadingDoc" ng-if="uploadingImage.status == 'progress'">
-							<span>{{uploadingImage.file.name}}</span>
-							<span>{{uploadingImage.text}}</span>
-							<md-progress-linear md-mode="determinate" value="{{uploadingImage.progressPercentage}}"></md-progress-linear>
-								
-						</div> 
-
-						<div class="smallSeparator"></div>
-						<div class="imageList" ui-sortable="sortOption" ng-model="formData.images">
-							<figure class="pull-left post__img" ng-repeat="img in formData.images">
-								<img class="media-object" ng-src="image/adminThumbs/{{img.filename}}" alt="new">
-								<!-- <div class="btnreresize" ng-click="resizeagain(img)"><i class="fa fa-crop"></i></div> -->
-								<removeremove class="removeremove" action="removeImg" itemid="img.id"></removeremove>
-							</figure>
-							
-							<!-- ng-if  number of image > 4 -->
-							<!-- <div class="completor"></div> -->
-						</div>
         	
 		 	
 
@@ -216,19 +175,19 @@
 			    
 			    <wz-step wz-title="Validation" canenter="enterValidationFinish" canexit="exitValidationFinish">
 			    	<h2>Validation</h2>
-			        <p>Une fois validez, votre contenus sera placer en attente de validation.</p>
-			        <p>Cela peux prendre quelques minutes ou quelques jours selon la disponibilité des relecteurs</p>
-			        <p>Une foi validez, votre contenus vous raportera {{nbPoints}} points collabs</p>
-			        <p>Selon la pertinance de ce dernier, vous pourrez obtenir des points collabs bonus.</p>
+			        <p>Une fois validé, votre contenu sera placé en attente, car en cours de validation par le modérateur.</p>
+			        <p>Cela peut prendre quelques minutes ou quelques jours selon la disponibilité des relecteurs-modérateurs.</p>
+			        <p>Une fois validé, votre contenu vous rapportera {{nbPoints}} points collabs</p>
+			        <p>Il vous sera possible d'obtenir des points collabs bonus en fonction de la pertinence de ce dernier.</p>
 			        <div class="blankseparator"></div>
 					<div class="clearfix"></div>
 
 
 					<!-- <div class="alert alert-success pull-left" ng-if="successMessage">
-					  <strong>Votre contenus à été posté!</strong> Vous aurez des nouvelles de sa validation dans vos email d'ici quelques jours.
+					  <strong>Votre contenu à été posté !</strong> Vous aurez des nouvelles de sa validation dans vos mails d'ici quelques jours.
 					</div>
 					<div class="alert alert-danger pull-left" ng-if="errorMessage">
-					  <strong>Une erreur est survenu!</strong> Veuillez reessayer plus tard. Si le problème persiste contactez nous.
+					  <strong>Une erreur est survenue !</strong> Veuillez réessayer plus tard. Si le problème persiste, contactez nous.
 					</div> -->
 			        <!-- <input type="submit" class="btn btn-primary btn-lg pull-left" wz-previous value="Contenus" /> -->
 			        <input ng-if="!finishedWizzard" type="submit" class="btn btn-primary btn-lg pull-right" wz-next value="Valider" />

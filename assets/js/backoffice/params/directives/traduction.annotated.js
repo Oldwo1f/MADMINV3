@@ -1,4 +1,4 @@
-angular.module('momi-blog')
+angular.module('core')
 .directive('traductions',function(){
 
 

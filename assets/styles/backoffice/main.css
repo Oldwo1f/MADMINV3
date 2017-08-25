@@ -4713,6 +4713,19 @@ a:focus, a:hover{text-decoration: none;}
 .userspage .btn-group.block .bigger{ font-size:1.2rem;}
 .userspage .btn-group>.btn:first-child {margin-left: -1px;}
 .userspage .tableRow .post__info {height: 57px;margin-bottom: 0px; margin-top: 0px;}
+
+.agenda .tableRow .post__date{ height : auto;}
+.agenda .tableRow .post_desc img.myprofiletableimage{ border-radius:20px;}
+.agenda .tableRow .post_desc img{ float:left;}
+.agenda .tableRow .post_desc h3{font-size: 1.4rem;margin-top: 0.4rem;height:auto;text-indent: 15px;}
+.agenda .tableRow .post_desc .email{height:auto;text-indent: 15px;}
+.agenda .tableRow td{ vertical-align: middle;}
+.agenda .btn-group.block { display:flex;flex-direction:column;width : 150px;}
+.agenda .btn-group.block .btn{ padding-top: 0; padding-bottom: 0;}
+.agenda .btn-group.block .bigger{ font-size:1.2rem;}
+.agenda .btn-group>.btn:first-child {margin-left: -1px;}
+.agenda .media-body .btn-group>.btn:first-child {margin-left: 15px;}
+.agenda .tableRow .post__info {height: 57px;margin-bottom: 0px; margin-top: 0px;}
 .loaderIntput {position: absolute;right: 20px;height: 64px;line-height: 64px;}
 .loaderIntput .fa-spinner{margin-right: 10px;}
 /*.verticalcenterP{ height : auto;}*/

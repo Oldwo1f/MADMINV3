@@ -127,6 +127,20 @@
 			        		<div class="info1" ng-bind-html="notif.info1"></div>
 			        		<div class="info2" ng-bind-html="notif.info2"></div>
 		        		</div>
+		        		<div ng-if="notif.type=='validate-fabricant'" >
+			        		<div class="title">Fabricant à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
+		        		<div ng-if="notif.type=='validate-event'" >
+			        		<div class="title">Évènement à valider
+			        			<div class="date"><span am-time-ago="notif.createdAt"></span></div>
+			        		</div>
+			        		<div class="info1" ng-bind-html="notif.info1"></div>
+			        		<div class="info2" ng-bind-html="notif.info2"></div>
+		        		</div>
 		        	</li>
 		        </ul>
 		    </div>

@@ -18,7 +18,7 @@ angular.module('PAI')
         // console.log('/event/'+sort+'/'+nbPerPage+'/'+nbPerPage*(page-1));
 
 
-        $sailsSocket.get('/api/event').success(function (data,status) {
+        $sailsSocket.get('/api/eventActif').success(function (data,status) {
             console.log(data);
             service.items =data;
             deferred.resolve(data);
@@ -44,6 +44,18 @@ angular.module('PAI')
 
         return deferred.promise;
     };
+    service.addCollabsPoints=function(id, idCollabs){
+
+        var deferred = $q.defer();
+        $sailsSocket.post('/api/event/'+id+'/collabsPoints/'+idCollabs).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
     service.search= function(slug,sort) {
         var deferred = $q.defer();
         sort = sort? sort : 'date DESC'
@@ -222,7 +234,7 @@ angular.module('PAI')
 
         var authorId = $auth.getPayload().sub
         console.log(authorId);
-        e = {startsAt : new Date(),endsAt : new Date(),status:'draft',contentType:'eventpai',isPaiContent:true};
+        e = {startsAt : new Date(),endsAt : new Date(),status:'draft',contentType:'event',isPaiContent:false};
         var deferred = $q.defer();
         $sailsSocket.post('/api/event',e).success(function (data,status) {
             
@@ -289,7 +301,7 @@ angular.module('PAI')
 
         // event = {date : new Date(),status:'draft'};
         var deferred = $q.defer();
-        $sailsSocket.get('/api/event/'+id).success(function (data,status) {
+        $sailsSocket.get('/event/fetchOne/'+id).success(function (data,status) {
             deferred.resolve(data);
         }).error(function (data,status) {
             if(status == '401')

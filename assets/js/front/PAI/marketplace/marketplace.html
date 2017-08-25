@@ -42,6 +42,7 @@
 						'pf-book':item.contentType == 'book',
 						'pf-rapport':item.contentType == 'rapport'}
 						">
+							<a ui-sref="project({id: item.id})">
 							<div class="contentPortfo">
 								<div class="portfolio-desc">
 									<span class="subtitleportfo" ng-if="item.contentType == 'etude'">Étude de marché</span>
@@ -58,6 +59,7 @@
 									<span class="price">{{calcInitialPrice(item.initialPrice,item.date)}}</span>
 								</div>
 							</div>
+							</a>
 						</article>
 
 						

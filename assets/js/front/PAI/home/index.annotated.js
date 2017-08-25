@@ -26,6 +26,26 @@ angular.module('pai-home', ['ui.router'])
  
 	        }
        	})
+       	.state('profile', {
+        url : '/profile',
+        views:{
+            'main': {
+                template: '<profile-page profile-infos="profileInfos"></profile-page>',
+                controller:["$scope", "profileInfos", function($scope, profileInfos){
+                        $scope.profileInfos = profileInfos;
+                    	console.log('profileInfos2');
+                }],
+                resolve:{
+                    profileInfos :  ["userService", "$stateParams", "$auth", function(userService, $stateParams,$auth){
+                    	console.log('profileInfos');
+                        
+                        return userService.selfProfile($auth.getPayload().sub)
+                    }]
+                }
+        	}
+
+        }
+       })
       
 
 }]);

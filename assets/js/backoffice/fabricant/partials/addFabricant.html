@@ -262,121 +262,99 @@
 	<fabricant class="widget "> -->
 		<div class="widget__form addImages">
 			
-		<div class="col-md-12 form_col">
-			<div class="form_title formTitleSpecial"><i class="pe-7s-photo-gallery"></i>Ajouter des images 
-			<!-- <input type="file"  class="addImageBtn" onchange="angular.element(this).scope().changeImageUrl(this)">
-			<div class="addImageBtnFakeBtn" onclick="$(this).siblings('.addImageBtn').click();"> </div> -->
-				<div class="button btnADDIMG" ngf-select="addImgCrop($files)" ng-model="file" ngf-pattern="'image/*'"
-				    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <i class="pe-7s-plus"></i></div>
-				<div ngf-drop="addImgCrop($files)" ngf-pattern="'image/*'"
-				    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposer vos images ici</div>
-			</div>
-			<!-- <div ng-file-drop  name="imgs" ng-multiple="false" ng-file-change="fileDrop($files)" class="drop-zone " 
-		        drag-over-class="dragover" ng-multiple="false" allow-dir="false"
-		        accept=".jpg,.png,.gif">Déposer vos images ici</div> -->
+			<div class="col-md-12 form_col">
+				<div class="form_title formTitleSpecial"><i class="pe-7s-photo-gallery"></i>Ajouter des images 
+				<!-- <input type="file"  class="addImageBtn" onchange="angular.element(this).scope().changeImageUrl(this)">
+				<div class="addImageBtnFakeBtn" onclick="$(this).siblings('.addImageBtn').click();"> </div> -->
+					<div class="button btnADDIMG" ngf-select="addImgCrop($files)" ng-model="file" ngf-pattern="'image/*'"
+					    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"> <i class="pe-7s-plus"></i></div>
+					<div ngf-drop="addImgCrop($files)" ngf-pattern="'image/*'"
+					    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-drag-over-class="'dragover'" ng-model="file" class="drop-zone" >Déposer vos images ici</div>
+				</div>
+				<!-- <div ng-file-drop  name="imgs" ng-multiple="false" ng-file-change="fileDrop($files)" class="drop-zone " 
+			        drag-over-class="dragover" ng-multiple="false" allow-dir="false"
+			        accept=".jpg,.png,.gif">Déposer vos images ici</div> -->
 
+				
+
+				<div class="imgrelativecontainer">
+					
+				<div image-crop 
+			    		aspect-ratio="imgcrop.aspectRatio" 
+			    		img-src="imgcrop.imgSrc" 
+			    		img-load="'imgLoader.gif'" 
+			    		display-height="imgcrop.displayHeight"
+			    		display-width = "imgcrop.displayWidth"
+			    		scaled-height="imgcrop.scaledHeight" 
+			    		scaled-width="imgcrop.scaledWidth" 
+			    		scaled-top="imgcrop.scaledTop" 
+			    		scaled-left="imgcrop.scaledLeft" 
+			    		container-width="imgcrop.containerWidth" 
+			    		container-height="imgcrop.containerHeight" 
+			    		style=" width: 100%; position:relative;" class="imageCropper" ng-class="{imageCropperH0: !imgcrop.imgSrc}">
+					</div>
+				<button ng-if="imgcrop.imgSrc" class="btn red" ng-click="removeImgCrop()">Annuler</button>
+				<button ng-if="imgcrop.scaledWidth && !imgcrop.imgEditId" class="btn blue" ng-click="uploadImage()">Ajouter cette image</button>
+				<button ng-if="imgcrop.scaledWidth && imgcrop.imgEditId" class="btn blue" ng-click="resizeOnly()">Redimentionner l'image</button>
+				<div class="landscapeportrait"  ng-if="imgcrop.scaledWidth">
+					<button class="btn blue" ng-click="changeOrientation()"><i class="fa fa-exchange"></i></button>
+				</div>
+				</div>
+				<!-- <button ng-if="scaledWidth" class="btn blue" ng-click="uploadImage()">Redimentionner votre image</button> -->
+				<p class="messageImage"  ng-if="imgcrop.imgSrc && !imgcrop.scaledWidth"><span>Vous devez redimentionner votre image avant de l'envoyer ver le server. <br> Faite un rectangle dessu le plus grand possible.</span></p>
+				<div class="clearfix"></div>
+				<div class="smallSeparator"></div>
+
+				<div ng-repeat="uploadingImage in uploadingImages" class="uploadingDoc" ng-if="uploadingImage.status == 'progress'">
+					<span>{{uploadingImage.file.name}}</span>
+					<span>{{uploadingImage.text}}</span>
+					<md-progress-linear md-mode="determinate" value="{{uploadingImage.progressPercentage}}"></md-progress-linear>
+						
+				</div> 
+
+				<div class="smallSeparator" ></div>
+				<div class="imageList" ui-sortable="sortOption" ng-model="formData.images" >
+					<figure class="pull-left post__img" ng-repeat="img in formData.images">
+						<img class="media-object" ng-src="image/adminThumbs/{{img.filename}}" alt="new">
+						<div class="btnreresize" ng-click="resizeagain(img)"><i class="fa fa-crop"></i></div>
+						<removeremove class="removeremove" action="removeImg" itemid="img.id"></removeremove>
+					</figure>
+					
+					<!-- ng-if  number of image > 4 -->
+					<div class="completor"></div>
+				</div>
+
+
+
+			</div>
 			
-
-			<div class="imgrelativecontainer">
+					
+			<div class="col-md-12 form_col_r pull-right" ng-if="!formData.isPaiContent">
+					
 				
-			<div image-crop 
-		    		aspect-ratio="imgcrop.aspectRatio" 
-		    		img-src="imgcrop.imgSrc" 
-		    		img-load="'imgLoader.gif'" 
-		    		display-height="imgcrop.displayHeight"
-		    		display-width = "imgcrop.displayWidth"
-		    		scaled-height="imgcrop.scaledHeight" 
-		    		scaled-width="imgcrop.scaledWidth" 
-		    		scaled-top="imgcrop.scaledTop" 
-		    		scaled-left="imgcrop.scaledLeft" 
-		    		container-width="imgcrop.containerWidth" 
-		    		container-height="imgcrop.containerHeight" 
-		    		style=" width: 100%; position:relative;" class="imageCropper" ng-class="{imageCropperH0: !imgcrop.imgSrc}">
-				</div>
-			<button ng-if="imgcrop.imgSrc" class="btn red" ng-click="removeImgCrop()">Annuler</button>
-			<button ng-if="imgcrop.scaledWidth && !imgcrop.imgEditId" class="btn blue" ng-click="uploadImage()">Ajouter cette image</button>
-			<button ng-if="imgcrop.scaledWidth && imgcrop.imgEditId" class="btn blue" ng-click="resizeOnly()">Redimentionner l'image</button>
-			<div class="landscapeportrait"  ng-if="imgcrop.scaledWidth">
-				<button class="btn blue" ng-click="changeOrientation()"><i class="fa fa-exchange"></i></button>
+					
+					<div class="form_title"><i class="pe-7s-hammer"></i>Validez l'article
+					</div>
+					<p ng-if="!formData.solded" class="validatePoint">Ceci est un contenus à <strong>{{formData.nbPoints}}</strong> points Collabs</p>
+					<p ng-if="formData.solded && formData.validate == true" class="validatePoint">Les points pour ce contenus sont déjà attribuer (<strong>{{formData.nbPoints}}</strong> points Collabs)</p>
+					<p ng-if="formData.solded && formData.validate != true" class="validatePoint">Ce contenus à déjà été juger <strong>Invalide</strong></p>
+					
+					<div ng-if="!formData.solded" class="validationBTNgroup">
+						<div ng-click="validateFabricant(0)" class="btn green fakeColorGreen">Validez</div>
+						<div ng-click="validateFabricant(3)" class="btn btn-lg green fakeColorGreen">Validez +3</div>
+						<div ng-click="validateFabricant(5)" class="btn green fakeColorGreen">Validez +5</div>
+						<div ng-click="validateFabricant(10)" class="btn green fakeColorGreen">Validez +10</div>
+						<div ng-click="validateFabricant(15)" class="btn green fakeColorGreen">Validez +15</div>
+					</div>
+					<div ng-if="!formData.solded" class="validationBTNgroup">
+						<div class="btn red fakeColorGreen" ng-click="unvalidateFabricant('noEmail')" >Refus sans email</div>
+						<div class="btn btn-lg red fakeColorGreen" ng-click="unvalidateFabricant('abus')" >Refus email (abus)</div>
+						<div class="btn red fakeColorGreen" ng-click="unvalidateFabricant('dejaPresent')" >Refus email (déja présent)</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="smallSeparator"></div>
+
 			</div>
-			</div>
-			<!-- <button ng-if="scaledWidth" class="btn blue" ng-click="uploadImage()">Redimentionner votre image</button> -->
-			<p class="messageImage"  ng-if="imgcrop.imgSrc && !imgcrop.scaledWidth"><span>Vous devez redimentionner votre image avant de l'envoyer ver le server. <br> Faite un rectangle dessu le plus grand possible.</span></p>
-			<div class="clearfix"></div>
-			<div class="smallSeparator"></div>
-
-			<div ng-repeat="uploadingImage in uploadingImages" class="uploadingDoc" ng-if="uploadingImage.status == 'progress'">
-				<span>{{uploadingImage.file.name}}</span>
-				<span>{{uploadingImage.text}}</span>
-				<md-progress-linear md-mode="determinate" value="{{uploadingImage.progressPercentage}}"></md-progress-linear>
-					
-			</div> 
-
-			<div class="smallSeparator" ></div>
-			<div class="imageList" ui-sortable="sortOption" ng-model="formData.images" >
-				<figure class="pull-left post__img" ng-repeat="img in formData.images">
-					<img class="media-object" ng-src="image/adminThumbs/{{img.filename}}" alt="new">
-					<div class="btnreresize" ng-click="resizeagain(img)"><i class="fa fa-crop"></i></div>
-					<removeremove class="removeremove" action="removeImg" itemid="img.id"></removeremove>
-				</figure>
-				
-				<!-- ng-if  number of image > 4 -->
-				<div class="completor"></div>
-			</div>
-
-
-
-		</div>
-		
-		<div class="col-md-12 form_col_r pull-right" ng-if="!formData.isPaiContent && formData.initialPrice == 0">
-				
-				
-				
-
-				<div class="form_title"><i class="pe-7s-hammer"></i>Validez le contenus</div>
-				<p ng-if="!formData.solded" class="validatePoint">Ceci est un contenus offert en echange de <strong>{{formData.nbPoints}}</strong> points Collabs</p>
-				<p ng-if="formData.solded && formData.validate == true" class="validatePoint">Les points pour ce contenus sont déjà attribuer (<strong>{{formData.nbPoints}}</strong> points Collabs)</p>
-				<p ng-if="formData.solded && formData.validate != true" class="validatePoint">Ce contenus à déjà été juger <strong>Invalide</strong></p>
-				
-				<div ng-if="!formData.solded" class="validationBTNgroup">
-					<div ng-click="validateFabricant()" class="btn green btn-lg fakeColorGreen">Validez l'échange</div>
-					<div class="btn red fakeColorRed" ng-click="unvalidateFabricant('noEmail')">Refus sans email</div>
-					
-				</div>
-				<div ng-if="!formData.solded" class="validationBTNgroup">
-					
-					<div class="btn  orange fakeColorOrange" ng-click="unvalidateFabricant('counterOffer')">Refus email contre offre <input type="number" ng-model="formData.counterOffer" style="width: 50px;color: black;padding-right: 0px;padding-left: 10px;" /> </div>
-					<div class="btn red fakeColorRed" ng-click="unvalidateFabricant('sansRapport')">Refus email (sans rapport)</div>
-				</div>
-				
-				<div class="clearfix"></div>
-				<div class="smallSeparator"></div>
-
-		</div>
-		<div class="col-md-12 form_col_r pull-right" ng-if="!formData.isPaiContent">
-				
-				
-				
-
-				<div class="form_title"><i class="pe-7s-hammer"></i>Validez le contenus pour la vente</div>
-				
-				<p ng-if="formData.solded" class="validatePoint">Ce contenus à déjà été juger <strong ng-if="formData.validate == true">valide</strong> <strong ng-if="formData.validate == false">Invalide</strong></p>
-
-				<div ng-if="!formData.solded" class="validationBTNgroup">
-					<div ng-click="validateFabricant()" class="btn green btn-lg fakeColorGreen">Validez le contenus payent</div>
-					<div class="btn red fakeColorRed" ng-click="unvalidateFabricant('noEmail')">Refus sans email</div>
-					
-				</div>
-				<div ng-if="!formData.solded" class="validationBTNgroup">
-					
-					<div class="btn  red fakeColorRed" ng-click="unvalidateFabricant('abus')">Refus email (abus)</div>
-					<div class="btn red fakeColorRed" ng-click="unvalidateFabricant('sansRapport')">Refus email (sans rapport)</div>
-				</div>
-				
-				<div class="clearfix"></div>
-				<div class="smallSeparator"></div>
-
-		</div>
 		
 		
 		</div>

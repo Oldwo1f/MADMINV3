@@ -89,6 +89,111 @@
 			
 		</div> <!-- /widget__content -->
 
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
 	</article>
+
+	<div class="widget__content table-responsive" style="margin-top : 30px;">
+			
+			<table class="table media-table">
+		  	<thead>
+		  		<tr>
+		  			<th width="90" ng-click="changeSort('createdAt');" >Date <i ng-if="!searchSlug" ng-show="sort=='createdAt DESC'" class="pe-7s-angle-down"></i>  <i ng-if="!searchSlug" ng-show="sort=='createdAt ASC'" class="pe-7s-angle-up"></th>
+		  			<th width="350" ng-click="changeSort('title');">Nom <i ng-if="!searchSlug" ng-show="sort=='title DESC'" class="pe-7s-angle-down "></i> <i ng-if="!searchSlug" ng-show="sort=='title ASC'" class="pe-7s-angle-up " />
+		  			</th>
+		  			<th width="80" ng-click="changeSort('startsAt');">Date <i ng-if="!searchSlug" ng-show="sort=='startsAt DESC'" class="pe-7s-angle-down "></i> <i ng-if="!searchSlug" ng-show="sort=='startsAt ASC'" class="pe-7s-angle-up " />
+		  			</th>
+		  			<th width="500">Info</th>
+		  			<th style="text-align:left">Validation</th>
+		  		</tr>
+		  	</thead>
+		  	<tbody>
+
+		  	
+		  		<tr class="tableRow" ng-repeat="event in eventsListed | orderBy :'createdAt':true" ng-click="ModalValidate(event)">
+
+		  			<td>
+		  				<p class="post__date">
+		  					
+		  					<span class="DD">{{event.createdAt | amDateFormat:'DD'}}</span>
+		  					<span class="MM "style="margin-top:3px;">{{event.createdAt | amDateFormat:'MMM'}}</span>
+		  					<span class="dddd">{{event.createdAt | amDateFormat:'YYYY'}}</span>
+		  				</p>
+		  			</td>
+		  			
+		  			<td colspan="2">
+		  				<div class="media">
+
+						
+							<div class="media-body post_desc">
+								<div class="btn-group btn-group block keepThisEvent">
+				  					<div ng-if="event.contentType=='colloque'" class="white btn active fakeColorWhite">Colloque</div>
+				  					<div ng-if="event.contentType=='conf'" class="pink btn active fakeColorPink">Conférence</div>
+				  					<div ng-if="event.contentType=='salon'" class="violet btn active fakeColorViolet">Salon</div>
+				  					<div ng-if="event.contentType=='lunch'" class="blue btn active fakeColorBlue">Déjeuner débat</div>
+				  					<div ng-if="event.contentType=='other'" class="orange btn active fakeColorOrange">Autre</div>
+								 
+								</div>
+								<h3> {{event.title}}</h3>
+								<p class="email">
+				  					Début : Le {{event.startsAt | amDateFormat:'DD MMM YYYY à HH:mm'}} 
+				  				</p>
+				  				<p class="email">
+				  					Fin : Le {{event.endsAt | amDateFormat:'DD MMM YYYY à HH:mm'}} 
+				  				</p>
+							</div>
+						</div>
+		  			</td>
+		  			<td class="not-padding" >
+		  				
+							<p class="post__info"  ng-bind-html="event.content"  content-html="event.content" html-ellipsis>
+		  			</td>
+		  			<td class="not-padding" style="text-align:left">
+		  				
+							<p ng-if="!event.solded" class="validatePoint">Ceci est un contenus à <strong>{{event.nbPoints}}</strong> points Collabs</p>
+							<p ng-if="event.solded && event.validate == true" class="validatePoint">Les points pour ce contenus sont déjà attribuer (<strong>{{event.nbPoints}}</strong> points Collabs)</p>
+							<p ng-if="event.solded && event.validate != true" class="validatePoint">Ce contenus à déjà été juger <strong>Invalide</strong></p>
+							
+							<div ng-if="!event.solded" class="validationBTNgroup">
+								<div ng-click="validateEvent(event.id,0)" class="btn green fakeColorGreen">Validez</div>
+								<div ng-click="validateEvent(event.id,1)" class="btn btn-lg green fakeColorGreen">Validez +1</div>
+								<div ng-click="validateEvent(event.id,2)" class="btn green fakeColorGreen">Validez +2</div>
+								<div ng-click="validateEvent(event.id,3)" class="btn green fakeColorGreen">Validez +3</div>
+								<div ng-click="validateEvent(event.id,4)" class="btn green fakeColorGreen">Validez +4</div>
+							</div>
+							<div ng-if="!event.solded" class="validationBTNgroup">
+								<div class="btn red fakeColorGreen" ng-click="unvalidateEvent(event.id,'noEmail')" >Refus sans email</div>
+								<div class="btn btn-lg red fakeColorGreen" ng-click="unvalidateEvent(event.id,'abus')" >Refus email (abus)</div>
+								<div class="btn red fakeColorGreen" ng-click="unvalidateEvent(event.id,'dejaPresent')" >Refus email (déja présent)</div>
+							</div>
+							<div class="clearfix"></div>
+		  			</td>
+		  			
+		  		</tr>
+
+
+		  	</tbody>
+			</table>
+			<div class="endInfinite">
+				
+				<span us-spinner="spinneropts"  spinner-key="agendaSpinner"></span>
+				<span ng-if="fin">Fin</span>
+			</div>
+			
+
+			
+		</div> 
 </div>
 </div>

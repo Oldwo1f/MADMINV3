@@ -196,8 +196,8 @@ angular.module('pai-fabricant')
 					var collabspoints = {};
 					collabspoints.score = attrToUpdate['nbPoints']
 					collabspoints.contentID = $scope.formData.id
-					collabspoints.contentType = 'ingrediant'
-					collabspoints.contentModel = 'ingrediant'
+					collabspoints.contentType = 'fabricant'
+					collabspoints.contentModel = 'fabricant'
 					collabspoints.title = $scope.formData.name
 					
 					userService.addCollabsPoints(userService.me.id,collabspoints).then(function(newcollabs){
@@ -215,7 +215,7 @@ angular.module('pai-fabricant')
 		        			
 		        			console.log(data);
 		        			if(data){
-		        				$state.go('fabricant')
+		        				$state.go('fabricants')
 
 		        				console.log(this);
 
@@ -604,7 +604,7 @@ angular.module('pai-fabricant')
 					$('#imageCropSource').hide();
 
                     Upload.upload({
-                        url: '/api/ingrediant/'+$scope.formData.id+'/images',
+                        url: '/api/fabricant/'+$scope.formData.id+'/images',
                         data: {file :$scope.fileToSend}
                         	// 'displayWidth':$scope.dataToSend.displayWidth,
                         	// 'scaledWidth':$scope.dataToSend.scaledWidth,

@@ -1,6 +1,10 @@
-angular.module('momi-blog', ['ui.router'])
+ console.log('TIIIIIIIIIIIIIIgregreIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII');
+
+angular.module('momi-articles', ['ui.router'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
     
+
+    console.log('TIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII');
       $stateProvider
 	    .state('blog', {
 	        url : '/blog',
@@ -14,10 +18,14 @@ angular.module('momi-blog', ['ui.router'])
 	        	'page1': {
 	        		template: '<blog articles-list="articlesList"></blog>',
 	        		controller:["$scope", "articlesList", function($scope, articlesList){
+	        			console.log('CRTL ARTICLE');
 	        			$scope.articlesList = articlesList;
 	        		}],
 	        		resolve:{
 	                    articlesList :  ["articleService", "$stateParams", function(articleService, $stateParams){
+
+	                    	console.log('RESOLVE');
+	                    	
 	                        
 
 	                        return articleService.fetch($stateParams.sort,$stateParams.page,$stateParams.nbPerPage)

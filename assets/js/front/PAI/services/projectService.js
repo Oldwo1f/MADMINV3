@@ -332,7 +332,7 @@ angular.module('PAI')
         return deferred.promise;      
     }
     service.fetchOne=function(id){
-
+        console.log('fetchOne');
         // project = {date : new Date(),status:'draft'};
         var deferred = $q.defer();
         $sailsSocket.get('/api/project/'+id).success(function (data,status) {
@@ -373,6 +373,19 @@ angular.module('PAI')
 
         var deferred = $q.defer();
         $sailsSocket.put('/api/comment/'+id,values).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+    service.addComment=function(id, values){
+
+        var deferred = $q.defer();
+        // $sailsSocket.post('/api/article/'+id+'/comments',values).success(function (data,status) {
+        $sailsSocket.post('/project/'+id+'/addComment',values).success(function (data,status) {
             deferred.resolve(data);
         }).error(function (data,status) {
             // if(status == '401')

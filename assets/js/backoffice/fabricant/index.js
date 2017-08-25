@@ -1,4 +1,4 @@
-angular.module('momi-blog', ['ui.router'])
+angular.module('momi-pai2', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider){
     
       $stateProvider

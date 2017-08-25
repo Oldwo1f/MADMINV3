@@ -9,7 +9,7 @@ angular.module('momi-agenda')
       	},
 		replace: true,
       	templateUrl: 'js/backoffice/agenda/partials/agenda.html',
-      	controller:["$mdDialog", "$scope", "$rootScope", "userService", "tagService", "categoryService", "imageService", "documentService", "$sailsSocket", "$stateParams", "$state", "usSpinnerService", function($mdDialog,$scope,$rootScope,userService,tagService,categoryService,imageService,documentService,$sailsSocket,$stateParams,$state,usSpinnerService){
+      	controller:["$mdDialog", "$scope", "$rootScope", "userService", "tagService", "categoryService", "eventService", "imageService", "documentService", "$sailsSocket", "$stateParams", "$state", "usSpinnerService", function($mdDialog,$scope,$rootScope,userService,tagService,categoryService,eventService,imageService,documentService,$sailsSocket,$stateParams,$state,usSpinnerService){
 			console.log($scope.itemsList);
 			$scope.events = $scope.itemsList;
 			var touched = false;
@@ -18,8 +18,11 @@ angular.module('momi-agenda')
 			{'primary':'#FFFFFF','secondary':'rgba(255,255,255,0.7)'},
 			{'primary':'#1c7dfa','secondary':'#368EFF'},
 			{'primary':'#989cff','secondary':'#B1B5FF'},
+			{'primary':'#ff9c4b','secondary':'rgba(255, 156, 75, 0.7)'},
 			]
-
+			$scope.eventsListed=[];
+			 var startDate = moment()
+      		, endDate   =moment().subtract(2,'months')
 
 			for(var i in $scope.events){
 				$scope.events[i].endsAt = new Date($scope.events[i].endsAt)
@@ -27,7 +30,12 @@ angular.module('momi-agenda')
 				if($scope.events[i].contentType =='conf'){ $scope.events[i].color = colorSet[0]}
 				if($scope.events[i].contentType =='colloque'){ $scope.events[i].color = colorSet[1]}
 				if($scope.events[i].contentType =='lunch'){ $scope.events[i].color = colorSet[2]}
-				if($scope.events[i].contentType =='sallon'){ $scope.events[i].color = colorSet[3]}
+				if($scope.events[i].contentType =='salon'){ $scope.events[i].color = colorSet[3]}
+				if($scope.events[i].contentType =='other'){ $scope.events[i].color = colorSet[4]}
+
+					if(moment($scope.events[i].createdAt).isBetween(endDate,startDate) ){
+						$scope.eventsListed.push($scope.events[i])
+					}
 			}
 
 			$scope.returnParentState=function(){
@@ -51,6 +59,47 @@ angular.module('momi-agenda')
 				}
 			}
 
+			$scope.validateEvent=function(id,bonus){
+				$rootScope.startSpin();
+				console.log('validate Event',id);
+				
+				eventService.validatePai(id,bonus).then(function(data){
+					console.log('VALID');
+					console.log(data);
+						var index = _.findIndex($scope.eventsListed, function(o) { return o.id == data.data[0].id; });
+						if( index !== -1) {
+							$scope.eventsListed.splice(index,1,data.data[0])
+						}
+        			$rootScope.stopSpin();
+				},function(d){
+					console.log('EROOR');
+				})
+			}
+
+			$scope.unvalidateEvent=function(id,raison){
+
+				
+
+				$rootScope.startSpin();
+				console.log(raison);
+
+				eventService.unvalidatePai(id,raison).then(function(data){
+					console.log(data);
+					console.log('invalid');
+
+					
+					var index = _.findIndex($scope.eventsListed, function(o) { return o.id == data.data[0].id; });
+					if( index !== -1) {
+						$scope.eventsListed.splice(index,1,data.data[0])
+					}
+
+
+        			$rootScope.stopSpin();
+				},function(d){
+					console.log('EROOR');
+				})
+			}
+			
 			$scope.eventClicked=function(myevent){
 
 				console.log('CLICKED');
@@ -256,7 +305,7 @@ angular.module('momi-agenda')
 
 						      		editor.on("blur", function() {
 								        
-								        // $scope.update('content');
+								        $scope.update('content');
 							      	});
 								},
 				      			plugins: 'link image code',
@@ -286,6 +335,8 @@ angular.module('momi-agenda')
 				      		}
 
 				      		$scope.update=function(attribute){
+
+				      			console.log('UPDATE');
 
 								$rootScope.startSpin();
 								var attrToUpdate = {};
@@ -364,7 +415,8 @@ angular.module('momi-agenda')
 				if(data.contentType =='conf'){ data.color = colorSet[0]}
 				if(data.contentType =='colloque'){ data.color = colorSet[1]}
 				if(data.contentType =='lunch'){ data.color = colorSet[2]}
-				if(data.contentType =='sallon'){ data.color = colorSet[3]}
+				if(data.contentType =='salon'){ data.color = colorSet[3]}
+				if(data.contentType =='other'){ data.color = colorSet[4]}
 				$scope.events.push(data);
 
 			})
@@ -377,7 +429,8 @@ angular.module('momi-agenda')
 					if(data.contentType =='conf'){console.log('CONFERENCE'); data.color = colorSet[0]}
 					if(data.contentType =='colloque'){ data.color = colorSet[1]}
 					if(data.contentType =='lunch'){ data.color = colorSet[2]}
-					if(data.contentType =='sallon'){ data.color = colorSet[3]}
+					if(data.contentType =='salon'){ data.color = colorSet[3]}
+					if(data.contentType =='other'){ data.color = colorSet[4]}
 					$scope.events[index] = data;
 				}
 			})

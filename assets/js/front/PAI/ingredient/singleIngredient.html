@@ -1,0 +1,170 @@
+<section id="content">
+
+	<div class="content-wrap">
+
+		<div class="container clearfix">
+
+			<div class="subheader topmargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="ingredients" class="btn btn-primary btn-lg">Retour à la liste des ingredient</a>
+			</div>
+
+
+
+			<div class="postcontent nobottommargin clearfix">
+
+				<div class="single-post nobottommargin">
+
+					<!-- Single Post
+					============================================= -->
+					<div class="entry clearfix">
+
+						<!-- Entry Title
+						============================================= -->
+						<div class="entry-title">
+							<h2>{{ingredient.name}}</h2>
+						</div><!-- .entry-title end -->
+
+
+						
+
+							<div class="col-6 col-md-6" style="padding-left: 0;">
+								<!-- Entry Image
+								============================================= -->
+								<div ng-if="ingredient.videoHost && ingredient.videoUrl" class="entry-image ">
+									<div ng-if="ingredient.videoHost =='vimeo'" fit-vids>
+										
+										<iframe  width="16" height="9" src="{{ 'https://player.vimeo.com/video/'+ingredient.videoUrl | trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+									</div>
+									<div ng-if="ingredient.videoHost =='youtube'" fit-vids>
+										
+										<iframe width="16" height="9" src="{{ 'https://www.youtube.com/embed/'+ingredient.videoUrl +'?ecver=2' | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+									</div>
+									<div ng-if="ingredient.videoHost =='dailymotion'" fit-vids>
+										
+										<iframe width="16" height="9" src="{{ 'http://www.dailymotion.com/embed/video/'+ingredient.videoUrl | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+									</div>
+								</div>
+								<div class="entry-image" ng-if="ingredient.images.length == 1 && ( !ingredient.videoHost || !ingredient.videoUrl)">
+									<a ><img  class="image_fade" ng-src="image/resized/{{ingredient.images[0].filename}}" ></a>
+								</div>
+								<div class="entry-image" ng-if="ingredient.images.length > 1 && ingredient.images.length < 6 && ( !ingredient.videoHost || !ingredient.videoUrl)">
+									<div class="fslider">
+										
+											<flex-slider flex-slide="image in  ingredient.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+												<li>
+													<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+												</li>
+											</flex-slider>
+									</div>
+								</div>
+								<div class="entry-image clearfix" ng-if="ingredient.images.length >= 6&& ( !ingredient.videoHost || !ingredient.videoUrl)">
+									<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+										<a  ng-repeat="img in ingredient.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+										
+									</div>
+								</div><!-- .entry-image end -->
+						
+								
+							</div>
+							
+						
+						
+							<div class="">
+								<!-- Entry Content
+								============================================= -->
+								<div class="entry-content notopmargin" >
+									
+									<div ng-bind-html="ingredient.content"  content-html="ingredient.content"></div>
+									<div ng-if="ingredient.tags.length"class="tagcloud clearfix ">
+										<a ng-repeat="tag in ingredient.tags" > <i class="fa fa-tag"></i>{{tag.text}}</a>
+										
+									</div><!-- .tagcloud end -->
+									<div class="clear"></div>
+
+									<div ng-if="ingredient.categories.length" class="catcloud clearfix bottommargin" >
+										<a ng-repeat="cat in ingredient.categories"  style="color:{{cat.textColor}}; background: {{cat.color}};">{{cat.name}}</a>
+										
+									</div><!-- .catcloud end -->
+
+									<div class="clear"></div>
+
+									
+
+								</div>
+
+
+
+
+								<div class="entry-image" ng-if="ingredient.images.length == 1 && ( ingredient.videoHost && ingredient.videoUrl)">
+									<a ><img  class="image_fade" ng-src="image/resized/{{ingredient.images[0].filename}}" ></a>
+								</div>
+								<div class="entry-image" ng-if="ingredient.images.length > 1 && ingredient.images.length < 6 && ( ingredient.videoHost && ingredient.videoUrl)">
+									<div class="fslider">
+										
+											<flex-slider flex-slide="image in  ingredient.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+												<li>
+													<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+												</li>
+											</flex-slider>
+									</div>
+								</div>
+								<div class="entry-image clearfix" ng-if="ingredient.images.length >= 6 && ( ingredient.videoHost  && ingredient.videoUrl)">
+									<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+										<a  ng-repeat="img in ingredient.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+										
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div><!-- .entry end -->
+
+		  	</div>
+					
+
+			<div class="sidebar nobottommargin col_last clearfix">
+				<div class="sidebar-widgets-wrap">
+
+
+				<h4 ng-if="ingredient.fabricant" style="margin-top:30px;">Produit par :</h4>
+				
+				<div class="ingrediant" ng-click="goToFabricant(ingredient.fabricant.id)">
+					<div class="portfolio-desc">
+
+						<h3>{{ingredient.fabricant.name}}</h3>
+						<!-- <div ng-if="item.tags.length"class="tagcloud clearfix">
+							<a ng-repeat="tag in item.tags" href="#">{{tag.text}}</a>
+							
+						</div> -->
+
+						<!-- <span ng-if="item.ingredient" class="autheurportfo">produit par {{item.ingredient.name}} </span> -->
+						<!-- <span class="date">{{item.date | amDateFormat:'MMMM YYYY'}}</span> -->
+					</div>
+				</div>
+
+
+				
+
+				
+
+
+
+				</div>
+
+			</div>	
+
+			<div class="clearfix"></div>
+
+			<div class="bottomheader topmargin bottommargin">
+				<!-- <h4>Ce fils d'actualitée est collaboratifs. <br>Il parle uniquement d'agro-alimentaire et nottemant d'innovation.</h4> -->
+				<a ui-sref="ingredients" class="btn btn-primary btn-lg">Retour à la liste des ingredient</a>
+			</div>
+
+
+		</div>
+
+	</div>
+
+</section>

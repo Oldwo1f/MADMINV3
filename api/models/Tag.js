@@ -18,7 +18,7 @@ module.exports = {
         articles:{collection:'article', via: 'tags'},
         projects:{collection:'project', via: 'tags'},
         ingrediants:{collection:'ingrediant', via: 'tags'},
-        fabricants:{collection:'fabricant', via: 'tags'},
+        fabricants:{collection:'fabricant', via: 'tags'}, 
         events:{collection:'event', via: 'tags'},
         selfUpdate:function(options,cb){
         if(options.parentType == 'article')

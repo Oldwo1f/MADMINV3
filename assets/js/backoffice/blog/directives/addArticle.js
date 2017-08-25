@@ -1,4 +1,4 @@
-angular.module('momi-blog')
+angular.module('momi-articles')
 .directive('addArticle', function(){
 
     'use strict';
@@ -446,6 +446,8 @@ angular.module('momi-blog')
 				console.log(tmpRep);
 				attrToUpdate.authorName = userService.me.firstname+ ' ' + userService.me.name;
 				attrToUpdate.email = userService.me.email;
+				if(userService.me.images[0].filename)
+					attrToUpdate.imgAuthor = userService.me.images[0].filename;
 				attrToUpdate.admin = true;
 				attrToUpdate.status = 'actif';
 				// console.log(userService.me.images[0].filename);

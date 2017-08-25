@@ -1,4 +1,4 @@
-angular.module('momi-blog')
+angular.module('momi-articles')
   .directive('blog', function(articleService){
 
     'use strict';

@@ -14,239 +14,78 @@
 
 					<!-- Posts
 					============================================= -->
-					<div id="posts" class="post-grid grid-container post-masonry grid-3 clearfix">
+					<!-- <div id="posts" class="post-grid grid-container post-masonry grid-3 clearfix"> -->
+					<div id="posts"  infinite-scroll="myPagingFunction()" infinite-scroll-distance="1" reload-on-resize reload-on-show class=" post-grid  grid-container portfolio-3 topmargin clearfix" masonry>
+						
 
-						<div class="entry clearfix blog-pai">
-							<div class="entry-image">
-								<a href="images/front/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="images/front/blog/small/17.jpg" alt="Standard Post with Image"></a>
+						<div ng-repeat="article in articlesList" class="entry clearfix masonry-brick  blog-article2" ng-class="{'blog-pai':article.contentType=='articlepai','blog-article':article.contentType=='article','blog-sponsored':article.contentType=='sponsored','blog-pub':article.contentType=='pub','blog-link':article.contentType=='link'}">
+							
+							<div ng-if="article.contentType=='pub'" class="entry-image">
+								<a href="mailTo:contact@gmail.com" class="entry-link" target="_blank">
+									Votre publicité ici
+									<span>Contactez nous - contact@clubpai.fr</span>
+								</a>
 							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-								<li><a href="#"><i class="icon-camera-retro"></i></a></li>
-							</ul>
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
+							<div ng-if="article.contentType!='pub'" class="entry-image">
+								
+								<div ng-if="article.videoHost && article.videoUrl" class="entry-image ">
+									<div ng-if="article.videoHost =='vimeo'" fit-vids>
+										
+										<iframe  width="16" height="9" src="{{ 'https://player.vimeo.com/video/'+article.videoUrl | trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+									</div>
+									<div ng-if="article.videoHost =='youtube'" fit-vids>
+										
+										<iframe width="16" height="9" src="{{ 'https://www.youtube.com/embed/'+article.videoUrl +'?ecver=2' | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+									</div>
+									<div ng-if="article.videoHost =='dailymotion'" fit-vids>
+										
+										<iframe width="16" height="9" src="{{ 'http://www.dailymotion.com/embed/video/'+article.videoUrl | trustAsResourceUrl}}" frameborder="0" allowfullscreen="" ></iframe>
+									</div>
+								</div>
+								<div class="entry-image" ng-if="article.images.length == 1 && ( !article.videoHost || !article.videoUrl)">
+									<a ><img  class="image_fade" ng-src="image/resized/{{article.images[0].filename}}" ></a>
+								</div>
+								<div class="entry-image" ng-if="article.images.length > 1 && article.images.length < 6 && ( !article.videoHost || !article.videoUrl)">
+									<div class="fslider">
+										
+											<flex-slider flex-slide="image in  article.images track by image.id" animation="slide" slideshow="false"smooth-height=" true" direction-nav="false">
+												<li>
+													<a ><img class="image_fade" ng-src="image/resized/{{image.filename}}" imageonload></a>
+												</li>
+											</flex-slider>
+									</div>
+								</div>
+								<div class="entry-image clearfix" ng-if="article.images.length >= 6&& ( !article.videoHost || !article.videoUrl)">
+									<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
+										<a  ng-repeat="img in article.images" ><img class="image_fade" ng-src="image/adminThumbs/{{img.filename}}" alt=""></a>
+										<!-- <a href="images/front/blog/full/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/3.jpg" alt=""></a>
+										<a href="images/front/blog/full/6-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/6-1.jpg" alt=""></a>
+										<a href="images/front/blog/full/6-2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/6-2.jpg" alt=""></a>
+										<a href="images/front/blog/full/12.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/12.jpg" alt=""></a>
+										<a href="images/front/blog/full/12-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/12-1.jpg" alt=""></a>
+										<a href="images/front/blog/full/13.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/13.jpg" alt=""></a>
+										<a href="images/front/blog/full/18.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/18.jpg" alt=""></a>
+										<a href="images/front/blog/full/19.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/19.jpg" alt=""></a> -->
+									</div>
+								</div>
+								<div class="entry-title">
+									<h2><a href="blog-single.html">{{article.title}}</a></h2>
+								</div>
+								<ul class="entry-meta clearfix">
+									<li><i class="icon-calendar3"></i> {{article.createdAt | amDateFormat:'DD MMM YYYY'}}</li>
+									<li><a ><i class="icon-users"></i> {{article.authors[0].firstname}} {{article.authors[0].name}}</a></li>
+								</ul>
+								<div class="entry-content">
+									<p class="post__info"  ng-bind-html="article.content"  content-html="article.content" html-ellipsis></p>
+									<a ui-sref="article({id: article.id})" class="more-link">Lire la suite</a>
+								</div>
 							</div>
 						</div>
 
 					  
 
-						<div class="entry clearfix blog-sponsored">
-							<div class="entry-image">
-								<div class="fslider" data-arrows="false" data-lightbox="gallery">
-									<div class="flexslider">
-										<div class="slider-wrap">
-											<div class="slide"><a href="images/front/blog/full/10.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/masonry/10.jpg" alt="Standard Post with Gallery"></a></div>
-											<div class="slide"><a href="images/front/blog/full/20.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/masonry/20.jpg" alt="Standard Post with Gallery"></a></div>
-											<div class="slide"><a href="images/front/blog/full/21.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/masonry/21.jpg" alt="Standard Post with Gallery"></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single-small.html">This is a Standard post with a Slider Gallery</a></h2>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 24th Feb 2014</li>
-								<li><a href="blog-single-small.html#comments"><i class="icon-comments"></i> 21</a></li>
-								<li><a href="#"><i class="icon-picture"></i></a></li>
-							</ul>
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single-small.html"class="more-link">Read More</a>
-							</div>
-						</div>
-
-						<div class="entry clearfix blog-pub">
-							<div class="entry-image">
-								<blockquote>
-									<p>"When you are courting a nice girl an hour seems like a second. When you sit on a red-hot cinder a second seems like an hour. That's relativity."</p>
-									<footer>Albert Einstein</footer>
-								</blockquote>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 3rd Mar 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 23</a></li>
-								<li><a href="#"><i class="icon-quote-left"></i></a></li>
-							</ul>
-						</div>
-
-						<div class="entry clearfix blog-pai">
-							<div class="entry-image clearfix">
-								<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
-									<a href="images/front/blog/full/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/2.jpg" alt=""></a>
-									<a href="images/front/blog/full/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/3.jpg" alt=""></a>
-									<a href="images/front/blog/full/6-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/6-1.jpg" alt=""></a>
-									<a href="images/front/blog/full/6-2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/6-2.jpg" alt=""></a>
-									<a href="images/front/blog/full/12.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/12.jpg" alt=""></a>
-									<a href="images/front/blog/full/12-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/12-1.jpg" alt=""></a>
-									<a href="images/front/blog/full/13.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/13.jpg" alt=""></a>
-									<a href="images/front/blog/full/18.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/18.jpg" alt=""></a>
-									<a href="images/front/blog/full/19.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/19.jpg" alt=""></a>
-								</div>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single-thumbs.html">This is a Standard post with Masonry Thumbs Gallery</a></h2>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 3rd Mar 2014</li>
-								<li><a href="blog-single-thumbs.html#comments"><i class="icon-comments"></i> 21</a></li>
-								<li><a href="#"><i class="icon-picture"></i></a></li>
-							</ul>
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo!</p>
-								<a href="blog-single-thumbs.html"class="more-link">Read More</a>
-							</div>
-						</div>
-
-						<div class="entry clearfix blog-pub">
-							<div class="entry-image">
-								<a href="http://themeforest.net" class="entry-link" target="_blank">
-									Themeforest.net
-									<span>- http://themeforest.net</span>
-								</a>
-							</div>
-							<!-- <ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 17th Mar 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 26</a></li>
-								<li><a href="#"><i class="icon-link"></i></a></li>
-							</ul> -->
-						</div>
-
-						<div class="entry clearfix blog-pai">
-							<div class="entry-image">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, fuga optio voluptatibus saepe tenetur aliquam debitis eos accusantium!
-									</div>
-								</div>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 21st Mar 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 11</a></li>
-								<li><a href="#"><i class="icon-align-justify2"></i></a></li>
-							</ul>
-						</div>
-						<div class="entry clearfix blog-pai">
-							<div class="entry-image">
-								<a href="images/front/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="images/front/blog/small/17.jpg" alt="Standard Post with Image"></a>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single.html">This is a Standard post with a Preview Image</a></h2>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-								<li><a href="#"><i class="icon-camera-retro"></i></a></li>
-							</ul>
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus.</p>
-								<a href="blog-single.html"class="more-link">Read More</a>
-							</div>
-						</div>
-
-					 
-
-						<div class="entry clearfix blog-pai">
-							<div class="entry-image">
-								<div class="fslider" data-arrows="false" data-lightbox="gallery">
-									<div class="flexslider">
-										<div class="slider-wrap">
-											<div class="slide"><a href="images/front/blog/full/10.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/masonry/10.jpg" alt="Standard Post with Gallery"></a></div>
-											<div class="slide"><a href="images/front/blog/full/20.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/masonry/20.jpg" alt="Standard Post with Gallery"></a></div>
-											<div class="slide"><a href="images/front/blog/full/21.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/masonry/21.jpg" alt="Standard Post with Gallery"></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single-small.html">This is a Standard post with a Slider Gallery</a></h2>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 24th Feb 2014</li>
-								<li><a href="blog-single-small.html#comments"><i class="icon-comments"></i> 21</a></li>
-								<li><a href="#"><i class="icon-picture"></i></a></li>
-							</ul>
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur!</p>
-								<a href="blog-single-small.html"class="more-link">Read More</a>
-							</div>
-						</div>
-
-						<div class="entry clearfix blog-pai">
-							<div class="entry-image">
-								<blockquote>
-									<p>"When you are courting a nice girl an hour seems like a second. When you sit on a red-hot cinder a second seems like an hour. That's relativity."</p>
-									<footer>Albert Einstein</footer>
-								</blockquote>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 3rd Mar 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 23</a></li>
-								<li><a href="#"><i class="icon-quote-left"></i></a></li>
-							</ul>
-						</div>
-
-						<div class="entry clearfix blog-sponsored">
-							<div class="entry-image clearfix">
-								<div class="portfolio-single-image masonry-thumbs col-4" data-big="3" data-lightbox="gallery">
-									<a href="images/front/blog/full/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/2.jpg" alt=""></a>
-									<a href="images/front/blog/full/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/3.jpg" alt=""></a>
-									<a href="images/front/blog/full/6-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/6-1.jpg" alt=""></a>
-									<a href="images/front/blog/full/6-2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/6-2.jpg" alt=""></a>
-									<a href="images/front/blog/full/12.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/12.jpg" alt=""></a>
-									<a href="images/front/blog/full/12-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/12-1.jpg" alt=""></a>
-									<a href="images/front/blog/full/13.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/13.jpg" alt=""></a>
-									<a href="images/front/blog/full/18.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/18.jpg" alt=""></a>
-									<a href="images/front/blog/full/19.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/front/blog/small/19.jpg" alt=""></a>
-								</div>
-							</div>
-							<div class="entry-title">
-								<h2><a href="blog-single-thumbs.html">This is a Standard post with Masonry Thumbs Gallery</a></h2>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 3rd Mar 2014</li>
-								<li><a href="blog-single-thumbs.html#comments"><i class="icon-comments"></i> 21</a></li>
-								<li><a href="#"><i class="icon-picture"></i></a></li>
-							</ul>
-							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo!</p>
-								<a href="blog-single-thumbs.html"class="more-link">Read More</a>
-							</div>
-						</div>
-
-						<div class="entry clearfix blog-pub">
-							<div class="entry-image">
-								<a href="http://themeforest.net" class="entry-link" target="_blank">
-									Themeforest.net
-									<span>- http://themeforest.net</span>
-								</a>
-							</div>
-							<!-- <ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 17th Mar 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 26</a></li>
-								<li><a href="#"><i class="icon-link"></i></a></li>
-							</ul> -->
-						</div>
-
-						<div class="entry clearfix blog-sponsored">
-							<div class="entry-image">
-								<div class="panel panel-default">
-									<div class="panel-body">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, fuga optio voluptatibus saepe tenetur aliquam debitis eos accusantium!
-									</div>
-								</div>
-							</div>
-							<ul class="entry-meta clearfix">
-								<li><i class="icon-calendar3"></i> 21st Mar 2014</li>
-								<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 11</a></li>
-								<li><a href="#"><i class="icon-align-justify2"></i></a></li>
-							</ul>
+						<div class="FINI masonry-brick " ng-if="fin">
+							<span>Tout est là.</span>
 						</div>
 
 					</div><!-- #posts end -->

@@ -45,24 +45,27 @@ angular.module('pai-marketplace', ['ui.router'])
 
 	        }
        	})
-      	// .state('blog.edit', {
-	      //   url : '/edit/:id',
-	      //   parent:'blog',
-	      //   views:{
-	      //   	'page2@dashboard': {
-	      //   		template: '<add-article new-article="newArticle"></add-article>',
-	      //   		controller:function($scope, newArticle){
-	      //   			$scope.newArticle = newArticle;
-	      //   		},
-	      //   		resolve:{
-	      //               newArticle :  function(articleService,$stateParams){
+      	
+      	.state('project', {
+	        url : '/marketplaceitem/:id',
+	        views:{
+	        	'main': {
+	        		template: '<single-project item="curentProject"></single-project>',
+	        		controller:["$scope", "curentProject", function($scope,curentProject){
+	        			console.log('CONTROLLER SINGLE');
+	        			console.log(curentProject);
+	        			$scope.curentProject = curentProject;
+	        		}],
+	        		resolve:{
+	                    curentProject :  ["projectService", "$stateParams", function(projectService,$stateParams){
+	                    	console.log('resolve curentProject');
 	                        
-	      //                   return articleService.fetchOne($stateParams.id)
-	      //               }
-	      //           }
-	      //   	}
+	                        return projectService.fetchOne($stateParams.id)
+	                    }]
+	                }
+	        	}
 
-	      //   }
-       // 	})
+	        }
+       	})
 
 }]);

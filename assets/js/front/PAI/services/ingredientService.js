@@ -335,7 +335,7 @@ angular.module('PAI')
 
         // ingredient = {date : new Date(),status:'draft'};
         var deferred = $q.defer();
-        $sailsSocket.get('/api/ingrediant/'+id).success(function (data,status) {
+        $sailsSocket.get('/ingrediant/fetchOne/'+id).success(function (data,status) {
             deferred.resolve(data);
         }).error(function (data,status) {
             if(status == '401')
@@ -344,6 +344,7 @@ angular.module('PAI')
         })
         return deferred.promise;      
     }
+
     service.fetchOneComment=function(id){
 
         // ingredient = {date : new Date(),status:'draft'};

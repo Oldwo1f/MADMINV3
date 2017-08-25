@@ -2432,13 +2432,13 @@ body:not(.device-touch) #page-menu nav li a {
 
 .side-header #logo img { height: auto !important; }
 
-.side-header #logo:not(.nobottomborder):after,
+/*.side-header #logo:not(.nobottomborder):after,
 .side-header #primary-menu:not(.nobottomborder):after {
 	display: block;
 	content: '';
 	width: 20%;
 	border-bottom: 1px solid #E5E5E5;
-}
+}*/
 
 .side-header .center #logo:after { margin: 0 auto; }
 

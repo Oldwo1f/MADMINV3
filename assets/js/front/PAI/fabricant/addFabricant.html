@@ -15,19 +15,19 @@
 				<wizard on-finish="finishedWizardAddContent()"> 
 				<wz-step wz-title="Avant de publier">
 			    	<h2>Avant de publier</h2>
-			    	<p>Avant de soumettre un ingrédient, merci de lires et comprendre les points suivants</p>
+			    	<p>Avant de soumettre un fabricant, merci de lires et comprendre les points suivants</p>
 				
 				 	<uib-accordion close-others="oneAtATime">
 					   	<div uib-accordion-group class="panel-default" is-open="status1.open">
 					      <uib-accordion-heading>
-					        <i class="icon-question-sign"></i> Quels sont les type d'ingrédient que je peux publié ?
+					        <i class="icon-question-sign"></i> Quels sont les type defabricant que je peux publié ?
 					      </uib-accordion-heading>
-					      Vous pouvez publié tout les types d'ingrédients, même si nous precognisons les ingrédients nouveaux et méconnus.
+					      Vous pouvez publié tout les types d'fabricants, même si nous precognisons les fabricants nouveaux et méconnus.
 					    </div>
 				 	
 					   	<div uib-accordion-group class="panel-default" is-open="status2.open">
 					      <uib-accordion-heading>
-					        <i class="icon-question-sign"></i> Puis-je remplir une fiche ingrédient incomplète ?
+					        <i class="icon-question-sign"></i> Puis-je remplir une fiche fabricant incomplète ?
 					      </uib-accordion-heading>
 					      Oui, toute information, même partiel est bonne à prendre. <br>
 					      Cependant, un fiche correctement remplis raporte plus de point Collabs.
@@ -35,16 +35,16 @@
 				   
 					   	<div uib-accordion-group class="panel-default" is-open="status3.open">
 					      <uib-accordion-heading>
-					        <i class=" icon-comments-alt"></i> Les fiches ingrédients sont elle relus?
+					        <i class=" icon-comments-alt"></i> Les fiches fabricants sont elle relus?
 					      </uib-accordion-heading>
-					      Oui, les fiche ingrédient sont brèvement relus avant la publication. Ceci dans le but d'eviter les malveillances.
+					      Oui, les fiche fabricant sont brèvement relus avant la publication. Ceci dans le but d'eviter les malveillances.
 					    </div>
 				    
 					   	<div uib-accordion-group class="panel-default" is-open="status4.open">
 					      <uib-accordion-heading>
-					        <i class="icon-lock3"></i> Ai-je le droit d'ajouter tout les ingrédients produit par ma propre entreprise?
+					        <i class="icon-lock3"></i> Ai-je le droit d'ajouter tout les fabricants produit par ma propre entreprise?
 					      </uib-accordion-heading>
-					      Oui, tout les ingrédient sont les bienvenu afin d'étoffer le moteur de recherche.
+					      Oui, tout les fabricant sont les bienvenu afin d'étoffer le moteur de recherche.
 					    </div>
 				    
 					   	<div uib-accordion-group class="panel-default" is-open="status5.open">
@@ -67,7 +67,7 @@
 			        <h2>Choix du fabricant</h2>
 
 					<div class="fabricantChoice1">
-						<p>En premier Lieux, verifier si une fiche fabricant existe déjà en base de donné. Si oui, séléctionner la et passer à l'étape suivante.</p>
+						<p>En premier Lieux, verifier si une fiche fabricant existe déjà en base de donné. Si aucune fiche n'existe, vous pouvez passer à l'étape suivante.</p>
 
 						<ui-select id="selectFab" ng-model="t.fabricant" class="mb" theme="selectize"  on-select="onSelectFab($selected.selected)" title="Fabricant"  position="down">
 						    <ui-select-match placeholder="Choisissez un fabricant" class="stacked-input">{{$select.selected.name}}</ui-select-match>
@@ -78,11 +78,7 @@
 						
 					</div>
 					<div class="fabricantChoice2">
-						<p>Si aucune fiche n'existe pour le fabricant de l'ingrédiant à ajouter. Vous avez deux options:</p>
-						<ol>
-							<li><a href="">Creér une fiche fabricant pour cet entreprise. (recommandé) </a></li>
-							<li>Passer directement à l'étape suivant pour creéer une ficher ingrédient sans fabricant associé.</li>
-						</ol>
+						<p>Si le fabricant existe déjà c'est qu'il à déjà été renseigner par un membre du club.</p>
 						
 					</div>
 

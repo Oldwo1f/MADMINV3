@@ -5,20 +5,17 @@ angular.module('PAI')
 
     service.filter={slug:'',page:1,order:'createdAt DESC',perPage:10};
 
-    service.fetch= function(sort,page,nbPerPage) {
+    service.fetch= function(page,sort,nbPerPage) {
 
         console.log('FETCH');
         var deferred = $q.defer();
         sort = sort? sort : 'date DESC'
-        nbPerPage = nbPerPage ? nbPerPage : 3
+        nbPerPage = nbPerPage ? nbPerPage : 10
         page = page ? page : 1;
-
-        console.log('nbPerPage '+ nbPerPage);
-        console.log('page '+ page);
-        console.log('/article/'+sort+'/'+nbPerPage+'/'+nbPerPage*(page-1));
-        $sailsSocket.get('/api/article/'+sort+'/'+nbPerPage+'/'+nbPerPage*(page-1)).success(function (data,status) {
-            console.log(data);
+        console.log(page);
+        $sailsSocket.get('/blog/fetchItem/'+page).success(function (data,status) {
             service.items =data;
+            console.log(data);
             deferred.resolve(data);
         }).error(function (data,status) {
             // if(status == '401')
@@ -335,7 +332,7 @@ angular.module('PAI')
 
         // article = {date : new Date(),status:'draft'};
         var deferred = $q.defer();
-        $sailsSocket.get('/api/article/'+id).success(function (data,status) {
+        $sailsSocket.get('/article/fetchOne/'+id).success(function (data,status) {
             deferred.resolve(data);
         }).error(function (data,status) {
             if(status == '401')
@@ -381,10 +378,35 @@ angular.module('PAI')
         })
         return deferred.promise;      
     }
+    // service.addReponse=function(id, values){
+
+    //     var deferred = $q.defer();
+    //     $sailsSocket.post('/comment/'+id+'/addReponse',values).success(function (data,status) {
+    //         deferred.resolve(data);
+    //     }).error(function (data,status) {
+    //         // if(status == '401')
+    //         //     $state.go('login')
+    //         deferred.reject(data);
+    //     })
+    //     return deferred.promise;      
+    // }
     service.addReponse=function(id, values){
 
         var deferred = $q.defer();
-        $sailsSocket.post('/api/comment/'+id+'/responses',values).success(function (data,status) {
+        $sailsSocket.post('/comment/'+id+'/addReponse',values).success(function (data,status) {
+            deferred.resolve(data);
+        }).error(function (data,status) {
+            // if(status == '401')
+            //     $state.go('login')
+            deferred.reject(data);
+        })
+        return deferred.promise;      
+    }
+    service.addComment=function(id, values){
+
+        var deferred = $q.defer();
+        // $sailsSocket.post('/api/article/'+id+'/comments',values).success(function (data,status) {
+        $sailsSocket.post('/article/'+id+'/addComment',values).success(function (data,status) {
             deferred.resolve(data);
         }).error(function (data,status) {
             // if(status == '401')

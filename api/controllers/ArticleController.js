@@ -44,6 +44,46 @@ module.exports = {
 
 			
 		},
+
+		fetchFront:function(req,res,next){
+			var nbPerPage = 10 ;
+			var page = req.params.page -1
+			var limit=10;
+			// var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
+		 //    .skip(page * nbPerPage).limit(nbPerPage).populateAll();
+		    var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
+		    .skip(page*limit).limit(limit).populateAll();
+
+			articlesPromise
+		    .then(function(articles) {   
+		        var articlesWithAuthorsPromises = articles.map(function(article) {
+		            var authorsPromises = article.authors.map(function(author) {
+		                return User.findOne(author.id).populateAll();
+		            });
+
+		            return Promise.all(authorsPromises)
+		                  .then(function(fullfilledAuthors) {
+		                  	  article = article.toObject()
+		                      article.authors = fullfilledAuthors;
+		                      return article;
+		                   })
+		        })
+
+		        return Promise.all(articlesWithAuthorsPromises)
+		    })
+		   .then(function(fullData) {
+		   	var ids = _.map(fullData,'id')
+		   		Article.subscribe(req,ids)
+		   		Article.watch(req)
+		        res.send(fullData)
+		    })
+		    .catch(function(e){
+		    	console.log(e);
+		    })
+
+
+			
+		},
 		fetchActive:function(req,res,next){
 			
 			var articlesPromise = Article.find({status:'actif'}).sort(req.params.sort)
@@ -78,6 +118,8 @@ module.exports = {
 			
 		},
 		fetchOne:function(req,res,next){
+
+			console.log('FETCHONE ARTICLE');
 			
 			var result ;
 			var idsCom ;
@@ -107,7 +149,33 @@ module.exports = {
 					
 					
 				})
+				// .then(function(CommentsFullFilled){
+				// 	console.log('-----------------------------------------');
+				// 	 var CommentsWithAuthorsPromises = CommentsFullFilled.map(function(comment) {
+
+				// 		return new Promise(function(resolve,reject){
+				// 	 	// console.log(comment);
+				//             return User.findOne(comment.user.id).populate('images').then(function(data){
+
+				//             	delete data.dashboard;
+				//             	console.log(data);
+				//             	comment.user.imgPath = data.images[0].filename;
+				            	
+				            		
+				//             	resolve(comment)
+				//             });
+
+		  //       		})
+			          
+		  //       	})
+				// 	 return Promise.all(CommentsWithAuthorsPromises)
+					
+					
+				// })
 				.then(function(CommentsFullFilled){
+
+					console.log('FIN');
+					console.log(CommentsFullFilled);
 					
 					art.comments = CommentsFullFilled;
 					var idsToAdd = _.map(CommentsFullFilled,function(com){
@@ -116,9 +184,12 @@ module.exports = {
 						return o.id
 						})
 					})
+
 					// var idsCom = _.map(art.comments,function(o){return o.id})
 					Comment.subscribe(req,idsCom);
 				 	Article.subscribe(req, art.id);
+
+				 	console.log('fini');
 					res.send(art)
 				})
 			})
@@ -518,6 +589,56 @@ var cropOptions = req.body
 
 
 		
-	}
+	},
+	addComment:function(req,res,next){
+
+		console.log('addCommentArticle');
+		console.log(req.params.itemid);
+
+		console.log(req.body);
+		// var commentToCreate =req.body;
+
+		Article.findOne(req.params.itemid)
+		.then(function(article){
+			
+			article.comments.add(req.body)
+			return article.save()	
+
+		}).then(function(d){
+
+			console.log('THEN');
+			console.log(d);
+
+
+				res.status(200).send('OK')
+			
+		})
+		
+	},
+	addReponse:function(req,res,next){
+
+		console.log('addReponse Article');
+
+		console.log(req.body);
+		// var commentToCreate =req.body;
+
+		Comment.findOne(req.params.itemid)
+		.then(function(comment){
+			console.log(comment);
+			
+			comment.responses.add(req.body)
+			return comment.save()	
+
+		}).then(function(d){
+
+			console.log('THEN');
+			console.log(d);
+
+
+				res.status(200).send('OK')
+			
+		})
+		
+	},
 };
 

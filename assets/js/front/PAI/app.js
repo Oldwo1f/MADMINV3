@@ -31,8 +31,8 @@ var listWidgetDirectivesApp = function listWidgetDirectivesApp() {
 
 
 
-angular.module('PAI', ['wu.masonry','infinite-scroll','ui.select','ui.bootstrap','ngFlash','mgo-angular-wizard','ngLetterAvatar','sails.io','satellizer','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ngMaterial','ui.router','ngSanitize','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner',
-  'pai-blog','pai-marketplace','pai-ingredient','pai-fabricant','pai-home','pai-agenda','mwl.calendar',])
+angular.module('PAI', ['wu.masonry','infinite-scroll','ui.select','ui.bootstrap','ngFlash','ngMap','mgo-angular-wizard','ngLetterAvatar','sails.io','satellizer','angular-flexslider','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ui.router','ngSanitize','ngMaterial','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner',
+  'pai-blog','pai-marketplace','pai-ingredient','pai-fabricant','pai-home','pai-agenda','mwl.calendar','720kb.socialshare'])
 .config(function($stateProvider, $urlRouterProvider){
 
     // $stateProvider
@@ -286,6 +286,8 @@ usSpinnerConfigProvider.setDefaults(opts);
 
     calendarConfig.allDateFormats.moment.title.day = 'D ddd MMM'; //this will configure the day view title to be shorter
     calendarConfig.allDateFormats.moment.title.week = 'Semaine {week}'; //this will configure the day view title to be shorter
+
+    calendarConfig.allDateFormats.moment.date.year = 'D ddd MMM';
 
     calendarConfig.i18nStrings.weekNumber = '{week}'; //This will set the week number hover label on the month view
 
