@@ -114,7 +114,7 @@ angular.module('pai-marketplace')
 			$scope.calculatePrice($scope.project)
 
 			$scope.addComment = function(){
-				var imgAuthor = userService.me.images[0].filename ? userService.me.images[0].filename : '';
+				var imgAuthor = userService.me.images[0] ? userService.me.images[0].filename : '';
 				var comment={
 				'imgAuthor':imgAuthor,
 				'authorName':userService.me.firstname + ' ' + userService.me.name,

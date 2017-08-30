@@ -101,3 +101,18 @@ body{color:#333 !important;}
 #secondary-menu ul li > a i {position: relative;top: -1px;font-size: 10px;width: 16px;text-align: center;margin-right: 6px;vertical-align: top;}
 
 .imageprofile {width: 200px;}
+
+.rechercheContainer h3{margin-top:60px;}
+.rechercheContainer .searchInput{width:800px;font-size: 1.4em;}
+.result {position: relative;border:1px solid #CCC; margin-bottom: 10px;padding: 10px;border-radius: 3px;}
+.result:hover{cursor: pointer;background: rgba(240,240,240,0.5);}
+.result em{background: yellow}
+
+.result h4{margin-bottom: 10px;float:left;}
+.result small.price{float:left;padding-top: 7px;padding-left: 7px;}
+.result .clouds{display:block;height: 28px;}
+.result .date{display:inline-block;position: absolute;right: 10px;top: 10px;}
+.result .clouds div{display:inline-block;}
+.result .contenthighlights{display: block;margin-bottom: 5px;}
+.result .contenthighlights p {margin-bottom: 0px;}
+.result > div > i {font-size: 25px;float: left;margin-right: 20px;line-height: 23px;}

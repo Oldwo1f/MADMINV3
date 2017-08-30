@@ -86,6 +86,79 @@ module.exports ={
 		    	return error
 		});
 	},
+   	searchGlobal:function(slug,type, parent){
+
+   		console.log(slug);
+   		
+   		return client.search({
+   			index: sails.config.esName,
+   			type:['article','project','event','igrediant','fabricant'],
+		  	body: {
+			    "query": {
+			        "bool" : {          
+				        "should" : [
+				            {
+				                "fuzzy" : {
+				                    "_all" : {
+				                        "value" :         slug,
+				                        "boost" :         0.5,
+				                        "fuzziness" :     1,
+				                        "prefix_length" : 0,
+				                        "max_expansions": 100
+				                    }
+				                }
+				            },
+				            {
+				                "match" : {
+				                    "_all" : {
+				                        "query" :         slug,
+				                        "boost" :         2.0
+				                    }
+
+				                }
+
+				            },
+				            {
+				            "match" : {
+				                	"title" : {
+				                        "query" :         slug,
+				                        "boost" :         4.0
+				                    }
+
+				                }
+
+				            },
+				            {
+				                "match_phrase_prefix" : {
+				                    "_all" : {
+				                        "query" :         slug,
+				                        "boost" :         1.0
+				                    }
+	                			}
+	                		}
+				        ]
+			        
+			        }
+
+			    },
+			      
+
+			    "highlight" : {
+			        "fields" : {
+			            "content" : {},
+			            "title" : {},
+			            "name" : {},
+			        }
+			    }
+						    
+		    }
+		}).then(function (response) {
+			return response;
+		}).catch(function(error){
+		    	console.trace(error);
+		    	return error
+		});
+	},
    	create:function(type, body, parent){
    		
    		return client.create({

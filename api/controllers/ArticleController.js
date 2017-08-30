@@ -552,6 +552,8 @@ var cropOptions = req.body
 	},
 	search:function(req,res,next){
 
+		console.log('HEHO');
+
 		es.search(req.params.slug,'article').then(function(data){
 			var datas = _.map(data.hits.hits, '_source');
 			var datasIds = _.map(datas, 'id');

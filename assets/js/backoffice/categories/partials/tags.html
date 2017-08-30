@@ -45,6 +45,15 @@
 		  			<div ng-click="changeSort('nbArticles');" >Article 
 		  				<i ng-if="!searchSlug" ng-show="sort=='nbArticles DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbArticles ASC'" class="pe-7s-angle-up"></i>
 		  			</div>
+		  			<div ng-click="changeSort('nbEvents');" >Event 
+		  				<i ng-if="!searchSlug" ng-show="sort=='nbEvents DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbEvents ASC'" class="pe-7s-angle-up"></i>
+		  			</div>
+		  			<div ng-click="changeSort('nbIngrediants');" >Ingredient 
+		  				<i ng-if="!searchSlug" ng-show="sort=='nbIngrediants DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbIngrediants ASC'" class="pe-7s-angle-up"></i>
+		  			</div>
+		  			<div ng-click="changeSort('nbFabricants');" >Fabricant 
+		  				<i ng-if="!searchSlug" ng-show="sort=='nbFabricants DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbAFabricants ASC'" class="pe-7s-angle-up"></i>
+		  			</div>
 
 		  		</div>
 		  		<div class="tableRowTag" ng-repeat="tag in tagsList" rel="{{tag.id}}">
@@ -58,6 +67,15 @@
 		  			</span class="td">
 		  			<span class="td">
 		  				<span class="spanNumber">{{tag.nbArticles}}</span>
+		  			</span class="td">
+		  			<span class="td">
+		  				<span class="spanNumber">{{tag.nbEvents}}</span>
+		  			</span class="td">
+		  			<span class="td">
+		  				<span class="spanNumber">{{tag.nbIngrediants}}</span>
+		  			</span class="td">
+		  			<span class="td">
+		  				<span class="spanNumber">{{tag.nbFabricants}}</span>
 		  			</span class="td">
 		  			
 		  		</div>

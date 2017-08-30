@@ -446,7 +446,7 @@ angular.module('momi-articles')
 				console.log(tmpRep);
 				attrToUpdate.authorName = userService.me.firstname+ ' ' + userService.me.name;
 				attrToUpdate.email = userService.me.email;
-				if(userService.me.images[0].filename)
+				if(userService.me.images[0])
 					attrToUpdate.imgAuthor = userService.me.images[0].filename;
 				attrToUpdate.admin = true;
 				attrToUpdate.status = 'actif';

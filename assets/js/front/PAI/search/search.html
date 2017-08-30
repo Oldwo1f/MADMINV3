@@ -1,0 +1,175 @@
+<section id="content">
+
+		<div class="content-wrap">
+
+		<div class="container clearfix rechercheContainer">
+			
+			<h3>RECHERCHE <small>rechercher au traver de tout le contenus du club PAI</small></h3>
+			<form >
+				<input type="text" class="searchInput" ng-model="slug" my-enter="search()">
+				
+			</form>
+			<div class="noResult" ng-if="noresult">
+				Aucun contenu correspond à votre recherche.
+			</div>
+			<div class="searchResults">
+				
+				<div class="result" ng-repeat="result in results">
+					<div ng-if="result._type=='project'" ng-class="project" ui-sref="project({id: result._source.id})">
+
+					<i class="icon-line2-graph"></i>
+
+						<h4 ng-if="!result.highlight.title">{{result._source.title}}
+							
+						</h4>
+						<h4 ng-if="result.highlight.title" ng-bind-html="result.highlight.title[0]">
+							
+						</h4>
+						<small class="price" ng-if="!result._source.initialPrice"> - Gratuit</small>
+						<small class="price" ng-if="result._source.initialPrice"> - {{result._source.initialPrice}} €</small>
+						<div class="clearfix"></div>
+						<div class="contenthighlights">
+							
+							<div class="highlights" ng-repeat="item in result.highlight.content" ng-bind-html="item">
+							</div>
+
+						</div>
+						<div class="clouds">
+							<div class="tagcloud">
+								<a class="tag" ng-repeat="tag in result._source.tags">
+									<i class="fa fa-tag"></i> {{tag.text}}
+								</a>
+							</div>
+
+							<div class="catcloud">
+								<a class="category" ng-repeat="cat in result._source.categories" style="color:{{cat.textColor}}; background: {{cat.color}};">
+									{{cat.name}}
+								</a>
+							</div>
+						</div>
+						
+
+						<small class="date">{{result._source.date  | amDateFormat:'DD MMM YYYY'}}</small>
+						
+					</div>
+					<div ng-if="result._type=='article'" ng-class="article" ui-sref="article({id: result._source.id})">
+						<i class="icon-list-alt"></i>
+						<h4 ng-if="!result.highlight.title">{{result._source.title}}</h4>
+						<h4 ng-if="result.highlight.title" ng-bind-html="result.highlight.title[0]"></h4>
+
+						<div class="clearfix"></div>
+						<div class="contenthighlights">
+							<div class="highlights" ng-repeat="item in result.highlight.content" ng-bind-html="item">
+							</div>
+						</div>
+
+						<div class="clouds">
+							<div class="tagcloud">
+								<a class="tag" ng-repeat="tag in result._source.tags">
+									<i class="fa fa-tag"></i> {{tag.text}}
+								</a>
+							</div>
+
+							<div class="catcloud">
+								<a class="category" ng-repeat="cat in result._source.categories" style="color:{{cat.textColor}}; background: {{cat.color}};">
+									{{cat.name}}
+								</a>
+							</div>
+						</div>
+						<small class="date">{{result._source.date  | amDateFormat:'DD MMM YYYY'}}</small>
+						
+					</div>
+					<div ng-if="result._type=='event'" ng-class="event" >
+						<i class="icon-calendar3"></i>
+
+						<h4 ng-if="!result.highlight.title">{{result._source.title}}</h4>
+						<h4 ng-if="result.highlight.title" ng-bind-html="result.highlight.title[0]"></h4>
+						<div class="clearfix"></div>
+						<div class="contenthighlights">
+							
+							<div class="highlights" ng-repeat="item in result.highlight.content" ng-bind-html="item">
+							</div>
+						</div>
+						<div class="clouds">
+							<div class="tagcloud">
+								<a class="tag" ng-repeat="tag in result._source.tags">
+									<i class="fa fa-tag"></i> {{tag.text}}
+								</a>
+							</div>
+
+							<div class="catcloud">
+								<a class="category" ng-repeat="cat in result._source.categories" style="color:{{cat.textColor}}; background: {{cat.color}};">
+									{{cat.name}}
+								</a>
+							</div>
+						</div>
+
+						<small class="datestart">{{result._source.dateStart  | amDateFormat:'DD MMM YYYY'}}</small>
+						<small class="dateend" ng-if="result._source.startsAt != result._source.dateEnd">{{result._source.dateEnd  | amDateFormat:'DD MMM YYYY'}}</small>
+						
+					</div>
+					<div ng-if="result._type=='fabricant'" ng-class="fabricant" ui-sref="fabricant({id: result._source.id})">
+						<i class="icon-truck"></i>
+						<h4 ng-if="!result.highlight.name">{{result._source.name}}</h4>
+						<h4 ng-if="result.highlight.name" ng-bind-html="result.highlight.name[0]"></h4>
+						<div class="clearfix"></div>
+						<div class="contenthighlights">
+							
+							<div class="highlights" ng-repeat="item in result.highlight.content" ng-bind-html="item">
+							</div>
+						</div>
+						<div class="clouds">
+							<div class="tagcloud">
+								<a class="tag" ng-repeat="tag in result._source.tags">
+									<i class="fa fa-tag"></i> {{tag.text}}
+								</a>
+							</div>
+
+							<div class="catcloud">
+								<a class="category" ng-repeat="cat in result._source.categories" style="color:{{cat.textColor}}; background: {{cat.color}};">
+									{{cat.name}}
+								</a>
+							</div>
+						</div>
+						<!-- <small class="datestart">{{result._source.startsAt  | amDateFormat:'DD MMM YYYY'}}</small>
+						<small class="dateend" ng-if="result._source.startsAt != result._source.endsAt">{{result._source.endsAt  | amDateFormat:'DD MMM YYYY'}}</small> -->
+						
+					</div>
+					<div ng-if="result._type=='ingrediant'" ng-class="ingrediant" ui-sref="ingredient({id: result._source.id})">
+						<i class="icon-line2-chemistry"></i>
+						<h4 ng-if="!result.highlight.name">{{result._source.name}}</h4>
+						<h4 ng-if="result.highlight.name" ng-bind-html="result.highlight.name[0]"></h4>
+						<div class="clearfix"></div>
+						<div class="contenthighlights">
+							
+							<div class="highlights" ng-repeat="item in result.highlight.content" ng-bind-html="item">
+							</div>
+
+						</div>
+						<div class="clouds">
+							<div class="tagcloud">
+								<a class="tag" ng-repeat="tag in result._source.tags">
+									<i class="fa fa-tag"></i> {{tag.text}}
+								</a>
+							</div>
+
+							<div class="catcloud">
+								<a class="category" ng-repeat="cat in result._source.categories" style="color:{{cat.textColor}}; background: {{cat.color}};">
+									{{cat.name}}
+								</a>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+</section>

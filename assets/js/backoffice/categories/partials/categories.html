@@ -36,7 +36,9 @@
 		  			<th  ng-click="changeSort('name');">Titre <i ng-if="!searchSlug" ng-show="sort=='name DESC'" class="pe-7s-angle-down"></i>  <i ng-if="!searchSlug" ng-show="sort=='name ASC'" class="pe-7s-angle-up"></th>
 		  			<th style="width:80px;" ng-click="changeSort('nbProjects');" >Projet <i ng-if="!searchSlug" ng-show="sort=='nbProjects DESC'" class="pe-7s-angle-down"></i>  <i ng-if="!searchSlug" ng-show="sort=='nbProjects ASC'" class="pe-7s-angle-up"></th>
 		  			<th style="width:80px;"ng-click="changeSort('nbArticles');" >Article <i ng-if="!searchSlug" ng-show="sort=='nbArticles DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbArticles ASC'" class="pe-7s-angle-up"></th>
+		  			<th style="width:80px;"ng-click="changeSort('nbEvents');" >Event <i ng-if="!searchSlug" ng-show="sort=='nbEvents DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbEvents ASC'" class="pe-7s-angle-up"></th>
 		  			<th style="width:80px;"ng-click="changeSort('nbFabricants');" >Fabricant <i ng-if="!searchSlug" ng-show="sort=='nbFabricants DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbFabricants ASC'" class="pe-7s-angle-up"></th>
+		  			<th style="width:80px;"ng-click="changeSort('nbIngrediants');" >Ingrediant <i ng-if="!searchSlug" ng-show="sort=='nbIngrediants DESC'" class="pe-7s-angle-down"></i> <i ng-if="!searchSlug" ng-show="sort=='nbIngrediants ASC'" class="pe-7s-angle-up"></th>
 		  			<th style="width:150px;">Couleur</th>
 		  			<th style="width:150px;" >Couleur du text</th>
 
@@ -67,7 +69,13 @@
 		  				<span class="spanNumber">{{cat.nbArticles}}</span>
 		  			</td>
 		  			<td>
+		  				<span class="spanNumber">{{cat.nbEvents}}</span>
+		  			</td>
+		  			<td>
 		  				<span class="spanNumber">{{cat.nbFabricants}}</span>
+		  			</td>
+		  			<td>
+		  				<span class="spanNumber">{{cat.nbIngrediants}}</span>
 		  			</td>
 		  			<td >
 		  				<!-- <input minicolors="miniColorsSetting" id="color-input" class="form-control" type="text" ng-model="cat.color"> -->

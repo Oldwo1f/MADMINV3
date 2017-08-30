@@ -161,7 +161,7 @@ angular.module('PAI')
             })
             return deferred.promise;      
         }else{
-                    $state.go('login')
+                    // $state.go('login')
             
         }
     }   

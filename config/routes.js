@@ -172,6 +172,10 @@ module.exports.routes = {
   'GET /event/fetchOne/:id':'eventController.fetchOne',
 
 
+  'POST /search/global':'searchController.searchGlobal',
+  'GET /reindex':'searchController.reindex',
+
+
   // 'POST /article/:id/tags/:pk':'ArticleController.addTag',
   // 'POST /article/:id/tags':'ArticleController.addTag',
   // 'DELETE /article/:id/tags/:pk':'ArticleController.removeTag',

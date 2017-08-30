@@ -32,7 +32,7 @@ var listWidgetDirectivesApp = function listWidgetDirectivesApp() {
 
 
 angular.module('PAI', ['wu.masonry','infinite-scroll','ui.select','ui.bootstrap','ngFlash','ngMap','mgo-angular-wizard','ngLetterAvatar','sails.io','satellizer','angular-flexslider','infinite-scroll','ui.sortable','ngTagsInput','ngFileUpload','ui.router','ngSanitize','ngMaterial','ngAnimate','ui.tinymce','angularMoment','ui.bootstrap.datetimepicker','angularSpinner',
-  'pai-blog','pai-marketplace','pai-ingredient','pai-fabricant','pai-home','pai-agenda','mwl.calendar','720kb.socialshare'])
+  'pai-blog','pai-marketplace','pai-ingredient','pai-fabricant','pai-home','pai-agenda','pai-search','mwl.calendar','720kb.socialshare'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 
     // $stateProvider
@@ -178,19 +178,19 @@ angular.module('PAI').controller('appController',["$scope", "$rootScope", "$auth
             // if (toState.name == 'login' && $auth.isAuthenticated()){
             //     // requiredLogin = false;
             //     e.preventDefault();
-            //     $state.go('/')
+            //     $state.go('/') 
             // }
             $(window).resize()
 
             if ($auth.isAuthenticated() && toState.name == 'logout') {
                 
             }
-            else
-            if (!$auth.isAuthenticated() && toState.name != 'login'  && toState.name != 'firstconnexion') {
-                e.preventDefault();
-                $state.go('login');
+            // else
+            // if (!$auth.isAuthenticated() && toState.name != 'login'  && toState.name != 'firstconnexion') {
+            //     e.preventDefault();
+            //     $state.go('login');
                 
-            }
+            // }
 
    });
    $rootScope.$on('$stateChangeSuccess',function (e,toState,toParams,fromState,fromParams){

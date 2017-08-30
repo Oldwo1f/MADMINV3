@@ -15,7 +15,7 @@
     "country-json": "1.0.2",
     "easyimage": "2.1.0",
     "ejs": "2.3.4",
-    "elasticsearch": "11.0.1",
+    "elasticsearch": "13.3.1",
     "gift": "0.9.0",
     "googleapis": "11.0.0",
     "grunt": "0.4.5",
