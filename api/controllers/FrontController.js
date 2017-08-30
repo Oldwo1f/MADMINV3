@@ -58,6 +58,7 @@ module.exports={
 								keyword: req.__('SEO_HOME_keyword'),
 								description:req.__('SEO_HOME_description'),
 								// scripturl:'script.js',
+								moment: moment,
 								menu:'home',
 							})
 					
