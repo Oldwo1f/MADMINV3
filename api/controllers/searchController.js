@@ -50,58 +50,41 @@ module.exports = {
 			})
 			
 		})
-		Project.find().populateAll().exec(function(err,data){
-			var item=[]
+		// Project.find().populateAll().exec(function(err,data){
+		// 	var item=[]
 
-			console.log(data);
-			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'project'}}
-				item.push(head)
-				item.push(data[d])
-			}
-			es.client().bulk({
-				body:item
-			},function(e,rep){
-				console.log('result');
-				console.log(e);				
-				console.log(rep);				
-			})
+		// 	console.log(data);
+		// 	for(d in data){
+		// 		var head = {index: {_index:sails.config.esName,_type:'project'}}
+		// 		item.push(head)
+		// 		item.push(data[d])
+		// 	}
+		// 	es.client().bulk({
+		// 		body:item
+		// 	},function(e,rep){
+		// 		console.log('result');
+		// 		console.log(e);				
+		// 		console.log(rep);				
+		// 	})
 
-		})
-		Event.find().populateAll().exec(function(err,data){
-			var item=[]	
-			console.log(data);
-			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'event'}}
-				item.push(head)
-				item.push(data[d])
-			}
-			es.client().bulk({
-				body:item
-			},function(e,rep){
-				console.log('result');
-				console.log(e);				
-				console.log(rep);				
-			})
+		// })
+		// Event.find().populateAll().exec(function(err,data){
+		// 	var item=[]	
+		// 	console.log(data);
+		// 	for(d in data){
+		// 		var head = {index: {_index:sails.config.esName,_type:'event'}}
+		// 		item.push(head)
+		// 		item.push(data[d])
+		// 	}
+		// 	es.client().bulk({
+		// 		body:item
+		// 	},function(e,rep){
+		// 		console.log('result');
+		// 		console.log(e);				
+		// 		console.log(rep);				
+		// 	})
 
-		})
-		Event.find().populateAll().exec(function(err,data){
-				var item=[]
-			console.log(data);
-			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'event'}}
-				item.push(head)
-				item.push(data[d])
-			}
-			es.client().bulk({
-				body:item
-			},function(e,rep){
-				console.log('result');
-				console.log(e);				
-				console.log(rep);				
-			})
-
-		})
+		// })
 		Tag.find().exec(function(err,data){
 				var item=[]
 			console.log(data);
@@ -136,74 +119,74 @@ module.exports = {
 			})
 
 		})
-		Ingrediant.find().populateAll().exec(function(err,data){
-				var item=[]
-			console.log(data);
-			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'ingrediant'}}
-				item.push(head)
-				item.push(data[d])
-			}
-			es.client().bulk({
-				body:item
-			},function(e,rep){
-				console.log('result');
-				console.log(e);				
-				console.log(rep);				
-			})
+		// Ingrediant.find().populateAll().exec(function(err,data){
+		// 		var item=[]
+		// 	console.log(data);
+		// 	for(d in data){
+		// 		var head = {index: {_index:sails.config.esName,_type:'ingrediant'}}
+		// 		item.push(head)
+		// 		item.push(data[d])
+		// 	}
+		// 	es.client().bulk({
+		// 		body:item
+		// 	},function(e,rep){
+		// 		console.log('result');
+		// 		console.log(e);				
+		// 		console.log(rep);				
+		// 	})
 
-		})
-		Fabricant.find().populateAll().exec(function(err,data){
-				var item=[]
-			console.log(data);
-			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'fabricant'}}
-				item.push(head)
-				item.push(data[d])
-			}
-			es.client().bulk({
-				body:item
-			},function(e,rep){
-				console.log('result');
-				console.log(e);				
-				console.log(rep);				
-			})
+		// })
+		// Fabricant.find().populateAll().exec(function(err,data){
+		// 		var item=[]
+		// 	console.log(data);
+		// 	for(d in data){
+		// 		var head = {index: {_index:sails.config.esName,_type:'fabricant'}}
+		// 		item.push(head)
+		// 		item.push(data[d])
+		// 	}
+		// 	es.client().bulk({
+		// 		body:item
+		// 	},function(e,rep){
+		// 		console.log('result');
+		// 		console.log(e);				
+		// 		console.log(rep);				
+		// 	})
 
-		})
-		Comment.find().populateAll().exec(function(err,data){
-				var item=[]
-			console.log(data);
-			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'comment'}}
-				item.push(head)
-				item.push(data[d])
-			}
-			es.client().bulk({
-				body:item
-			},function(e,rep){
-				console.log('result');
-				console.log(e);				
-				console.log(rep);				
-			})
+		// })
+		// Comment.find().populateAll().exec(function(err,data){
+		// 		var item=[]
+		// 	console.log(data);
+		// 	for(d in data){
+		// 		var head = {index: {_index:sails.config.esName,_type:'comment'}}
+		// 		item.push(head)
+		// 		item.push(data[d])
+		// 	}
+		// 	es.client().bulk({
+		// 		body:item
+		// 	},function(e,rep){
+		// 		console.log('result');
+		// 		console.log(e);				
+		// 		console.log(rep);				
+		// 	})
 
-		})
-		User.find().exec(function(err,data){
-				var item=[]
-			console.log(data);
-			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'user'}}
-				item.push(head)
-				item.push(data[d])
-			}
-			es.client().bulk({
-				body:item
-			},function(e,rep){
-				console.log('result');
-				console.log(e);				
-				console.log(rep);				
-			})
+		// })
+		// User.find().exec(function(err,data){
+		// 		var item=[]
+		// 	console.log(data);
+		// 	for(d in data){
+		// 		var head = {index: {_index:sails.config.esName,_type:'user'}}
+		// 		item.push(head)
+		// 		item.push(data[d])
+		// 	}
+		// 	es.client().bulk({
+		// 		body:item
+		// 	},function(e,rep){
+		// 		console.log('result');
+		// 		console.log(e);				
+		// 		console.log(rep);				
+		// 	})
 
-		})
+		// })
 
 		
 	}
