@@ -13643,3 +13643,8 @@ a.footlerLink {color:rgba(238, 121, 78, 0.44); text-decoration: underline !impor
 #copyrights {background-color: #111;}
 #gotoTop:hover{color:#EE794E}
 .owl-carousel .owl-nav [class*=owl-]:hover {background-color: #EE794E !important;}
+
+
+.infosjacqueline ul{margin-left: 20px;}
+.infosjacqueline p{margin-bottom: 10px;}
+.infosjacqueline p.lead{margin-bottom: 10px;}
