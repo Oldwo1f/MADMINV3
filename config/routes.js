@@ -121,6 +121,7 @@ module.exports.routes = {
 
   'GET /':'FrontController.home',
   'POST /sendmail':'FrontController.sendmail',
+  'GET /testMail':'FrontController.testMail',
  
 
 };

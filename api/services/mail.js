@@ -33,13 +33,23 @@ module.exports ={
         })
    },
    send:function(options){
+      // var transporter = nodemailer.createTransport({
+      //     service: 'Gmail',
+      //     auth: {
+      //         user: this.mainEmail,
+      //         pass: this.mainEmailPassword
+      //     }
+      // });
       var transporter = nodemailer.createTransport({
-          service: 'Gmail',
+          host: 'mail.gandi.net',
+          port: 587,
+          // secure:true,
           auth: {
-              user: this.mainEmail,
-              pass: this.mainEmailPassword
+              user: 'contact@jbmcreation.fr',
+              pass: 'JBMcréation.'
           }
       });
+      
       return new Promise(function(resolve,reject){
          transporter.sendMail(options, function(error, info){
             if(error){

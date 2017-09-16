@@ -99,7 +99,7 @@ module.exports={
 
 
 				mail.sendEmail({
-		             from: '"'+data.name+'" <'+data.email+'>', // sender address 
+		             from: ""+ data.name +"<"+data.email+">", // sender address 
 		             to: receivers, // list of receivers 
 		             subject: data.subject, // Subject line 
 		        },'emailClient',{data:data, URL_HOME:sails.config.URL_HOME  }).then(function(data){
@@ -122,6 +122,49 @@ module.exports={
 
 				
 	},	
+	testMail:function(req,res,next) {
+
+
+		console.log('TESTMAIL');
+		// var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+          host: 'mail.gandi.net',
+          port: 587,
+          // secure:true,
+          auth: {
+              user: 'contact@jbmcreation.fr',
+              pass: 'JBMcréation.'
+          }
+      });
+
+
+      // transporter.verify(function(error, success) {
+      //    if (error) {
+      //         console.log(error);
+      //    } else {
+      //         console.log('Server is ready to take our messages');
+      //    }
+      // });
+
+		var data={};
+		mail.sendEmail({
+             from: 'yoda@toto.from', // sender address 
+             to: 'alexismomcilovic@gmail.com', // list of receivers 
+             subject: 'test', // Subject line 
+        },'emailClient',{data:data, URL_HOME:sails.config.URL_HOME  }).then(function(data){
+
+        	console.log(data);
+
+        	if(data.rejected.length){
+
+        		var reponse = { "alert": "error", "message": "Votre email n'à <strong>pas</strong> été envoyé." };
+	      		res.status(301).send(reponse)
+        	}else{
+        		var reponse = { "alert": "success", "message": "Votre email à été envoyé." };
+        		res.status(200).send(reponse)
+        	}
+        });
+	},
 	contact:function(req,res,next) {
 
 		console.log('contact');
