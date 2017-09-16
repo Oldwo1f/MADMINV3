@@ -100,7 +100,7 @@ module.exports={
 
 				mail.sendEmail({
 		             from: ""+ data.name +"<"+data.email+">", // sender address 
-		             to: receivers, // list of receivers 
+		             to: sails.config.mainEmailClient, // list of receivers 
 		             subject: data.subject, // Subject line 
 		        },'emailClient',{data:data, URL_HOME:sails.config.URL_HOME  }).then(function(data){
 
