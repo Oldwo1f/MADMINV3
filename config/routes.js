@@ -151,4 +151,6 @@ module.exports.routes = {
   'GET /benjaminm':'FrontController.benjaminm',
   'GET /loisir':'FrontController.loisir',
 
+  'POST /sendmail':'FrontController.sendmail',
+
 };

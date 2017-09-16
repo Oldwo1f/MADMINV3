@@ -44,7 +44,7 @@
 
                     <!-- Contact Form
                     ============================================= -->
-                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+                    <form class="nobottommargin" id="template-contactform" name="template-contactform" action="/sendmail" method="post">
 
                         
                         <div class="col_full">
@@ -93,22 +93,43 @@
                         </div>
 
                         <div class="col_full">
-                            <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>
+                            <button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Poster mon message</button>
                         </div>
+
+                        <div class="col_full">
+                            <div class="message">
+                                <div class="alert alert-danger">
+                                  <i class="icon-remove-sign"></i><strong>Erreur!</strong> un problème est survenu.
+                                </div>
+                                <div class="alert alert-success">
+                                  <i class="icon-remove-sign"></i><strong>Ok!</strong> Votre email a été envoyé.
+                                </div>
+                            </div>
+                        </div>
+
 
                     </form>
 
                     <script type="text/javascript">
+                        $('.alert').hide()
                         $("#template-contactform").validate({
                             submitHandler: function(form) {
                                 $('.form-process').fadeIn();
                                 $(form).ajaxSubmit({
                                     target: '#contact-form-result',
-                                    success: function() {
+                                    success: function(data) {
+
+                                        console.log('success contactform');
+                                        console.log(data);
+                                        if(data.alert=='success'){
+                                            $('.alert-success').fadeIn()
+                                        }else{
+                                            $('.alert-danger').fadeIn()
+                                        }
                                         $('.form-process').fadeOut();
                                         $('#template-contactform').find('.sm-form-control').val('');
                                         $('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
-                                        SEMICOLON.widget.notifications($('#contact-form-result'));
+                                        // SEMICOLON.widget.notifications($('#contact-form-result'));
                                     }
                                 });
                             }

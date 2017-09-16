@@ -66,6 +66,62 @@ module.exports={
 
 
 	},
+		
+	sendmail:function(req,res,next) {
+
+		console.log('sendmail');
+
+				
+				var reponse = { "alert": "error", "message": "Votre email n'à <strong>pas</strong> été envoyé." };
+
+
+				console.log(req.body);
+
+				var receivers = 'alexismomcilovic@gmail.com';
+				// var expiditor = 'alexismomcilovic@gmail.com';
+				// var subject = 'alexismomcilovic@gmail.com';
+				// var message = 'alexismomcilovic@gmail.com';
+
+				var data = {}
+				  data.name = req.body['template-contactform-name']
+			      data.email = req.body['template-contactform-email']
+			      data.phone = req.body['template-contactform-phone']
+			      data.subject = req.body['template-contactform-subject']
+			      data.message = req.body['template-contactform-message']
+
+			      if(!data.name || !data.email || !data.message){
+			      		var reponse = { "alert": "error", "message": "Veuillez remplir les champs requis." };
+			      		res.status(301).send(reponse)
+			      		
+			      }
+
+			      console.log(data);
+
+
+				mail.sendEmail({
+		             from: ""+ data.name +"<"+data.email+">", // sender address 
+		             to: sails.config.mainEmailClient, // list of receivers 
+		             subject: data.subject, // Subject line 
+		        },'emailClient',{data:data, URL_HOME:sails.config.URL_HOME  }).then(function(data){
+
+		        	console.log(data);
+
+
+		        	if(data.rejected.length){
+
+		        		var reponse = { "alert": "error", "message": "Votre email n'à <strong>pas</strong> été envoyé." };
+			      		res.status(301).send(reponse)
+		        	}else{
+		        		var reponse = { "alert": "success", "message": "Votre email à été envoyé." };
+		        		res.status(200).send(reponse)
+		        	}
+		        });
+
+
+
+
+				
+	},	
 	contact:function(req,res,next) {
 
 		console.log('contact');
