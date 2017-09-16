@@ -66,6 +66,22 @@ module.exports={
 
 
 	},
+	
+	sendmail:function(req,res,next) {
+
+		console.log('sendmail');
+
+				var reponse = { "alert": "success", "message": "Votre email à été envoyé." };
+				var reponse = { "alert": "error", "message": "Votre email n'à <strong>pas</strong> été envoyé." };
+
+
+				mail.sendEmail:function(options,template,data,callback)
+
+
+
+
+				res.status(200).send(reponse)
+	},	
 	contact:function(req,res,next) {
 
 		console.log('contact');

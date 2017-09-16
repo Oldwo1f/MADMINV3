@@ -3189,6 +3189,8 @@ var SEMICOLON = SEMICOLON || {};
 
 		contactForm: function(){
 
+			console.log('HERE');
+
 			if( !$().validate ) {
 				console.log('contactForm: Form Validate not Defined.');
 				return true;
@@ -3222,6 +3224,7 @@ var SEMICOLON = SEMICOLON || {};
 						} else {
 							$(form).find('.form-process').fadeIn();
 						}
+						console.log('HERE2');
 
 						$(form).ajaxSubmit({
 							target: elementResult,
