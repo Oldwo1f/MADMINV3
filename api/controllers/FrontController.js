@@ -75,7 +75,31 @@ module.exports={
 				var reponse = { "alert": "error", "message": "Votre email n'à <strong>pas</strong> été envoyé." };
 
 
-				mail.sendEmail:function(options,template,data,callback)
+				console.log(req.body);
+
+				var receivers = 'alexismomcilovic@gmail.com';
+				// var expiditor = 'alexismomcilovic@gmail.com';
+				// var subject = 'alexismomcilovic@gmail.com';
+				// var message = 'alexismomcilovic@gmail.com';
+
+				var data = {}
+				  data.name = req.body['template-contactform-name']
+			      data.email = req.body['template-contactform-email']
+			      data.phone = req.body['template-contactform-phone']
+			      data.subject = req.body['template-contactform-subject']
+			      data.message = req.body['template-contactform-message']
+
+			      console.log(data);
+
+
+				mail.sendEmail({
+		             from: '"'+data.name+'" <'+data.email+'>', // sender address 
+		             to: receivers, // list of receivers 
+		             subject: data.subject, // Subject line 
+		        },'emailClient',{data:data, URL_HOME:sails.config.URL_HOME  }).then(function(data){
+
+
+		        });
 
 
 
