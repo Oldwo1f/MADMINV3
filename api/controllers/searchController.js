@@ -35,9 +35,26 @@ module.exports = {
 		Article.find().populateAll().exec(function(err,data){
 			var item=[]
 
-			console.log(data);
 			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'article'}}
+				var head = {"index": {"_index":sails.config.esName,"_type":'article',"_id":data[d].id}}
+				item.push(head)
+				item.push(data[d])
+			}
+			console.log(item);
+			es.client().bulk({
+				body:item
+			},function(e,rep){
+				console.log('result');
+				console.log(e);				
+				console.log(rep);				
+			})
+			
+		})
+		Project.find().populateAll().exec(function(err,data){
+			var item=[]
+
+			for(d in data){
+				var head = {index: {_index:sails.config.esName,_type:'project',"_id":data[d].id}}
 				item.push(head)
 				item.push(data[d])
 			}
@@ -48,48 +65,28 @@ module.exports = {
 				console.log(e);				
 				console.log(rep);				
 			})
-			
+
 		})
-		// Project.find().populateAll().exec(function(err,data){
-		// 	var item=[]
+		Event.find().populateAll().exec(function(err,data){
+			var item=[]	
+			for(d in data){
+				var head = {index: {_index:sails.config.esName,_type:'event',"_id":data[d].id}}
+				item.push(head)
+				item.push(data[d])
+			}
+			es.client().bulk({
+				body:item
+			},function(e,rep){
+				console.log('result');
+				console.log(e);				
+				console.log(rep);				
+			})
 
-		// 	console.log(data);
-		// 	for(d in data){
-		// 		var head = {index: {_index:sails.config.esName,_type:'project'}}
-		// 		item.push(head)
-		// 		item.push(data[d])
-		// 	}
-		// 	es.client().bulk({
-		// 		body:item
-		// 	},function(e,rep){
-		// 		console.log('result');
-		// 		console.log(e);				
-		// 		console.log(rep);				
-		// 	})
-
-		// })
-		// Event.find().populateAll().exec(function(err,data){
-		// 	var item=[]	
-		// 	console.log(data);
-		// 	for(d in data){
-		// 		var head = {index: {_index:sails.config.esName,_type:'event'}}
-		// 		item.push(head)
-		// 		item.push(data[d])
-		// 	}
-		// 	es.client().bulk({
-		// 		body:item
-		// 	},function(e,rep){
-		// 		console.log('result');
-		// 		console.log(e);				
-		// 		console.log(rep);				
-		// 	})
-
-		// })
+		})
 		Tag.find().exec(function(err,data){
 				var item=[]
-			console.log(data);
 			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'tag'}}
+				var head = {index: {_index:sails.config.esName,_type:'tag',"_id":data[d].id}}
 				item.push(head)
 				item.push(data[d])
 			}
@@ -104,9 +101,8 @@ module.exports = {
 		})
 		Category.find().exec(function(err,data){
 				var item=[]
-			console.log(data);
 			for(d in data){
-				var head = {index: {_index:sails.config.esName,_type:'category'}}
+				var head = {index: {_index:sails.config.esName,_type:'category',"_id":data[d].id}}
 				item.push(head)
 				item.push(data[d])
 			}
@@ -119,74 +115,70 @@ module.exports = {
 			})
 
 		})
-		// Ingrediant.find().populateAll().exec(function(err,data){
-		// 		var item=[]
-		// 	console.log(data);
-		// 	for(d in data){
-		// 		var head = {index: {_index:sails.config.esName,_type:'ingrediant'}}
-		// 		item.push(head)
-		// 		item.push(data[d])
-		// 	}
-		// 	es.client().bulk({
-		// 		body:item
-		// 	},function(e,rep){
-		// 		console.log('result');
-		// 		console.log(e);				
-		// 		console.log(rep);				
-		// 	})
+		Ingrediant.find().populateAll().exec(function(err,data){
+				var item=[]
+			for(d in data){
+				var head = {index: {_index:sails.config.esName,_type:'ingrediant',"_id":data[d].id}}
+				item.push(head)
+				item.push(data[d])
+			}
+			es.client().bulk({
+				body:item
+			},function(e,rep){
+				console.log('result');
+				console.log(e);				
+				console.log(rep);				
+			})
 
-		// })
-		// Fabricant.find().populateAll().exec(function(err,data){
-		// 		var item=[]
-		// 	console.log(data);
-		// 	for(d in data){
-		// 		var head = {index: {_index:sails.config.esName,_type:'fabricant'}}
-		// 		item.push(head)
-		// 		item.push(data[d])
-		// 	}
-		// 	es.client().bulk({
-		// 		body:item
-		// 	},function(e,rep){
-		// 		console.log('result');
-		// 		console.log(e);				
-		// 		console.log(rep);				
-		// 	})
+		})
+		Fabricant.find().populateAll().exec(function(err,data){
+				var item=[]
+			for(d in data){
+				var head = {index: {_index:sails.config.esName,_type:'fabricant',"_id":data[d].id}}
+				item.push(head)
+				item.push(data[d])
+			}
+			es.client().bulk({
+				body:item
+			},function(e,rep){
+				console.log('result');
+				console.log(e);				
+				console.log(rep);				
+			})
 
-		// })
-		// Comment.find().populateAll().exec(function(err,data){
-		// 		var item=[]
-		// 	console.log(data);
-		// 	for(d in data){
-		// 		var head = {index: {_index:sails.config.esName,_type:'comment'}}
-		// 		item.push(head)
-		// 		item.push(data[d])
-		// 	}
-		// 	es.client().bulk({
-		// 		body:item
-		// 	},function(e,rep){
-		// 		console.log('result');
-		// 		console.log(e);				
-		// 		console.log(rep);				
-		// 	})
+		})
+		Comment.find().populateAll().exec(function(err,data){
+				var item=[]
+			for(d in data){
+				var head = {index: {_index:sails.config.esName,_type:'comment',"_id":data[d].id}}
+				item.push(head)
+				item.push(data[d])
+			}
+			es.client().bulk({
+				body:item
+			},function(e,rep){
+				console.log('result');
+				console.log(e);				
+				console.log(rep);				
+			})
 
-		// })
-		// User.find().exec(function(err,data){
-		// 		var item=[]
-		// 	console.log(data);
-		// 	for(d in data){
-		// 		var head = {index: {_index:sails.config.esName,_type:'user'}}
-		// 		item.push(head)
-		// 		item.push(data[d])
-		// 	}
-		// 	es.client().bulk({
-		// 		body:item
-		// 	},function(e,rep){
-		// 		console.log('result');
-		// 		console.log(e);				
-		// 		console.log(rep);				
-		// 	})
+		})
+		User.find().exec(function(err,data){
+				var item=[]
+			for(d in data){
+				var head = {index: {_index:sails.config.esName,_type:'user',"_id":data[d].id}}
+				item.push(head)
+				item.push(data[d])
+			}
+			es.client().bulk({
+				body:item
+			},function(e,rep){
+				console.log('result');
+				console.log(e);				
+				console.log(rep);				
+			})
 
-		// })
+		})
 
 		
 	}

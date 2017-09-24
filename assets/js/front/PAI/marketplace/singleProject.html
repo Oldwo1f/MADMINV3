@@ -294,7 +294,24 @@
 				</div>
 
 				<a ng-if="project.initialPrice" href="#" class="btntelecharger button button-desc button-border button-rounded center"><div>Achetez ce contenu<span>Disponible instantanément</span></div></a>
-				<a ng-if="!project.initialPrice" href="#" class="btntelecharger button button-desc button-border button-rounded center"><div>Télécharger <span>Disponible gratuitement</span></div></a>
+
+				<div ng-if="!project.initialPrice" >
+					<div ng-if="project.documents.length == 1">
+						<a ng-href="/document/{{project.documents[0].filename}}" target="_BLANK" class="btntelecharger button button-desc button-border button-rounded center"><div>Télécharger <span>Disponible gratuitement </span></div></a>
+					</div>
+					<div ng-if="project.documents.length > 1" class="multidownload">
+
+						<div>
+							<div>
+								<div class="nohover btntelecharger button button-desc button-border button-rounded center">Télécharger <span>Disponible gratuitement</span></div>
+
+								<ul>
+									<li ng-repeat="doc in project.documents" class="btntelecharger button button-desc button-border button-rounded center"><a ng-href="/document/{{doc.filename}}" target="_BLANK" >{{doc.filename}}</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 

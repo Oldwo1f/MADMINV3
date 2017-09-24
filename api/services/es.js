@@ -92,7 +92,7 @@ module.exports ={
    		
    		return client.search({
    			index: sails.config.esName,
-   			type:['article','project','event','igrediant','fabricant'],
+   			type:['article','project','event','ingrediant','fabricant'],
 		  	body: {
 			    "query": {
 			        "bool" : {          
@@ -129,6 +129,26 @@ module.exports ={
 
 				            },
 				            {
+				            "match" : {
+				                	"name" : {
+				                        "query" :         slug,
+				                        "boost" :         4.0
+				                    }
+
+				                }
+
+				            },
+				            {
+				            "match" : {
+				                	"content" : {
+				                        "query" :         slug,
+				                        "boost" :         1.0
+				                    }
+
+				                }
+
+				            },
+				            {
 				                "match_phrase_prefix" : {
 				                    "_all" : {
 				                        "query" :         slug,
@@ -136,7 +156,10 @@ module.exports ={
 				                    }
 	                			}
 	                		}
-				        ]
+				        ],
+				        "filter": [ 
+       						 { "term":  { "status": "actif" }}
+       					]
 			        
 			        }
 
@@ -145,9 +168,9 @@ module.exports ={
 
 			    "highlight" : {
 			        "fields" : {
-			            "content" : {},
-			            "title" : {},
-			            "name" : {},
+			            // "content" : {"fragment_size" : 150, "number_of_fragments" : 3},
+			            "*" : {"fragment_size" : 150, "number_of_fragments" : 5},
+			            // "name" : {"fragment_size" : 150, "number_of_fragments" : 3},
 			        }
 			    }
 						    
