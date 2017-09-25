@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require("fs"));
 var archiver = require('archiver');
-var mds = require('mongo-dump-stream');
+// var mds = require('mongo-dump-stream');
 var spawn = require('child_process').spawn;
 moment.locale('fr', {
     months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
@@ -69,35 +69,35 @@ moment.locale('fr', {
 module.exports={
 	backupDb:function(req,res) {
 
-		var out = fs.createWriteStream('.tmp/tmp.db');
-			out.on('finish', function() {
-			  	var rs = fs.createReadStream('.tmp/tmp.db')
-		  		var stat = fs.statSync('.tmp/tmp.db');
-				res.setHeader('Content-disposition', 'attachment; filename=' + 'bdd-'+sails.config.companyString+'-'+ moment().format('YYYY-MM-DD')+'.db');
-				// res.setHeader('Content-length', stat.size);
-		  		rs.pipe(res)
+		// var out = fs.createWriteStream('.tmp/tmp.db');
+		// 	out.on('finish', function() {
+		// 	  	var rs = fs.createReadStream('.tmp/tmp.db')
+		//   		var stat = fs.statSync('.tmp/tmp.db');
+		// 		res.setHeader('Content-disposition', 'attachment; filename=' + 'bdd-'+sails.config.companyString+'-'+ moment().format('YYYY-MM-DD')+'.db');
+		// 		// res.setHeader('Content-length', stat.size);
+		//   		rs.pipe(res)
 
-		  		try{
-			            fs.unlink(".tmp/tmp.db")
-			        }catch(e){
+		//   		try{
+		// 	            fs.unlink(".tmp/tmp.db")
+		// 	        }catch(e){
 
 
-			        }
-			});
-		return mds.dump('mongodb://localhost:27017/'+sails.config.dbname, out, function(err) {
-			out.end();
-		});
+		// 	        }
+		// 	});
+		// return mds.dump('mongodb://localhost:27017/'+sails.config.dbname, out, function(err) {
+		// 	out.end();
+		// });
 	},
 	restoreDb:function(req,res) {
 
 		var backup = fs.createReadStream('test/bdd-ARBATOU-4 mai 2015.db');
 		// var fs = require('fs');
 		// var out = fs.createReadWriteStream('test/mydb.db');
-		return mds.load('mongodb://localhost:27017/madmin', backup, function(err,d) {
-		  if (!err) { // Everything was sent 
-		  } 
-		  res.send('ok')
-		});
+		// return mds.load('mongodb://localhost:27017/madmin', backup, function(err,d) {
+		//   if (!err) { // Everything was sent 
+		//   } 
+		//   res.send('ok')
+		// });
 		// res.pipe(out);
     // When the file is done streaming, finish the Javascript string
 	    
