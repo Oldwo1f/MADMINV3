@@ -147,15 +147,16 @@ module.exports ={
 
 				                }
 
-				            },
-				            {
-				                "match_phrase_prefix" : {
-				                    "_all" : {
-				                        "query" :         slug,
-				                        "boost" :         1.0
-				                    }
-	                			}
-	                		}
+				            }
+				            // ,
+				            // {
+				            //     "match_phrase_prefix" : {
+				            //         "_all" : {
+				            //             "query" :         slug,
+				            //             "boost" :         1.0
+				            //         }
+	               //  			}
+	               //  		}
 				        ],
 				        "filter": [ 
        						 { "term":  { "status": "actif" }}
