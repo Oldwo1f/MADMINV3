@@ -82,6 +82,8 @@ module.exports = {
 	firstConnexion:function(req,res,next) {
 
 		User.findOne({newuserhash: req.body.idfirst }).exec(function (err,user){
+
+			console.log(user);
 			
 			var encrypted = crypto.encrypt(req.body.password);
 			if(err){
