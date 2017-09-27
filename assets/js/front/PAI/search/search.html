@@ -80,8 +80,8 @@
 						
 					</div>
 					<div ng-if="result._type=='article' && result._source.link" ng-class="article" >
+						<i class="icon-link"></i>
 						<a href="{{result._source.link}}" target="_BLANK">
-						<i class="icon-list-alt"></i>
 						<h4 ng-if="!result.highlight.title">{{result._source.title}}</h4>
 						<h4 ng-if="result.highlight.title" ng-bind-html="result.highlight.title[0]"></h4>
 
