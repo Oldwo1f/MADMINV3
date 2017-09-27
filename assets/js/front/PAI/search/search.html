@@ -62,6 +62,9 @@
 							<div class="highlights" ng-repeat="item in result.highlight.content" ng-bind-html="item">
 							</div>
 						</div>
+						<div ng-if="result._source.link">
+							<a href="{{result._source.link}}" target="_BLANK"></a>
+						</div>
 
 						<div class="clouds">
 							<div class="tagcloud">
