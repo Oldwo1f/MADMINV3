@@ -351,7 +351,7 @@ module.exports={
 
 			result.tags = tags	    	
 
-	    	res.status(200).view('front/blog',{
+	    	res.status(200).render('front/blog',{
 				articles:result.articles,
 				title: req.__('SEO_BLOG_title'),
 				keyword: req.__('SEO_BLOG_keyword'),

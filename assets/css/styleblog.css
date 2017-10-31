@@ -1,0 +1,135 @@
+
+
+
+
+.demos-filter {
+	margin: 0;
+	text-align: right;
+}
+
+.demos-filter li {
+	list-style: none;
+	margin: 10px 0px;
+}
+
+.demos-filter li a {
+	display: block;
+	border: 0;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #444;
+}
+
+.demos-filter li a:hover,
+.demos-filter li.activeFilter a { color: #1ABC9C; }
+
+@media (max-width: 991px) {
+	.demos-filter { text-align: center; }
+
+	.demos-filter li {
+		float: left;
+		width: 33.3%;
+		padding: 0 20px;
+	}
+}
+
+@media (max-width: 767px) {
+	.demos-filter li { width: 50%; }
+}
+
+.revo-slider-emphasis-text {
+	font-size: 64px;
+	font-weight: 700;
+	letter-spacing: -1px;
+	font-family: 'Raleway', sans-serif;
+	padding: 15px 20px;
+	border-top: 2px solid #FFF;
+	border-bottom: 2px solid #FFF;
+}
+
+.revo-slider-desc-text {
+	font-size: 20px;
+	font-family: 'Lato', sans-serif;
+	width: 650px;
+	text-align: center;
+	line-height: 1.5;
+}
+
+.revo-slider-caps-text {
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 3px;
+	font-family: 'Raleway', sans-serif;
+}
+.tp-video-play-button { display: none !important; }
+
+.tp-caption { white-space: nowrap; }
+
+.tp-caption.TechJournal-Button,
+.TechJournal-Button {
+	color:rgba(255,255,255,1.00);
+	font-size:13px;
+	line-height:40px;
+	font-weight:900;
+	font-style:normal;
+	font-family:Raleway;
+	padding:1px 30px 1px 30px;
+	text-decoration:none;
+	text-align:left;
+	background-color:rgba(0, 80, 80, 1.00);
+	border-color:rgba(0,0,0,1.00);
+	border-style:solid;
+	border-width:0px;
+	border-radius:0px 0px 0px 0px;
+	letter-spacing:3px
+}
+
+.tp-caption.TechJournal-Button:hover,
+.TechJournal-Button:hover {
+	color:rgba(0,0,0,1.00);
+	text-decoration:none;
+	background-color:rgba(255,255,255,1.00);
+	border-color:rgba(0,0,0,1.00);
+	border-style:solid;
+	border-width:0px;
+	border-radius:0px 0px 0px 0px;
+	cursor:pointer
+}
+
+.tp-caption.TechJournal-Big,
+.TechJournal-Big {
+	color:rgba(255,255,255,1.00);
+	font-size:120px;
+	line-height:120px;
+	font-weight:900;
+	font-style:normal;
+	font-family:Raleway;
+	padding:0 0 0 0px;
+	text-decoration:none;
+	text-align:left;
+	background-color:transparent;
+	border-color:transparent;
+	border-style:none;
+	border-width:0px;
+	border-radius:0 0 0 0px;
+	letter-spacing:0px
+}
+
+.tp-caption.TechJournal-Big1,
+.TechJournal-Big1 {
+	color:rgba(0,130,130,1.00);
+	font-size:1200px;
+	line-height:1200px;
+	font-weight:900;
+	font-style:normal;
+	font-family:'momfont';
+	padding:0 0 0 0px;
+	text-decoration:none;
+	text-align:left;
+	background-color:transparent;
+	border-color:transparent;
+	border-style:none;
+	border-width:0px;
+	border-radius:0 0 0 0px;
+	letter-spacing:0px
+}
