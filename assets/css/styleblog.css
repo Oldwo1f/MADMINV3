@@ -140,3 +140,5 @@
 
 .articleSocial a {width:30px;height: 45px;display: inline-block;}
 .articleSocial a:hover {background: rgba(255,255,255,0.1);}
+
+ .rs-wave.tp-loop-wrap{pointer-events:none;}
