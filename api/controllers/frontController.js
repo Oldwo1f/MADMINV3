@@ -49,6 +49,49 @@ module.exports={
 
 
 	},
+	v2m:function(req,res,next) {
+
+		console.log('v2m_________');
+		
+							res.status(200).render('front/v2m',{
+								baseurl : '/',
+								// articles: articles,
+								// articles:articles,
+								// marked:marked,
+								title: req.__('SEO_HOME_title'),
+								keyword: req.__('SEO_HOME_keyword'),
+								description:req.__('SEO_HOME_description'),
+								// scripturl:'script.js',
+								moment: moment,
+								menu:'home',
+							})
+					
+		
+
+
+	},
+		
+	nutri:function(req,res,next) {
+
+		console.log('nutri_________');
+		
+							res.status(200).render('front/nutri',{
+								baseurl : '/',
+								// articles: articles,
+								// articles:articles,
+								// marked:marked,
+								title: req.__('SEO_HOME_title'),
+								keyword: req.__('SEO_HOME_keyword'),
+								description:req.__('SEO_HOME_description'),
+								// scripturl:'script.js',
+								moment: moment,
+								menu:'home',
+							})
+					
+		
+
+
+	},
 		
 	sendmail:function(req,res,next) {
 

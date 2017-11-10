@@ -121,7 +121,8 @@ module.exports.routes = {
 
    'GET /':'FrontController.home',
   'GET /contact':'FrontController.contact',
-  'GET /infos':'FrontController.infos',
+  'GET /v2m':'FrontController.v2m',
+  'GET /nutri':'FrontController.nutri',
   'GET /about':'FrontController.about',
 
 
