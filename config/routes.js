@@ -121,8 +121,8 @@ module.exports.routes = {
 
    'GET /':'FrontController.home',
   'GET /contact':'FrontController.contact',
-  'GET /infos':'FrontController.infos',
-  'GET /about':'FrontController.about',
+  'GET /services':'FrontController.services',
+  // 'GET /about':'FrontController.about',
 
 
   'GET /portfolio': 'FrontController.portfolio',
@@ -144,12 +144,7 @@ module.exports.routes = {
   'get /createNotif':'NotificationController.createNotif',
   'get /createComment':'NotificationController.createComment',
 
-  'GET /poussin':'FrontController.poussin',
-  'GET /seniorf':'FrontController.seniorf',
-  'GET /seniorm':'FrontController.seniorm',
-  'GET /cadetm':'FrontController.cadetm',
-  'GET /benjaminm':'FrontController.benjaminm',
-  'GET /loisir':'FrontController.loisir',
+
 
   'POST /sendmail':'FrontController.sendmail',
 

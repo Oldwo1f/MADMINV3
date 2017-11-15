@@ -49,6 +49,29 @@ module.exports={
 
 
 	},
+	nutri2:function(req,res,next) {
+
+		console.log('nutri2_________');
+		
+		
+
+							res.status(200).render('front/nutri2',{
+								baseurl : '/',
+								// articles: articles,
+								// articles:articles,
+								// marked:marked,
+								title: req.__('SEO_HOME_title'),
+								keyword: req.__('SEO_HOME_keyword'),
+								description:req.__('SEO_HOME_description'),
+								// scripturl:'script.js',
+								moment: moment,
+								menu:'nutri2',
+							})
+					
+			// })
+
+
+	},
 		
 	sendmail:function(req,res,next) {
 
@@ -117,6 +140,20 @@ module.exports={
 						description:req.__('SEO_contact_description'),
 						// scripturl:'script.js',
 						menu:'contact',
+					})
+	},	
+	services:function(req,res,next) {
+
+		console.log('services');
+					res.status(200).view('front/services',{
+						baseurl : '/',
+						// articles:articles,
+						// marked:marked,
+						title: req.__('SEO_contact_title'),
+						keyword: req.__('SEO_contact_keyword'),
+						description:req.__('SEO_contact_description'),
+						// scripturl:'script.js',
+						menu:'services',
 					})
 	},
 	infos:function(req,res,next) {

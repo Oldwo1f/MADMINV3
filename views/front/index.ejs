@@ -1,89 +1,62 @@
-
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="fr-FR">
 <head>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="SemiColonWeb" />
+	<meta name="author" content="Alexis Momcilovic" />
 
 	<!-- Stylesheets
 	============================================= -->
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700,800,900|Permanent+Marker" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="styles/front/bootstrap.css" type="text/css" />
-	<link rel="stylesheet" href="styles/front/style.css" type="text/css" />
-	<link rel="stylesheet" href="styles/front/dark.css" type="text/css" />
-	<link rel="stylesheet" href="styles/front/font-icons.css" type="text/css" />
-	<link rel="stylesheet" href="styles/front/animate.css" type="text/css" />
-	<link rel="stylesheet" href="styles/front/magnific-popup.css" type="text/css" />
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700,800,900|Roboto%3A700%2C500%2C900%2C400" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 
-	<link rel="stylesheet" href="styles/front/responsive.css" type="text/css" />
+	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
 
 	<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
-	<link rel="stylesheet" type="text/css" href="styles/front/settings.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="styles/front/layers.css">
-	<link rel="stylesheet" type="text/css" href="styles/front/navigation.css">
+	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/settings.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/navigation.css">
 	<link rel="stylesheet" type="text/css" href="styles/front/mystyle.css">
-
 
 	<!-- Document Title
 	============================================= -->
-	<title>Nutri2</title>
-	
-	<link rel="shortcut icon" href="favicon/favicon.ico">
-	<link rel="icon" sizes="16x16 32x32 64x64" href="favicon/favicon.ico">
-	<link rel="icon" type="image/png" sizes="196x196" href="favicon/favicon-192.png">
-	<link rel="icon" type="image/png" sizes="160x160" href="favicon/favicon-160.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96.png">
-	<link rel="icon" type="image/png" sizes="64x64" href="favicon/favicon-64.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
-	<link rel="apple-touch-icon" href="favicon/favicon-57.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="favicon/favicon-114.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="favicon/favicon-72.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="favicon/favicon-144.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="favicon/favicon-60.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="favicon/favicon-120.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="favicon/favicon-76.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="favicon/favicon-152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="favicon/favicon-180.png">
-	<meta name="msapplication-TileColor" content="#FFFFFF">
-	<meta name="msapplication-TileImage" content="favicon/favicon-144.png">
-	<meta name="msapplication-config" content="favicon/browserconfig.xml">
+	<title>Nutrimarketing</title>
+
 	<style>
 
-		
- 		.allbg{position:absolute;height: 800px;}
-		#content {overflow:visible;}
-		.projcontainer h2{text-align: center;}
-		.quinconce{display: block;margin-left:50%;position: relative;}
-		.imac{margin-top:100px;position: relative;}
-		.imac .imacbg {position: absolute;width: 773px;height: 440px;top: 62px;left: 185px;}
+
 	</style>
 
 </head>
 
 <body class="stretched">
+
 	<!-- Document Wrapper
-    ============================================= -->
-    <div id="wrapper" class="clearfix">
-    	
-	<% include menu.ejs %>
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+		<% include menu.ejs %>
 
 		<!-- Slider
 		============================================= -->
+		<section id="slider" class="revslider-wrap full-screen slider-parallax clearfix">
 
-		<section id="slider" class="revslider-wrap clearfix">
+			<div class="slider-parallax-inner">
 
-			<div id="rev_slider_72_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="web-product-light" style="background-color:transparent;padding:0px;">
-				<!-- START REVOLUTION SLIDER 5.0.7 fullscreen mode -->
-				<div id="rev_slider_72_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.0.7">
-					<ul>
-						<!-- SLIDE  -->
-						<li data-index="rs-254" data-transition="slidevertical" data-slotamount="1"  data-easein="default" data-easeout="default" data-masterspeed="1500"  data-thumb="images/proj/V2M/cover-100x50.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Get a License" data-description="">
+				<div id="rev_slider_2_1_wrapper" class="rev_slider_wrapper full-screen fullscreen-container" data-alias="exploration-header" style="background-color:transparent;padding:0px;">
+					<!-- START REVOLUTION SLIDER 5.2.6 fullscreen mode -->
+					<div id="rev_slider_2_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.2.6">
+						<ul>	
+							<li data-index="rs-254" data-transition="slidevertical" data-slotamount="1"  data-easein="default" data-easeout="default" data-masterspeed="1500"    data-rotate="0"  data-saveperformance="off"  data-title="NutriMarketing" data-param1="Innovation Alimentaire & Communication">
 							<!-- MAIN IMAGE -->
 							<!-- <img src="images/proj/V2M/cover.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina> -->
 							<!-- LAYERS -->
@@ -120,7 +93,7 @@
 								data-responsive_offset="on"
 
 
-								style="z-index: 5;background-color:rgba(245, 245, 245, 0.85);border-color:rgba(0, 0, 0, 1.00);">
+								style="z-index: 5;background-color:white;border-color:rgba(0, 0, 0, 1.00);">
 							</div>
 
 							<!-- LAYER NR. 2 -->
@@ -361,7 +334,7 @@
 								data-whitespace="nowrap"
 								data-transform_idle="o:1;"
 
-								 data-transform_in="x:1000px;opacity:0;s:1000;e:Power2.easeOut;"
+								 data-transform_in="x:0px;opacity:0;s:1000;e:Power2.easeOut;"
 								 data-transform_out="opacity:0;s:1500;e:Power4.easeIn;s:1500;e:Power4.easeIn;"
 								data-start="2000"
 								data-splitin="none"
@@ -531,99 +504,555 @@
 
 
 						</li>
-						
 
-						
-						
-					</ul>
-					
+						<li data-index="rs-7" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news3-2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="LE CLUB NUTRI R&D" data-param1="Profressionels R&D Agroalimentaire" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg6.jpg" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
 
+								<div class="tp-caption tp-shape tp-shapewrapper "
+									 id="slide-7-layer-5"
+									 data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
+									 data-y="['top','top','top','top']" data-voffset="['0','0','0','0']"
+												data-width="['750','680','440','300']"
+									data-height="full"
+									data-whitespace="normal"
+									data-visibility="['on','on','on','off']"
+									data-transform_idle="o:1;"
 
+									 data-transform_in="x:left;s:500;e:Power4.easeOut;"
+									 data-transform_out="x:left;s:500;e:Power4.easeOut;"
+									data-start="0"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
 
+									style="z-index: 5;background-color:rgba(255, 255, 255, 1.00);border-color:rgba(0, 0, 0, 0.50);"> </div>
 
-				<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>	</div>
-			</div><!-- END REVOLUTION SLIDER -->
+								<div class="tp-caption  "
+									 id="slide-7-layer-1"
+									 data-x="['left','left','left','left']" data-hoffset="['94','84','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['80','193','95','85']"
+												data-fontsize="['60','45','35','25']"
+									data-lineheight="['60','45','35','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 6;"><img src="images/LOGORD.png" alt=""> </div>
+
+								<div class="tp-caption tp-shape tp-shapewrapper "
+									 id="slide-7-layer-2"
+									 data-x="['left','left','left','left']" data-hoffset="['50','40','50','0']"
+									 data-y="['top','top','top','top']" data-voffset="['382','200','100','90']"
+												data-width="8"
+									data-height="['315','77','59','48']"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="sY:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 7;background-color:#dd3385;border-color:rgba(0, 0, 0, 0);"> </div>
+
+								<div class="tp-caption  "
+									 id="slide-7-layer-3"
+									 data-x="['left','left','left','left']" data-hoffset="['98','88','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['378','302','184','163']"
+												data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="650"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 8; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500; color: rgba(0, 0, 0, 0.85);font-family:Roboto;letter-spacing:2px;"><p>NutriMarketing lance un Club dédié aux professionnels de la R&D et tous ceux dont l’innovation est le coeur de métier. Sourcing, mise en commun de ressources et confidentialité, expertise et lobbying, accès aux innovations rupturistes et partage d’expériences sont les contenus de départ.</p>
+<p>
+L’essentialité de l’innovation ne se discute plus. Mais les outils qui lui sont nécessaires et les efforts à fournir sont résolument nouveaux : nouvelles conditions, contraintes, demandes, exigences... pour avoir toujours une avance, l’innovateur a des besoins de sourcing innovants.</p>
+<p>
+Cette création est issue d’un besoin exprimé par des professionnels de l’innovation.</p> </div>
+
+								<div class="tp-caption rev-btn cta"
+									 id="slide-7-layer-4"
+									 data-x="['left','left','left','left']" data-hoffset="['50','40','50','26']"
+									 data-y="['top','top','top','top']" data-voffset="['800','411','285','254']"
+												data-fontweight="['900','700','700','700']"
+									data-width="none"
+									data-height="none"
+									data-whitespace="nowrap"
+									data-transform_idle="o:1;"
+										data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:0;e:Power1.easeInOut;"
+										data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 204, 0, 1.00);"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="800"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 9; white-space: nowrap; font-size: 15px; line-height: 50px; font-weight: 900; color: #dd3385;font-family:Roboto;background-color:rgba(0, 0, 0, 0);padding:0px 45px 0px 45px;border-color:#dd3385;border-style:solid;border-width:2px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;letter-spacing:3px;cursor:pointer;">CONTACTEZ NOUS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </div>
+
+							
+							</li>
+
+							
+							<!-- SLIDE  -->
+							<li data-index="rs-5" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news1-1.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="2000" data-fsslotamount="7" data-saveperformance="off"  data-title="CONSULTATION NUTRITION" data-param1="Nutrition & Santé & Alimentation" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+								<!-- MAIN IMAGE -->
+								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="include/rs-plugin/demos/assets/images/news1-1.jpg" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+								<!-- LAYERS -->
+
+								<!-- LAYER NR. 1 -->
+								<div class="tp-caption  "
+									 id="slide-5-layer-1"
+									 data-x="['left','left','left','left']" data-hoffset="['94','114','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['213','193','95','85']"
+												data-fontsize="['60','45','35','25']"
+									data-lineheight="['60','45','35','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;">CONSULTATION NUTRITION</div>
+
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption tp-shape tp-shapewrapper "
+									 id="slide-5-layer-2"
+									 data-x="['left','left','left','left']" data-hoffset="['50','70','50','0']"
+									 data-y="['top','top','top','top']" data-voffset="['220','200','100','90']"
+												data-width="8"
+									data-height="['104','77','59','48']"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="sY:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 6;background-color:#dd3385;border-color:rgba(0, 0, 0, 0);"> </div>
+
+								<!-- LAYER NR. 3 -->
+								<div class="tp-caption  "
+									 id="slide-5-layer-3"
+									 data-x="['left','left','left','left']" data-hoffset="['98','118','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['358','302','184','163']"
+												data-width="['1000','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="650"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500;text-transform:uppercase; color: rgba(255, 255, 255, 0.85);font-family:Roboto;letter-spacing:2px;">Une newsletter mensuel sur les thèmes de la nutrition/santé/alimentation. 	<br>Ecrit par des professionels pour des professionels. </div>
+
+								<!-- LAYER NR. 4 -->
+								<div class="tp-caption rev-btn cta"
+									 id="slide-5-layer-4"
+									 data-x="['left','left','left','left']" data-hoffset="['50','70','50','26']"
+									 data-y="['top','top','top','top']" data-voffset="['465','401','285','276']"
+												data-fontweight="['900','700','700','700']"
+									data-width="none"
+									data-height="none"
+									data-whitespace="nowrap"
+									data-transform_idle="o:1;"
+										data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:0;e:Power1.easeInOut;"
+										data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 204, 0, 1.00);"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="800"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="" >VOIR LES ANCIENS NUMÉROS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </div>
+							</li>
+							<li data-index="rs-6" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news2-1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="VISITE AGROALIMENTAIRE" data-param1="Salon, usine & site de production" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg1.jpg" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+								<div class="tp-caption tp-shape tp-shapewrapper "
+									 id="slide-6-layer-555"
+									 data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
+									 data-y="['top','top','top','top']" data-voffset="['0','0','0','0']"
+												data-width="['750','680','440','300']"
+									data-height="full"
+									data-whitespace="normal"
+									data-visibility="['on','on','on','off']"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:left;s:500;e:Power4.easeOut;"
+									 data-transform_out="x:left;s:500;e:Power4.easeOut;"
+									data-start="0"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5;background-color:#000;border-color:rgba(0, 0, 0, 0.50);"> </div>
+
+								<div class="tp-caption  "
+									 id="slide-6-layer-1"
+									 data-x="['left','left','left','left']" data-hoffset="['94','84','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['213','193','95','85']"
+												data-fontsize="['60','45','35','25']"
+									data-lineheight="['60','45','35','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;">VISITE<br>AGROALIMENTAIRE </div>
+
+								<div class="tp-caption tp-shape tp-shapewrapper "
+									 id="slide-6-layer-2"
+									 data-x="['left','left','left','left']" data-hoffset="['50','40','50','0']"
+									 data-y="['top','top','top','top']" data-voffset="['220','200','100','90']"
+												data-width="8"
+									data-height="['104','77','59','48']"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="sY:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 6;background-color:#dd3385;border-color:rgba(0, 0, 0, 0);"> </div>
+
+								<div class="tp-caption  "
+									 id="slide-6-layer-3"
+									 data-x="['left','left','left','left']" data-hoffset="['98','88','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['358','302','184','163']"
+												data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="650"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500;text-transform:uppercase; color: rgba(255, 255, 255, 0.85);font-family:Roboto;letter-spacing:2px;"> En session de groupe ou session privée, nous organisont pour vous des visites guidée de salon, de site de production et de vente hors du commun de l'industrie allimentaire.  </div>
+
+								<div class="tp-caption rev-btn cta"
+									 id="slide-6-layer-4"
+									 data-x="['left','left','left','left']" data-hoffset="['50','40','50','26']"
+									 data-y="['top','top','top','top']" data-voffset="['475','411','285','254']"
+												data-fontweight="['900','700','700','700']"
+									data-width="none"
+									data-height="none"
+									data-whitespace="nowrap"
+									data-transform_idle="o:1;"
+										data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:0;e:Power1.easeInOut;"
+										data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 204, 0, 1.00);"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="800"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+									style="z-index:6;"
+									>EN SAVOIR PLUS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </div>
+							</li>
+							
+							<li data-index="rs-8" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_youtubecover-1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="NOS DOCUMENTS EN LIBRE ACCÈS " data-param1="Étude de marché et autres pdf" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg5.jpg" data-bgposition="center center" data-bgfit="cover" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+
+								<div class="rs-background-video-layer"
+									data-forcerewind="on"
+									data-volume="mute"
+									data-ytid="xDMP3i36naA"
+									data-videoattributes="version=3&amp;enablejsapi=1&amp;html5=1&amp;hd=1&wmode=opaque&showinfo=0&rel=0;;origin=http://localhost;"
+									data-videorate="1"
+									data-videowidth="100%"
+									data-videoheight="100%"
+									data-videocontrols="none"
+									data-videoloop="loop"
+									data-forceCover="1"
+									data-aspectratio="16:9"
+									data-autoplay="true"
+									data-autoplayonlyfirsttime="false"
+								></div>
+								<div class="tp-caption  "
+									 id="slide-8-layer-1"
+									 data-x="['left','left','left','left']" data-hoffset="['94','84','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['213','193','95','85']"
+												data-fontsize="['60','45','35','25']"
+									data-lineheight="['60','45','35','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;">NOS DOCUMENTS <br>GRATUITS</div>
+
+								<div class="tp-caption tp-shape tp-shapewrapper "
+									 id="slide-8-layer-2"
+									 data-x="['left','left','left','left']" data-hoffset="['50','40','50','0']"
+									 data-y="['top','top','top','top']" data-voffset="['220','200','100','90']"
+												data-width="8"
+									data-height="['104','77','59','48']"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="sY:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 6;background-color:#dd3385;border-color:rgba(0, 0, 0, 0);"> </div>
+
+								<div class="tp-caption  "
+									 id="slide-8-layer-3"
+									 data-x="['left','left','left','left']" data-hoffset="['98','88','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['358','302','184','163']"
+												data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="650"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500; color: rgba(0, 0, 0, 0.85);font-family:Roboto;letter-spacing:2px;">Des études de marchés, des rapports d'étonnement, des présentations de colloque ou d'entreprise. Bref, le contenu ne manque pas.</div>
+
+								<a class="tp-caption rev-btn "
+						 			href="" target="_blank"			 id="slide-8-layer-4"
+									 data-x="['left','left','left','left']" data-hoffset="['50','40','50','26']"
+									 data-y="['top','top','top','top']" data-voffset="['465','411','285','254']"
+												data-fontweight="['900','700','700','700']"
+									data-width="none"
+									data-height="none"
+									data-whitespace="nowrap"
+									data-transform_idle="o:1;"
+										data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:0;e:Power1.easeInOut;"
+										data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 204, 0, 1.00);"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="800"
+									data-splitin="none"
+									data-splitout="none"
+									data-actions=''
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 8; white-space: nowrap; font-size: 15px; line-height: 50px; font-weight: 900; color: #dd3385;font-family:Roboto;background-color:rgba(0, 0, 0, 0);padding:0px 45px 0px 45px;border-color:#dd3385;border-style:solid;border-width:2px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;letter-spacing:3px;cursor:pointer;">VOIR LES DOCUMENTS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i>
+								</a>
+							</li>
+						</ul>
+						<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+					</div>
+				</div><!-- END REVOLUTION SLIDER -->
+
+			</div>
 
 		</section>
-		
+
 
 	</div><!-- #wrapper end -->
 
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
 	<!-- External JavaScripts
 	============================================= -->
-	<script type="text/javascript" src="js/front/jquery.js"></script>
-	<script type="text/javascript" src="js/front/plugins.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/plugins.js"></script>
 
 	<!-- Footer Scripts
 	============================================= -->
-	<script type="text/javascript" src="js/front/functions.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
 
 	<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
-	<script type="text/javascript" src="js/front/jquery.themepunch.tools.min.js"></script>
-	<script type="text/javascript" src="js/front/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 
-	<script type="text/javascript" src="js/front/extensions/revolution.extension.video.min.js"></script>
-	<script type="text/javascript" src="js/front/extensions/revolution.extension.slideanims.min.js"></script>
-	<script type="text/javascript" src="js/front/extensions/revolution.extension.actions.min.js"></script>
-	<script type="text/javascript" src="js/front/extensions/revolution.extension.layeranimation.min.js"></script>
-	<script type="text/javascript" src="js/front/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript" src="include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
 
 	<script type="text/javascript">
+		var tpj=jQuery;
 
-		var tpj=jQuery,
-			revapi72;
+		var revapi2;
 		tpj(document).ready(function() {
-			if(tpj("#rev_slider_72_1").revolution == undefined){
-				revslider_showDoubleJqueryError("#rev_slider_72_1");
+			if(tpj("#rev_slider_2_1").revolution == undefined){
+				revslider_showDoubleJqueryError("#rev_slider_2_1");
 			}else{
-				revapi72 = tpj("#rev_slider_72_1").show().revolution({
+				revapi2 = tpj("#rev_slider_2_1").show().revolution({
 					sliderType:"standard",
-					jsFileLocation:"js/front/",
+					jsFileLocation:"include/rs-plugin/js/",
 					sliderLayout:"fullscreen",
 					dottedOverlay:"none",
 					delay:9000,
 					navigation: {
 						keyboardNavigation:"off",
-						keyboard_direction: "vertical",
+						keyboard_direction: "horizontal",
 						mouseScrollNavigation:"off",
+						 mouseScrollReverse:"default",
 						onHoverStop:"off",
 						touch:{
 							touchenabled:"on",
 							swipe_threshold: 75,
-							swipe_min_touches: 50,
-							swipe_direction: "vertical",
+							swipe_min_touches: 1,
+							swipe_direction: "horizontal",
 							drag_block_vertical: false
 						}
 						,
-						bullets: {
+						arrows: {
+							style:"gyges",
 							enable:true,
-							hide_onmobile:true,
-							hide_under:1024,
-							style:"hephaistos",
+							hide_onmobile:false,
+							hide_over:1199,
 							hide_onleave:false,
+							tmp:'',
+							left: {
+								h_align:"right",
+								v_align:"bottom",
+								h_offset:60,
+								v_offset:20
+							},
+							right: {
+								h_align:"right",
+								v_align:"bottom",
+								h_offset:20,
+								v_offset:20
+							}
+						}
+						,
+						tabs: {
+							style:"news-header",
+							enable:true,
+							width:350,
+							height:50,
+							min_width:350,
+							wrapper_padding:15,
+							wrapper_color:"#FFF",
+							wrapper_opacity:"0.2",
+							tmp:'<div class="tp-tab-title">{{title}} <i style="float:right; margin-top:5px;" class="icon-chevron-right"></i></div><div class="tp-tab-desc">{{param1}}</div>',
+							visibleAmount: 5,
+							hide_onmobile: true,
+							hide_under:1200,
+							hide_onleave:false,
+							delay:2000,
+							hide_delay:200,
 							direction:"vertical",
-							h_align:"center",
+							span:false,
+							position:"inner",
+							space:25,
+							h_align:"right",
 							v_align:"bottom",
-							h_offset:0,
-							v_offset:40,
-							space:5,
-							tmp:''
+							h_offset:43,
+							v_offset:110
 						}
 					},
 					responsiveLevels:[1240,1024,778,480],
-					gridwidth:[1400,1240,778,480],
+					visibilityLevels:[1240,1024,778,480],
+					gridwidth:[1240,1024,778,480],
 					gridheight:[868,768,960,720],
-					lazyType:"none",
+					lazyType:"single",
+					parallax: {
+						type:"scroll",
+						origo:"slidercenter",
+						speed:400,
+						levels:[5,10,15,20,25,30,35,40,45,46,47,48,49,50,51,55],
+						type:"scroll",
+					},
 					shadow:0,
-					spinner:"spinner2",
+					spinner:"off",
 					stopLoop:"on",
 					stopAfterLoops:0,
 					stopAtSlide:1,
 					shuffle:"off",
 					autoHeight:"off",
+					fullScreenAutoWidth:"off",
 					fullScreenAlignForce:"off",
 					fullScreenOffsetContainer: "",
-					fullScreenOffset: "",
+					fullScreenOffset: "0px",
 					disableProgressBar:"on",
 					hideThumbsOnMobile:"off",
 					hideSliderAtLimit:0,
@@ -637,15 +1066,7 @@
 					}
 				});
 			}
-
-			
 		});	/*ready*/
-		
-		
-
-
-
-	
 	</script>
 
 </body>
