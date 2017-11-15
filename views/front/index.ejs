@@ -70,14 +70,14 @@
 		@media (max-width: 767px) {
 			.demos-filter li { width: 50%; }
 		}
-		.paragrapheService{position: absolute;width: 400px;top:120px;left: 115px;z-index: 99; white-space: normal; font-size: 20px; line-height: 40px; font-weight: 400;color: rgba(255,250,255,0.85);font-family:Raleway;}
+		.paragrapheService{position: absolute;width: 400px;top:120px;left: 115px;z-index: 99; white-space: normal; font-size: 20px; line-height: 40px; font-weight: 400;color: rgba(0,0,0,0.85);font-family:Raleway;}
 
 		.zeus .tp-bullet{background: rgba(0,80,80,0.1);border-color:  rgba(0,80,80,0.5);}
 		.zeus .tp-bullet{background: rgba(0,80,80,0.1);border-color:  rgba(0,80,80,0.5);}
 
 		.trameimg{width: 100%;height: 100%;display: block;position: absolute;top: 0;left: 0;}
-		.trameimg.trame1{background: url(images/pattern1-small.png);opacity:0.3;}
-		.trameimg.trame1big{background: url(images/pattern1-big.png);opacity:0.1;}
+		.trameimg.trame1{background: url(images/pattern1-small.png);opacity:0.1;}
+		.trameimg.trame1big{background: url(images/pattern1-big.png);opacity:0.02;}
 		.trameimg.trame2{background: url(images/pattern2-small.png);opacity:0.1;}
 		.trameimg.trame2big{background: url(images/pattern2-big.png);opacity:0.1;}
 		.trameimg.trame3{background: url(images/pattern3-small.png);opacity:0.1;}
@@ -102,6 +102,8 @@
 				<!-- START REVOLUTION SLIDER 5.4.3.1 fullscreen mode -->
 					<div id="rev_slider" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.3.1">
 						<ul>	
+
+								
 
 								<li data-index="rs-139" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeOut" data-easeout="Power4.easeOut" data-masterspeed="default"  data-thumb=""  data-rotate="0"  data-saveperformance="off"  data-title="Service">
 								<!-- MAIN IMAGE -->
@@ -130,7 +132,7 @@
 									data-paddingleft="[0,0,0,0]"
 									data-blendmode="screen"
 
-									style="z-index: 5;"><img src="images/momcreation-1251.jpg" alt="" data-ww="['full-proportional','full-proportional','full-proportional','full-proportional']" data-hh="['full-proportional','full-proportional','full-proportional','full-proportional']" data-no-retina><div class="trameimg trame3big"></div> </div>
+									style="z-index: 5;"><img src="include/rs-plugin/demos/assets/images/transparent.png" alt="" data-ww="['full-proportional','full-proportional','full-proportional','full-proportional']" data-hh="['full-proportional','full-proportional','full-proportional','full-proportional']" data-no-retina><div class="trameimg trame1big"></div> </div>
 
 									
 
@@ -164,15 +166,37 @@
 
 
 
-
-
-
 <!-- SLIDE 3	 -->
 							<li data-index="rs-131" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeOut" data-easeout="Power4.easeOut" data-masterspeed="default"  data-thumb=""  data-rotate="0"  data-saveperformance="off"  data-title="Service">
 								<!-- MAIN IMAGE -->
 								<img src="include/rs-plugin/demos/assets/images/transparent.png" data-bgcolor='#FFF' style='background:#FFF' alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 								<!-- LAYERS -->
+								<div class="tp-caption  "
+								 id="slide-rond"
+								 data-x="['center','center','center','center']" data-hoffset="['-390','-0','0','0']"
+								 data-y="['middle','middle','top','top']" data-voffset="['0','0','0','0']"
+								data-width="600"
+								data-height="600"
+								data-whitespace="nowrap"
+								data-transform_idle="o:1;rY0;sY:1;sX:1;"
 
+								 data-transform_in="sY:0;sX:0;opacity:0;s:500;e:Power3.easeOut;"
+								 data-transform_out="sY:0;sX:0;opacity:0;s:200;e:Power3.easeOut;"
+								 
+								data-start="0"
+								data-responsive_offset="off"
+								data-fontsize="['24','600','600','450']"
+								style="z-index: 2;"
+								
+								>
+									
+									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
+									</svg>
+								
+
+									
+								</div>
 								<!-- LAYER NR. 5 -->
 								<!-- <div class="tp-caption  "
 									 id="slide-131-layer-4"
@@ -217,10 +241,6 @@
 								data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-concept","delay":"200"}]'
 								>
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
-								
 
 									<p class="paragrapheService">C’est la clé pour une communication en béton. De même qu’il n’y pas de pain sans farine, il n’y a pas de stratégie pérenne sans concept. Alors on écoute vos propos, on cerne vos attentes et on cogite à l’idée qui, une fois mise en place et déclinée, sera bénéfique pour votre notoriété.</p>
 								</div>
@@ -242,9 +262,7 @@
 								data-fontsize="['24','600','600','450']"
 								style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="1.5" data-angle="0" data-radius="1px" data-origin="50% 50%">
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
+									
 								</div>
 
 									<p class="paragrapheService">On va pas se mentir, c’est un de nos points forts. Du site vitrine à la plateforme e-commerce, on donne un sacré coup de pouce à votre présence en ligne. Design, épuré et conformes aux standards du web d’aujourd’hui, on sait ce qui est tendance et ce qui le sera dans quelques années pour vous assurer un truc durable. Et fiable, mais c’est limite inutile de le préciser..</p>
@@ -266,9 +284,7 @@
 								data-fontsize="['24','600','600','450']"
 								style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="1.5" data-angle="0" data-radius="1px" data-origin="50% 50%">
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
+									
 								</div>
 
 									<p class="paragrapheService">Alors là, on parle passion. L’équipe est amoureuse des pixels, de l’image fixe et du mouvement statique. On lésine pas sur les départs à l’aube pour immortaliser les plus beaux plans et les retours nocturnes pour observer l’obscurité.</p>
@@ -290,9 +306,7 @@
 								data-fontsize="['24','600','600','450']"
 								style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="1.5" data-angle="0" data-radius="1px" data-origin="50% 50%">
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
+									
 								</div>
 
 									<p class="paragrapheService">La publicité, quel monde de rat. Que de réflexion pour pousser à l’achat, vendre du rêve et cacher toutes sortes de choses derrière de belles images. Ouais, mais c’est pas uniquement ça pour nous. Loin de nous l’idée de prendre les consommateurs pour des cons, nous prônons une stratégie média adéquate pour chacun, et des contenus pertinents, sans fioritures.</p>
@@ -314,9 +328,7 @@
 								data-fontsize="['24','600','600','450']"
 								style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="1.5" data-angle="0" data-radius="1px" data-origin="50% 50%">
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
+									
 								</div>
 
 									<p class="paragrapheService">Un mot usé et désabusé. Les autres vont vous perdre avec des mots savants. Nous, on va vous dire que c’est l’ensemble des tâches qui vont permettre à votre marque d’être puissante. Parce que la notoriété, c’est ce qu’on dit de vous quand vous n’êtes pas dans la même pièce. Soit on crache, soit on loue et nous, on préfère la seconde option.</p>
@@ -338,9 +350,7 @@
 								data-fontsize="['24','600','600','450']"
 								style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="1.5" data-angle="0" data-radius="1px" data-origin="50% 50%">
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
+									
 								</div>
 
 									<p class="paragrapheService">Vos boîtes mail, les blogs, les moteurs de recherche, les marketplaces… Même Facebook putain. Tout ça, c’est ce qu’on appelle des applications web. Un logiciel applicatif utile au quotidien, pour vous et pour vos clients. Bingo.</p>
@@ -362,9 +372,7 @@
 								data-fontsize="['24','600','600','450']"
 								style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="1.5" data-angle="0" data-radius="1px" data-origin="50% 50%">
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
+								
 								</div>
 
 									<p class="paragrapheService">Pas facile de rester à la page. Chez MOM, on s’occupe de la partie rédaction si vous n’avez pas l’âme à construire vos textes. Pour la presse ou le web, les paroles s’envolent mais les mots restes. </p>
@@ -384,12 +392,10 @@
 								data-start="bytrigger"
 								data-responsive_offset="off"
 								data-fontsize="['24','600','600','450']"
-								style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="1.5" data-angle="0" data-radius="1px" data-origin="50% 50%">
+								style="z-index: 5;">
 									
-									<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-									<path fill="#005050" d="M288.023,149.745C276.708,70.98,222.532,7.578,149.188,13.131C73.346,18.877,5.057,76.272,12.577,151.964c7.23,72.827,63.227,144.946,138.833,136.617C224.735,280.504,298.835,225.039,288.023,149.745z"/>
-									</svg>
-								</div>
+									
+								
 
 									<p class="paragrapheService">On aurait tendance à vous dire que c’est tout sauf une prestation. L’écoute, les échanges et les discussions sont des moments que nous apprécions au delà du rapport agence-client. Ici, les simagrées et l’hypocrisie sont bannies à vie.</p>
 								</div>
@@ -411,9 +417,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-concept","delay":"200"}]'
-									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);font-family:Poppins;">Concept </div>
+									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;font-family:Poppins;">Concept </div>
 
 
 								<div class="tp-caption   tp-resizeme"
@@ -434,9 +440,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-concept","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-siteweb","delay":"200"}]'
-									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);font-family:Poppins;">Site web </div>
+									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;font-family:Poppins;">Site web </div>
 
 								<div class="tp-caption   tp-resizeme"
 									 id="slide-132-layer-64"
@@ -456,9 +462,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-concept","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-photo","delay":"200"}]'
-									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);font-family:Poppins;">Photo & Vidéo </div>
+									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;font-family:Poppins;">Photo & Vidéo </div>
 
 
 								<div class="tp-caption   tp-resizeme"
@@ -479,9 +485,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-concept","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-pub","delay":"200"}]'
-									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);font-family:Poppins;">Publicité </div>
+									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;font-family:Poppins;">Publicité </div>
 
 
 
@@ -507,9 +513,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-concept","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-branding","delay":"200"}]'
-									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);font-family:Poppins;">Branding </div>
+									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;font-family:Poppins;">Branding </div>
 
 									<div class="tp-caption   tp-resizeme"
 									 id="slide-132-layer-61"
@@ -529,9 +535,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-concept","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-webapp","delay":"200"}]'
-									style="z-index: 6; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);cursor:pointer;font-family:Poppins;">Web app </div>
+									style="z-index: 6; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;cursor:pointer;font-family:Poppins;">Web app </div>
 
 									<div class="tp-caption   tp-resizeme"
 									 id="slide-132-layer-62"
@@ -551,9 +557,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-concept","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-conseil","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-redac","delay":"200"}]'
-									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);font-family:Poppins;">Rédaction </div>
+									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;font-family:Poppins;">Rédaction </div>
 									<div class="tp-caption   tp-resizeme"
 									 id="slide-132-layer-63"
 									 data-x="['center','center','center','center']" data-hoffset="['-400','0','0','0']"
@@ -572,9 +578,9 @@
 									data-paddingright="[20,20,20,20]"
 									data-paddingbottom="[0,0,0,0]"
 									data-paddingleft="[20,20,20,20]"
-									data-blendmode="darken"
+									data-blendmode="screen"
 									data-actions='[{"event":"click","action":"stoplayer","layer":"slide-siteweb","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-photo","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-pub","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-branding","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-webapp","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-redac","delay":"0"}, {"event":"click","action":"stoplayer","layer":"slide-concept","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-conseil","delay":"200"}]'
-									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,80,80,0.85);font-family:Poppins;">Conseil </div>
+									style="z-index: 6;cursor:pointer; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: white;font-family:Poppins;">Conseil </div>
 									
 									
 									
@@ -606,6 +612,7 @@
 							</li><!-- SLIDE   3 -->
 							
 
+						
 
 <!-- SLIDE   4 -->
 
@@ -1048,14 +1055,14 @@
 				sliderLayout:"fullscreen",
 				dottedOverlay:"none",
 				delay:9000,
-				particles: {startSlide: "4", endSlide: "4", zIndex: "1",
+				particles: {startSlide: "6", endSlide: "6", zIndex: "1",
 					particles: {
 						number: {value: 80}, color: {value: "#005050"},
 						shape: {
 							type: "circle", 
 							stroke: {width: 1, color: "#ffffff", opacity: 0.9},
-							// type: "image",
-							// image: {src: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"}
+							type: "image",
+							image: {src: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"}
 						},
 						opacity: {value: 0.3, random: false, min: 0.25, anim: {enable: false, speed: 3, opacity_min: 0, sync: false}},
 						size: {value: 30, random: true, min: 1, anim: {enable: false, speed: 40, size_min: 1, sync: false}},
