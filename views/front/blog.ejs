@@ -73,27 +73,41 @@ var articles = <%- JSON.stringify(articles) %>;
                                      <%- moment(articles[i].date).format('DD')  %><span><%- moment(articles[i].date).format('MMM')  %></span>
                                     <div class="timeline-divider"></div>
                                 </div>
-                                <div class="entry-image">
-                                <% if(articles[i].video && articles[i].publishVideo){%>
-                                     <%- articles[i].video  %> 
-                                <% }else if(articles[i].images.length == 1){%>
-                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" ><img class="image_fade" src="image/resized/<%-articles[i].images[0].filename %>" alt="<%-articles[i].images[0].alt %>"></a>
-                                    
-
-                                 <%} else if(articles[i].images.length > 1){%>
-                                        <div class="fslider" data-arrows="false" data-animation="slide" data-slideshow="false">
-                                        <div class="flexslider">
-                                            <div class="slider-wrap">
-                                                 <% for(var j=0; j< articles[i].images.length ; j++){%>
-                                                    <% if(articles[i].images[j]){%>
-                                                      
-                                                        <div class="slide" ><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl %>"><img src="image/resized/<%- articles[i].images[j].filename %>" alt=""></a></div>
-                                                    <%}%>
-                                                 <%}%>
+                                 <div class="entry-image">
+                                    <% if(articles[i].videoHost && articles[i].videoUrl){%>
+                                            <% if(articles[i].videoHost =='vimeo'){%>
+                                            <div class="fitvids">
+                                                <iframe  width="16" height="9" src="https://player.vimeo.com/video/<%- articles[i].videoUrl %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                             </div>
-                                        </div>
-                                    </div>
-                                <%} %>
+                                            <%}%>
+                                            <% if(articles[i].videoHost =='youtube'){%>
+                                            <div class="fitvids">
+                                                <iframe width="16" height="9" src="http://www.youtube.com/embed/<%- articles[i].videoUrl %>?origin=http://example.com'" frameborder="0" allowfullscreen="" ></iframe>
+                                            </div>
+                                            <%}%>
+                                            <% if(articles[i].videoHost =='dailymotion'){%>
+                                            <div class="fitvids">
+                                                <iframe width="100%" height="500" src="http://www.dailymotion.com/embed/video/<%- articles[i].videoUrl %>" frameborder="0" allowfullscreen="" ></iframe>
+                                            </div>
+                                            <%}%>
+                                        <% }else if(articles[i].images.length == 1){%>
+                                                <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" data-lightbox="image"><img class="image_fade" src="image/resized/<%-articles[i].images[0].filename %>" alt="image/resized/<%-articles[i].images[0].alt %>"></a>
+                                            
+
+                                         <%} else if(articles[i].images.length > 1){%>
+                                                <div class="fslider" data-arrows="true" data-animation="slide" data-slideshow="false">
+                                                <div class="flexslider">
+                                                    <div class="slider-wrap">
+                                                         <% for(var j=0; j< articles[i].images.length ; j++){%>
+                                                            <% if(articles[i].images[j]){%>
+                                                              
+                                                                <div class="slide" ><a href="projet/<%- articles[i].id %>/<%- articles[i].rewriteurl %>"><img src="image/resized/<%- articles[i].images[j].filename%>" alt=""></a></div>
+                                                            <%}%>
+                                                         <%}%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <%} %>
                                 </div>
 
 
@@ -135,5 +149,96 @@ var articles = <%- JSON.stringify(articles) %>;
 
 
     </div><!-- #wrapper end -->
+    <script>
 
+
+
+
+
+
+ function  loadFlexSlider(){
+
+            if( !$().flexslider ) {
+                console.log('loadFlexSlider: FlexSlider not Defined.');
+                return true;
+            }
+
+            var $flexSliderEl = $('.fslider:not(.customjs)').find('.flexslider');
+            if( $flexSliderEl.length > 0 ){
+                $flexSliderEl.each(function() {
+                    var $flexsSlider = $(this),
+                        flexsAnimation = $flexsSlider.parent('.fslider').attr('data-animation'),
+                        flexsEasing = $flexsSlider.parent('.fslider').attr('data-easing'),
+                        flexsDirection = $flexsSlider.parent('.fslider').attr('data-direction'),
+                        flexsReverse = $flexsSlider.parent('.fslider').attr('data-reverse'),
+                        flexsSlideshow = $flexsSlider.parent('.fslider').attr('data-slideshow'),
+                        flexsPause = $flexsSlider.parent('.fslider').attr('data-pause'),
+                        flexsSpeed = $flexsSlider.parent('.fslider').attr('data-speed'),
+                        flexsVideo = $flexsSlider.parent('.fslider').attr('data-video'),
+                        flexsPagi = $flexsSlider.parent('.fslider').attr('data-pagi'),
+                        flexsArrows = $flexsSlider.parent('.fslider').attr('data-arrows'),
+                        flexsThumbs = $flexsSlider.parent('.fslider').attr('data-thumbs'),
+                        flexsHover = $flexsSlider.parent('.fslider').attr('data-hover'),
+                        flexsSheight = $flexsSlider.parent('.fslider').attr('data-smooth-height'),
+                        flexsTouch = $flexsSlider.parent('.fslider').attr('data-touch'),
+                        flexsUseCSS = false;
+
+                    if( !flexsAnimation ) { flexsAnimation = 'slide'; }
+                    if( !flexsEasing || flexsEasing == 'swing' ) {
+                        flexsEasing = 'swing';
+                        flexsUseCSS = true;
+                    }
+                    if( !flexsDirection ) { flexsDirection = 'horizontal'; }
+                    if( flexsReverse == 'true' ) { flexsReverse = true; } else { flexsReverse = false; }
+                    if( !flexsSlideshow ) { flexsSlideshow = true; } else { flexsSlideshow = false; }
+                    if( !flexsPause ) { flexsPause = 5000; }
+                    if( !flexsSpeed ) { flexsSpeed = 600; }
+                    if( !flexsVideo ) { flexsVideo = false; }
+                    if( flexsSheight == 'false' ) { flexsSheight = false; } else { flexsSheight = true; }
+                    if( flexsDirection == 'vertical' ) { flexsSheight = false; }
+                    if( flexsPagi == 'false' ) { flexsPagi = false; } else { flexsPagi = true; }
+                    if( flexsThumbs == 'true' ) { flexsPagi = 'thumbnails'; } else { flexsPagi = flexsPagi; }
+                    if( flexsArrows == 'false' ) { flexsArrows = false; } else { flexsArrows = true; }
+                    if( flexsHover == 'false' ) { flexsHover = false; } else { flexsHover = true; }
+                    if( flexsTouch == 'false' ) { flexsTouch = false; } else { flexsTouch = true; }
+
+                    $flexsSlider.flexslider({
+                        selector: ".slider-wrap > .slide",
+                        animation: flexsAnimation,
+                        easing: flexsEasing,
+                        direction: flexsDirection,
+                        reverse: flexsReverse,
+                        slideshow: flexsSlideshow,
+                        slideshowSpeed: Number(flexsPause),
+                        animationSpeed: Number(flexsSpeed),
+                        pauseOnHover: flexsHover,
+                        video: flexsVideo,
+                        controlNav: flexsPagi,
+                        directionNav: flexsArrows,
+                        smoothHeight: flexsSheight,
+                        useCSS: flexsUseCSS,
+                        touch: flexsTouch,
+                        start: function(slider){
+                          
+                            $('.flex-prev').html('<i class="icon-angle-left"></i>');
+                            $('.flex-next').html('<i class="icon-angle-right"></i>');
+                        },
+                        after: function(){
+                            if( $('.grid-container').hasClass('portfolio-full') ) {
+                                $('.grid-container.portfolio-full').isotope('layout');
+                            }
+                        }
+                    });
+                });
+            }
+        }
+
+         $(document).ready(function(){
+
+            console.log('HEHEHEHE');
+            // Target your .container, .wrapper, .post, etc.
+            $(".fitvids").fitVids();
+ loadFlexSlider()
+          });
+    </script>
 </body>
