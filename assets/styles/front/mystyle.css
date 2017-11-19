@@ -101,3 +101,16 @@ a[href^="http://maps.google.com/maps"]{display:none !important}
 .gmnoprint div {
     background:none !important;
 }
+
+
+.presta h3{color:#dd3385;}
+/*.presta div[class^="icon-"]{color:#dd3385;font-size: 150px;}*/
+.presta .container .row{ margin:50px 0px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display:flex; justify-content:center;align-items:center;}
+.presta .container .row .headIcon{display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;flex-direction:column;justify-content:center;align-items:center;}
+.presta .container .row div[class^="icon-"]{color:#dd3385;font-size: 150px;}
+.presta .container .row h3{color:#dd3385;font-size: 4em;}
+.more-link{color:#dd3385;    border-bottom: 1px solid #dd3385;}
+.widget > h4{color:#dd3385;    border-bottom: 1px solid #dd3385;}
+.post-timeline .entry:hover .entry-timeline { color:#dd3385;   border-color:#dd3385;}
+.entry-title h2 a:hover{ color:#dd3385;}
+.entry-meta li a:hover{color:#999;}

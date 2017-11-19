@@ -1,6 +1,6 @@
 
 
-        <header id="header" class="full-header transparent-header" data-sticky-class="not-dark">
+        <header id="header" class="full-header sticky-header transparent-header" data-sticky-class="not-dark">
 
             <div id="header-wrap" class="">
 
@@ -10,20 +10,22 @@
 
                     <!-- Logo
                     ============================================= -->
-                 <!--    <div id="logo">
+                     <% if(menu !='home'){%>
+                    <div id="logo">
                         <a href="/" class="standard-logo" data-dark-logo="images/LOGONUTRI2.svg"><img src="images/nutrinobaseline.svg" alt="Nutrimarketing logo"></a>
                         <a href="/" class="retina-logo" data-dark-logo="images/LOGONUTRI2.svg"><img src="images/nutrinobaseline.svg" alt="Nutrimarketing logo"></a>
-                    </div>< -->
+                    </div>
+                    <% } %>
 
                     <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
 
                         <ul class="sf-js-enabled" style="touch-action: pan-y;">
-                            <li class="sub-menu current"><a href="/" class="sf-with-ul"><div>Accueil</div></a></li>
-                            <li class="sub-menu"><a href="/sevices" class="sf-with-ul"><div>Services</div></a></li>
-                            <li class="sub-menu"><a href="/blog" class="sf-with-ul"><div>Blog</div></a></li>
-                            <li class="sub-menu"><a href="/contact" class="sf-with-ul"><div>Contact</div></a></li>
+                            <li class="sub-menu <% if(menu =='home'){%>current <%}%>"><a href="/" class="sf-with-ul"><div>Accueil</div></a></li>
+                            <li class="sub-menu <% if(menu =='services'){%>current <%}%>"><a href="/services" class="sf-with-ul"><div>Services</div></a></li>
+                            <li class="sub-menu <% if(menu =='blog'){%>current <%}%>"><a href="/blog" class="sf-with-ul"><div>Blog</div></a></li>
+                            <li class="sub-menu <% if(menu =='contact'){%>current <%}%>"><a href="/contact" class="sf-with-ul"><div>Contact</div></a></li>
                                     
                         </ul>
 

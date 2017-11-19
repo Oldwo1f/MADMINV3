@@ -49,29 +49,6 @@ module.exports={
 
 
 	},
-	nutri2:function(req,res,next) {
-
-		console.log('nutri2_________');
-		
-		
-
-							res.status(200).render('front/nutri2',{
-								baseurl : '/',
-								// articles: articles,
-								// articles:articles,
-								// marked:marked,
-								title: req.__('SEO_HOME_title'),
-								keyword: req.__('SEO_HOME_keyword'),
-								description:req.__('SEO_HOME_description'),
-								// scripturl:'script.js',
-								moment: moment,
-								menu:'nutri2',
-							})
-					
-			// })
-
-
-	},
 		
 	sendmail:function(req,res,next) {
 

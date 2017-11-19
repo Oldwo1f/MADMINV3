@@ -108,7 +108,7 @@ var articles = <%- JSON.stringify(articles) %>;
                                         <li><i class="icon-folder-open"></i> <a href="#"> <%- articles[i].category.name %> </a></li>
                                     <%}%>
                                     <% if(articles[i].comments.length){%>
-                                        <li><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><i class="icon-comments"></i> <%-articles[i].comments.length %> <%- __('comment') %><% if(articles[i].comments.length>1){%>s<%}%></a></li>
+                                        <li><a ><i class="icon-comments"></i> <%-articles[i].comments.length %> <%- __('comment') %><% if(articles[i].comments.length>1){%>s<%}%></a></li>
                                     <%}%>
                                 </ul>
                                 <div class="entry-content">
