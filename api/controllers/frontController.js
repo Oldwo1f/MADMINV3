@@ -261,6 +261,16 @@ module.exports={
 	   		
 	   		result.categories = categories
 	   		
+	   		return Article.find({status:'actif'}).populate('images').sort('date DESC')
+	    	.limit(5)
+
+
+
+	    })
+	   .then(function(recent) {
+	   		
+	   		result.recent = recent
+	   		
 	   		return Tag.find({ nbArticles: { '!': '0' }}).sort('name ASC')
 
 
@@ -279,6 +289,7 @@ module.exports={
 				// nbPage:nbPage,
 				thiscategory:null,
 				mostseen:result.mostseen,
+				recent:result.recent,
 				tags:result.tags,
 				categories:result.categories,
 				moment: moment,
