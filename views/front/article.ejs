@@ -57,7 +57,7 @@ var recent = <%- JSON.stringify(recent) %>;
                                         <li><i class="icon-comments"></i> <%-article.comments.length %> <%- __('comment') %><% if(article.comments.length>1){%>s<%}%></li>
                                     <%}%>
                                     <% if(article.nbView){%>
-                                        <li><i class="icon-line-eye"></i> <%-article.nbView %> <%- __('view') %><% if(article.nbView>1){%>s<%}%></li>
+                                        <li><i class="icon-eye"></i> <%-article.nbView %> <%- __('view') %><% if(article.nbView>1){%>s<%}%></li>
                                     <%}%>
                                 </ul><!-- .entry-meta end -->
 
@@ -182,7 +182,7 @@ var recent = <%- JSON.stringify(recent) %>;
 
                                                 <p><%- article.comments[i].content %></p>
 
-                                                <a class='comment-reply-link' href='#' title="<%- __('reply') %>"><i class="icon-reply"></i></a>
+                                                <!-- <a class='comment-reply-link' href='#' title="<%- __('reply') %>"><i class="icon-reply"></i></a> -->
 
                                             </div>
 
@@ -201,7 +201,7 @@ var recent = <%- JSON.stringify(recent) %>;
                                                                 <div class="comment-author"><%- article.comments[i].responses[j].authorName %><span><%- moment(article.comments[i].responses[j].createdAt).fromNow() %></span></div>
 
                                                                 <p><%- article.comments[i].responses[j].content %></p>
-                                                                                                                <a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
+                                                                 <!-- <a class='comment-reply-link' href='#'><i class="icon-reply"></i></a> -->
                                                             </div>
                                                             <div class="clear"></div>
                                                         </div>
@@ -286,6 +286,8 @@ var recent = <%- JSON.stringify(recent) %>;
 
                                 </div><!-- #respond end -->
                                  <script type="text/javascript">
+
+                                 $('.respond').hide();
 
                                     $('.comment-reply-link').click(function(e) {
                                         e.preventDefault()

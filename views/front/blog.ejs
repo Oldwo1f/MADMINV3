@@ -6,40 +6,39 @@
             <% include menu.ejs %>
         <!-- Page Title
         ============================================= -->
-        <section id="page-title" class="">
+        <% if(thiscategory){%>
+                <% if(thiscategory && thiscategory.images.length ){%>
+            <section id="page-titlecat" class="">
 
-           <% if(thiscategory){%>
-                <div class="container clearfix">
-                    <span></span>
-                    <!-- <ol class="breadcrumb"> -->
-                        <!-- <li><a href="#">Home</a></li> -->
-                        <!-- <li class="active">Blog</li> -->
-                    <!-- </ol> -->
-                    <% if(thiscategory && thiscategory.images.length ){%>
-                        <div style="margin-bottom:20px;">
-                            <img class="myimgcat" src="image/resized/<%= thiscategory.images[0].filename %>" alt="<%= thiscategory.name %>">
-                            <h1 class="h1absolute"><%= thiscategory.name %></h1>
-
+                    <div style="">
+                        <img class="myimgcat" src="image/resized/<%= thiscategory.images[0].filename %>" alt="<%= thiscategory.name %>">
+                        <div class="container clearfix"><h1 class="h1absolute"><%= thiscategory.name %></h1></div>
+                    </div>
+                    </section>
+                <%}else{%>
+                    <section id="page-title" class="">
+                        <div class="container clearfix">
+                            <h1><%= thiscategory.name %></h1>
+                            <span><%- __('blog-title') %></span>
                         </div>
-                    <%}else{%>
-                        <h1><%- __('blog-title') %></h1>
-                        <span><%= thiscategory.name %></span>
-                    <%}%> 
-                </div>
-            <%}else{%> 
-                <div class="container clearfix">
-                <h1><%- __('blog-title') %></h1>
-                <span><%- __('blog-subtitle') %></span>
-                <!-- <ol class="breadcrumb"> -->
-                    <!-- <li><a href="#">Home</a></li> -->
-                    <!-- <li class="active">Blog</li> -->
-                <!-- </ol> -->
-                </div>
-            <%}%> 
+                    </section>
+                <%}%> 
+                    
+                
 
-        </section><!-- #page-title end -->
-        
+            <!-- #page-title end -->
+        <%}else{%>
+            <section id="page-title" class="">
+                    
+                    <div class="container clearfix">
+                    <h1><%- __('blog-title') %></h1>
+                    <span><%- __('blog-subtitle') %></span>
+                   
+                    </div>
+               
 
+            </section>
+         <%}%> 
 <script type="text/javascript">
 
 var articles = <%- JSON.stringify(articles) %>;

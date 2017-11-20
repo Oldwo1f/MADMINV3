@@ -7,45 +7,20 @@ var truncate = require('html-truncate');
 module.exports={
 	home:function(req,res,next) {
 
-		console.log('home_________');
 		
-			// var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
-		 //    .limit(2).populateAll();
 
-			// articlesPromise
-		 //    .then(function(articles) {   
-		 //        var articlesWithAuthorsPromises = articles.map(function(article) {
-		 //            var authorsPromises = article.authors.map(function(author) {
-		 //                return User.findOne(author.id).populateAll();
-		 //            });
-
-		 //            return Promise.all(authorsPromises)
-		 //                  .then(function(fullfilledAuthors) {
-		 //                  	  article = article.toObject()
-		 //                      article.authors = fullfilledAuthors;
-		 //                      article.content = truncate(article.content, 250)
-		 //                      return article;
-		 //                   })
-		 //        })
-
-		 //        return Promise.all(articlesWithAuthorsPromises)
-		 //    })
-		 //   .then(function(articles) {
-
-							res.status(200).render('front/index',{
-								baseurl : '/',
-								// articles: articles,
-								// articles:articles,
-								// marked:marked,
-								title: req.__('SEO_HOME_title'),
-								keyword: req.__('SEO_HOME_keyword'),
-								description:req.__('SEO_HOME_description'),
-								// scripturl:'script.js',
-								moment: moment,
-								menu:'home',
-							})
+			res.status(200).render('front/index',{
+				baseurl : '/',
+				// articles: articles,
+				// articles:articles,
+				// marked:marked,
+				title: req.__('SEO_HOME_title'),
+				description:req.__('SEO_HOME_description'),
+				// scripturl:'script.js',
+				moment: moment,
+				menu:'home',
+			})
 					
-			// })
 
 
 	},
@@ -113,12 +88,37 @@ module.exports={
 						// articles:articles,
 						// marked:marked,
 						title: req.__('SEO_contact_title'),
-						keyword: req.__('SEO_contact_keyword'),
 						description:req.__('SEO_contact_description'),
 						// scripturl:'script.js',
 						menu:'contact',
 					})
 	},	
+	consultation:function(req,res,next) {
+
+		console.log('services');
+					res.status(200).view('front/consultation',{
+						baseurl : '/',
+						// articles:articles,
+						// marked:marked,
+						title: req.__('SEO_consultation_title'),
+						description:req.__('SEO_consultation_description'),
+						// scripturl:'script.js',
+						menu:'',
+					})
+	},	
+	maintenance:function(req,res,next) {
+
+		console.log('maintenance');
+					res.status(200).view('front/maintenance',{
+						baseurl : '/',
+						// articles:articles,
+						// marked:marked,
+						title: req.__('SEO_consultation_title'),
+						description:req.__('SEO_consultation_description'),
+						// scripturl:'script.js',
+						menu:'',
+					})
+	},		
 	services:function(req,res,next) {
 
 		console.log('services');
@@ -126,52 +126,39 @@ module.exports={
 						baseurl : '/',
 						// articles:articles,
 						// marked:marked,
-						title: req.__('SEO_contact_title'),
-						keyword: req.__('SEO_contact_keyword'),
-						description:req.__('SEO_contact_description'),
+						title: req.__('SEO_services_title'),
+						description:req.__('SEO_services_description'),
+						// scripturl:'script.js',
+						menu:'services',
+					})
+	},	
+	services2:function(req,res,next) {
+
+		console.log('services');
+					res.status(200).view('front/services2',{
+						baseurl : '/',
+						// articles:articles,
+						// marked:marked,
+						title: req.__('SEO_services_title'),
+						description:req.__('SEO_services_description'),
 						// scripturl:'script.js',
 						menu:'services',
 					})
 	},
-	infos:function(req,res,next) {
 
-		console.log('infos');
-					res.status(200).view('front/infos',{
-						baseurl : '/',
-						// articles:articles,
-						// marked:marked,
-						title: req.__('SEO_infos_title'),
-						keyword: req.__('SEO_infos_keyword'),
-						description:req.__('SEO_infos_description'),
-						// scripturl:'script.js',
-						menu:'infos',
-					})
-	},
-	about:function(req,res,next) {
-
-		console.log('about');
-					res.status(200).view('front/about',{
-						baseurl : '/',
-						// articles:articles,
-						// marked:marked,
-						title: req.__('SEO_about_title'),
-						keyword: req.__('SEO_about_keyword'),
-						description:req.__('SEO_about_description'),
-						// scripturl:'script.js',
-						menu:'about',
-					})
-	},
 	addCommentArticle:function(req,res,next){
 
 		console.log('addCommentArticle');
 		console.log(req.params.itemid);
 
 		console.log(req.body);
+		var comment = req.body
 		var commentToCreate =req.body;
 
 		Article.findOne(req.params.itemid)
 		.then(function(article){
 			console.log(article);
+			comment.articleName = article.title;
 			article.comments.add(req.body)
 			// return
 			return article.save()	
@@ -282,7 +269,6 @@ module.exports={
 	    	res.status(200).view('front/article',{
 				article:result.article,
 				title: result.article.title,
-				keyword: result.article.keyword,
 				description:result.article.description,
 				scripturl:'blog.js',
 				menu:'blog',
@@ -379,7 +365,6 @@ module.exports={
 	    	res.status(200).view('front/blog',{
 				articles:result.articles,
 				title: req.__('SEO_BLOG_title'),
-				keyword: req.__('SEO_BLOG_keyword'),
 				description:req.__('SEO_BLOG_description'),
 				scripturl:'blog.js',
 				menu:'blog',
@@ -458,6 +443,16 @@ module.exports={
 	   		
 	   		result.mostseen = mostseen
 	   		
+	   		return Article.find({status:'actif'}).populate('images').sort('date DESC')
+	    	.limit(5)
+
+
+
+	    })
+	   .then(function(recent) {
+	   		
+	   		result.recent = recent
+	   		
 	   		return Category.find({nbArticles: { '!': '0' }}).sort('name ASC')
 
 
@@ -487,12 +482,12 @@ module.exports={
 	    	res.status(200).view('front/blog',{
 				articles:result.articles,
 				title: req.__('SEO_BLOG_title'),
-				keyword: req.__('SEO_BLOG_keyword'),
 				description:req.__('SEO_BLOG_description'),
 				scripturl:'blog.js',
 				menu:'blog',
 				// nbPage:nbPage,
 				thiscategory:result.thiscat,
+				recent:result.recent,
 				mostseen:result.mostseen,
 				tags:result.tags,
 				categories:result.categories,
@@ -588,7 +583,6 @@ module.exports={
 	    	res.status(200).view('front/blog',{
 				articles:result.articles,
 				title: req.__('SEO_BLOG_title'),
-				keyword: req.__('SEO_BLOG_keyword'),
 				description:req.__('SEO_BLOG_description'),
 				scripturl:'blog.js',
 				menu:'blog',

@@ -1,0 +1,437 @@
+  <body class="stretched consultation no-transition">
+<div id="wrapper" class="clearfix">
+ <% include menu.ejs %>
+<section id="page-title" class="">
+                    
+                    <div class="container clearfix">
+                    <h1><%= __('Consultation Nutrition') %></h1>
+                    <span><%- __('Consultation-subtitle') %></span>
+                   
+                    </div>
+               
+
+            </section>
+ <div class="container">
+      <!-- <div class="backtotop"><div class="icon-angle-up"></div></div> -->
+     
+
+      <p style="margin-top:50px;font-size:1.2em;">CONSULTATION NUTRITION est une lettre d’information destinée aux praticiens de santé, aux soignants, aux communicants, et aux personnes souhaitant une information concrète et condensée sur des thèmes pointus d’actualité.
+Elle répond à une demande de notre réseau de praticiens confrontés aux questions des patients à propos de produits faisant des allégations ou des publicités alléchantes (anti-cholestérol, anti-graisse, brûle graisse…), de régime amincissant ou méthode diverse pour un bénéfice santé ou nutrition. Elle tente de donner des éléments de réponse aux crises médiatiques (horsegate, OGM, saumon pollué…), aux diktats et allégations entendues ou lues ça et là.</p>
+<p style="font-size:1.2em;">
+Cette lettre est faite en toute lucidité et sans compromis sur les justifications réelles et avérées au moment de l’écriture. Elle se base sur des publications scientifiques dans des revues à comité de lecture.</p>
+<p style="font-size:1.2em;">
+Elle est libre de toute publicité et de toute attache industrielle.</p>
+<p style="font-size:1.2em;">
+Son abonnement est libre et consenti : pour vous inscrire, il suffit de nous envoyer une adresse mail à laquelle vous souhaitez la recevoir.
+Vous pouvez aussi aller la télécharger directement et régulièrement sur ce site.</p>
+
+      
+    </div>
+
+    <div class="abonnement">
+    <div class="container">
+      <form class="" role="form" onsubmit="submitSubscribe(this); return false;">
+        <div class=" form-group col-sm-6">
+          <div class="">
+            <input type="email" name="email" class="form-control" id="inputEmail3"  placeholder="<%= __('Entrer votre adresse email') %>">
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <div >
+            <button type="submit" class="btn btn-primary"><%= __('Je m\'abonne') %></button>
+            <button  class="btn btn-info"><%= __('Vous êtes abonné') %></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+    <div class="dl">
+      <div class="container">
+        <h2><%= __('Télécharger les anciens numéros') %></h2>
+        <ol>
+        
+          <li>
+            <label for="">74</label><h3>Nutrition</h3><small>Octobre 2017</small>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°74_Nutrition.pdf"><%= __('Consulter & Télécharger') %></a>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°73 Bien manger pour bien penser.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">73</label><h3>Bien manger pour bien penser</h3><small>Septembre 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°72 Consommateur Citoyen.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">72</label><h3>Consommateur Citoyen</h3><small>Août 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°71 Sante Bien-Etre.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">71</label><h3>Sante Bien-Etre</h3><small>Juillet 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°70 Additifs alimentaires.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">70</label><h3>Additifs alimentaires</h3><small>Juin 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°69 Perturbateurs Endocriniens.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">69</label><h3>Perturbateurs Endocriniens</h3><small>Mai 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°68 Etiquetage Nutritionnel.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">68</label><h3>Etiquetage Nutritionnel</h3><small>Avril 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°67 Nutrition Confiance.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">67</label><h3>Nutrition Confiance</h3><small>Mars 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°66 Nutrition Miscellanées.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">66</label><h3>Nutrition Miscellanées</h3><small>Février 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°65 Nouvelles nutritionnelles.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">65</label><h3>Nouvelles nutritionnelles</h3><small>Janvier 2017</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N64 Nutrition.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">64</label><h3>Nutrition</h3><small>Décembre 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N63 Etiquetage nutritionnel.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">63</label><h3>Etiquetage nutritionnel</h3><small>Novembre 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N62 Craintes et Brouillards.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">62</label><h3>Craintes et Brouillards</h3><small>Octobre 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N61 Crainte alimenaire.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">61</label><h3>Crainte alimentaire</h3><small>Septembre 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/60 Nutrition en vol.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">60</label><h3>Nutrition en vol</h3><small>Juillet 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N59 Nutrition pointue.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">59</label><h3>Nutrition de Pointe</h3><small>Mai 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N58 Epigenetique.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">58</label><h3>Epigenetique</h3><small>Avril 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N57 Motivation.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">57</label><h3>Motivation</h3><small>Mars 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N56 Protéines.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">56</label><h3>Protéines</h3><small>Fevrier 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N55 Nutrition.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">55</label><h3>Nutrition 2</h3><small>Janvier 2016</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N54 Nutrition .pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">54</label><h3>Nutrition</h3><small>Novembre 2015</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N53 Etiquetage.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">53</label><h3>Etiquetage</h3><small>Octobre 2015</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N52 Cereales.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">52</label><h3>Céréales</h3><small>Août 2015</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N51 Vitamine D.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">51</label><h3>Vitamine D</h3><small>Juillet 2015</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N50 CoQ10.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">50</label><h3>CoQ10</h3><small>Juin 2015</small>
+         </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N49 Lait.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">49</label><h3>Lait</h3><small>Avril 2015</small>
+         </li>
+         <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N48 Miscellanees Nutritionnelles.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">48</label><h3>Miscellanees Nutritionnelles</h3><small>Mars 2015</small>
+         </li>
+         <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N47 Nutrition Sportive.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">47</label><h3>Nutrition Sportive</h3><small>Février 2015</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N46 Bisphenol A.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">46</label><h3>Bisphenol A</h3><small>Janvier 2015</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N45 Alcool.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">45</label><h3>Alcool</h3><small>Décembre 2014</small>
+          </li>
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N44 Tendance.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">44</label><h3>Tendance</h3><small>Novembre 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N43 Acides gras.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">43</label><h3>Acides gras</h3><small>Octobre 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N42 Bio.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">42</label><h3>Bio</h3><small>septembre 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N41 Perturbateur Endocrinien.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">41</label><h3>Perturbateur Endocrinien</h3><small>Juillet 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N40 Examen.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">40</label><h3>Examen</h3><small>Juin 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N39 Tentation.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">39</label><h3>Tentation</h3><small>Mai 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N38 Legumes.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">38</label><h3>Légumes</h3><small>Avril 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N37 Nutrition Infantile.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">37</label><h3>Nutrition Infantile</h3><small>Mars 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N36 Nutrition et Cancer1.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">36</label><h3>Nutrition et Cancer1</h3><small>Février 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N35 Nutrition 3.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">35</label><h3>Nutrition 3</h3><small>Janvier 2014</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N34 A table.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">34</label><h3>A table</h3><small>Décembre 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N33 Poisson.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">33</label><h3>Poisson</h3><small>Novembre 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N32 Consommateur.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">32</label><h3>Consommateur</h3><small>Septembre 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N31 Chrome.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">31</label><h3>Chrome</h3><small>Septembre 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N30 Nutrition 2.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">30</label><h3>Nutrition 2</h3><small>Juillet 2013</small>
+          </li>
+      <!--     
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N29 Toxines Intimes.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">29</label><h3>Toxines Intimes</h3><small>Juin 2013</small>
+          </li> -->
+
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N28 Toxines Intimes.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">28</label><h3>Toxines Intimes</h3><small>Mai 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N27 Denutrition.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">27</label><h3>Dénutrition</h3><small>Avril 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N26 Fer.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">26</label><h3>Fer</h3><small>Mars 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N25 Dermonutrition.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">25</label><h3>Dermonutrition</h3><small>Février 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N24 Metabolisme.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">24</label><h3>Métabolisme</h3><small>Janvier 2013</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N23 Sel.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">23</label><h3>Sel</h3><small>Décembre 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N22 Reglementation.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">22</label><h3>Règlementation</h3><small>Novembre 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N21 Vitamine C.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">21</label><h3>Vitamine C</h3><small>Octobre 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N20 Sucres.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">20</label><h3>Sucres</h3><small>Septembre 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N19 Fruit & Legume1.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">19</label><h3>Fruit & Legume</h3><small>Juillet 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N18 Biodisponibilite.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">18</label><h3>Biodisponibilité</h3><small>Juin 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N17 Allergie.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">17</label><h3>Allergie</h3><small>Mai 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N16 Senior.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">16</label><h3>Sénior</h3><small>Avril 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N15 Additifs.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">15</label><h3>Additifs</h3><small>Mars 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N14 Nutrition 1.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">14</label><h3>Nutrition 1</h3><small>Février 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N13 Bilan.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">13</label><h3>Bilan</h3><small>Janvier 2012</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N12 Beurre ou margarine.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">12</label><h3>Beurre ou margarine</h3><small>Décembre 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N11 Vitamine D.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">11</label><h3>Vitamine D</h3><small>Novembre 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N10 Toxicologie alimentaire.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">10</label><h3>Toxicologie alimentaire</h3><small>Octobre 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N9 Miel.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">9</label><h3>Miel</h3><small>Septembre 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N8 Cafeine.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">8</label><h3>Caféine</h3><small>Juillet 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N7 Collagene.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">7</label><h3>Collagene</h3><small>Juin 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N6 5 par jour.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">6</label><h3>5 par jour</h3><small>Mai 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N5 Huile de palme.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">5</label><h3>Huile de palme</h3><small>Avril 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N4 Stevia.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">4</label><h3>Stévia</h3><small>Mars 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N3 IG.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">3</label><h3>IG</h3><small>Février 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N2 Omega 3.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">2</label><h3>Oméga 3</h3><small>Janvier 2011</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N1 Aluminium.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">1</label><h3>Aluminium</h3><small>Décembre 2010</small>
+          </li>
+          
+          <li>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N0 Coconut.pdf"><%= __('Consulter & Télécharger') %></a>
+            <label for="">0</label><h3>Coconut</h3><small>Novembre 2010</small>
+          </li>
+
+        </ol>
+      </div>
+    </div>
+  </div>
+    <script src="bower_components/jquery.js"></script>
+    <script src="js/front/waypoints.js"></script>
+    <script src="js/front/waypointsInfinite.js"></script>
+    <script src="bower_components/bootstrap.js"></script>
+    <!-- // <script src="js/front/blog.js"></script> -->
+    <script>
+      function submitSubscribe(t) {
+        console.log(t);
+        $.ajax({
+                url: 'subscri/Consultation Nutrition', // Le nom du fichier indiqué dans le formulaire
+                type:'POST', // La méthode indiquée dans le formulaire (get ou post)
+                data: $(t).serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                success: function(data) { // Je récupère la réponse du fichier PHP
+                    $('.btn-info').show() // J'affiche cette réponse
+                    $('.btn-primary').hide() // J'affiche cette réponse
+                },
+                error:function(data,status) {
+                  console.log(status);
+                  console.log(data);
+                  // if(data.responseJSON && data.responseJSON.error =="E_VALIDATION"){
+                    if(data.responseJSON && data.responseJSON.invalidAttributes)
+                    {
+                      console.log('COOL');
+                        // messageCenterService.add('danger', 'Veuillez revoir votre saisie', { status: messageCenterService.status.unseen, timeout: 4000 });
+                        invalAttrs = data.responseJSON.invalidAttributes;
+                        for(var i in invalAttrs)
+                        {
+                            $('[name="'+i+'"]').parent().addClass('has-error');
+                        }
+                    }
+                  // }
+                }
+            });
+    }
+    </script>
+</body>
