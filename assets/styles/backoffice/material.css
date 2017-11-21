@@ -23174,3 +23174,7 @@ md-tooltip {
 
 .imageCropperH0{height: 0px;}
 .imageCropperHAuto{height: auto;}
+
+
+md-backdrop{ height: 100% !important;position: relative; }
+md-dialog-container{ height: auto !important; }
