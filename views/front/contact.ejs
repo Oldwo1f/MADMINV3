@@ -4,12 +4,13 @@
 
   <div class="bandeaunclient anim fadeInLeftBig">
     <div class="container">
-      <p>Ils nous font confiance.</p>
+      <p><%- __("Ils nous font confiance.") %></p>
       <ul>
         <li><img src="images/logosclients/andros.png" alt=""></li>
         <li><img src="images/logosclients/bondu.png" alt=""></li>
         <li><img src="images/logosclients/bonnemaman.png" alt=""></li>
-        <li><img src="images/logosclients/stmichel.png" alt=""></li>
+        <li><img src="images/logosclients/babybio.png" alt=""></li>
+        <li><img src="images/logosclients/vitabio.png" alt=""></li>
       </ul>
       
     </div>
@@ -19,11 +20,11 @@
     <div class="container">
       <div class="col-md-6 contactBox anim fadeInLeftBig">
         <div class="wrapper">
-          <h4>NutriMarketing SA</h4>
-          <p>45 Bd Vincent AURIOL<br>75013 Paris</p>
-          <p><%= __('Phone') %> : +33 1 47 63 06 37</p>
-          <p><%= __('Fax') %> : +33 1 47 63 09 72</p>
-          <p><%= __('Email') %>  : <a href="mailTo:contact@nutrimarketing.eu">contact@nutrimarketing.eu</a></p>
+          <h4><%- __('contact-company') %></h4>
+          <p><div><%- __('contact-adresse') %></div></p>
+          <p><%= __('Phone') %> : <%= __('contact-phone') %></p>
+          <p><%= __('Fax') %> : <%= __('contact-fax') %></p>
+          <p><%= __('Email') %>  : <a href="mailTo:<%= __('contact-email') %>"><%= __('contact-email') %></a></p>
         </div>
       </div>
       <div class="col-md-6 lastArticleBox anim fadeInrightBig">

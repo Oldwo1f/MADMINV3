@@ -15,15 +15,15 @@
       <!-- <div class="backtotop"><div class="icon-angle-up"></div></div> -->
      
 
-      <p style="margin-top:50px;font-size:1.2em;">CONSULTATION NUTRITION est une lettre d’information destinée aux praticiens de santé, aux soignants, aux communicants, et aux personnes souhaitant une information concrète et condensée sur des thèmes pointus d’actualité.
-Elle répond à une demande de notre réseau de praticiens confrontés aux questions des patients à propos de produits faisant des allégations ou des publicités alléchantes (anti-cholestérol, anti-graisse, brûle graisse…), de régime amincissant ou méthode diverse pour un bénéfice santé ou nutrition. Elle tente de donner des éléments de réponse aux crises médiatiques (horsegate, OGM, saumon pollué…), aux diktats et allégations entendues ou lues ça et là.</p>
+      <p style="margin-top:50px;font-size:1.2em;"> <%- __('consultation-p1') %></p>
+<p style="font-size:1.2em;"><%- __('consultation-p2') %>
+</p>
 <p style="font-size:1.2em;">
-Cette lettre est faite en toute lucidité et sans compromis sur les justifications réelles et avérées au moment de l’écriture. Elle se base sur des publications scientifiques dans des revues à comité de lecture.</p>
+  <%- __('consultation-p3') %>
+</p>
 <p style="font-size:1.2em;">
-Elle est libre de toute publicité et de toute attache industrielle.</p>
-<p style="font-size:1.2em;">
-Son abonnement est libre et consenti : pour vous inscrire, il suffit de nous envoyer une adresse mail à laquelle vous souhaitez la recevoir.
-Vous pouvez aussi aller la télécharger directement et régulièrement sur ce site.</p>
+  <%- __('consultation-p4') %>
+</p>
 
       
     </div>
@@ -50,6 +50,10 @@ Vous pouvez aussi aller la télécharger directement et régulièrement sur ce s
         <h2><%= __('Télécharger les anciens numéros') %></h2>
         <ol>
         
+          <li>
+            <label for="">75</label><h3>Nutriscore</h3><small>Novembre 2017</small>
+            <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°75 Nutriscore.pdf"><%= __('Consulter & Télécharger') %></a>
+          </li>
           <li>
             <label for="">74</label><h3>Nutrition</h3><small>Octobre 2017</small>
             <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N°74_Nutrition.pdf"><%= __('Consulter & Télécharger') %></a>
@@ -244,11 +248,11 @@ Vous pouvez aussi aller la télécharger directement et régulièrement sur ce s
             <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N30 Nutrition 2.pdf"><%= __('Consulter & Télécharger') %></a>
             <label for="">30</label><h3>Nutrition 2</h3><small>Juillet 2013</small>
           </li>
-      <!--     
+          
           <li>
             <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N29 Toxines Intimes.pdf"><%= __('Consulter & Télécharger') %></a>
             <label for="">29</label><h3>Toxines Intimes</h3><small>Juin 2013</small>
-          </li> -->
+          </li>
 
           <li>
             <a target="_BLANK" class="btn pull-right btn-default" href="/Consultation Nutrition/N28 Toxines Intimes.pdf"><%= __('Consulter & Télécharger') %></a>

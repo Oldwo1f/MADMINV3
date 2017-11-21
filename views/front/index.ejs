@@ -29,7 +29,8 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>Nutrimarketing</title>
+	<title><%- title %></title>
+	<meta name="description" content="<%- description %>" />
 
 	<style>
 
@@ -56,7 +57,7 @@
 					<!-- START REVOLUTION SLIDER 5.2.6 fullscreen mode -->
 					<div id="rev_slider_2_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.2.6">
 						<ul>	
-							<li data-index="rs-254" data-transition="slidevertical" data-slotamount="1"  data-easein="default" data-easeout="default" data-masterspeed="1500"    data-rotate="0"  data-saveperformance="off"  data-title="NutriMarketing" data-param1="Innovation Alimentaire & Communication">
+							<li data-index="rs-254" data-transition="slidevertical" data-slotamount="1"  data-easein="default" data-easeout="default" data-masterspeed="1500"    data-rotate="0"  data-saveperformance="off"  data-title="<%- __('slide1-title-menu') %>" data-param1="<%- __('slide1-subtitle-menu') %>">
 							<!-- MAIN IMAGE -->
 							<!-- <img src="images/proj/V2M/cover.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina> -->
 							<!-- LAYERS -->
@@ -505,7 +506,254 @@
 
 						</li>
 
-						<li data-index="rs-7" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news3-2.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="LE CLUB NUTRI R&D" data-param1="Profressionels R&D Agroalimentaire" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+						
+							<!-- SLIDE  -->
+							<li data-index="rs-5" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news1-1.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="2000" data-fsslotamount="7" data-saveperformance="off"    data-title="<%- __('slide2-title-menu') %>" data-param1="<%- __('slide2-subtitle-menu') %>" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+								<!-- MAIN IMAGE -->
+								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg7.jpg" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg"   data-no-retina>
+								<!-- LAYERS -->
+
+								<!-- LAYER NR. 1 -->
+								<div class="tp-caption  "
+									 id="slide-5-layer-1"
+									 data-x="['left','left','left','left']" data-hoffset="['94','114','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['243','193','95','85']"
+												data-fontsize="['60','45','35','25']"
+									data-lineheight="['60','45','35','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-title') %></div>
+
+								<div class="tp-caption  "
+									 id="slide-5-layer-1"
+									 data-x="['center','center','center','center']" data-hoffset="['94','114','76','26']"
+									 data-y="['middle','middle','middle','middle']" data-voffset="['-243','193','95','85']"
+												data-fontsize="['40','45','35','25']"
+									data-lineheight="['40','25','25','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:1000px;opacity:0;s:1000;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="1500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 40px; line-height: 40px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-talent1') %></div>
+
+								<div class="tp-caption  "
+									 id="slide-5-layer-12"
+									 data-x="['center','center','center','center']" data-hoffset="['-94','114','76','26']"
+									 data-y="['middle','middle','middle','middle']" data-voffset="['143','193','95','85']"
+												data-fontsize="['40','45','35','25']"
+									data-lineheight="['40','25','25','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:1000px;opacity:0;s:1000;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="2000"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 40px; line-height: 40px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-talent2') %></div>
+
+								<div class="tp-caption  "
+									 id="slide-5-layer-11"
+									 data-x="['center','center','center','center']" data-hoffset="['150','114','76','26']"
+									 data-y="['middle','middle','middle','middle']" data-voffset="['250','193','95','85']"
+												data-fontsize="['40','45','35','25']"
+									data-lineheight="['40','25','25','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:1000px;opacity:0;s:1000;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="2500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 40px; line-height: 40px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-talent3') %></div>
+								<div class="tp-caption  "
+									 id="slide-5-layer-111"
+									 data-x="['center','center','center','center']" data-hoffset="['850','114','76','26']"
+									 data-y="['middle','middle','middle','middle']" data-voffset="['-150','193','95','85']"
+												data-fontsize="['40','45','35','25']"
+									data-lineheight="['40','25','25','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:1000px;opacity:0;s:1000;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="3000"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 40px; line-height: 40px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-talent4') %></div>
+									<div class="tp-caption  "
+									 id="slide-5-layer-112"
+									 data-x="['center','center','center','center']" data-hoffset="['400','114','76','26']"
+									 data-y="['middle','middle','middle','middle']" data-voffset="['-350','193','95','85']"
+												data-fontsize="['40','45','35','25']"
+									data-lineheight="['40','25','25','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:1000px;opacity:0;s:1000;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="3500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 40px; line-height: 40px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-talent5') %></div>
+
+									<div class="tp-caption  "
+									 id="slide-5-layer-113"
+									 data-x="['center','center','center','center']" data-hoffset="['750','114','76','26']"
+									 data-y="['middle','middle','middle','middle']" data-voffset="['-50','193','95','85']"
+												data-fontsize="['40','45','35','25']"
+									data-lineheight="['40','25','25','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:1000px;opacity:0;s:1000;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="4000"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 40px; line-height: 40px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-talent6') %></div>
+									<div class="tp-caption  "
+									 id="slide-5-layer-114"
+									 data-x="['center','center','center','center']" data-hoffset="['800','114','76','26']"
+									 data-y="['middle','middle','middle','middle']" data-voffset="['-300','193','95','85']"
+												data-fontsize="['40','45','35','25']"
+									data-lineheight="['40','25','25','30']"
+									data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="x:1000px;opacity:0;s:1000;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="4500"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 40px; line-height: 40px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide2-talent7') %></div>
+
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption tp-shape tp-shapewrapper "
+									 id="slide-5-layer-2"
+									 data-x="['left','left','left','left']" data-hoffset="['50','70','50','0']"
+									 data-y="['top','top','top','top']" data-voffset="['250','200','100','90']"
+												data-width="8"
+									data-height="['44','77','59','48']"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="sY:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="500"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 6;background-color:#dd3385;border-color:rgba(0, 0, 0, 0);"> </div>
+
+								<!-- LAYER NR. 3 -->
+								<div class="tp-caption  "
+									 id="slide-5-layer-3"
+									 data-x="['left','left','left','left']" data-hoffset="['98','118','76','26']"
+									 data-y="['top','top','top','top']" data-voffset="['388','302','184','163']"
+												data-width="['600','560','340','260']"
+									data-height="none"
+									data-whitespace="normal"
+									data-transform_idle="o:1;"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="650"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="z-index: 7;background:white; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500;text-transform:uppercase; color: rgba(0, 0, 0, 0.85);font-family:Roboto;letter-spacing:2px;"> <%- __('slide2-subtitle') %> </div>
+
+								<!-- LAYER NR. 4 -->
+								<a class="tp-caption rev-btn cta"
+									 id="slide-5-layer-4"
+									 href="/services"
+									 data-x="['left','left','left','left']" data-hoffset="['50','70','50','26']"
+									 data-y="['top','top','top','top']" data-voffset="['465','401','285','276']"
+												data-fontweight="['900','700','700','700']"
+									data-width="none"
+									data-height="none"
+									data-whitespace="nowrap"
+									data-transform_idle="o:1;"
+										data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:0;e:Power1.easeInOut;"
+										data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 204, 0, 1.00);"
+
+									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
+									 data-transform_out="opacity:0;s:300;"
+									data-start="800"
+									data-splitin="none"
+									data-splitout="none"
+									data-basealign="slide"
+									data-responsive_offset="off"
+									data-responsive="off"
+
+									style="background:white;" ><%- __('slide2-callToAction') %> <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </a>
+							</li>
+
+							<li data-index="rs-7" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news3-2.jpg"  data-rotate="0"  data-saveperformance="off"    data-title="<%- __('slide3-title-menu') %>" data-param1="<%- __('slide3-subtitle-menu') %>" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg6.jpg" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
 
 								<div class="tp-caption tp-shape tp-shapewrapper "
@@ -585,11 +833,12 @@
 									data-responsive_offset="off"
 									data-responsive="off"
 
-									style="z-index: 8; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500; color: rgba(0, 0, 0, 0.85);font-family:Roboto;letter-spacing:2px;"><p>NutriMarketing lance un Club dédié aux professionnels de la R&D et tous ceux dont l’innovation est le coeur de métier. Sourcing, mise en commun de ressources et confidentialité, expertise et lobbying, accès aux innovations rupturistes et partage d’expériences sont les contenus de départ.</p>
-<p>
-L’essentialité de l’innovation ne se discute plus. Mais les outils qui lui sont nécessaires et les efforts à fournir sont résolument nouveaux : nouvelles conditions, contraintes, demandes, exigences... pour avoir toujours une avance, l’innovateur a des besoins de sourcing innovants.</p>
-<p>
-Cette création est issue d’un besoin exprimé par des professionnels de l’innovation.</p> </div>
+									style="z-index: 8; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500; color: rgba(0, 0, 0, 0.85);font-family:Roboto;letter-spacing:2px;">
+
+									<p><%- __('slide3-p1') %></p>
+									<p><%- __('slide3-p2') %></p>
+									<p><%- __('slide3-p3') %></p>
+									</div>
 
 								<a class="tp-caption rev-btn cta" href="/maintenance"
 									 id="slide-7-layer-4"
@@ -612,107 +861,14 @@ Cette création est issue d’un besoin exprimé par des professionnels de l’i
 									data-responsive_offset="off"
 									data-responsive="off"
 
-									style="z-index: 9; white-space: nowrap; font-size: 15px; line-height: 50px; font-weight: 900; color: #dd3385;font-family:Roboto;background-color:rgba(0, 0, 0, 0);padding:0px 45px 0px 45px;border-color:#dd3385;border-style:solid;border-width:2px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;letter-spacing:3px;cursor:pointer;">CONTACTEZ NOUS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </a>
+									style="z-index: 9; white-space: nowrap; font-size: 15px; line-height: 50px; font-weight: 900; color: #dd3385;font-family:Roboto;background-color:rgba(0, 0, 0, 0);padding:0px 45px 0px 45px;border-color:#dd3385;border-style:solid;border-width:2px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;letter-spacing:3px;cursor:pointer;"><%- __('slide3-callToAction') %> <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </a>
 
 							
 							</li>
 
 							
-							<!-- SLIDE  -->
-							<li data-index="rs-5" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news1-1.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="2000" data-fsslotamount="7" data-saveperformance="off"  data-title="CONSULTATION NUTRITION" data-param1="Nutrition & Santé & Alimentation" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-								<!-- MAIN IMAGE -->
-								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg-violet.jpg" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg"   data-no-retina>
-								<!-- LAYERS -->
 
-								<!-- LAYER NR. 1 -->
-								<div class="tp-caption  "
-									 id="slide-5-layer-1"
-									 data-x="['left','left','left','left']" data-hoffset="['94','114','76','26']"
-									 data-y="['top','top','top','top']" data-voffset="['243','193','95','85']"
-												data-fontsize="['60','45','35','25']"
-									data-lineheight="['60','45','35','30']"
-									data-width="['600','560','340','260']"
-									data-height="none"
-									data-whitespace="normal"
-									data-transform_idle="o:1;"
-
-									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
-									 data-transform_out="opacity:0;s:300;"
-									data-start="500"
-									data-splitin="none"
-									data-splitout="none"
-									data-basealign="slide"
-									data-responsive_offset="off"
-									data-responsive="off"
-
-									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;">CONSULTATION NUTRITION</div>
-
-								<!-- LAYER NR. 2 -->
-								<div class="tp-caption tp-shape tp-shapewrapper "
-									 id="slide-5-layer-2"
-									 data-x="['left','left','left','left']" data-hoffset="['50','70','50','0']"
-									 data-y="['top','top','top','top']" data-voffset="['250','200','100','90']"
-												data-width="8"
-									data-height="['104','77','59','48']"
-									data-whitespace="normal"
-									data-transform_idle="o:1;"
-
-									 data-transform_in="sY:0;s:1500;e:Power4.easeOut;"
-									 data-transform_out="opacity:0;s:300;"
-									data-start="500"
-									data-basealign="slide"
-									data-responsive_offset="off"
-									data-responsive="off"
-
-									style="z-index: 6;background-color:#dd3385;border-color:rgba(0, 0, 0, 0);"> </div>
-
-								<!-- LAYER NR. 3 -->
-								<div class="tp-caption  "
-									 id="slide-5-layer-3"
-									 data-x="['left','left','left','left']" data-hoffset="['98','118','76','26']"
-									 data-y="['top','top','top','top']" data-voffset="['388','302','184','163']"
-												data-width="['1000','560','340','260']"
-									data-height="none"
-									data-whitespace="normal"
-									data-transform_idle="o:1;"
-
-									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
-									 data-transform_out="opacity:0;s:300;"
-									data-start="650"
-									data-splitin="none"
-									data-splitout="none"
-									data-basealign="slide"
-									data-responsive_offset="off"
-									data-responsive="off"
-
-									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500;text-transform:uppercase; color: rgba(255, 255, 255, 0.85);font-family:Roboto;letter-spacing:2px;">Une newsletter mensuel sur les thèmes de la nutrition/santé/alimentation. 	<br>Ecrit par des professionels pour des professionels. </div>
-
-								<!-- LAYER NR. 4 -->
-								<a class="tp-caption rev-btn cta"
-									 id="slide-5-layer-4"
-									 href="/consultation"
-									 data-x="['left','left','left','left']" data-hoffset="['50','70','50','26']"
-									 data-y="['top','top','top','top']" data-voffset="['465','401','285','276']"
-												data-fontweight="['900','700','700','700']"
-									data-width="none"
-									data-height="none"
-									data-whitespace="nowrap"
-									data-transform_idle="o:1;"
-										data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:0;e:Power1.easeInOut;"
-										data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(255, 204, 0, 1.00);"
-
-									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeOut;"
-									 data-transform_out="opacity:0;s:300;"
-									data-start="800"
-									data-splitin="none"
-									data-splitout="none"
-									data-basealign="slide"
-									data-responsive_offset="off"
-									data-responsive="off"
-
-									style="" >VOIR LES ANCIENS NUMÉROS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </a>
-							</li>
-							<li data-index="rs-6" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news2-1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="VISITE AGROALIMENTAIRE" data-param1="Salon, usine & site de production" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+							<li data-index="rs-6" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_news2-1.jpg"  data-rotate="0"  data-saveperformance="off"    data-title="<%- __('slide4-title-menu') %>" data-param1="<%- __('slide4-subtitle-menu') %>" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg1.jpg" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
 								<div class="tp-caption tp-shape tp-shapewrapper "
 									 id="slide-6-layer-555"
@@ -753,7 +909,7 @@ Cette création est issue d’un besoin exprimé par des professionnels de l’i
 									data-responsive_offset="off"
 									data-responsive="off"
 
-									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;">VISITE<br>AGROALIMENTAIRE </div>
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(255, 255, 255, 1.00);font-family:Roboto;"><%- __('slide4-title') %> </div>
 
 								<div class="tp-caption tp-shape tp-shapewrapper "
 									 id="slide-6-layer-2"
@@ -791,7 +947,7 @@ Cette création est issue d’un besoin exprimé par des professionnels de l’i
 									data-responsive_offset="off"
 									data-responsive="off"
 
-									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500;text-transform:uppercase; color: rgba(255, 255, 255, 0.85);font-family:Roboto;letter-spacing:2px;"> En session de groupe ou session privée, nous organisont pour vous des visites guidée de salon, de site de production et de vente hors du commun de l'industrie allimentaire.  </div>
+									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500;text-transform:uppercase; color: rgba(255, 255, 255, 0.85);font-family:Roboto;letter-spacing:2px;"><%- __('slide4-subtitle') %></div>
 
 								<a class="tp-caption rev-btn cta" href="/contact"
 									 id="slide-6-layer-4"
@@ -814,10 +970,10 @@ Cette création est issue d’un besoin exprimé par des professionnels de l’i
 									data-responsive_offset="off"
 									data-responsive="off"
 									style="z-index:6;"
-									>EN SAVOIR PLUS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </a>
+									><%- __('slide4-callToAction') %> <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i> </a>
 							</li>
 							
-							<li data-index="rs-8" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_youtubecover-1.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="NOS DOCUMENTS EN LIBRE ACCÈS " data-param1="Étude de marché et autres pdf" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+							<li data-index="rs-8" data-transition="slideoververtical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="include/rs-plugin/demos/assets/images/100x50_youtubecover-1.jpg"  data-rotate="0"  data-saveperformance="off"    data-title="<%- __('slide5-title-menu') %>" data-param1="<%- __('slide5-subtitle-menu') %>" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 								<img src="include/rs-plugin/demos/assets/images/dummy.png"  alt=""  data-lazyload="images/bg5.jpg" data-bgposition="center center" data-bgfit="cover" data-bgparallax="off" class="rev-slidebg" data-no-retina>
 
 								<div class="rs-background-video-layer"
@@ -855,7 +1011,7 @@ Cette création est issue d’un besoin exprimé par des professionnels de l’i
 									data-responsive_offset="off"
 									data-responsive="off"
 
-									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;">NOS DOCUMENTS <br>GRATUITS</div>
+									style="z-index: 5; min-width: 600px; max-width: 600px; white-space: normal; font-size: 60px; line-height: 60px; font-weight: 700; color: rgba(0, 0, 0, 1.00);font-family:Roboto;"><%- __('slide5-title') %></div>
 
 								<div class="tp-caption tp-shape tp-shapewrapper "
 									 id="slide-8-layer-2"
@@ -893,7 +1049,7 @@ Cette création est issue d’un besoin exprimé par des professionnels de l’i
 									data-responsive_offset="off"
 									data-responsive="off"
 
-									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500; color: rgba(0, 0, 0, 0.85);font-family:Roboto;letter-spacing:2px;">Des études de marchés, des rapports d'étonnement, des présentations de colloque ou d'entreprise. Bref, le contenu ne manque pas.</div>
+									style="z-index: 7; min-width: 600px; max-width: 600px; white-space: normal; font-size: 17px; line-height: 22px; font-weight: 500; color: rgba(0, 0, 0, 0.85);font-family:Roboto;letter-spacing:2px;"><%- __('slide5-subtitle') %></div>
 
 								<a class="tp-caption rev-btn "
 						 			href="/maintenance"		 id="slide-8-layer-4"
@@ -917,7 +1073,7 @@ Cette création est issue d’un besoin exprimé par des professionnels de l’i
 									data-responsive_offset="off"
 									data-responsive="off"
 
-									style="z-index: 8; white-space: nowrap; font-size: 15px; line-height: 50px; font-weight: 900; color: #dd3385;font-family:Roboto;background-color:rgba(0, 0, 0, 0);padding:0px 45px 0px 45px;border-color:#dd3385;border-style:solid;border-width:2px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;letter-spacing:3px;cursor:pointer;">VOIR LES DOCUMENTS <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i>
+									style="z-index: 8; white-space: nowrap; font-size: 15px; line-height: 50px; font-weight: 900; color: #dd3385;font-family:Roboto;background-color:rgba(0, 0, 0, 0);padding:0px 45px 0px 45px;border-color:#dd3385;border-style:solid;border-width:2px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;letter-spacing:3px;cursor:pointer;"><%- __('slide5-callToAction') %> <i style="font-size:13px;margin-left:10px;" class="icon-chevron-right"></i>
 								</a>
 							</li>
 						</ul>

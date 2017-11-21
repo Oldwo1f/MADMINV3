@@ -68,12 +68,15 @@ module.exports.policies = {
       'fetchActive':true,
       'fetchOne':true,
     },
+    // UserController:{
+    //   'findOne':true,
+    //   'verifyUniqueEmail':true,
+    //   'firstConnexion':true,
+    //   'addFirstAdmin':true,
+    //   'login':true,
+    // }, 
     UserController:{
-      'findOne':true,
-      'verifyUniqueEmail':true,
-      'firstConnexion':true,
-      'addFirstAdmin':true,
-      'login':true,
+      '*':true,
     },
     FrontController:{
       '*':true,

@@ -15,7 +15,7 @@ module.exports={
 				// articles:articles,
 				// marked:marked,
 				title: req.__('SEO_HOME_title'),
-				description:req.__('SEO_HOME_description'),
+				description:req.__('SEO_HOME_description_google'),
 				// scripturl:'script.js',
 				moment: moment,
 				menu:'home',
@@ -103,7 +103,7 @@ module.exports={
 						title: req.__('SEO_consultation_title'),
 						description:req.__('SEO_consultation_description'),
 						// scripturl:'script.js',
-						menu:'',
+						menu:'consultation',
 					})
 	},	
 	maintenance:function(req,res,next) {
