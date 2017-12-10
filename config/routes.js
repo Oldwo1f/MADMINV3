@@ -147,15 +147,8 @@ module.exports.routes = {
   'POST /article/:itemid/addComment':'FrontController.addCommentArticle',
   'POST /article/addReponse/:itemid/:projid':'FrontController.addReponseArticle',
 
-  'get /createNotif':'NotificationController.createNotif',
-  'get /createComment':'NotificationController.createComment',
 
-  'GET /poussin':'FrontController.poussin',
-  'GET /seniorf':'FrontController.seniorf',
-  'GET /seniorm':'FrontController.seniorm',
-  'GET /cadetm':'FrontController.cadetm',
-  'GET /benjaminm':'FrontController.benjaminm',
-  'GET /loisir':'FrontController.loisir',
+
 
   'POST /sendmail':'FrontController.sendmail',
 
