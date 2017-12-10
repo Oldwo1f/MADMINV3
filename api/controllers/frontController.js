@@ -49,6 +49,50 @@ module.exports={
 
 
 	},
+	construction:function(req,res,next) {
+
+		console.log('construction');
+		
+			// var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
+		 //    .limit(2).populateAll();
+
+			// articlesPromise
+		 //    .then(function(articles) {   
+		 //        var articlesWithAuthorsPromises = articles.map(function(article) {
+		 //            var authorsPromises = article.authors.map(function(author) {
+		 //                return User.findOne(author.id).populateAll();
+		 //            });
+
+		 //            return Promise.all(authorsPromises)
+		 //                  .then(function(fullfilledAuthors) {
+		 //                  	  article = article.toObject()
+		 //                      article.authors = fullfilledAuthors;
+		 //                      article.content = truncate(article.content, 250)
+		 //                      return article;
+		 //                   })
+		 //        })
+
+		 //        return Promise.all(articlesWithAuthorsPromises)
+		 //    })
+		 //   .then(function(articles) {
+
+							res.status(200).render('front/maintenance',{
+								baseurl : '/',
+								// articles: articles,
+								// articles:articles,
+								// marked:marked,
+								title: req.__('SEO_HOME_title'),
+								keyword: req.__('SEO_HOME_keyword'),
+								description:req.__('SEO_HOME_description'),
+								// scripturl:'script.js',
+								moment: moment,
+								menu:'home',
+							})
+					
+			// })
+
+
+	},
 	v2m:function(req,res,next) {
 
 		console.log('v2m_________');

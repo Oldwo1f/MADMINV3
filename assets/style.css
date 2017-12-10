@@ -90,6 +90,50 @@
 ---------------------------------------------------------------- */
 
 
+@font-face {
+    font-family: 'quicksandregular';
+    src: url('fonts/front/quicksand-regular.woff2') format('woff2'),
+         url('fonts/front/quicksand-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'quicksandmedium';
+    src: url('fonts/front/quicksand-medium.woff2') format('woff2'),
+         url('fonts/front/quicksand-medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'quicksandlight';
+    src: url('fonts/front/quicksand-light.woff2') format('woff2'),
+         url('fonts/front/quicksand-light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'quicksandbold';
+    src: url('fonts/front/quicksand-bold.woff2') format('woff2'),
+         url('fonts/front/quicksand-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 /* ----------------------------------------------------------------
 	Basic
@@ -140,7 +184,7 @@ dl, dt, dd, ol, ul, li {
 body {
 	line-height: 1.5;
 	color: #555;
-	font-family: 'Lato', sans-serif;
+	font-family: 'quicksandregular', sans-serif;
 }
 
 a {
