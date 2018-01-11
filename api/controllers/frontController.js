@@ -24,6 +24,25 @@ module.exports={
 
 
 	},
+	documents:function(req,res,next) {
+
+		
+
+			res.status(200).view('front/documents',{
+				baseurl : '/',
+				// articles: articles,
+				// articles:articles,
+				// marked:marked,
+				title: req.__('SEO_HOME_title'),
+				description:req.__('SEO_HOME_description_google'),
+				// scripturl:'script.js',
+				moment: moment,
+				menu:'documents',
+			})
+					
+
+
+	},
 		
 	sendmail:function(req,res,next) {
 
