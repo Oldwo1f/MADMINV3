@@ -206,3 +206,5 @@ a[href^="http://maps.google.com/maps"]{display:none !important}
 .dl ol li:hover{ border: 1px solid #dd3385;}
 .dl ol li label{color : #dd3385; height:100%; margin-right : 10px;margin-bottom: 0;font-size: 30px;}
 .dl ol li small{font-size:0.6em;color:#654998;margin-left:20px;}
+
+.boxdocument:first-child{margin-top: 50px;}

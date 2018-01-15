@@ -15,12 +15,50 @@
 
 </section>
 
-<div class="presta">
+<div class="container ">
+	
     
+	   <% documents.forEach(function(doc){%>
+	   	 <% if(doc.slides.length){%>
+	   	 
+			<div class="boxdocument toggle toggle-border">
+				
+				<div class="head togglet toggleta">
+		   			 <i class="toggle-closed icon-angle-up"></i><i class="toggle-open icon-angle-down"></i> <%- doc.title %>  ( <%- doc.slides.length %> )
+		   			
+				</div>
+			   	<div class="corps togglec">
+			   		 <% doc.slides.forEach(function(slide){%>
+							<div><span><%- slide.title %></span>
+
+
+					   		<% slide.documents.forEach(function(docc){%>
+					   			<a href="<%- docc.filename %>" class="btndownload" title="<%- docc.name %>">
+									<i class="icon-download"></i>
+								</a>
+					   		 <%});%>
+					   		</div>
+			   		 <%});%>
+			   	</div>
+			</div>
+	   	
+	   	 <%}%>
+	   <%});%>
+
+
+
 </div>
 
         
 
 </div><!-- #wrapper end -->
-    <!-- // <script type="text/javascript" src="js/myscript.js"></script> -->
+<script type="text/javascript" src="js/functions.js"></script>
+   <script type="text/javascript" >
+    	
+   var documents = <%- JSON.stringify(documents) %>;
+        console.log(documents);
+
+
+
+    </script>
 </body>

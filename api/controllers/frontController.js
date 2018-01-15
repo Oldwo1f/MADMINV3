@@ -26,19 +26,58 @@ module.exports={
 	},
 	documents:function(req,res,next) {
 
-		
+			
+		var slideshowsPromise = Slideshow.find().limit(100).populateAll();
 
-			res.status(200).view('front/documents',{
-				baseurl : '/',
-				// articles: articles,
-				// articles:articles,
-				// marked:marked,
-				title: req.__('SEO_HOME_title'),
-				description:req.__('SEO_HOME_description_google'),
-				// scripturl:'script.js',
-				moment: moment,
-				menu:'documents',
-			})
+			slideshowsPromise
+		    .then(function(slideshows) {   
+		        var slideshowsWithSlidesPromises = slideshows.map(function(slideshow) {
+		            var slidePromises = slideshow.slides.map(function(slide) {
+		                return Slide.findOne(slide.id).populateAll();
+		            });
+
+		            return Promise.all(slidePromises)
+		                  .then(function(fullfilledSlides) {
+		                  	  slideshow = slideshow.toObject()
+		                      slideshow.slides = fullfilledSlides;
+		                      return slideshow;
+		                   })
+		        })
+
+		        return Promise.all(slideshowsWithSlidesPromises)
+		    })
+		   .then(function(fullData) {
+		   		
+		        // res.send()
+		        res.status(200).view('front/documents',{
+					baseurl : '/',
+					// articles: articles,
+					documents:fullData,
+					// marked:marked,
+					title: req.__('SEO_HOME_title'),
+					description:req.__('SEO_HOME_description_google'),
+					// scripturl:'script.js',
+					moment: moment,
+					menu:'documents',
+				})
+		    })
+		    .catch(function(e){
+		    	console.log(e);
+		    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
 					
 
 
