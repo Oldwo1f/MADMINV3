@@ -186,7 +186,8 @@ angular.module('momi-sliders')
 							$scope.slideshowList[index].slides[index2].documents = data.item.documents
 						}
 					}
-			})	
+			})				
+
 			$sailsSocket.subscribe('slideshow',function(data){
 			        console.log('ON slideshow');
 			        console.log(data);
@@ -393,8 +394,16 @@ angular.module('momi-sliders')
 						                        url: '/api/slide/'+$scope.formData.id+'/documents',
 						                        data: {files : $scope.uploadsDocument[i].file,filename:'tt',name:'t'}
 						                    }).then(function (data) {
+						                    	console.log('ICCICICICICI');
 						                        console.log(data);
+						                        console.log(data.data.child.name);
 						                        $rootScope.$broadcast('slideSelfChangeDocument',{item : data.data.parent,slideshowID:slideshowID});
+						                        // $rootScope.$broadcast('setDocumentName',{name : data.data.child.name});
+						                        if(!$scope.formData.title){
+													console.log('IF');
+													$scope.formData.title = data.data.child.name;
+													$scope.saveSlide('title')
+												}
 						                        $scope.formData.documents=data.data.parent.documents
 						                        $scope.uploadsDocument[i].text='Envoi terminé';
 												$scope.touched = true;
@@ -416,7 +425,13 @@ angular.module('momi-sliders')
 					            };
 					        }
 					    };
-
+					    $rootScope.$on('setDocumentName',function(e,newname){
+				console.log('setDocumentName');
+				console.log(newname);
+				console.log($scope.formData.title);
+				
+					
+			})	
 						$scope.removeDocument=function(doc){
 							$rootScope.startSpin();
 							sliderService.removeDocument($scope.formData.id,doc).then(function(data){
