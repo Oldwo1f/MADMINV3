@@ -24,6 +24,25 @@ module.exports={
 
 
 	},
+	clubRD:function(req,res,next) {
+
+		
+
+			res.status(200).view('front/clubRD',{
+				baseurl : '/',
+				// articles: articles,
+				// articles:articles,
+				// marked:marked,
+				title: req.__('SEO_HOME_title'),
+				description:req.__('SEO_HOME_description_google'),
+				// scripturl:'script.js',
+				moment: moment,
+				menu:'home',
+			})
+					
+
+
+	},
 	documents:function(req,res,next) {
 
 			

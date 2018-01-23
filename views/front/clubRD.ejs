@@ -1,0 +1,42 @@
+<body class="stretched BLOG no-transition">
+<div id="wrapper" class="clearfix">
+<% include menu.ejs %>
+<section id="page-title" class="">
+
+         
+        <div class="container clearfix">
+        <h1><%- __('pageclubrd-title') %></h1>
+        <span><%- __('pageclubrd-subtitle') %></span>
+        <!-- <ol class="breadcrumb"> -->
+            <!-- <li><a href="#">Home</a></li> -->
+            <!-- <li class="active">Blog</li> -->
+        <!-- </ol> -->
+        </div>
+
+</section>
+
+<div class="container ">
+	
+    
+	<p><%- __('pageclubrd-p1') %></p>
+    <p><%- __('pageclubrd-p2') %></p>
+    <p><%- __('pageclubrd-p3') %></p>
+
+	<a href="127.0.0.1:1350/admin" class="btn btn-primary"><%- __('Se connecter') %></a>
+
+
+</div>
+
+        
+
+</div><!-- #wrapper end -->
+<script type="text/javascript" src="js/functions.js"></script>
+   <script type="text/javascript" >
+    	
+   var documents = <%- JSON.stringify(documents) %>;
+        console.log(documents);
+
+
+
+    </script>
+</body>
