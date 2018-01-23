@@ -208,3 +208,7 @@ a[href^="http://maps.google.com/maps"]{display:none !important}
 .dl ol li small{font-size:0.6em;color:#654998;margin-left:20px;}
 
 .boxdocument:first-child{margin-top: 50px;}
+
+.corps div.boiteDocument {border:3px solid black;margin:10px;padding:0px;width:546px;display: inline-block;position:relative;height: 362px;overflow: hidden;}
+.corps div.boiteDocument .imgbg{position:absolute;top:0;left: 0;}
+.corps div.boiteDocument h4{font-size: 3em; color:black;}

@@ -46,7 +46,7 @@ module.exports={
 	documents:function(req,res,next) {
 
 			
-		var slideshowsPromise = Slideshow.find().limit(100).populateAll();
+		var slideshowsPromise = Slideshow.find({title:['document']}).limit(100).populateAll();
 
 			slideshowsPromise
 		    .then(function(slideshows) {   

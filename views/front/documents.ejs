@@ -23,20 +23,23 @@
 	   	 
 			<div class="boxdocument toggle toggle-border">
 				
-				<div class="head togglet toggleta">
+				<!-- <div class="head ">
 		   			 <i class="toggle-closed icon-angle-up"></i><i class="toggle-open icon-angle-down"></i> <%- doc.title %>  ( <%- doc.slides.length %> )
 		   			
-				</div>
-			   	<div class="corps togglec">
+				</div> -->
+			   	<div class="corps ">
 			   		 <% doc.slides.forEach(function(slide){%>
-							<div><span><%- slide.title %></span>
+							<div class="boiteDocument ">
 
 
-					   		<% slide.documents.forEach(function(docc){%>
-					   			<a href="<%- docc.filename %>" class="btndownload" title="<%- docc.name %>">
-									<i class="icon-download"></i>
-								</a>
-					   		 <%});%>
+					   		<% slide.images.forEach(function(img){%>
+					   		 <% if(img.filename){%>
+					   		 
+					   			<img src="/image/resized/<%- img.filename %>" class="imgbg" >
+									
+					   		 <%}%>
+					   		<%});%>
+					   		<h4><%- slide.title %></h4>
 					   		</div>
 			   		 <%});%>
 			   	</div>
