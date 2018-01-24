@@ -33,8 +33,27 @@ module.exports={
 				// articles: articles,
 				// articles:articles,
 				// marked:marked,
-				title: req.__('SEO_HOME_title'),
-				description:req.__('SEO_HOME_description_google'),
+				title: req.__('SEO_R&D_title'),
+				description:req.__('SEO_R&D_description_google'),
+				// scripturl:'script.js',
+				moment: moment,
+				menu:'home',
+			})
+					
+
+
+	},
+	veille:function(req,res,next) {
+
+		
+
+			res.status(200).view('front/veille',{
+				baseurl : '/',
+				// articles: articles,
+				// articles:articles,
+				// marked:marked,
+				title: req.__('SEO_veille_title'),
+				description:req.__('SEO_veille_description_google'),
 				// scripturl:'script.js',
 				moment: moment,
 				menu:'home',
@@ -73,8 +92,8 @@ module.exports={
 					// articles: articles,
 					documents:fullData,
 					// marked:marked,
-					title: req.__('SEO_HOME_title'),
-					description:req.__('SEO_HOME_description_google'),
+					title: req.__('SEO_WEBOTHEQUE_title'),
+					description:req.__('SEO_WEBOTHEQUE_description_google'),
 					// scripturl:'script.js',
 					moment: moment,
 					menu:'documents',
