@@ -6,7 +6,7 @@
          
         <div class="container clearfix">
         <h1><%- __('WEBOTHEQUE') %></h1>
-        <span><%- __('services-webotheque') %></span>
+        <span><%- __('subtitle-webotheque') %></span>
         <!-- <ol class="breadcrumb"> -->
             <!-- <li><a href="#">Home</a></li> -->
             <!-- <li class="active">Blog</li> -->
@@ -17,11 +17,13 @@
 
 <div class="container ">
 	
-    
+    	
+    	<p style="margin-top: 20px;"><%- __('webotheque-textp1') %></p>
+    	<p style=""><%- __('webotheque-text2') %></p>
 	   <% documents.forEach(function(doc){%>
 	   	 <% if(doc.slides.length){%>
 	   	 
-			<div class="boxdocument toggle toggle-border">
+			<div class="boxdocument ">
 				
 				<!-- <div class="head ">
 		   			 <i class="toggle-closed icon-angle-up"></i><i class="toggle-open icon-angle-down"></i> <%- doc.title %>  ( <%- doc.slides.length %> )
@@ -40,6 +42,10 @@
 					   		 <%}%>
 					   		<%});%>
 					   		<h4><%- slide.title %></h4>
+					   		<div class="pricebox"><%- slide.link2 %></div>
+					   		 <% if(slide.content){%>
+					   		<div class="contentEtude"><div><%- slide.content %></div></div>
+					   			<%}%>
 					   		</div>
 			   		 <%});%>
 			   	</div>

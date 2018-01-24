@@ -209,6 +209,10 @@ a[href^="http://maps.google.com/maps"]{display:none !important}
 
 .boxdocument:first-child{margin-top: 50px;}
 
-.corps div.boiteDocument {border:3px solid black;margin:10px;padding:0px;width:546px;display: inline-block;position:relative;height: 362px;overflow: hidden;}
+.corps div.boiteDocument {border:3px solid #333;margin:10px;padding:0px;width:546px;display: inline-block;position:relative;height: 362px;overflow: hidden;}
 .corps div.boiteDocument .imgbg{position:absolute;top:0;left: 0;}
-.corps div.boiteDocument h4{font-size: 3em; color:black;}
+.corps div.boiteDocument h4{font-size: 3em; color:black; position:absolute; bottom:0px;margin:10px; background: rgba(255,255,255,0.2)}
+.corps div.boiteDocument .pricebox{font-size: 1.5em; color:black; position:absolute; top:0px; right:0px; padding:5px;background:#333;color:white;}
+.corps div.boiteDocument .contentEtude{display:none;font-size: 1.2em;text-align: center;width:100%;height: 100%;position: absolute;top: 0;left: 0;background: rgba(0,0,0,0.9); color: white;
+self-align:center;    align-items: center;padding: 30px;}
+   .corps div.boiteDocument:hover .contentEtude{display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;}
