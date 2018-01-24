@@ -44,8 +44,16 @@
 					   		<h4><%- slide.title %></h4>
 					   		<div class="pricebox"><%- slide.link2 %></div>
 					   		 <% if(slide.content){%>
-					   		<div class="contentEtude"><div><%- slide.content %></div></div>
-					   			<%}%>
+					   		<div class="contentEtude"><div><%- slide.content %></div>
+					   				 <% if(slide.documents[0]){%>
+						   				 <% if(slide.link2 =='Gratuit' || slide.link2 =='gratuit'){%>
+						   				 		<a href="document/<%- slide.documents[0].filename %>" target="_BLANK" style="margin-top:10px;" class="btn btn-primary">Télécharger</a>
+						   				 <%}else{%>
+						   				 		<a href="document/<%- slide.documents[0].filename %>" target="_BLANK" style="margin-top: 10px;" class="btn btn-primary">Voir le sommaire</a>
+						   				 <%}%>
+					   				 <%}%>
+					   		</div>
+					   		<%}%>
 					   		</div>
 			   		 <%});%>
 			   	</div>
