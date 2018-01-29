@@ -66,6 +66,50 @@ module.exports={
 
 
 	},
+		home2:function(req,res,next) {
+
+		console.log('home2_________');
+		
+			// var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
+		 //    .limit(2).populateAll();
+
+			// articlesPromise
+		 //    .then(function(articles) {   
+		 //        var articlesWithAuthorsPromises = articles.map(function(article) {
+		 //            var authorsPromises = article.authors.map(function(author) {
+		 //                return User.findOne(author.id).populateAll();
+		 //            });
+
+		 //            return Promise.all(authorsPromises)
+		 //                  .then(function(fullfilledAuthors) {
+		 //                  	  article = article.toObject()
+		 //                      article.authors = fullfilledAuthors;
+		 //                      article.content = truncate(article.content, 250)
+		 //                      return article;
+		 //                   })
+		 //        })
+
+		 //        return Promise.all(articlesWithAuthorsPromises)
+		 //    })
+		 //   .then(function(articles) {
+
+							res.status(200).render('front/index2',{
+								baseurl : '/',
+								// articles: articles,
+								// articles:articles,
+								// marked:marked,
+								// title: req.__('SEO_HOME_title'),
+								// keyword: req.__('SEO_HOME_keyword'),
+								// description:req.__('SEO_HOME_description'),
+								// scripturl:'script.js',
+								// moment: moment,
+								menu:'home',
+							})
+					
+			// })
+
+
+	},
 	
 	sendmail:function(req,res,next) {
 
@@ -428,6 +472,97 @@ var transporter = nodemailer.createTransport({
 
 
 	},
+	collection:function(req,res,next){
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		var page = 1;
+		// nbperpage = 2;
+		baseurl='/'
+		if(req.params.page){
+			baseurl='/../'
+			page = req.params.page;
+		}
+		var result = {};
+
+		var projectsPromise = Project.find({status:'actif'}).sort('date DESC')
+	    .limit(100).populateAll();
+
+		projectsPromise
+	    .then(function(projects) {   
+	        var projectsWithAuthorsPromises = projects.map(function(project) {
+	            var authorsPromises = project.authors.map(function(author) {
+	                return User.findOne(author.id).populateAll();
+	            });
+
+	            return Promise.all(authorsPromises)
+	                  .then(function(fullfilledAuthors) {
+	                  	  project = project.toObject()
+	                      project.authors = fullfilledAuthors;
+	                      project.content = truncate(project.content, 250)
+	                      return project;
+	                   })
+	        })
+
+	        return Promise.all(projectsWithAuthorsPromises)
+	    })
+	   .then(function(projects) {
+	   		
+	   		result.projects = projects
+	   		
+	   		return Project.find({status:'actif'}).populate('images').sort('nbView DESC')
+	    	.limit(5)
+
+
+
+	    })
+	   .then(function(mostseen) {
+	   		
+	   		result.mostseen = mostseen
+	   		
+	   		return Category.find({ nbProjects: { '!': '0' }}).sort('name ASC')
+
+
+
+	    })
+	   .then(function(categories) {
+	   		
+	   		result.categories = categories
+	   		
+	   		return Tag.find({ nbProjects: { '!': '0' }}).sort('name ASC')
+
+
+
+	    }).then(function(tags){
+
+			result.tags = tags	    	
+
+	    	res.status(200).view('front/blog',{
+				projects:result.projects,
+				title: req.__('SEO_BLOG_title'),
+				keyword: req.__('SEO_BLOG_keyword'),
+				description:req.__('SEO_BLOG_description'),
+				scripturl:'blog.js',
+				menu:'blog',
+				// nbPage:nbPage,
+				thiscategory:null,
+				mostseen:result.mostseen,
+				tags:result.tags,
+				categories:result.categories,
+				moment: moment,
+				baseurl:baseurl
+			})
+	    })
+	    .catch(function(e){
+	    	console.log('ERRRRRRRRRRRRRRRRRRRRRRRRRROR');
+	    	console.log(e);
+	    })
+		
+			
+
+
+
+
+	},
 	categoryArticle:function(req,res,next){
 		console.log('CATEGORY====>',req.params.thiscat);
 		req.locale = req.locale || 'en'
@@ -637,239 +772,4 @@ var transporter = nodemailer.createTransport({
 
 	},
 
-	cadetm:function(req,res,next){
-		moment.locale(req.locale);
-		var result = {};
-		Project.findOne(TEAMIDS.cadet).populate('images').populate('players')
-	    .then(function(project) {
-	    	var newnbView = Number(project.nbView) + 1 ; 
-	    	project.nbView = newnbView
-	    	result.tmpproject = project
-	    	return Project.update(req.params.id,{nbView:newnbView})
-	    })
-	    .then(function(project) {  
-	    	project = result.tmpproject
-	            var playersPromises = project.players.map(function(player) {
-	                return Player.findOne(player.id).populateAll();
-	            });
-	            return Promise.all(playersPromises)
-	                  .then(function(fullfilledPlayers) {
-	                  	  project = project.toObject()
-	                      project.players = fullfilledPlayers;
-	                      return project;
-	                   })
-	    })
-	   .then(function(project) {
-	   		result.project = project
-	    	res.status(200).view('front/cadetm',{
-				project:result.project,
-				title: result.project.title,
-				keyword: result.project.keyword,
-				description:result.project.description,
-				scripturl:'blog.js',
-				menu:'cadetm',
-				moment: moment,
-				baseurl:''
-			})
-	    })
-	    .catch(function(e){
-	    	console.log(e);
-	    })
-	},
-	poussin:function(req,res,next){
-		moment.locale(req.locale);
-		var result = {};
-		Project.findOne(TEAMIDS.poussin).populate('images').populate('players', { sort: 'name ASC' })
-	    .then(function(project) {
-	    	var newnbView = Number(project.nbView) + 1 ; 
-	    	project.nbView = newnbView
-	    	result.tmpproject = project
-	    	return Project.update(req.params.id,{nbView:newnbView})
-	    })
-	    .then(function(project) {  
-	    	project = result.tmpproject
-	            var playersPromises = project.players.map(function(player) {
-	                return Player.findOne(player.id).populateAll();
-	            });
-	            return Promise.all(playersPromises)
-	                  .then(function(fullfilledPlayers) {
-	                  	  project = project.toObject()
-	                      project.players = fullfilledPlayers;
-	                      return project;
-	                   })
-	    })
-	   .then(function(project) {
-	   		result.project = project
-	    	res.status(200).view('front/poussin',{
-				project:result.project,
-				title: result.project.title,
-				keyword: result.project.keyword,
-				description:result.project.description,
-				scripturl:'blog.js',
-				menu:'poussin',
-				moment: moment,
-				baseurl:''
-			})
-	    })
-	    .catch(function(e){
-	    	console.log(e);
-	    })
-	},
-	benjaminm:function(req,res,next){
-		moment.locale(req.locale);
-		var result = {};
-		console.log( TEAMIDS );
-		Project.findOne(TEAMIDS.benjamin).populate('images').populate('players')
-	    .then(function(project) {
-	    	var newnbView = Number(project.nbView) + 1 ; 
-	    	project.nbView = newnbView
-	    	result.tmpproject = project
-	    	return Project.update(req.params.id,{nbView:newnbView})
-	    })
-	    .then(function(project) {  
-	    	project = result.tmpproject
-	            var playersPromises = project.players.map(function(player) {
-	                return Player.findOne(player.id).populateAll();
-	            });
-	            return Promise.all(playersPromises)
-	                  .then(function(fullfilledPlayers) {
-	                  	  project = project.toObject()
-	                      project.players = fullfilledPlayers;
-	                      return project;
-	                   })
-	    })
-	   .then(function(project) {
-	   		result.project = project
-	    	res.status(200).view('front/benjaminm',{
-				project:result.project,
-				title: result.project.title,
-				keyword: result.project.keyword,
-				description:result.project.description,
-				scripturl:'blog.js',
-				menu:'benjaminm',
-				moment: moment,
-				baseurl:''
-			})
-	    })
-	    .catch(function(e){
-	    	console.log(e);
-	    })
-	},
-	seniorm:function(req,res,next){
-		moment.locale(req.locale);
-		var result = {};
-		Project.findOne(TEAMIDS.seniorG).populate('images').populate('players')
-	    .then(function(project) {
-	    	var newnbView = Number(project.nbView) + 1 ; 
-	    	project.nbView = newnbView
-	    	result.tmpproject = project
-	    	return Project.update(req.params.id,{nbView:newnbView})
-	    })
-	    .then(function(project) {  
-	    	project = result.tmpproject
-	            var playersPromises = project.players.map(function(player) {
-	                return Player.findOne(player.id).populateAll();
-	            });
-	            return Promise.all(playersPromises)
-	                  .then(function(fullfilledPlayers) {
-	                  	  project = project.toObject()
-	                      project.players = fullfilledPlayers;
-	                      return project;
-	                   })
-	    })
-	   .then(function(project) {
-	   		result.project = project
-	    	res.status(200).view('front/seniorm',{
-				project:result.project,
-				title: result.project.title,
-				keyword: result.project.keyword,
-				description:result.project.description,
-				scripturl:'blog.js',
-				menu:'seniorm',
-				moment: moment,
-				baseurl:''
-			})
-	    })
-	    .catch(function(e){
-	    	console.log(e);
-	    })
-	},
-	seniorf:function(req,res,next){
-		moment.locale(req.locale);
-		var result = {};
-		Project.findOne(TEAMIDS.seniorF).populate('images').populate('players')
-	    .then(function(project) {
-	    	var newnbView = Number(project.nbView) + 1 ; 
-	    	project.nbView = newnbView
-	    	result.tmpproject = project
-	    	return Project.update(req.params.id,{nbView:newnbView})
-	    })
-	    .then(function(project) {  
-	    	project = result.tmpproject
-	            var playersPromises = project.players.map(function(player) {
-	                return Player.findOne(player.id).populateAll();
-	            });
-	            return Promise.all(playersPromises)
-	                  .then(function(fullfilledPlayers) {
-	                  	  project = project.toObject()
-	                      project.players = fullfilledPlayers;
-	                      return project;
-	                   })
-	    })
-	   .then(function(project) {
-	   		result.project = project
-	    	res.status(200).view('front/seniorf',{
-				project:result.project,
-				title: result.project.title,
-				keyword: result.project.keyword,
-				description:result.project.description,
-				scripturl:'blog.js',
-				menu:'seniorf',
-				moment: moment,
-				baseurl:''
-			})
-	    })
-	    .catch(function(e){
-	    	console.log(e);
-	    })
-	},
-	loisir:function(req,res,next){
-		moment.locale(req.locale);
-		var result = {};
-		Project.findOne(TEAMIDS.loisir).populate('images').populate('players')
-	    .then(function(project) {
-	    	var newnbView = Number(project.nbView) + 1 ; 
-	    	project.nbView = newnbView
-	    	result.tmpproject = project
-	    	return Project.update(req.params.id,{nbView:newnbView})
-	    })
-	    .then(function(project) {  
-	    	project = result.tmpproject
-	            var playersPromises = project.players.map(function(player) {
-	                return Player.findOne(player.id).populateAll();
-	            });
-	            return Promise.all(playersPromises)
-	                  .then(function(fullfilledPlayers) {
-	                  	  project = project.toObject()
-	                      project.players = fullfilledPlayers;
-	                      return project;
-	                   })
-	    })
-	   .then(function(project) {
-	   		result.project = project
-	    	res.status(200).view('front/loisir',{
-				project:result.project,
-				title: result.project.title,
-				keyword: result.project.keyword,
-				description:result.project.description,
-				scripturl:'blog.js',
-				menu:'loisir',
-				moment: moment,
-				baseurl:''
-			})
-	    })
-	    .catch(function(e){
-	    	console.log(e);
-	    })
-	},
 }

@@ -120,6 +120,10 @@ module.exports.routes = {
   //FRONT 
 
   'GET /':'FrontController.home',
+  'GET /index2':'FrontController.home2',
+  'GET /collection':'FrontController.collection',
+  'GET /about':'FrontController.about',
+  'GET /blog':'FrontController.blog',
   'POST /sendmail':'FrontController.sendmail',
   'GET /testMail':'FrontController.testMail',
  
