@@ -50,7 +50,7 @@
 									<img src="image/resized/<%- articles[i].images[0].filename %>" alt="<%- articles[i].images[0].name %>">
 									 <%}%>
 									 <% if(articles[i].date){%> 
-									<div class="entry-date"><%- moment(articles[i].date).format('ddd') %><span><%- moment(articles[i].date).format('MMM') %></span></div>
+									<div class="entry-date"><%- moment(articles[i].date).format('dddd') %><span><%- moment(articles[i].date).format('MMM') %></span></div>
 									<% } %>
 								</a>
 							</div>
@@ -63,7 +63,7 @@
 										 <% if(articles[i].keyword && (articles[i].keyword == 'public' || articles[i].keyword == 'Public')){%>
 											<span class="label label-info">Public</span>
 										 <%}%> 
-										 <%if(articles[i].keyword && (articles[i].keyword != 'public' || articles[i].keyword != 'Public')){%>
+										 <%if(articles[i].keyword && (articles[i].keyword != 'public' && articles[i].keyword != 'Public')){%>
 											<span class="label label-warning"><%- articles[i].keyword %></span>
 										 <%}%>
 									</li>
