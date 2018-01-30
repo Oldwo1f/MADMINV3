@@ -4807,3 +4807,7 @@ ul[rn-carousel] {height: 100%;}
 .pageAddProject .slideshowList .slideInSlideShow{margin-right:5px;}
 .pageAddProject .slideshowList .slidesInSlideShow{width :100%;}
 .icon.iconctvb{font-size: 2em;line-height: 1.7em;}
+
+#pageAddArticle2 .mce-tinymce.mce-panel{margin-top: 0;}
+
+.md-dialog-container{height:100% !important;}

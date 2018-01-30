@@ -16,10 +16,10 @@
 				<div class="flexiheader">
 					
 					<div class="logo"><img src="JBM/onepage/images/logo2.png" style="width: 400px;" alt=""></div>
-					<div class="boxtitle">
+					<!-- <div class="boxtitle">
 						<h1 class="">MES CRÉATION</h1>
 						<span>Voici quelques unes des mes plus belles pièces</span>
-					</div>
+					</div> -->
 					<a href="/index2" class="btn btn-primary">Retour Accueil</a>
 				</div>
 			</div>
@@ -31,19 +31,22 @@
 		<section id="content">
 
 			<div class="content-wrap">
-
+				<h2 class="center uppercase t300 ls3 font-body">Voici quelques unes des mes plus belles pièces</h2>
 				<div class="container clearfix">
 
 					<!-- Portfolio Filter
 					============================================= -->
 					<ul id="portfolio-filter" class="portfolio-filter clearfix" data-container="#portfolio">
-
-						<li class="activeFilter"><a href="#" data-filter="*">Show All</a></li>
-						<li><a href="#" data-filter=".pf-icons">Icons</a></li>
-						<li><a href="#" data-filter=".pf-illustrations">Illustrations</a></li>
+						
+						<li class="activeFilter"><a href="#" data-filter="*">Tous</a></li>
+						 <% for(var i=0; i< categories.length ; i++){%>
+						 	
+							<li><a href="#" data-filter=".pf-<%- categories[i].name %>"> <%- categories[i].name %></a></li>
+						 <%}%>
+						<!-- <li><a href="#" data-filter=".pf-illustrations">Illustrations</a></li>
 						<li><a href="#" data-filter=".pf-uielements">UI Elements</a></li>
 						<li><a href="#" data-filter=".pf-media">Media</a></li>
-						<li><a href="#" data-filter=".pf-graphics">Graphics</a></li>
+						<li><a href="#" data-filter=".pf-graphics">Graphics</a></li> -->
 
 					</ul><!-- #portfolio-filter end -->
 
@@ -56,24 +59,46 @@
 					<!-- Portfolio Items
 					============================================= -->
 					<div id="portfolio" class="portfolio grid-container portfolio-3 clearfix">
-
-						<article class="portfolio-item pf-media pf-icons">
+						<% for(var i=0; i< projects.length ; i++){%>
+						 <% if(projects[i].images.length){%>
+						 
+						 	 
+						
+						<article class="portfolio-item pf-<% if(projects[i].categories.length){%><%- projects[i].categories[0].name %><%}%>">
 							<div class="portfolio-image">
-								<a href="portfolio-single.html">
-									<img src="images/portfolio/3/1.jpg" alt="Open Imagination">
+								<% if(projects[i].images.length == 1){%>
+								<a href="image/originalSize/<%- projects[i].images[0].filename %>" class="left-icon" data-lightbox="image">
+									<img src="image/resized/<%- projects[i].images[0].filename %>" alt="<%- projects[i].images[0].name %>">
 								</a>
-								<div class="portfolio-overlay">
+								<%}%>
+								<% if(projects[i].images.length > 1){%>
+								<div class="fslider" data-arrows="false" data-speed="400" data-pause="4000">
+									<div class="flexslider">
+										<div class="slider-wrap">
+											 <% for(var k=0; k< projects[i].images.length ; k++){%>
+											 	
+												<div class="slide">
+													<a href="image/originalSize/<%- projects[i].images[k].filename %>" class="left-icon" data-lightbox="image"><img src="image/resized/<%- projects[i].images[k].filename %>" alt="<%- projects[i].images[k].filename %>"></div></a>
+											 <%}%>
+											
+										</div>
+									</div>
+								</div>
+								<%}%>
+
+								<!-- <div class="portfolio-overlay">
 									<a href="images/portfolio/full/1.jpg" class="left-icon" data-lightbox="image"><i class="icon-line-plus"></i></a>
 									<a href="portfolio-single.html" class="right-icon"><i class="icon-line-ellipsis"></i></a>
-								</div>
+								</div> -->
 							</div>
-							<div class="portfolio-desc">
+							<!-- <div class="portfolio-desc">
 								<h3><a href="portfolio-single.html">Open Imagination</a></h3>
 								<span><a href="#">Media</a>, <a href="#">Icons</a></span>
-							</div>
+							</div> -->
 						</article>
-
-						<article class="portfolio-item pf-illustrations">
+						 <%}%>
+						 <%}%>
+						<!-- <article class="portfolio-item pf-illustrations">
 							<div class="portfolio-image">
 								<a href="portfolio-single.html">
 									<img src="images/portfolio/3/2.jpg" alt="Locked Steel Gate">
@@ -223,7 +248,7 @@
 								<h3><a href="portfolio-single.html">Bridge Side</a></h3>
 								<span><a href="#">Illustrations</a>, <a href="#">Icons</a></span>
 							</div>
-						</article>
+						</article> -->
 
 					</div><!-- #portfolio end -->
 
@@ -249,10 +274,22 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
-<script>
-	
-	projects
-	
+<script  type="text/javascript">
+console.log('TOTO');
+    
+    var projects = <%- JSON.stringify(projects) %>
+    console.log(projects);
+     var mostseen = <%- JSON.stringify(mostseen) %>
+    console.log(mostseen);
+     var categories = <%- JSON.stringify(categories) %>
+    console.log(categories);
+    var thiscategory = <%- JSON.stringify(thiscategory) %>
+    console.log(thiscategory);
+    var tags = <%- JSON.stringify(tags) %>
+   
+    console.log(tags);
+
+
 </script>
 
 </body>

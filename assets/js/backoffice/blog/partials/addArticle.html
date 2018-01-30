@@ -1,5 +1,5 @@
 <div>
-	<div class="my-container pageAddArticle">
+	<div class="my-container pageAddArticle" id="pageAddArticle2">
 		
 	<header class="pageHeader">
 
@@ -31,10 +31,10 @@
 			<label for="input-1" class="stacked-label"><i class="pe-7s-flag"></i></label>
 			<input type="text" class="stacked-input" ng-blur="update('title')" ng-model="formData.title" id="input-1" placeholder="Titre">
 <!-- category -->
-			<label for="input-2" class="stacked-label"><i class="pe-7s-way"></i></label>
+			<!-- <label for="input-2" class="stacked-label"><i class="pe-7s-way"></i></label>
 			<tags-input class="mycategoriesinput inputtag  mt" ng-model="formData.categories" on-tag-removed="removeCategory($tag)" on-tag-adding="addCategory($tag)" add-on-enter="true"  ng-blur="unselectOnBlur()"  placeholder="Ajouter une catégorie" display-property="name" template="myCatTemplate">
             	<auto-complete source="autocompleteCategories($query)" display-property="name" select-first-match="true" ></auto-complete>
-        	</tags-input>
+        	</tags-input> -->
         	<script type="text/ng-template" id="myCatTemplate">
         		<div class=" cat-template" style="background:{{data.color}}">
 			        <div> 
@@ -44,11 +44,11 @@
 			     </div>
 			</script>
 <!-- tag -->
-			<label for="input-3" class="stacked-label"><i class="pe-7s-ticket"></i></label>
+			<!-- <label for="input-3" class="stacked-label"><i class="pe-7s-ticket"></i></label> -->
 			
-		    <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" add-on-enter="true" ng-blur="unselectOnBlur()" >
+		   <!--  <tags-input class="mytaginput inputtag mb mt" ng-model="formData.tags" on-tag-removed="removeTag($tag)" on-tag-adding="addTag($tag)" add-on-enter="true" ng-blur="unselectOnBlur()" >
             	<auto-complete source="autocompleteTag($query)"  select-first-match="true" ></auto-complete>
-        	</tags-input>
+        	</tags-input> -->
 <!-- content  -->
 
 			<label for="input-4" class="stacked-label mt0"><i class="pe-7s-note"></i></label>
@@ -83,24 +83,28 @@
 
 		</div>
 		<div class="form_col_r">
-			<div class="form_title"><i class="pe-7s-global"></i>Référencement</div>
+			<div class="form_title"><i class="pe-7s-global"></i>Options</div>
 			<div class="formGroup">
 			<label for="input-1" class="stacked-label"><i class="pe-7s-key"></i></label>
-			<input type="text" inputcount="255" class="stacked-input" ng-model="formData.keyword" id="input-1" placeholder="Mots Clefs" ng-blur="update('keyword')">
+			<input type="text" inputcount="255" class="stacked-input" ng-model="formData.keyword" id="input-1" placeholder="'Public' ou le 'Payant - 5€'" ng-blur="update('keyword')">
 			</div>
 			<div class="formGroup">
 			<label for="input-2" class="stacked-label"><i class="pe-7s-repeat"></i></label>
-			<input ng-model="formData.rewriteurl" inputcount="1000" urlprefixerwidth="222px" urlprefixer="http://momsite.com/blog/article/" type="text" class="stacked-input" id="input-2" placeholder="Réécriture d'url" ng-blur="update('rewriteurl')">
+			<input ng-model="formData.rewriteurl"  type="text" class="stacked-input" id="input-2" placeholder="Liens vers le site" ng-blur="update('rewriteurl')">
 			</div>
 			<div class="formGroup mb">
-				<label for="input-2" class="stacked-label"><i class="pe-7s-note2"></i></label>
-				<input ng-model="formData.description" inputcount="160" type="text" class="stacked-input" id="input-2" placeholder="Description" ng-blur="update('description')">
+				<label for="input-2" class="stacked-label"><i class="pe-7s-clock"></i></label>
+				<input ng-model="formData.description" inputcount="160" type="text" class="stacked-input" id="input-2" placeholder="Horaire" ng-blur="update('description')">
 			</div>
-			<div class="formGroup mb fullwidthgroup">
+			<div class="formGroup mb">
+				<label for="input-2" class="stacked-label"><i class="pe-7s-map"></i></label>
+				<input ng-model="formData.shortcontent" inputcount="160" type="text" class="stacked-input" id="input-2" placeholder="Adresse" ng-blur="update('shortcontent')">
+			</div>
+			<!-- <div class="formGroup mb fullwidthgroup">
 				<auditref model="formData"></auditref>
-			</div>
-			<div class="groupSeparator"></div>
-			<div class="form_title"><i class="pe-7s-config"></i>Options de publication </div>
+			</div> -->
+			<!-- <div class="groupSeparator"></div>
+			<div class="form_title"><i class="pe-7s-config"></i>Options de publication </div> -->
 			<div class="formGroup mb  fullwidthgroup">
 				<div class="btn-group block">
 				  <a ng-click="formData.status='actif';update('status')" type="button" class="fakeColorGreen btn active"  ng-class="{'green':formData.status=='actif','orange':formData.status=='draft','red':formData.status=='inactif'}" style="border-right:0px">Actif</a>
@@ -123,7 +127,7 @@
 				  </ul>
 				</div>
 			</div>
-			<div class="smallSeparator"></div>
+			<!-- <div class="smallSeparator"></div>
 			<div class="formGroup mb">
 				<div class="btn-group block">
 				  <a ng-click="formData.privateContent=false;update('privateContent')" type="button" class="fakeColorBlue btn active"  ng-class="{'blue':formData.privateContent==false,'violet':formData.privateContent==true}" style="border-right:0px">Public</a>
@@ -136,7 +140,7 @@
 				  <a ng-click="formData.activeComent=true;update('activeComent')" type="button" class="fakeColorGreen btn active"  ng-class="{'green':formData.activeComent==true,'red':formData.activeComent==false}" style="border-right:0px">Commentaire actif</a>
 				  <a ng-click="formData.activeComent=false;update('activeComent')" type="button" class="fakeColorRed btn active" ng-class="{'green':formData.activeComent==true,'red':formData.activeComent==false}" >Commentaire inactif</a>
 				</div>
-			</div>
+			</div> -->
 			
 
 
@@ -217,10 +221,9 @@
 
 
 		</div>
-		<div class="col-md-12 form_col_r">
+		<!-- <div class="col-md-12 form_col_r">
 			<div class="form_title"><i class="pe-7s-play"></i>Ajouter une Video 
-			<!-- <input type="file"  class="addImageBtn" onchange="angular.element(this).scope().changeImageUrl(this)"> -->
-			<!-- <div class="addImageBtnFakeBtn" onclick="$(this).siblings('.addImageBtn').click();"> <i class="pe-7s-plus"></i></div> -->
+			
 			</div>
 			<div class="videoiconlist">
 				<div>Hebergeur de la video : </div>
@@ -248,7 +251,7 @@
 
 			
 			<div class="clearfix"></div>
-			<!-- <div class="smallSeparator"></div> -->
+			
 
 			<div ng-repeat="uploadingDoc in uploadsDocument" class="uploadingDoc" ng-if="uploadingDoc.status == 'progress'">
 				<span>{{uploadingDoc.file.name}}</span>
@@ -316,20 +319,14 @@
 				</div>
 				
 			</div>
-		</div>
+		</div> -->
 		
-		<div class="form_col">
+		<!-- <div class="form_col">
 			<div class="form_title"><i class="pe-7s-chat"></i>Commentaires ( {{formData.comments.length}} )</div>
 
 			
 			<div class="commentaires" ng-repeat="comment in formData.comments | orderBy :'createdAt':true ">
 				
-		  		<!-- <div class="comDate">
-					<span class="dddd">{{comment.createdAt | amDateFormat:'dddd'}}</span>
-  					<span class="DD">{{comment.createdAt | amDateFormat:'DD'}}</span>
-  					<span class="MM ">{{comment.createdAt | amDateFormat:'MMM'}}</span>
-  					<span class="HH ">{{comment.createdAt | amDateFormat:'H:mm'}}</span>
-		  		</div> -->
 				<div class="comAuthor">
 					<span>{{comment.authorName }}</span> <small>{{ comment.email }}</small>
 					<div class="comDate" am-time-ago="comment.createdAt">
@@ -351,10 +348,7 @@
 				<div class="clearfix"></div>
 				<div class="reponses" ng-repeat="reponse in comment.responses">
 			  		<div class="comDate">
-						<!-- <span class="dddd">{{reponse.createdAt | amDateFormat:'dddd'}}</span> -->
-	  					<!-- <span class="DD">{{reponse.createdAt | amDateFormat:'DD'}}</span>
-	  					<span class="MM ">{{reponse.createdAt | amDateFormat:'MMM'}}</span>
-	  					<span class="HH ">{{reponse.createdAt | amDateFormat:'H:mm'}}</span> -->
+					
 			  		</div>
 					<div class="comAuthor">
 						<span>{{reponse.authorName }}</span> <small ng-if="!reponse.admin">{{ reponse.email }}</small><small ng-if="reponse.admin">admin</small>
@@ -371,7 +365,6 @@
 					</div>
 					<div class="btnSmallBar">
 							<removeremove class="removeremove2" action="deleteComment" itemid="reponse.id"></removeremove>
-							<!-- <div class="replyBtn"><i class="fa fa-reply"></i></div> -->
 					</div>
 					<div class="comContent">{{reponse.content}}</div>
 					<div class="clearfix"></div>
@@ -384,7 +377,7 @@
 			
 
 
-		</div>
+		</div> -->
 		
 		
 		</div>

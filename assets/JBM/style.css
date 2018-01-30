@@ -13685,3 +13685,5 @@ a.footlerLink {color:rgba(238, 121, 78, 0.44); text-decoration: underline !impor
     background-color: rgba(235,120,82,0.9);
     border-color: orangered;
 }
+.portfolio-filter li.activeFilter a{background-color:rgba(235,120,82,1);}
+.portfolio-shuffle:hover{background-color:rgba(235,120,82,1);}
