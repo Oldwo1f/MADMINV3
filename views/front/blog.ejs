@@ -10,7 +10,7 @@
                 <% if(thiscategory && thiscategory.images.length ){%>
             <section id="page-titlecat" class="">
 
-                    <div style="">
+                    <div class="container">
                         <img class="myimgcat" src="image/resized/<%= thiscategory.images[0].filename %>" alt="<%= thiscategory.name %>">
                         <div class="container clearfix"><h1 class="h1absolute"><%= thiscategory.name %></h1></div>
                     </div>
@@ -43,6 +43,8 @@
 
 var articles = <%- JSON.stringify(articles) %>;
         console.log(articles);
+var thiscategory = <%- JSON.stringify(thiscategory) %>;
+        console.log(thiscategory);
 
 </script>
         <!-- Content
