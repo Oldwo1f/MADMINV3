@@ -105,7 +105,7 @@ var recent = <%- JSON.stringify(recent) %>;
                                 <div class="entry-content notopmargin">
 
                                     <%- article.content %>
-
+                                
                                     <!-- Tag Cloud
                                     ============================================= -->
                                      <% if(article.tags && article.tags.length){%>
@@ -118,7 +118,8 @@ var recent = <%- JSON.stringify(recent) %>;
                                         
                                     </div><!-- .tagcloud end -->
                                      <%}%>
-
+                                    
+                                    <div id="share"></div>
                                     <div class="clear"></div>
 
                                     <!-- Post Single - Share
@@ -354,6 +355,13 @@ var recent = <%- JSON.stringify(recent) %>;
         
 
     </div><!-- #wrapper end -->
+      <script src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+    <script>
+        $("#share").jsSocials({
+            shares: [ "twitter", "facebook", "googleplus", "linkedin"],
+            shareIn: "popup",
+        });
+    </script>
     <script>
 
 
