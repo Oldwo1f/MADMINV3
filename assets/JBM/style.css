@@ -4956,7 +4956,7 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-overlay { display: no
 
 .entry-title h2 a { color: #333; }
 
-.entry-title h2 a:hover { color: #1ABC9C; }
+.entry-title h2 a:hover { color: rgba(235,120,82,1); }
 
 .entry-meta {
 	margin: 10px -10px -15px 0;
@@ -4991,7 +4991,7 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-overlay { display: no
 
 .entry-meta li a { color: #999; }
 
-.entry-meta li a:hover { color: #1ABC9C; }
+.entry-meta li a:hover { color: rgba(235,120,82,1); }
 
 .entry-meta li:first-child:before { display: none; }
 
