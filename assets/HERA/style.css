@@ -1,0 +1,20 @@
+
+@font-face {
+    font-family: 'timelessregular';
+    src: url('timeless.woff2') format('woff2'),
+         url('timeless.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+body{background: black;}
+.home{position: fixed;left: 0;right: 0;top: 0;bottom: 0;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;flex-direction:column; align-items:center; justify-content:center;}
+.logo{ display:block; width : 500px;opacity:0.2;}
+.logo img {width: 100%;}
+.txt{ display:block; width : 800px;opacity:0.3;}
+.txt img {width: 100%; }
+.email {position: fixed;bottom:40px;width: 100%;text-align: center;font-family: 'timelessregular';color:white;font-size: 20px;self-align:flex-end;}
+.email a{padding:0px 10px;color:white;text-decoration: none;}
+.email a:hover, .email a:selected{padding:0px 10px;color:white;text-decoration: none;}
