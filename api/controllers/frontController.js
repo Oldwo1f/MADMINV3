@@ -277,6 +277,20 @@ module.exports={
 						menu:'about',
 					})
 	},
+	pixelblog:function(req,res,next) {
+
+		console.log('about');
+					res.status(200).view('front/pixelblog',{
+						baseurl : '/',
+						// articles:articles,
+						// marked:marked,
+						title: req.__('SEO_pixelblog_title'),
+						keyword: req.__('SEO_pixelblog_keyword'),
+						description:req.__('SEO_pixelblog_description'),
+						// scripturl:'script.js',
+						menu:'pixelblog',
+					})
+	},
 	addCommentArticle:function(req,res,next){
 
 		console.log('addCommentArticle');
