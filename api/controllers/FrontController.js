@@ -149,6 +149,42 @@ module.exports = {
 
 		
 	},
+	rome:function(req,res,next){
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		console.log('modeles');
+	   		
+	   		res.status(200).view('front/rome',{
+				// articles:articles,
+				// articles: articles,
+				title: req.__('SEO_rome_title'),
+				keyword: req.__('SEO_rome_keyword'),
+				description:req.__('SEO_rome_description'),
+				scripturl:'home.js',
+				menu:'projet',
+				baseurl:'',
+
+			})
+
+	},
+	pivoine:function(req,res,next){
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		console.log('modeles');
+	   		
+	   		res.status(200).view('front/pivoine',{
+				// articles:articles,
+				// articles: articles,
+				title: req.__('SEO_Pivoine_title'),
+				keyword: req.__('SEO_Pivoine_keyword'),
+				description:req.__('SEO_Pivoine_description'),
+				scripturl:'home.js',
+				menu:'projet',
+				baseurl:'',
+
+			})
+
+	},
 	article:function(req,res,next){
 		console.log(req.params.id);
 		moment.locale(req.locale);

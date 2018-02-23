@@ -70,3 +70,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262c63', end
 .process-steps li.active a, .process-steps li.ui-tabs-active a {background-color:#262C63 !important;border-color:#262C63 !important;}
 .process-steps li.active h5, .process-steps li.ui-tabs-active h5{color:#262C63;}
 .process-steps li{margin-bottom: 30px;}
+
+
+
+.entry-image.plan {height: 633px;}
+.entry-image.plan img {position: absolute;top:0px;left:0px;}
+.entry-image.plan img.rc {opacity : 1;}
+.entry-image.plan img.premier {opacity:0;}
+.entry-image.plan #portfolio-filter {position: absolute;right:0px;bottom:0px;}

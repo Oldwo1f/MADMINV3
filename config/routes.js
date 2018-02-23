@@ -121,6 +121,7 @@ module.exports.routes = {
   'GET /':'FrontController.home',
   'GET /maisons':'FrontController.maisons',
   'GET /modeles':'FrontController.modeles',
-  'GET /modele/:id':'FrontController.modele',
+  'GET /rome':'FrontController.rome',
+  'GET /pivoine':'FrontController.pivoine',
 
 };
