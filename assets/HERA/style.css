@@ -12,10 +12,10 @@
 body{background: black;}
 .home{background: url('caro.jpg');background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center top; position: fixed;left: 0;right: 0;top: 0;bottom: 0;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;flex-direction:column; align-items:center; justify-content:center;}
-.logo{ display:block; width : 500px;opacity:0.2;}
+    background-position: center center; position: fixed;left: 0;right: 0;top: 0;bottom: 0;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;flex-direction:column; align-items:center; justify-content:center;}
+.logo{ display:block; width : 500px;opacity:0.6;}
 .logo img {width: 100%;}
-.txt{ display:block; width : 800px;opacity:0.3;}
+.txt{ display:block; width : 680px;opacity:0.5;padding-left: 20px;}
 .txt img {width: 100%; }
 .email {position: fixed;bottom:40px;width: 100%;text-align: center;font-family: 'timelessregular';color:white;font-size: 20px;self-align:flex-end;}
 .email a{padding:0px 10px;color:white;text-decoration: none;}
