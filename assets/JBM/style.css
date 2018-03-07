@@ -13687,3 +13687,35 @@ a.footlerLink {color:rgba(238, 121, 78, 0.44); text-decoration: underline !impor
 }
 .portfolio-filter li.activeFilter a{background-color:rgba(235,120,82,1);}
 .portfolio-shuffle:hover{background-color:rgba(235,120,82,1);}
+
+/* ----------------------------------------------------------------------------
+	Footer Widgets
+---------------------------------------------------------------------------- */
+
+.footer .widget { padding: 30px 0; }
+
+.footer .widget > h4 {
+	margin-bottom: 50px;
+	font-size: 20px;
+	font-weight: 300;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+
+
+.footer .widget ul.footer-site-links li {
+	margin: 5px 0;
+	font-size: 17px;
+	letter-spacing: 1px;
+	font-weight: 300;
+}
+
+
+.footer .widget .form-control { text-align: center; }
+
+.widget p.lead {
+	font-size: 17px;
+	letter-spacing: 1px;
+	line-height: 1.6;
+}

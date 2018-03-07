@@ -49,7 +49,7 @@ module.exports={
 		 //    })
 		 //   .then(function(articles) {
 
-							res.status(200).render('front/index',{
+							res.status(200).render('front/index2',{
 								baseurl : '/',
 								// articles: articles,
 								// articles:articles,
