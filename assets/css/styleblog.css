@@ -22,6 +22,17 @@
 .demos-filter li a:hover,
 .demos-filter li.activeFilter a { color: #1ABC9C; }
 
+
+.zonelecture{overflow-y:auto;}
+.zonelecture .dejalu{color:#999999;}
+.zonelecture h1{font-family: 'Raleway';font-weight:900;color:#005050;text-transform: uppercase;line-height:40px;font-size: 40px}
+.zonelecture p{margin-bottom:20px;font-size : 16px;color:black;}
+.zonelecture ol{    margin-left: 20px;margin-bottom:20px;}
+.zonelecture li{margin-bottom:10px;font-size : 16px;color:black;}
+
+.logoclient img+img{display:none;}
+
+
 @media (max-width: 991px) {
 	.demos-filter { text-align: center; }
 
@@ -75,7 +86,7 @@
 	padding:1px 30px 1px 30px;
 	text-decoration:none;
 	text-align:left;
-	background-color:#B24200;
+	background-color:#005050;
 	border-color:rgba(0,0,0,1.00);
 	border-style:solid;
 	border-width:0px;
