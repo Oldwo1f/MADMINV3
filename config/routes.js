@@ -129,28 +129,28 @@ module.exports.routes = {
 
   'GET /about':'FrontController.about',
   'GET /pixelblog':'FrontController.pixelblog',
+  'GET /vide-poches': 'FrontController.blog',
 
 
-  'GET /articletest': 'FrontController.articletest',
-  'GET /portfolio': 'FrontController.portfolio',
-  'GET /projet/:id/*':'FrontController.projet',
-  'GET /blog': 'FrontController.blog',
-  'GET /blog/category/:thiscat': 'FrontController.categoryArticle',
-  'GET /blog/category/:thiscat/*': 'FrontController.categoryArticle',
-  'GET /blog/tags/:thiscat/:tagname': 'FrontController.tagArticle',
-  'GET /article/:id':'FrontController.article',
-  'GET /article/:id/*':'FrontController.article',
-  'POST /article/:itemid/addComment':'frontController.addCommentArticle',
+  // 'GET /articletest': 'FrontController.articletest',
+  // 'GET /portfolio': 'FrontController.portfolio',
+  // 'GET /projet/:id/*':'FrontController.projet',
+  // 'GET /blog/category/:thiscat': 'FrontController.categoryArticle',
+  // 'GET /blog/category/:thiscat/*': 'FrontController.categoryArticle',
+  // 'GET /blog/tags/:thiscat/:tagname': 'FrontController.tagArticle',
+  // 'GET /article/:id':'FrontController.article',
+  // 'GET /article/:id/*':'FrontController.article',
+  // 'POST /article/:itemid/addComment':'frontController.addCommentArticle',
   
-  'POST /contactEmail':'FrontController.contactEmail',
-  'POST /project/:itemid/addComment':'FrontController.addCommentProj',
-  'POST /project/addReponse/:itemid/:projid':'FrontController.addReponseProj',  
-  'POST /article/:itemid/addComment':'FrontController.addCommentArticle',
-  'POST /article/addReponse/:itemid/:projid':'FrontController.addReponseArticle',
+  // 'POST /contactEmail':'FrontController.contactEmail',
+  // 'POST /project/:itemid/addComment':'FrontController.addCommentProj',
+  // 'POST /project/addReponse/:itemid/:projid':'FrontController.addReponseProj',  
+  // 'POST /article/:itemid/addComment':'FrontController.addCommentArticle',
+  // 'POST /article/addReponse/:itemid/:projid':'FrontController.addReponseArticle',
 
 
 
 
-  'POST /sendmail':'FrontController.sendmail',
+  // 'POST /sendmail':'FrontController.sendmail',
 
 };

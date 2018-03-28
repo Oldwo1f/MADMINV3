@@ -23,15 +23,28 @@
 .demos-filter li.activeFilter a { color: #1ABC9C; }
 
 
-.zonelecture{overflow-y:auto;}
-.zonelecture .dejalu{color:#999999;}
+.zonelecture{overflow-y:auto;min-height:547px;}
+.zonelecture span.dejalu{color:#999999;font-size : 16px; line-height:16px;}
+.zonelecture span.dejalumobile{color:#999999;font-size : 16px; line-height:16px;}
 .zonelecture h1{font-family: 'Raleway';font-weight:900;color:#005050;text-transform: uppercase;line-height:40px;font-size: 40px}
-.zonelecture p{margin-bottom:20px;font-size : 16px;color:black;}
+.zonelecture h3{font-family: 'Raleway';font-weight:700;line-height:16px;font-size: 16px;margin-bottom :10px;}
+.zonelecture p{font-family: 'Raleway';margin-bottom:20px;font-size : 16px; line-height:16px;color:black;}
+.zonelecture small{font-family: 'Raleway';font-size: 14px;line-height: 14px;color:#005050;padding-bottom: 20px;display:inline-block;}
+
+div.auteur {font-size : 14px;}
 .zonelecture ol{    margin-left: 20px;margin-bottom:20px;}
-.zonelecture li{margin-bottom:10px;font-size : 16px;color:black;}
+.zonelecture li{ margin-bottom:10px;font-size : 16px;line-height : 16px;color:black;}
 
-.logoclient img+img{display:none;}
 
+
+
+
+/*.logoclient img+img{display:none;}*/
+.flex{display: -webkit-inline-flex;
+display: -moz-inline-flex;
+display: -ms-inline-flex;
+display: -o-inline-flex;
+display: inline-flex;}
 
 @media (max-width: 991px) {
 	.demos-filter { text-align: center; }
@@ -45,6 +58,7 @@
 
 @media (max-width: 767px) {
 	.demos-filter li { width: 50%; }
+	.zonelecture span.dejalu{color:#000;font-size : 16px; line-height:16px;}
 }
 
 .revo-slider-emphasis-text {
@@ -156,3 +170,5 @@
 
 
 .projcontainer h2{text-align: center;}
+
+
