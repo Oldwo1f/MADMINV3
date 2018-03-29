@@ -1698,13 +1698,13 @@ Voila l'exemple -->
 						}, function(response){});     
 			        }); 
 					$('#share_button2').click(function(e){
-			        	$('meta[property=og:url]').remove();
+			        	$('meta[property="og:url"]').remove();
     					$('head').append( '<meta property="og:url" content="http://momcreation.fr/vide-poches#2">' );
-			        	$('meta[property=og:title]').remove();
+			        	$('meta[property="og:title"]').remove();
     					$('head').append( '<meta property="og:title" content="Déni de grossesse, congélateur ou panier en osier ?">' );
-			        	$('meta[property=og:description]').remove();
+			        	$('meta[property="og:description"]').remove();
     					$('head').append( '<meta property="og:description" content="La tuile… Un matin somme toute banal, le réveil est difficile, les yeux sont collés et par chance, tu saisis la dernière capsule de café pour bien démarrer la journée. Tu te dis alors que tout n’est pas vain dans ce monde et que tu vas pouvoir continuer à brasser du vent paisiblement.">' );
-			        	$('meta[property=og:image]').remove();
+			        	$('meta[property="og:image"]').remove();
     					$('head').append( '<meta property="og:image" content="http://momcreation.fr/images/smallblog/ours.png">' );
 			            e.preventDefault(); 
 			            FB.ui({
