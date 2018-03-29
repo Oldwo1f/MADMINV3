@@ -320,13 +320,14 @@
 							</div>
 
 							<!-- BTN lire la suite -->
-							<a class="tp-caption TechJournal-Button rev-btn  tp-resizeme rs-parallaxlevel-1" 
+							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme rs-parallaxlevel-1" 
+								data-link="/vide-poches#1"
 								id="slide-1-lirelasuite" data-start="1000"
 								data-x="['center','center','center','center']" data-hoffset="['522','413','200','90']"
 								data-y="['top','top','middle','middle']" data-voffset="['734','674','280','-60']"
 								data-width="none" data-height="none"
 								data-actions='[{"event":"click","action":"startlayer","layer":"slide-1-fullarticle","delay":"0"}, {"event":"click","action":"startlayer","layer":"slide-1-fermeture","delay":"0"}]'
-
+								
 
 								data-basealign="slide"data-responsive_offset="on"data-whitespace="nowrap"data-transform_idle="o:1;"data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:200;e:Power1.easeInOut;"data-style_hover="c:rgba(0, 0, 0, 1.00);bg:rgba(229, 229, 229, 1.00);"data-transform_in="y:bottom;s:1500;e:Power4.easeOut;"data-transform_out="y:-70px;opacity:0;s:1000;e:Power4.easeInOut;"data-splitin="none"data-splitout="none"
 								style="z-index: 17; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
@@ -502,7 +503,7 @@
 							</div>
 
 							<!-- BTN lire la suite -->
-							<a class="tp-caption TechJournal-Button rev-btn  tp-resizeme "			 
+							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "			 
 								id="slide-24-layer-53" data-start="750"
 								data-x="['center','center','center','center']" data-hoffset="['497','450','250','40']"
 								data-y="['top','top','middle','middle']" data-voffset="['750','650','300','230']"
@@ -683,7 +684,7 @@
 							</div>
 
 							<!-- btn lire la suite -->
-							<a class="tp-caption TechJournal-Button rev-btn  tp-resizeme "
+							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "
 								 id="slide-5-lirelasuite" data-start="750"
 								 data-x="['center','center','center','center']" data-hoffset="['135','130','-204','70']"
 								 data-y="['top','top','middle','middle']" data-voffset="['726','630','290','220']"
@@ -832,7 +833,7 @@
 							</div>
 
 							<!-- BTn lirelasuite -->
-							<a class="tp-caption TechJournal-Button rev-btn  tp-resizeme "
+							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "
 								id="slide-3-lirelasuite" data-start="750"
 								data-x="['center','center','center','center']" data-hoffset="['530','430','234','100']"
 								data-y="['top','top','middle','middle']" data-voffset="['740','672','300','225']"
@@ -1063,7 +1064,7 @@
 							</div>
 
 							<!-- BTN lire la suite -->
-							<a class="tp-caption TechJournal-Button rev-btn  tp-resizeme "
+							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "
 								id="slide-2-lirelasuite" data-start="750"
 								data-x="['center','center','center','center']" data-hoffset="['135','117','-204','108']"
 								data-y="['top','top','middle','middle']" data-voffset="['726','642','290','205']"
@@ -1665,6 +1666,17 @@ Voila l'exemple -->
 				// 		alpha = 0.7+(Math.random()*3)/10;
 				// 	punchgs.TweenLite.to(jQuery('.lighton'),time,{autoAlpha:alpha,ease:punchgs.Power3.easeOut});
 				// });
+
+ 
+		        revapi.on('revolution.slide.onchange', function(e, data) {
+		 			console.log(data);
+		            var data = 'Slider changed to slide #' + data.slideIndex;
+		            // __ga('send', 'event', 'outbound', 'click', data, {'transport': 'beacon'});
+		            __gaTracker('send', 'event', 'outbound', 'click', data, {'transport': 'beacon'});
+		 
+		        });
+ 
+
 			}
 			
 
@@ -1776,6 +1788,44 @@ Voila l'exemple -->
 	  gtag('js', new Date());
 
 	  gtag('config', 'UA-45650110-1');
+
+
+
+	  jQuery('body').on('click', '.ga-button', function() {
+ 
+	    var $this = jQuery(this),
+	        data  = $this.attr('data-link') || $this.attr('href');
+	 
+	    if(!data) {
+	 
+	        data = $this.attr('data-actions');
+	        if(data) data = data[0].url;
+	        if(!data) data = $this.attr('id');
+	 
+	    }
+	 
+	    // __ga('send', 'event', 'outbound', 'click', data, {'transport': 'beacon'});
+	    __gaTracker('send', 'event', 'outbound', 'click', data, {'transport': 'beacon'});
+	 
+		});
+	  	jQuery(window).on('load', function() {
+ 
+	    jQuery('.rev_slider').each(function() {
+		 
+		        var ids = jQuery(this).attr('id').split('rev_slider_')[1].split('_')[0],
+		            api  = eval('revapi' + ids);
+		 
+		        api.on('revolution.slide.onchange', function(e, data) {
+		 
+		            var data = 'Slider ' + ids + ' changed to slide #' + data.slideIndex;
+		            // __ga('send', 'event', 'outbound', 'click', data, {'transport': 'beacon'});
+		            __gaTracker('send', 'event', 'outbound', 'click', data, {'transport': 'beacon'});
+		 
+		        });
+		 
+		    });
+		 
+		});
 	</script>
 </body>
 </html>
