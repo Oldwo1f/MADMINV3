@@ -212,6 +212,27 @@
 										<!-- 	<div class="fb-share-button" data-href="http://momcreation.fr/blog#1" data-layout="button"></div>  
 										    <a href="https://twitter.com/share" class="twitter-share-button" 
 										       data-url="http://momcreation.fr/blog#1">Tweet</a> -->
+										       <script>
+										       		$(document).ready(function(){
+													    $('#share_button1').click(function(e){
+													        e.preventDefault(); 
+													        FB.ui({
+														        method: 'share_open_graph',
+														        action_type: 'og.shares',
+														        action_properties: JSON.stringify({
+														            object: {
+														                'og:url': "http://momcreation.fr/vide-poches#1" ,
+														                'og:title': "Entretien avec Hyppolite, étudiant non fauché.",
+														                'og:description': "Il nous a donné rendez-vous dans son « chez lui » comme il aime l’affirmer. Une adresse envoyée par texto et nous voici en plein coeur du quartier latin, à Paris. Lui, c’est Hyppolite, étudiant non fauché.",
+														                'og:image': "http://momcreation.fr/images/smallblog/diamant.jpg"
+														            }
+														        })
+															},
+															function (response) {
+															});   
+													    });
+													});
+										       </script>
 									</div>
 									<div class="auteur pull-right" style="padding-right:20px;">
 											Nico la malice
@@ -396,7 +417,7 @@
 
 									<p>Morale de cette histoire : avant d’encombrer votre congélateur de viande immangeable, réfléchissez aux autres alternatives, certaines peuvent tout de même générer des profits insoupçonnés.</p> 
 
-
+										
 									<div class="auteur pull-right" style="padding-right:20px;">
 											Nico le tranchant
 									</div>
@@ -577,7 +598,34 @@
 
 
 									<p>Voilà, nous on t’aide comme on peut, en transmettant ce qu’on sait. C’est déjà sympathique.</p>
-
+									
+									<div  class=" pull-left" style="padding-left:20px;">
+										
+										<!-- 	<div class="fb-share-button" data-href="http://momcreation.fr/blog#1" data-layout="button"></div>  
+										    <a href="https://twitter.com/share" class="twitter-share-button" 
+										       data-url="http://momcreation.fr/blog#1">Tweet</a> -->
+										       <script>
+										       		$(document).ready(function(){
+													    $('#share_button1').click(function(e){
+													        e.preventDefault(); 
+													        FB.ui({
+														        method: 'share_open_graph',
+														        action_type: 'og.shares',
+														        action_properties: JSON.stringify({
+														            object: {
+														                'og:url': "http://momcreation.fr/vide-poches#2" ,
+														                'og:title': "Déni de grossesse, congélateur ou panier en osier ?",
+														                'og:description': "La tuile… Un matin somme toute banal, le réveil est difficile, les yeux sont collés et par chance, tu saisis la dernière capsule de café pour bien démarrer la journée. Tu te dis alors que tout n’est pas vain dans ce monde et que tu vas pouvoir continuer à brasser du vent paisiblement.",
+														                'og:image': "http://momcreation.fr/images/smallblog/ours.png",
+														            }
+														        })
+															},
+															function (response) {
+															});   
+													    });
+													});
+										       </script>
+									</div>
 									<div class="auteur pull-right" style="padding-right:20px;">
 											Nico le tranchant
 									</div>
@@ -1676,96 +1724,6 @@ Voila l'exemple -->
  //  <meta property="og:image" content="http://momcreation.fr/images/smallblog/diamant.jpg" />
  //  <meta property="fb:app_id" content="1793764574262325" />
 
-		$(document).ready(function(){
-			        $('#share_button1').click(function(e){
-			            e.preventDefault(); 
-			        FB.ui({
-				        method: 'share_open_graph',
-				        action_type: 'og.shares',
-				        action_properties: JSON.stringify({
-				            object: {
-				                'og:url': "http://momcreation.fr/vide-poches#1" ,
-				                'og:title': "Entretien avec Hyppolite, étudiant non fauché.",
-				                'og:description': "Il nous a donné rendez-vous dans son « chez lui » comme il aime l’affirmer. Une adresse envoyée par texto et nous voici en plein coeur du quartier latin, à Paris. Lui, c’est Hyppolite, étudiant non fauché.",
-				                'og:image': "http://momcreation.fr/images/smallblog/diamant.jpg" ,
-
-				            }
-				        })
-					    },
-					 function (response) {
-					//your code goes here
-					 });   
-			        });
-					// $('#share_button1').click(function(e){
-			  //       	$('meta[property="og:url"]').remove();
-    	// 				$('head').append( '<meta property="og:url" content="http://momcreation.fr/vide-poches#1">' );
-			  //       	$('meta[property="og:title"]').remove();
-    	// 				$('head').append( '<meta property="og:title" content="Entretien avec Hyppolite, étudiant non fauché.">' );
-			  //       	$('meta[property="og:description"]').remove();
-    	// 				$('head').append( '<meta property="og:description" content="Il nous a donné rendez-vous dans son « chez lui » comme il aime l’affirmer. Une adresse envoyée par texto et nous voici en plein coeur du quartier latin, à Paris. Lui, c’est Hyppolite, étudiant non fauché.">' );
-			  //       	$('meta[property="og:image"]').remove();
-    	// 				$('head').append( '<meta property="og:image" content="http://momcreation.fr/images/smallblog/diamant.jpg">' );
-			  //           e.preventDefault(); 
-			  //           FB.ui({
-					// 	  method: 'share',
-						  
-					// 	  href: 'http://momcreation.fr/vide-poches#1',
-					// 	}, function(response){});     
-			  //       }); 
-					$('#share_button2').click(function(e){
-			      //   	$('meta[property="og:url"]').remove();
-    					// $('head').append( '<meta property="og:url" content="http://momcreation.fr/vide-poches#2">' );
-			      //   	$('meta[property="og:title"]').remove();
-    					// $('head').append( '<meta property="og:title" content="Déni de grossesse, congélateur ou panier en osier ?">' );
-			      //   	$('meta[property="og:description"]').remove();
-    					// $('head').append( '<meta property="og:description" content="La tuile… Un matin somme toute banal, le réveil est difficile, les yeux sont collés et par chance, tu saisis la dernière capsule de café pour bien démarrer la journée. Tu te dis alors que tout n’est pas vain dans ce monde et que tu vas pouvoir continuer à brasser du vent paisiblement.">' );
-			      //   	$('meta[property="og:image"]').remove();
-    					// $('head').append( '<meta property="og:image" content="http://momcreation.fr/images/smallblog/ours.png">' );
-			            e.preventDefault(); 
-			             	FB.ui({
-						        method: 'share_open_graph',
-						        action_type: 'og.shares',
-						        action_properties: JSON.stringify({
-						            object: {
-						                'og:url': "http://momcreation.fr/vide-poches#2" ,
-						                'og:title': "Déni de grossesse, congélateur ou panier en osier ?",
-						                'og:description': "La tuile… Un matin somme toute banal, le réveil est difficile, les yeux sont collés et par chance, tu saisis la dernière capsule de café pour bien démarrer la journée. Tu te dis alors que tout n’est pas vain dans ce monde et que tu vas pouvoir continuer à brasser du vent paisiblement.",
-						                'og:image': "http://momcreation.fr/images/smallblog/ours.png",
-
-						            }
-						        })
-							    },
-							 function (response) {
-							//your code goes here
-							 });   
-			        });
-			        // $('#share_button2').click(function(e){
-			        //     e.preventDefault(); 
-			        //     FB.ui(
-			        //     {
-			        //         method: 'feed',
-			        //         name: "{{ user_name }}'s FOF",
-			        //         link: "https://mysite.com/uploader/{{current_fof}}/share_fof/",
-			        //         picture: imgsArray[0].src,
-			        //         caption: window.location.href,
-			        //         description: 'This FOF was taken by {{ user_name }}',
-			        //         message: ''
-			        //     });     
-			        // });          
-			        // $('#share_button3').click(function(e){
-			        //     e.preventDefault(); 
-			        //     FB.ui(
-			        //     {
-			        //         method: 'feed',
-			        //         name: "{{ user_name }}'s FOF",
-			        //         link: "https://mysite.com/uploader/{{current_fof}}/share_fof/",
-			        //         picture: imgsArray[0].src,
-			        //         caption: window.location.href,
-			        //         description: 'This FOF was taken by {{ user_name }}',
-			        //         message: ''
-			        //     });     
-			        // });
-		});
 		</script>
 					
 		
