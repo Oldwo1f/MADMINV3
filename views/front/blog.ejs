@@ -1683,7 +1683,7 @@ Voila l'exemple -->
 		$(document).ready(function(){
 			        $('#share_button1').click(function(e){
 			        	$('meta[property="og:url"]').remove();
-    					$('head').append( '<meta property="og:url" content="http://momcreation.fr/vide-poches#1">' );
+    					$('head').append( '<meta property="og:url" content="http://momcreation.fr/vide-poches">' );
 			        	$('meta[property="og:title"]').remove();
     					$('head').append( '<meta property="og:title" content="Entretien avec Hyppolite, étudiant non fauché.">' );
 			        	$('meta[property="og:description"]').remove();
@@ -1694,12 +1694,11 @@ Voila l'exemple -->
 			            FB.ui({
 						  method: 'share',
 						  
-						  href: 'http://momcreation.fr/vide-poches#1',
 						}, function(response){});     
 			        }); 
 					$('#share_button2').click(function(e){
 			        	$('meta[property="og:url"]').remove();
-    					$('head').append( '<meta property="og:url" content="http://momcreation.fr/vide-poches#2">' );
+    					$('head').append( '<meta property="og:url" content="http://momcreation.fr/vide-poches">' );
 			        	$('meta[property="og:title"]').remove();
     					$('head').append( '<meta property="og:title" content="Déni de grossesse, congélateur ou panier en osier ?">' );
 			        	$('meta[property="og:description"]').remove();
@@ -1710,7 +1709,6 @@ Voila l'exemple -->
 			            FB.ui({
 						  method: 'share',
 						  
-						  href: 'http://momcreation.fr/vide-poches#2',
 						}, function(response){});     
 			        });
 			        // $('#share_button2').click(function(e){
