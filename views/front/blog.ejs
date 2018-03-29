@@ -322,7 +322,7 @@
 
 							<!-- BTN lire la suite -->
 							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme rs-parallaxlevel-1" 
-								data-link="/vide-poches#1"
+								data-link="/vide-poches#1"  data-titre="Hyppolite"
 								id="slide-1-lirelasuite" data-start="1000"
 								data-x="['center','center','center','center']" data-hoffset="['522','413','200','90']"
 								data-y="['top','top','middle','middle']" data-voffset="['734','674','280','-60']"
@@ -505,7 +505,7 @@
 
 							<!-- BTN lire la suite -->
 							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "
-							data-link="/vide-poches#4"			 
+							data-link="/vide-poches#4" data-titre="grossess"			 
 								id="slide-24-layer-53" data-start="750"
 								data-x="['center','center','center','center']" data-hoffset="['497','450','250','40']"
 								data-y="['top','top','middle','middle']" data-voffset="['750','650','300','230']"
@@ -687,7 +687,7 @@
 
 							<!-- btn lire la suite -->
 							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "
-								 id="slide-5-lirelasuite" data-link="/vide-poches#5" data-start="750"
+								 id="slide-5-lirelasuite" data-link="/vide-poches#5" data-start="750" data-titre="Appartement"
 								 data-x="['center','center','center','center']" data-hoffset="['135','130','-204','70']"
 								 data-y="['top','top','middle','middle']" data-voffset="['726','630','290','220']"
 								data-width="none" data-height="none"
@@ -836,7 +836,7 @@
 
 							<!-- BTn lirelasuite -->
 							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "
-								id="slide-3-lirelasuite"data-link="/vide-poches#3" data-start="750"
+								id="slide-3-lirelasuite"data-link="/vide-poches#3" data-start="750"  data-titre="Attention"
 								data-x="['center','center','center','center']" data-hoffset="['530','430','234','100']"
 								data-y="['top','top','middle','middle']" data-voffset="['740','672','300','225']"
 								data-width="none"data-height="none"
@@ -1067,7 +1067,7 @@
 
 							<!-- BTN lire la suite -->
 							<a class="tp-caption TechJournal-Button rev-btn ga-button tp-resizeme "
-								id="slide-2-lirelasuite" data-start="750" data-link="/vide-poches#2"
+								id="slide-2-lirelasuite" data-start="750" data-link="/vide-poches#2" data-titre="pingpong"
 								data-x="['center','center','center','center']" data-hoffset="['135','117','-204','108']"
 								data-y="['top','top','middle','middle']" data-voffset="['726','642','290','205']"
 								data-width="none" data-height="none"
@@ -1796,9 +1796,14 @@ ga('send', 'pageview');
 
   jQuery('body').on('click', '.ga-button', function() {
  		var url  = $this.attr('data-link')
-	    ga('send', 'pageview', url);
-	 
-		});
+ 		var title  = $this.attr('data-titre')
+ 		console.log(url);
+	    
+ 	 ga('send', {
+	  hitType: 'pageview',
+	  title: title,
+	  page: url
+	});
 
 
 </script>		

@@ -266,7 +266,7 @@ module.exports={
 	about:function(req,res,next) {
 
 		console.log('about');
-					res.status(200).view('front/about',{
+					res.status(200).render('front/about',{
 						baseurl : '/',
 						// articles:articles,
 						// marked:marked,
@@ -280,7 +280,7 @@ module.exports={
 	pixelblog:function(req,res,next) {
 
 		console.log('about');
-					res.status(200).view('front/pixelblog',{
+					res.status(200).render('front/pixelblog',{
 						baseurl : '/',
 						// articles:articles,
 						// marked:marked,
