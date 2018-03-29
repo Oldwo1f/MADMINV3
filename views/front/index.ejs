@@ -77,6 +77,7 @@
 		div.trait2{border-right:1px solid black;width:0px;height: 400px;margin-right: 5px;}
 
 		.zeus .tp-bullet{background: rgba(255,255,255,0.6);border-color:  rgba(0,80,80,0.9);}
+		.zeus .tp-bullet-title{display: block;width: 100px;height: 30px;background: red;}
 
 		 a.sociallink {width:30px;height: 45px;display: inline-block;}
 		a.sociallink:hover {background: rgba(0,80,80,0.5);}
@@ -92,7 +93,7 @@
 
 </head>
 
-<body class="stretched">
+<body class="stretched" data-loader="12" data-loader-color="#005050">
 
 	<!-- Document Wrapper
 	============================================= -->
@@ -114,8 +115,7 @@
 
 							
 							<!-- SLIDE  -->
-							<li data-index="rs-130" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeOut" data-easeout="Power4.easeOut" data-masterspeed="default"  data-thumb=""  data-rotate="0"  data-saveperformance="off"  data-title="Accueil">
-								<!-- MAIN IMAGE -->
+							<li data-index="rs-130" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeOut" data-easeout="Power4.easeOut" data-masterspeed="default"  data-thumb=""  data-rotate="0"  data-saveperformance="off"  data-title="Accueil"> <!-- MAIN IMAGE -->
 								<img src="include/rs-plugin/demos/assets/images/transparent.png" data-bgcolor='#FFFFFF' style='background:#005050' alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 								<!-- LAYERS -->
 
@@ -1320,8 +1320,8 @@
 							enable:true,
 							hide_onmobile:false,
 							hide_under:480,
-							style: 'zeus',
-        					tmp: '<span class="tp-bullet-title">{{title}}</span>',
+							style: 'metis',
+        					tmp: '<span class="tp-bullet-img-wrap"><span class="tp-bullet-image"></span></span><span class="tp-bullet-title">{{title}}</span>',
 							hide_onleave:false,
 							direction:"vertical",
 							h_align:"right",
