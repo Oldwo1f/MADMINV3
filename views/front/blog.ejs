@@ -1641,12 +1641,19 @@ ga('send', 'pageview');
 				
 				setTimeout(function(){
 
-								var url = window.location.href;
+								
+				},1)
+				    revapi.on('revolution.slide.onloaded', function() {
+        
+        // slider loaded
+        var url = window.location.href;
 								console.log(url);
 								var firstSlide = url.substring(url.indexOf('#')+1)
 								console.log();
+								revapi.revpause();
 								revapi.revshowslide(firstSlide);
-				},1)
+        
+    });
 
 				// var newCall = new Object(),
 				// 	cslide;
@@ -1804,6 +1811,7 @@ ga('send', 'pageview');
 	  title: title,
 	  page: url
 	});
+});
 
 
 </script>		
