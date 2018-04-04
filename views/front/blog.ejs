@@ -1802,8 +1802,8 @@ ga('send', 'pageview');
 
 
   jQuery('body').on('click', '.ga-button', function() {
- 		var url  = $this.attr('data-link')
- 		var title  = $this.attr('data-titre')
+ 		var url  = $(this).attr('data-link')
+ 		var title  = $(this).attr('data-titre')
  		console.log(url);
 	    
  	 ga('send', {
