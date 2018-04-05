@@ -130,6 +130,7 @@ module.exports.routes = {
   'GET /about':'FrontController.about',
   'GET /pixelblog':'FrontController.pixelblog',
   'GET /vide-poches': 'FrontController.blog',
+  'GET /demo-globetrotters': 'FrontController.globetrotters',
 
 
   // 'GET /articletest': 'FrontController.articletest',

@@ -291,6 +291,14 @@ module.exports={
 						menu:'pixelblog',
 					})
 	},
+	globetrotters:function(req,res,next) {
+
+		console.log('about');
+					res.status(200).render('front/demo-globetrotters',{
+						baseurl : '/',
+						
+					})
+	},
 	addCommentArticle:function(req,res,next){
 
 		console.log('addCommentArticle');
