@@ -109,12 +109,12 @@ var recent = <%- JSON.stringify(recent) %>;
 
 
                                     <div class="blockPJ">
-                                        <%if(article.documents.length > 1){%>
+                                        <%if(article.documents.length > 0){%>
                                             <ul>  
                                                          <% for(var j=0; j< article.documents.length ; j++){%>
                                                             <% if(article.documents[j]){%>
                                                               
-                                                                <li class="slide" ><a target="BLANK" href="projet/<%- article.id %>/<%- article.rewriteurl %>"><%- article.documents[j].filename %></a>
+                                                                <li class="slide" ><a target="BLANK" href="document/<%- article.documents[j].filename %>"><%- article.documents[j].name %></a>
                                                                 </li>
                                                             <%}%>
                                                          <%}%>
