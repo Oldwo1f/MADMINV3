@@ -105,6 +105,23 @@ var recent = <%- JSON.stringify(recent) %>;
                                 <div class="entry-content notopmargin">
 
                                     <%- article.content %>
+
+
+
+                                    <div class="blockPJ">
+                                        <%if(article.documents.length > 1){%>
+                                            <ul>  
+                                                         <% for(var j=0; j< article.documents.length ; j++){%>
+                                                            <% if(article.documents[j]){%>
+                                                              
+                                                                <li class="slide" ><a target="BLANK" href="projet/<%- article.id %>/<%- article.rewriteurl %>"><%- article.documents[j].filename %></a>
+                                                                </li>
+                                                            <%}%>
+                                                         <%}%>
+                                                
+                                            </ul>
+                                        <%} %>
+                                    </div>
                                 
                                     <!-- Tag Cloud
                                     ============================================= -->
