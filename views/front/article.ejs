@@ -110,7 +110,12 @@ var recent = <%- JSON.stringify(recent) %>;
 
                                     <div class="blockPJ">
                                         <%if(article.documents.length > 0){%>
-                                            <ul>  
+                                            <%if(article.documents.length > 1){%>
+                                            <h4>Pièces jointes (article.documents.length) </h4>
+                                            <%}else{%>
+                                            <h4>Pièce jointe</h4>
+                                            <%}%>
+                                            <ul style="list-style:none;">  
                                                          <% for(var j=0; j< article.documents.length ; j++){%>
                                                             <% if(article.documents[j]){%>
                                                               
