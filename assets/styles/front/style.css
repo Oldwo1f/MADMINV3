@@ -1,0 +1,104 @@
+body{background: #EAEAEA;font-family:Raleway;font-weight: 900;}
+
+#primary-menu{background: rgba(255,255,255,0.9);z-index:99;position: fixed;top:0;left: 0;bottom: 0;right: 0;display:flex;display:none; align-items:center;justify-content:center;}
+#primary-menu ul{ list-style: none;}
+#primary-menu ul li a{ font-size : 60px;color:#4D4D4D; text-align: center;}
+#primary-menu .btnclosemenu{position: fixed;top:50px;right: 50px;font-size: 50px;cursor:pointer;}
+#primary-menu .btnclosemenu:hover{color:#666666;}
+
+#bandeblanche{background:white; max-height : 100px; height : 100px; position:relative;width : 100%;top:0px;align-items:center;justify-content:space-between;display: -webkit-inline-flex;display: -moz-inline-flex;display: -ms-inline-flex;display: -o-inline-flex;display: inline-flex;}
+
+
+.burgermenu { position:relative; width : 40px; height : 25px; align-self:center; cursor:pointer;}
+.burgermenu .burger{ position:absolute;width : 40px; height : 5px;background:#4D4D4D;}
+.burgermenu .burger:hover{background:#666666;}
+.burgermenu .burger1{ top: 0px;}
+.burgermenu .burger2{ top: 10px;}
+.burgermenu .burger3{ top: 20px;}
+
+
+.logo { margin-left : 50px;}
+.logo img { height : 40px;}
+.coords { margin-right : 50px;}
+.coords ul{ margin-bottom: 0;list-style:none;font-weight:500;text-align: right;}
+.coords ul strong{font-weight:700;}
+
+#wrapper { position: relative; width:96%;margin-top: 30px;background: white;margin-left: 2%;text-align: center;}
+.pageservice #wrapper {min-height: 2300px;}
+
+
+
+.pageservice .imagedefond {position: absolute;margin-left:50%;left:-735px;top:70px; height:auto;background:url(../../images/photo2.jpg);width: 1471px;height: 2208px;}
+
+.pageservice .block1 {background: rgba(255,255,255,0.8); position:relative;margin-left: 120px;padding-left:30px; width: 600px;height: 360px; margin-top: 100px}
+.pageservice .block1 h1{font-weight: 900;font-size: 90px; text-transform:uppercase; text-align:left;padding-top: 80px;color:#4D4D4D;}
+.pageservice .block1 .maisongrise img{ position:absolute;     left: 220px;top: 60px;margin-left: 50px;width: 230px;   height: 243px;}
+
+.pageservice .block2 {background: rgba(255,255,255,0.8); position:relative;margin-right: 120px;margin-left: 120px; width: 700px;height: 360px; margin-top: -50px; padding : 30px;}
+.pageservice .block2 h2{font-weight: 900;font-size: 60px; text-align:left;color:#4D4D4D;}
+.pageservice .block2 p{text-align: left;font-weight:normal;font-size : 24px;}
+.pageservice .block2.block-right{float:right;padding-left: 50px;}
+.pageservice .block2.block-left{float:left;}
+
+
+#bandeblanchefooter{margin-top : 30px; background:white; max-height : 100px; height : 100px; position:relative;width : 100%;bottom:0px;align-items:center;justify-content:space-between;display: -webkit-inline-flex;display: -moz-inline-flex;display: -ms-inline-flex;display: -o-inline-flex;display: inline-flex;}
+#bandeblanchefooter a, #bandeblanchefooter a:visited{color : #4D4D4D; }
+#bandeblanchefooter .social { margin-left : 50px;}
+#bandeblanchefooter .social div{cursor:pointer; width :40px; height: 40px;display: inline-block;border: 2px solid #4D4D4D;border-radius:30px;margin-right: 10px;}
+#bandeblanchefooter .social i{color : #4D4D4D; font-size: 25px;margin-left: 10px;margin-top: 1px;}
+#bandeblanchefooter .social div:hover i{color : #333; }
+#bandeblanchefooter .social .linkedin i{color : #4D4D4D; font-size: 22px;margin-left: 6px;margin-top: 3px;}
+
+
+
+/*.pageabout .imagedefond {position: absolute;margin-left:50%;left:-735px;top:70px; height:auto;background:url(../../images/photo2.jpg);width: 1471px;height: 2208px;}*/
+.pageabout #wrapper > img {top:30px;position:absolute;left:50%; transform: translate(-50%, 0);}
+
+
+.pageabout .block1 { float:right;background: rgba(255,255,255,0.8); position:relative;right:200px;padding-left:30px; width: 600px;height: 360px; margin-top: 300px}
+.pageabout .block1 h1{font-weight: 900;font-size: 70px; text-transform:uppercase; text-align:left;padding-top: 70px;color:#4D4D4D;}
+.pageabout .block1 .maisongrise img{ position:absolute;     left: 220px;top: 60px;margin-left: 50px;width: 230px;   height: 243px;}
+.pageabout .row{ margin-top: 200px;}
+.pageabout .row .coltext{ margin-top: 150px;}
+.pageabout .row .coltext h3{text-align: left; font-weight: 900;font-size: 30px;  text-align:left;padding-top: 80px;color:#4D4D4D;}
+.pageabout .row .coltext p{text-align: left; font-weight: 400;font-size: 16px;  text-align:left;color:#4D4D4D;}
+
+.btn-default {border-width: 2px;border-radius:30px;margin-top: 20px;font-weight: 700;border-color:#333;padding: 10px 40px;}
+.blockCTA {margin-top: 340px;    margin-bottom: 60px;}
+
+
+
+.pagegalerie .block1 {background: rgba(255,255,255,0.8); position:relative;padding-left:30px;margin-bottom: 50px; }
+.pagegalerie .block1 h1{font-weight: 900;font-size: 70px; text-transform:uppercase; text-align:left;padding-top: 90px;color:#4D4D4D;}
+.pagegalerie .block1 .maisongrise img{ position:absolute;     left: 150px;top: 0px;margin-left: 50px;width: 150px;   height: 150px;}
+.pagegalerie  .row img{ margin-top: 50px; width:100%;}
+.pagegalerie  .col-md-6{ margin-top: 50px;}
+.pagegalerie  .row{margin-left: 0;margin-right: 0;}
+.pagegalerie  .row .col-md-6{margin-top: 0;}
+
+
+.pagehome .block1 { z-index:90;background: rgba(255,255,255,0.8);left:-300px; position:absolute;margin-left: 0px;padding-left:30px; width: 900px;height: 500px; margin-top: 100px}
+.pagehome .block1 h1{font-weight: 900;font-size: 90px;padding-left: 20px;  text-align:left;padding-top: 80px;color:#4D4D4D;}
+.pagehome .block1 .maisongrise img{ position:absolute;     left: 220px;top: 60px;margin-left: 50px;width: 330px;   height: 343px;}
+.pagehome #wrapper {width: 70%;left: 20%;padding:30px;}
+.pagehome #wrapper .btnprevious{color:#4D4D4D;font-size: 50px;position: absolute;right: 180px;top: 220px;cursor:pointer;}
+.pagehome #wrapper .btnprevious:hover{color:#333;}
+.pagehome #wrapper .btnnext{color:#4D4D4D;font-size: 50px;position: absolute;right: 90px;top: 220px;cursor:pointer;}
+.pagehome #wrapper .btnnext:hover{color:#333;}
+.pagehome .block2 {width: 100%;}
+.pagehome .block2 img{width: 100%;}
+.pagehome  .block2 ul {list-style: none;margin:0;padding: 0;}
+.pagehome .block2 ul li{display:none;position:relative; top:0px;left:100%;}
+.pagehome .block2 ul li.active{display:block;left:0;}
+
+
+
+.pageabout{background: #FEEE38;}
+.pagecontact{background: #FEEE38;}
+.pagecontact .block1 {z-index:20; position:relative;padding-left:30px;margin-bottom: 50px; pointer-events:none;}
+.pagecontact .block1 h1{font-weight: 900;font-size: 70px; text-transform:uppercase; text-align:right;padding-right: 250px;padding-top: 100px;color:#4D4D4D;}
+.pagecontact .block1 .maisongrise img{ position:absolute;     right: 100px;top: 0px;margin-left: 50px;width: 200px;   height: 200px;}
+.pagecontact p.infocontact{color:#4D4D4D;font-size: 30px;font-weight: 400; margin:150px 0px;}
+.pagecontact p strong{color:#4D4D4D;font-size: 50px;font-weight: 800;}
+.pagecontact #wrapper{min-height:705px;}
+.pagecontact #map{width:100%;margin-top: -200px; height : 500px;right: 30px;margin-bottom: 30px;}

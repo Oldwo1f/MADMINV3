@@ -49,6 +49,18 @@ module.exports={
 
 
 	},
+	services:function(req,res,next) {
+
+		console.log('services_________');
+
+							res.status(200).render('front/services',{
+								baseurl : '/',
+								moment: moment,
+								menu:'services',
+							})
+
+
+	},
 	construction:function(req,res,next) {
 
 		console.log('construction');
@@ -275,6 +287,20 @@ module.exports={
 						// description:req.__('SEO_about_description'),
 						// scripturl:'script.js',
 						menu:'about',
+					})
+	},
+	galerie:function(req,res,next) {
+
+		console.log('galerie');
+					res.status(200).render('front/galerie',{
+						baseurl : '/',
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_about_title'),
+						// keyword: req.__('SEO_about_keyword'),
+						// description:req.__('SEO_about_description'),
+						// scripturl:'script.js',
+						menu:'galerie',
 					})
 	},
 	pixelblog:function(req,res,next) {

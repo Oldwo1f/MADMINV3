@@ -42,37 +42,57 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>Cuisibulles</title>
+	<title>Services - Cuisibulles</title>
 
 	
 
 </head>
 
-<body class="pagehome">
+<body class="pageservice">
 	
 	<% include menu.ejs %>
 	<!-- Document Wrapper
 	============================================= -->
+	
 	<div id="wrapper" class="clearfix">
 
 	<div class="imagedefond"></div>
 
 	<div class="block1">
-		<h1>L'EXPERT <br>de votre <br>HABITAT</h1>
+		<h1>Les <br>Services</h1>
 		<div class="maisongrise"> <img src="images/maisongrise.png" alt=""></div>
-		<div class="btnprevious"><i class="icon-line-arrow-left"></i></div>
-		<div class="btnnext"><i class="icon-line-arrow-right"></i></div>
 	</div>
-	<div class="block2">
-		<ul class="malistdeslide">
-			<li class="active"><img src="images/cuisi1.jpg" alt=""></li>
-			<li><img src="images/cuisi3.jpg" alt=""></li>
-			<li><img src="images/cuisi4.jpg" alt=""></li>
-			<li><img src="images/cuisi5.jpg" alt=""></li>
-			<li><img src="images/cuisi5.jpeg" alt=""></li>
-		</ul>
+	<div class="clearfix"></div>
+	<div class="block2 block-right">
+		<h2>La cuisine.</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem asperiores harum ipsam maxime mollitia suscipit, quam non error magni exercitationem sit officia vero voluptatum hic quae laborum repellendus doloremque sunt.</p>
 	</div>
-	
+	<div class="clearfix"></div>
+	<div class="block2 block-left">
+		<h2>La salle de bain.</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem asperiores harum ipsam maxime mollitia suscipit, quam non error magni exercitationem sit officia vero voluptatum hic quae laborum repellendus doloremque sunt.</p>
+	</div>
+	<div class="clearfix"></div>
+	<div class="block2 block-right">
+		<h2>L'aménagement.</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem asperiores harum ipsam maxime mollitia suscipit, quam non error magni exercitationem sit officia vero voluptatum hic quae laborum repellendus doloremque sunt.</p>
+	</div>
+	<div class="clearfix"></div>
+	<div class="block2 block-left">
+		<h2>La chambre.</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem asperiores harum ipsam maxime mollitia suscipit, quam non error magni exercitationem sit officia vero voluptatum hic quae laborum repellendus doloremque sunt.</p>
+	</div>
+	<div class="clearfix"></div>
+	<div class="block2 block-right">
+		<h2>Les gros travaux.</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem asperiores harum ipsam maxime mollitia suscipit, quam non error magni exercitationem sit officia vero voluptatum hic quae laborum repellendus doloremque sunt.</p>
+	</div>
+	<div class="clearfix"></div>
+
+	<div class="blockCTA">
+			<p>Vous voulez en savoir plus?</p>
+				<a href="/contact" class="btn btn-default ">Contact</a>
+	</div>
 	</div><!-- #wrapper end -->
 
 	<% include footer.ejs %>
@@ -97,27 +117,6 @@
 		$('.btnclosemenu').click(function(){
 			console.log('click');
 			$('#primary-menu').fadeOut(500);
-		});
-
-
-		$('.btnprevious').click(function(){
-			console.log('click');
-			console.log($('.malistdeslide .active'));
-			if($('.malistdeslide .active').prev().length>0){
-				console.log('jj');
-				$('.malistdeslide .active').hide().removeClass('active').prev().show().addClass('active');
-				
-			}
-			
-		});
-		$('.btnnext').click(function(){
-			console.log($('.malistdeslide .active'));
-			if($('.malistdeslide .active').next().length>0){
-				console.log('hhhhh');
-				$('.malistdeslide .active').hide().removeClass('active').next().show().addClass('active');
-				
-			}
-
 		});
 
 	})

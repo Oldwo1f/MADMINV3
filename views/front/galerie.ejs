@@ -42,37 +42,59 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>Cuisibulles</title>
+	<title>Galerie - Cuisibulles</title>
 
 	
 
 </head>
 
-<body class="pagehome">
+<body class="pagegalerie">
 	
 	<% include menu.ejs %>
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
 
-	<div class="imagedefond"></div>
+	<!-- <div class="imagedefond"></div> -->
+	<!-- <img src="/images/photo3.jpg" alt=""> -->
 
-	<div class="block1">
-		<h1>L'EXPERT <br>de votre <br>HABITAT</h1>
-		<div class="maisongrise"> <img src="images/maisongrise.png" alt=""></div>
-		<div class="btnprevious"><i class="icon-line-arrow-left"></i></div>
-		<div class="btnnext"><i class="icon-line-arrow-right"></i></div>
-	</div>
-	<div class="block2">
-		<ul class="malistdeslide">
-			<li class="active"><img src="images/cuisi1.jpg" alt=""></li>
-			<li><img src="images/cuisi3.jpg" alt=""></li>
-			<li><img src="images/cuisi4.jpg" alt=""></li>
-			<li><img src="images/cuisi5.jpg" alt=""></li>
-			<li><img src="images/cuisi5.jpeg" alt=""></li>
-		</ul>
-	</div>
 	
+	<div class="clearfix"></div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="block1">
+				<h1>Galerie</h1>
+				<div class="maisongrise"> <img src="images/maisongrise.png" alt=""></div>
+			</div>
+			<img src="images/gal3.jpg" alt="">
+			<!-- <img src="images/gal5.jpg" alt=""> -->
+		</div>
+		
+		<div class="col-md-5">
+			<img src="images/gal1.jpg" alt="">
+			<img src="images/gal4.jpg" alt="">
+		</div>
+
+		<div class="col-md-3">
+			<img src="images/gal2.jpg" alt="">
+			<img src="images/gal6.jpg" alt="">
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-md-6"><img src="images/gal7.jpg" alt=""></div>
+		<div class="col-md-6"><img src="images/gal8.jpg" alt=""></div>
+	</div>
+
+	<div class="row" style="margin-top:50px; margin-bottom:50px;">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<p>Vous voulez en savoir plus?</p>
+			<a href="/contact" class="btn btn-default ">Contact</a>
+		</div>
+	</div>
+		
+
 	</div><!-- #wrapper end -->
 
 	<% include footer.ejs %>
@@ -97,27 +119,6 @@
 		$('.btnclosemenu').click(function(){
 			console.log('click');
 			$('#primary-menu').fadeOut(500);
-		});
-
-
-		$('.btnprevious').click(function(){
-			console.log('click');
-			console.log($('.malistdeslide .active'));
-			if($('.malistdeslide .active').prev().length>0){
-				console.log('jj');
-				$('.malistdeslide .active').hide().removeClass('active').prev().show().addClass('active');
-				
-			}
-			
-		});
-		$('.btnnext').click(function(){
-			console.log($('.malistdeslide .active'));
-			if($('.malistdeslide .active').next().length>0){
-				console.log('hhhhh');
-				$('.malistdeslide .active').hide().removeClass('active').next().show().addClass('active');
-				
-			}
-
 		});
 
 	})
