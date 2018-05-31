@@ -299,6 +299,14 @@ module.exports={
 						
 					})
 	},
+	calcio:function(req,res,next) {
+
+		console.log('calcio');
+					res.status(200).render('front/calcio',{
+						baseurl : '/',
+						
+					})
+	},
 	addCommentArticle:function(req,res,next){
 
 		console.log('addCommentArticle');
