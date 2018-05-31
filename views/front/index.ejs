@@ -53,6 +53,8 @@
 	<% include menu.ejs %>
 	<!-- Document Wrapper
 	============================================= -->
+	<!-- Document Wrapper
+	============================================= -->
 	<div id="wrapper" class="clearfix">
 
 	<div class="imagedefond"></div>
@@ -89,6 +91,13 @@
 	<script type="text/javascript">
 
 	$(document).ready(function(){
+
+		 var viewPortHeight = $(window).height();
+
+            console.log(viewPortHeight);
+
+            $('#wrapper').css('min-height',viewPortHeight-260 + 'px');
+            
 		
 		$('.burgermenu').click(function(){
 			console.log('click');

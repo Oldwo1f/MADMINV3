@@ -55,48 +55,45 @@
 	============================================= -->
 	<div id="wrapper" class="clearfix">
 
-	<!-- <div class="imagedefond"></div> -->
-	<!-- <img src="/images/photo3.jpg" alt=""> -->
+    <!-- <div class="imagedefond"></div> -->
+    <!-- <img src="/images/photo3.jpg" alt=""> -->
 
-	
-	<div class="clearfix"></div>
-	<div class="row">
-		<div class="col-md-4">
-			
-		</div>
-		
+    
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-4">
+            
+        </div>
+        
 
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<p class="infocontact">
-				
-			Des questions,<br>
-			une demande de devis,<br>
-			vous pouvez nous contacter par email à <br>
-			<strong>aakififfe@feeffefeFE.fr</strong><br>
-			ou par <br>
-			téléphone<br>
-			au<br>
-			<strong>01 60 25 28 14</strong>
-			</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="infocontact">
+                
+            Nous avons hâte de découvrir votre projet<br>
+            
+            <strong>contactez-nous@cuisibulles.com</strong><br>
+            ou par téléphone <br>
+            <strong>01 60 25 28 14</strong>
+            </p>
 
-		</div>
-		<div class="col-md-6">
-			<div class="block1">
-				<h1>CON-<br>TACT</h1>
-				<div class="maisongrise"> <img src="images/maisongrise.png" alt=""></div>
-			</div>
-			<div id="map">
-				
-			</div>
-		</div>
-	</div>
+        </div>
+        <div class="col-md-6">
+            <div class="block1">
+                <h1>CON-<br>TACT</h1>
+                <div class="maisongrise"> <img src="images/maisongrise.png" alt=""></div>
+            </div>
+            <div id="map">
+                
+            </div>
+        </div>
+    </div>
 
-	
-		
+    
+        
 
-	</div><!-- #wrapper end -->
+    </div><!-- #wrapper end -->
 
 	<% include footer.ejs %>
 
@@ -109,31 +106,44 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 
 
-	<script type="text/javascript">
+    <script type="text/javascript">
 
-	$(document).ready(function(){
-		
-		$('.burgermenu').click(function(){
-			console.log('click');
-			$('#primary-menu').css('display','flex').hide().fadeIn(1000);
-		});
-		$('.btnclosemenu').click(function(){
-			console.log('click');
-			$('#primary-menu').fadeOut(500);
-		});
+    $(document).ready(function(){
 
-	})
-  		google.maps.event.addDomListener(window, 'load', init);
+            var viewPortHeight = $(window).height();
+
+            console.log(viewPortHeight);
+
+            $('#wrapper').css('min-height',viewPortHeight-260 + 'px');
+
+
+
+
+        
+        $('.burgermenu').click(function(){
+            console.log('click');
+            $('#primary-menu').css('display','flex').hide().fadeIn(1000);
+        });
+        $('.btnclosemenu').click(function(){
+            console.log('click');
+            $('#primary-menu').fadeOut(500);
+
+
+        
+        });
+
+    })
+        google.maps.event.addDomListener(window, 'load', init);
         
             function init() {
                 // Basic options for a simple Google Map
                 // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
                 var mapOptions = {
                     // How zoomed in you want the map to start at (always required)
-                    zoom: 13,
+                    zoom: 10,
 
                     // The latitude and longitude to center the map (always required)
-                    center: new google.maps.LatLng(48.958165, 2.951333), // New York
+                    center: new google.maps.LatLng(49.00000, 3.0154430999999704), // New York
 
                     // How you would like to style the map. 
                     // This is where you would paste any style found on Snazzy Maps.
@@ -324,15 +334,15 @@
 
                 // Let's also add a marker while we're at it
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(48.958165, 2.951333),
+                    position: new google.maps.LatLng(48.9518937, 3.0154430999999704),
                     map: map,
-                    title: 'Cuisibulles - 52 Avenue de Verdun'
+                    title: 'Cuisibulles - 26B Rue Pasteur 77660 SAINT-JEAN-LES-DEUX-JUMEAUX'
                 });
             }
 
 
 
-	</script>
+    </script>
 
 
 </body>
