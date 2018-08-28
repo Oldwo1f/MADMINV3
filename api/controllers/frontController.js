@@ -93,21 +93,21 @@ module.exports={
 
 
 	},
-	v2m:function(req,res,next) {
+	vip:function(req,res,next) {
 
-		console.log('v2m_________');
+		console.log('vip');
 		
-							res.status(200).render('front/v2m',{
+							res.status(200).render('front/vip',{
 								baseurl : '/',
 								// articles: articles,
 								// articles:articles,
 								// marked:marked,
-								title: req.__('SEO_HOME_title'),
-								keyword: req.__('SEO_HOME_keyword'),
-								description:req.__('SEO_HOME_description'),
+								title: req.__('SEO_HOME_vip_title'),
+								keyword: req.__('SEO_HOME_vip_keyword'),
+								description:req.__('SEO_HOME_vip_description'),
 								// scripturl:'script.js',
 								moment: moment,
-								menu:'home',
+								menu:'vip',
 							})
 					
 		

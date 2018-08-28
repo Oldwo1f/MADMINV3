@@ -121,17 +121,7 @@ module.exports.routes = {
 
    'GET /':'FrontController.home',
   'GET /contact':'FrontController.contact',
-  'GET /v2m':'FrontController.v2m',
-  'GET /nutri':'FrontController.nutri',
-  'GET /nutri2':'FrontController.nutri2',
-  'GET /clubpai':'FrontController.clubpai',
-  'GET /construction':'FrontController.construction',
-
-  'GET /about':'FrontController.about',
-  'GET /pixelblog':'FrontController.pixelblog',
-  'GET /vide-poches': 'FrontController.blog',
-  'GET /demo-globetrotters': 'FrontController.globetrotters',
-  'GET /demo-calcio': 'FrontController.calcio',
+  'GET /vip':'FrontController.vip',
 
 
   // 'GET /articletest': 'FrontController.articletest',
