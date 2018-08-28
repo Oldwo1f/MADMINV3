@@ -307,7 +307,7 @@ module.exports={
 		var result = {};
 
 		var articlesPromise = Article.find({status:'actif'}).sort('date DESC')
-	    .limit(100).populateAll();
+	    .limit(5).populateAll();
 
 		articlesPromise
 	    .then(function(articles) {   
