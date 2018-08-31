@@ -218,6 +218,7 @@ var article = <%- JSON.stringify(article) %>;
                                                 </div>
 
                                                 <div class="col_full nobottommargin">
+                                                    <input type="hidden" name="articleName" id="articleName" value="<%- article.title %>" />
                                                     <button name="submit" type="submit" id="submit-button" tabindex="4" value="Submit" class="button button-3d nomargin"><%- __('Submit') %></button>
                                                     <div class="errormessageemail"><%- __('Une erreur s\'est produite') %></div>
                                                     <div class="successmessageemail"><%- __('Votre commentaire à été envoyé.') %></div>
@@ -261,6 +262,7 @@ var article = <%- JSON.stringify(article) %>;
                                         </div>
 
                                         <div class="col_full nobottommargin">
+                                            <input type="hidden" name="articleName" id="articleName" value="<%- article.title %>" />
                                             <button type="submit" id="submit-button" tabindex="4"  class="button button-3d nomargin"><%- __('Submit') %></button>
                                             <div class="errormessageemail"><%- __('Une erreur s\'est produite') %></div>
                                             <div class="successmessageemail"><%- __('Votre commentaire à été envoyé.') %></div>
