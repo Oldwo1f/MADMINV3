@@ -1,0 +1,157 @@
+<body class="stretched BLOG">
+<div id="wrapper" class="clearfix">
+
+        
+
+            <% include menu.ejs %>
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title" class="">
+
+           <% if(thiscategory){%>
+                <div class="container clearfix">
+                    <span></span>
+                    <!-- <ol class="breadcrumb"> -->
+                        <!-- <li><a href="#">Home</a></li> -->
+                        <!-- <li class="active">Blog</li> -->
+                    <!-- </ol> -->
+                    <% if(thiscategory && thiscategory.images.length ){%>
+                        <div style="margin-bottom:20px;">
+                            <img class="myimgcat" src="image/resized/<%= thiscategory.images[0].filename %>" alt="<%= thiscategory.name %>">
+                            <h1 class="h1absolute"><%= thiscategory.name %></h1>
+
+                        </div>
+                    <%}else{%>
+                        <h1><%- __('blog-title') %></h1>
+                        <span><%= thiscategory.name %></span>
+                    <%}%> 
+                </div>
+            <%}else{%> 
+                <div class="container clearfix">
+                <h1><%- __('blog-title') %></h1>
+                <span><%- __('blog-subtitle') %></span>
+                <!-- <ol class="breadcrumb"> -->
+                    <!-- <li><a href="#">Home</a></li> -->
+                    <!-- <li class="active">Blog</li> -->
+                <!-- </ol> -->
+                </div>
+            <%}%> 
+
+        </section><!-- #page-title end -->
+        
+
+<script type="text/javascript">
+
+var articles = <%- JSON.stringify(articles) %>;
+        console.log(articles);
+
+</script>
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap">
+
+                <div class="container clearfix">
+
+                    <!-- Post Content
+                    ============================================= -->
+                    <div class="postcontent nobottommargin clearfix">
+
+                        <!-- Posts
+                        ============================================= -->
+                        <div id="posts" class="post-timeline clearfix">
+
+                            <div class="timeline-border"></div>
+
+
+                            <% for(var i=0; i< articles.length ; i++){%>
+                                  
+                                 
+                            <div class="entry clearfix">
+                                <div class="entry-timeline">
+                                     <%- moment(articles[i].date).format('DD')  %><span><%- moment(articles[i].date).format('MMM')  %></span>
+                                    <div class="timeline-divider"></div>
+                                </div>
+                                <div class="entry-image">
+                                <% if(articles[i].video && articles[i].publishVideo){%>
+                                     <%- articles[i].video  %> 
+                                <% }else if(articles[i].images.length == 1){%>
+                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" ><img class="image_fade" src="image/resized/<%-articles[i].images[0].filename %>" alt="<%-articles[i].images[0].alt %>"></a>
+                                    
+
+                                 <%} else if(articles[i].images.length > 1){%>
+                                        <div class="fslider" data-arrows="false" data-animation="slide" data-slideshow="false">
+                                        <div class="flexslider">
+                                            <div class="slider-wrap">
+                                                 <% for(var j=0; j< articles[i].images.length ; j++){%>
+                                                    <% if(articles[i].images[j]){%>
+                                                      
+                                                        <div class="slide" ><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl %>"><img src="image/resized/<%- articles[i].images[j].filename %>" alt=""></a></div>
+                                                    <%}%>
+                                                 <%}%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <%} %>
+                                </div>
+
+
+                                
+                                
+                                <div class="entry-title">
+                                    <h2><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><%- articles[i].title  %></a></h2>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    
+                                    <% if(articles[i].category){%>
+                                        <li><i class="icon-folder-open"></i> <a href="#"> <%- articles[i].category.name %> </a></li>
+                                    <%}%>
+                                    <% if(articles[i].comments.length){%>
+                                        <li><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><i class="icon-comments"></i> <%-articles[i].comments.length %> <%- __('comment') %><% if(articles[i].comments.length>1){%>s<%}%></a></li>
+                                    <%}%>
+                                </ul>
+                                <div class="entry-content">
+                                    <%- articles[i].content %>
+                                    <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"class="more-link"><%- __('readmore') %></a>
+                                </div>
+                            </div>
+
+                            <%}%>
+
+
+                            
+
+                        </div><!-- #posts end -->
+                        <div class="page-load-status">
+                        <div class="css3-spinner infinite-scroll-request">
+                            <div class="css3-spinner-ball-pulse-sync">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning center infinite-scroll-last mx-auto" style="max-width: 20rem;">End of content</div>
+                        <div class="alert alert-warning center infinite-scroll-error mx-auto" style="max-width: 20rem;">No more pages to load</div>
+                    </div>
+
+                    <!-- Pagination
+                    ============================================= -->
+                    <div class="center d-none">
+                        <a href="blog-masonry-page-2.html" class="button button-3d button-dark button-large button-rounded load-next-posts">Load more..</a>
+                    </div>
+
+                    </div><!-- .postcontent end -->
+
+                    <%- include sidebar.ejs %>
+                </div>
+
+            </div>
+
+        </section><!-- #content end -->
+
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
+</body>
