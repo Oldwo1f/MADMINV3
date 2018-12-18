@@ -4803,3 +4803,4 @@ a:focus, a:hover{text-decoration: none;}
 ul[rn-carousel] {height: 100%;}
 
 .md-dialog-container md-dialog .removeremovecontainer button {height:auto;width: auto;    padding: 5px 18px 2px 18px;}
+.md-dialog-container{height: auto !important;}
