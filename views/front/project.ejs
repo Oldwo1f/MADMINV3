@@ -112,36 +112,7 @@
                         
                         <span class="title-desc anim fadeIn">
                             <h1 ><%= project.title %></h1>
-                            <ul class="meta">
-                                <% if(typeof(project.authors)!='undefined' && project.authors.length > 0){%>
-                                <li>
-                                    <a ><i class="fa fa-user"></i><%= project.authors[0].firstname %> <%= project.authors[0].name %></a>
-                                </li>
-                                <%}%>
-                                    <li><a ><i class="fa fa-eye"></i><%= project.nbView %></a></li>
-                                    <% if(typeof(project.categories)!='undefined'){ %>
-                                    <li>
-                                        <% for(var j in project.categories){
-                                            cat = project.categories[j]; 
-                                            %>
-                                            <a class="catInList" style="color:<%- cat.textColor %>;background:<%- cat.color %>" href="grimpes/category/<%= cat.id %>/" >
-                                            <%= cat.name %>
-                                            </a>
-                                        <% } %>
-                                    </li>
-                                    <%} %>
-                                    <% if(typeof(project.tags)!='undefined'){ %> 
-                                    <li>
-                                        <% for(var j in project.tags){
-                                            tag = project.tags[j]; 
-                                            %>
-                                            <a class="tagInList" href="grimpes/tags/<%= tag.id %>/<%= tag.text %>" ><i class="fa fa-tag"></i>
-                                            <%= tag.text %>
-                                            </a>
-                                        <% } %>
-                                    </li>
-                                    <%} %>
-                            </ul><!-- .meta -->
+                           
                         </span><!-- .title-desc -->
                         
                         <p class="content">

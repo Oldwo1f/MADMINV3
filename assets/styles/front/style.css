@@ -826,10 +826,10 @@ h6 {
 
 .content-section p {
 	font-size:22px;
-	font-weight:100;
+	font-weight:400;
 	line-height:36px;
 	margin-bottom:0;
-	color:rgba(64,64,64,.7);
+	color:rgba(64,64,64,1);
 	font-family:"Roboto", Arial, sans-serif;
 	text-align:center;
 }
@@ -929,9 +929,11 @@ h6 {
 
 .blog h3 {
 	font-weight:100;
-	font-size:35px;
+	font-size:30px;
 	margin:0 0 20px 0;
 	line-height:36px;
+  width: 500px;
+
 }
 
 .blog .date {
@@ -3275,8 +3277,8 @@ ul.info-list li i.fa {
 
 .btn-sm {
 	padding:10px 40px;
-	font-size:12px;
-	font-weight:300;
+	font-size:13px;
+	font-weight:400;
 }
 
 .btn-lg {
@@ -3419,7 +3421,7 @@ ul.info-list li i.fa {
 }
 
 .parallax-slug-3 {
-	background:url(../../images/front/Verdon3.jpg) repeat center center fixed;
+	background:url(../../images/front/DSC018491.JPG) repeat  center top fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
