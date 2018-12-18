@@ -80,14 +80,16 @@
         </div><!-- .container -->
         
         <div class="foot-wrapper">
+            <div id="instafeed"></div>
             <div class="container">
+
                 <div class="col-lg-12">
                 
                     <div class="logo anim fadeInDown">
                         <center><img src="images/front/arbatou.svg" style="width: 290px;" alt="Footer logo arbatou." /></center>
                     </div><!-- .logo -->
                     
-                    <p class="liner anim fadeInUp">L'arbre à tout faire</p>
+                    <p class="liner anim fadeInUp">L'arbre à tout fairesssssssssss</p>
                     
                     <ul class="social-media anim fadeInUp" data-wow-delay="0.25s">
                         <li><a href="https://www.facebook.com/Arbatou-835156433266704/" target="_BLANK"><i class="fa fa-facebook"></i></a></li>
@@ -151,6 +153,7 @@
     <script language="javascript" src="js/front/video.js"></script>
     <!-- OWL Carousel core JavaScript -->
     <script language="javascript" src="js/front/owl.carousel.min.js"></script>
+    <script language="javascript" src="js/front/instafeed.js"></script>
     <!-- twitterfeed core JavaScript -->
     <!-- // <script language="javascript" src="js/front/jquery.twitterfeed.js"></script> -->
     <!-- Lightbox core JavaScript -->
@@ -225,5 +228,13 @@
     
     // -->
     </script>
+    <script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'tagged',
+        tagName: 'awesome',
+        clientId: 'YOUR_CLIENT_ID'
+    });
+    feed.run();
+</script>
 </body>
 </html>

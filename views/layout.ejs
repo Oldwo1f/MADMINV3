@@ -89,6 +89,8 @@
         </div><!-- .container -->
         
         <div class="foot-wrapper">
+            <div id="instafeed"></div>
+
             <div class="container">
                 <div class="col-lg-12">
                 
@@ -99,6 +101,7 @@
                     <p class="liner anim fadeInUp"><%- __('L\'arbre à tout faire') %></p>
                     
                     <ul class="social-media anim fadeInUp" data-wow-delay="0.25s">
+                        <li><a href="https://www.instagram.com/arbatou.fr/" target="_BLANK"><i class="fa fa-instagram"></i></a></li>
                         <li><a href="https://www.facebook.com/Arbatou-835156433266704/" target="_BLANK"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="mailTo:contact@arbatou.fr"><i class="fa fa-envelope"></i></a></li>
                         <!-- <li><a href="#linkedin"><i class="fa fa-linkedin"></i></a></li>
@@ -181,7 +184,8 @@
     <!-- Everything else -->
     <script language="javascript" src="js/front/custom.js"></script>
     <script language="javascript" src="js/front/<%- scripturl %>"></script>
-
+    
+    <script language="javascript" src="js/front/instafeed.js"></script>
     <script type="text/javascript" language="javascript">
     <!--
     
@@ -189,5 +193,13 @@
     
     // -->
     </script>
+     <script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'tagged',
+        tagName: 'awesome',
+        clientId: ' 3406370822'
+    });
+    feed.run();
+</script>
 </body>
 </html>

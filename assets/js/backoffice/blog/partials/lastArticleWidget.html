@@ -11,7 +11,7 @@
 		<header class="widget__header">
 				<div class="widget__icon"><i  class="pe-7s-note"></i></div>
 				<div class="widget__title">
-					<span>Dernier article </span> 
+					<span>Dernière news </span> 
 					
 					<span class="dateInTitle">
 						<span class="nbViewsTitle"><i ng-show="lastArticle" class="pe-7s-look"></i>{{lastArticle.nbView}}</span>
@@ -28,14 +28,14 @@
 				</div>
 				<div  class="keepThisEvent btn-header" ng-click="saveDash()" title="Save Dashboard"><i class="pe-7s-diskette"></i></div>
 				<div  class="keepThisEvent btn-header" ng-click="restoreDefault()" title="Restaurer le dashboard par default"><i class="pe-7s-refresh"></i></div> -->
-				<div class=" btn-header" ui-sref="blog" ><md-tooltip md-direction="bottom"> Tout les articles</md-tooltip><i class="pe-7s-keypad"></i></div>
-				<div class=" btn-header" ui-sref="blog.add()" ><md-tooltip md-direction="bottom"> Ajouter un article</md-tooltip><i class="pe-7s-plus"></i></div>
-				<div class=" btn-header" ui-sref="blog.edit({id: lastArticle.id})" ><md-tooltip md-direction="bottom"> Modifier cet article</md-tooltip><i class="pe-7s-right-arrow"></i></div>
+				<div class=" btn-header" ui-sref="blog" ><md-tooltip md-direction="bottom"> Toutes les news</md-tooltip><i class="pe-7s-keypad"></i></div>
+				<div class=" btn-header" ui-sref="blog.add()" ><md-tooltip md-direction="bottom"> Ajouter une news</md-tooltip><i class="pe-7s-plus"></i></div>
+				<div class=" btn-header" ui-sref="blog.edit({id: lastArticle.id})" ><md-tooltip md-direction="bottom"> Modifier cet news</md-tooltip><i class="pe-7s-right-arrow"></i></div>
 		</header>
  
 		<div class="widget__content filled">
 			<div id="noLastAticleElment" ng-show="!lastArticle">
-				<span>Aucun Article</span>
+				<span>Aucune news</span>
 			</div>
 			<md-card class="RESIZEHEIGHT" >
 
