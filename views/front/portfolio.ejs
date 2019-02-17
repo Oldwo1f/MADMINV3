@@ -28,7 +28,7 @@
             
         </nav>
     </div>
-    <section class="slug parallax-slug-3" data-stellar-background-ratio="0">
+    <section class="slug parallax-slug-5" data-stellar-background-ratio="0">
         <div class="overlay">
             <div class="container">
                 <div class="row">
@@ -151,10 +151,10 @@
                                 <%} %>
                                 <h3><%= projects[i].title %></h3>
                                 <ul class="meta">
-                                    <% if(typeof(projects[i].authors)!='undefined' && projects[i].authors.length > 0){ %>
+                                 <!--    <% if(typeof(projects[i].authors)!='undefined' && projects[i].authors.length > 0){ %>
                                     <li><a ><i class="fa fa-user"></i><%= projects[i].authors[0].firstname %></a></li>
                                     <% } %>
-                                    <li><a ><i class="fa fa-eye"></i><%= projects[i].nbView %></a></li>
+                                    <li><a ><i class="fa fa-eye"></i><%= projects[i].nbView %></a></li> -->
                                     <% if(typeof(projects[i].categories)!='undefined'){ %> 
                                     <li>
                                         <% for(var j in projects[i].categories){
